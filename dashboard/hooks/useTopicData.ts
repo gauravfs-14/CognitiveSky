@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useFilters } from "@/contexts/filter-context"
+import { useState, useEffect } from "react";
+import { useFilters } from "@/contexts/filter-context";
 
 export interface TopicData {
-  id: number
-  label: string
-  keywords: string[]
-  count: number
-  color: string
+  id: number;
+  label: string;
+  keywords: string[];
+  count: number;
+  color: string;
 }
 
 export interface SemanticMapPoint {
-  postId: string
-  text: string
-  x: number
-  y: number
-  topic: number
+  postId: string;
+  text: string;
+  x: number;
+  y: number;
+  topic: number;
 }
 
 // Static data outside the component to avoid re-creation on each render
@@ -56,7 +56,7 @@ const staticTopicsData: TopicData[] = [
     count: 1654,
     color: "#f472b6",
   },
-]
+];
 
 // Sample post texts for each topic to make the data more realistic
 const samplePostTexts = {
@@ -95,67 +95,79 @@ const samplePostTexts = {
     "Looking for a new therapist who specializes in trauma. Any recommendations?",
     "Just had my first psychiatrist appointment. Feeling validated.",
   ],
-}
+};
 
 export function useTopicData() {
-  const [topics, setTopics] = useState<TopicData[]>(staticTopicsData)
-  const [semanticMap, setSemanticMap] = useState<SemanticMapPoint[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<Error | null>(null)
+  const [topics, setTopics] = useState<TopicData[]>(staticTopicsData);
+  const [semanticMap, setSemanticMap] = useState<SemanticMapPoint[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
   // Get filters - wrap in try/catch to handle case where FilterProvider isn't available yet
   // Initialize filter values with defaults
-  const defaultTopics: number[] = []
-  const defaultEmotions: string[] = []
-  const defaultDateRange: [Date, Date] = [new Date(), new Date()]
-  const defaultSearchQuery: string = ""
-  const defaultIsFilterActive: boolean = false
+  const defaultTopics: number[] = [];
+  const defaultEmotions: string[] = [];
+  const defaultDateRange: [Date, Date] = [new Date(), new Date()];
+  const defaultSearchQuery: string = "";
+  const defaultIsFilterActive: boolean = false;
 
   // Attempt to get filters from the context, but provide defaults if unavailable
-  let filters
+  let filters;
   try {
-    filters = useFilters()
+    filters = useFilters();
   } catch (e) {
     // FilterProvider not available yet, use defaults
-    console.warn("FilterProvider not available, using default filters.")
+    console.warn("FilterProvider not available, using default filters.");
     filters = {
       topics: defaultTopics,
       emotions: defaultEmotions,
       dateRange: defaultDateRange,
       searchQuery: defaultSearchQuery,
       isFilterActive: defaultIsFilterActive,
-    }
+    };
   }
 
-  const { topics: activeTopics, emotions: activeEmotions, dateRange, searchQuery, isFilterActive } = filters
+  const {
+    topics: activeTopics,
+    emotions: activeEmotions,
+    dateRange,
+    searchQuery,
+    isFilterActive,
+  } = filters;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true)
+        setLoading(true);
 
         // Generate more meaningful semantic map points
         // Each topic will have its own cluster with some variation
-        let staticSemanticMap: SemanticMapPoint[] = []
+        let staticSemanticMap: SemanticMapPoint[] = [];
 
         // For each topic, create a cluster of points
         staticTopicsData.forEach((topic, topicIndex) => {
           // Base position for this topic's cluster
-          const baseX = ((topicIndex % 3) - 1) * 7 // Spread topics horizontally
-          const baseY = (Math.floor(topicIndex / 3) - 1) * 7 // And vertically
+          const baseX = ((topicIndex % 3) - 1) * 7; // Spread topics horizontally
+          const baseY = (Math.floor(topicIndex / 3) - 1) * 7; // And vertically
 
           // Number of points for this topic
-          const pointCount = Math.floor(topic.count / 20) // Scale down for visualization
+          const pointCount = Math.floor(topic.count / 20); // Scale down for visualization
 
           // Create points for this topic
           for (let i = 0; i < pointCount; i++) {
             // Add some random variation within the cluster
-            const variationX = (Math.random() - 0.5) * 3
-            const variationY = (Math.random() - 0.5) * 3
+            const variationX = (Math.random() - 0.5) * 3;
+            const variationY = (Math.random() - 0.5) * 3;
 
             // Get a sample post text for this topic
-            const textIndex = i % samplePostTexts[topicIndex].length
-            const text = samplePostTexts[topicIndex][textIndex]
+            const textIndex =
+              i %
+              samplePostTexts[topicIndex as keyof typeof samplePostTexts]
+                .length;
+            const text =
+              samplePostTexts[topicIndex as keyof typeof samplePostTexts][
+                textIndex
+              ];
 
             staticSemanticMap.push({
               postId: `post_${topicIndex}_${i}`,
@@ -163,12 +175,12 @@ export function useTopicData() {
               x: baseX + variationX,
               y: baseY + variationY,
               topic: topicIndex,
-            })
+            });
           }
-        })
+        });
 
         // Start with a copy of the static data
-        let filteredTopics = [...staticTopicsData]
+        let filteredTopics = [...staticTopicsData];
 
         // Apply filters
         if (isFilterActive) {
@@ -177,50 +189,53 @@ export function useTopicData() {
             filteredTopics = filteredTopics.map((topic) => {
               if (activeTopics.includes(topic.id)) {
                 // Boost selected topics
-                return { ...topic, count: Math.floor(topic.count * 1.5) }
+                return { ...topic, count: Math.floor(topic.count * 1.5) };
               } else {
                 // Reduce non-selected topics
-                return { ...topic, count: Math.floor(topic.count * 0.5) }
+                return { ...topic, count: Math.floor(topic.count * 0.5) };
               }
-            })
+            });
 
             // Filter semantic map to show primarily selected topics
             staticSemanticMap = staticSemanticMap.filter(
-              (point) => activeTopics.includes(point.topic) || Math.random() < 0.2,
-            )
+              (point) =>
+                activeTopics.includes(point.topic) || Math.random() < 0.2
+            );
           } else {
             // Apply general filtering
-            let reductionFactor = 1.0
+            let reductionFactor = 1.0;
 
             if (activeEmotions.length > 0) {
-              reductionFactor *= 0.7 + Math.random() * 0.2
+              reductionFactor *= 0.7 + Math.random() * 0.2;
             }
 
             if (searchQuery) {
-              reductionFactor *= 0.5 + Math.random() * 0.3
+              reductionFactor *= 0.5 + Math.random() * 0.3;
             }
 
             filteredTopics = filteredTopics.map((topic) => ({
               ...topic,
               count: Math.floor(topic.count * reductionFactor),
-            }))
+            }));
 
             // Reduce semantic map points
-            staticSemanticMap = staticSemanticMap.filter(() => Math.random() < reductionFactor)
+            staticSemanticMap = staticSemanticMap.filter(
+              () => Math.random() < reductionFactor
+            );
           }
         }
 
-        setTopics(filteredTopics)
-        setSemanticMap(staticSemanticMap)
-        setLoading(false)
+        setTopics(filteredTopics);
+        setSemanticMap(staticSemanticMap);
+        setLoading(false);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error("Unknown error"))
-        setLoading(false)
+        setError(err instanceof Error ? err : new Error("Unknown error"));
+        setLoading(false);
       }
-    }
+    };
 
-    fetchData()
-  }, [isFilterActive, activeTopics, activeEmotions, dateRange, searchQuery])
+    fetchData();
+  }, [isFilterActive, activeTopics, activeEmotions, dateRange, searchQuery]);
 
-  return { topics, semanticMap, loading, error }
+  return { topics, semanticMap, loading, error };
 }
