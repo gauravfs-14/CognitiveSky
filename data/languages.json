@@ -1,0 +1,222 @@
+[
+    {
+        "lang": "en",
+        "count": 23818
+    },
+    {
+        "lang": "und",
+        "count": 3093
+    },
+    {
+        "lang": "de",
+        "count": 514
+    },
+    {
+        "lang": "pt",
+        "count": 494
+    },
+    {
+        "lang": "es",
+        "count": 344
+    },
+    {
+        "lang": "fr",
+        "count": 286
+    },
+    {
+        "lang": "ja",
+        "count": 154
+    },
+    {
+        "lang": "en-US",
+        "count": 95
+    },
+    {
+        "lang": "it",
+        "count": 81
+    },
+    {
+        "lang": "nl",
+        "count": 78
+    },
+    {
+        "lang": "sv",
+        "count": 64
+    },
+    {
+        "lang": "en-AU",
+        "count": 46
+    },
+    {
+        "lang": "ko",
+        "count": 39
+    },
+    {
+        "lang": "ar",
+        "count": 36
+    },
+    {
+        "lang": "pl",
+        "count": 33
+    },
+    {
+        "lang": "fi",
+        "count": 31
+    },
+    {
+        "lang": "ca",
+        "count": 21
+    },
+    {
+        "lang": "nb",
+        "count": 19
+    },
+    {
+        "lang": "tr",
+        "count": 19
+    },
+    {
+        "lang": "da",
+        "count": 14
+    },
+    {
+        "lang": "ru",
+        "count": 14
+    },
+    {
+        "lang": "zh",
+        "count": 12
+    },
+    {
+        "lang": "th",
+        "count": 10
+    },
+    {
+        "lang": "cs",
+        "count": 10
+    },
+    {
+        "lang": "id",
+        "count": 10
+    },
+    {
+        "lang": "aa",
+        "count": 8
+    },
+    {
+        "lang": "it-IT",
+        "count": 8
+    },
+    {
+        "lang": "ro",
+        "count": 8
+    },
+    {
+        "lang": "ab",
+        "count": 7
+    },
+    {
+        "lang": "ak",
+        "count": 7
+    },
+    {
+        "lang": "el",
+        "count": 6
+    },
+    {
+        "lang": "en-GB",
+        "count": 6
+    },
+    {
+        "lang": "uk",
+        "count": 6
+    },
+    {
+        "lang": "am",
+        "count": 6
+    },
+    {
+        "lang": "vi",
+        "count": 5
+    },
+    {
+        "lang": "de-DE",
+        "count": 5
+    },
+    {
+        "lang": "nl-NL",
+        "count": 5
+    },
+    {
+        "lang": "he",
+        "count": 4
+    },
+    {
+        "lang": "ro-RO",
+        "count": 4
+    },
+    {
+        "lang": "af",
+        "count": 3
+    },
+    {
+        "lang": "cy",
+        "count": 3
+    },
+    {
+        "lang": "et",
+        "count": 3
+    },
+    {
+        "lang": "tl",
+        "count": 3
+    },
+    {
+        "lang": "ja-JP",
+        "count": 3
+    },
+    {
+        "lang": "hu",
+        "count": 3
+    },
+    {
+        "lang": "is",
+        "count": 2
+    },
+    {
+        "lang": "av",
+        "count": 2
+    },
+    {
+        "lang": "la",
+        "count": 2
+    },
+    {
+        "lang": "hy",
+        "count": 1
+    },
+    {
+        "lang": "ms",
+        "count": 1
+    },
+    {
+        "lang": "ga",
+        "count": 1
+    },
+    {
+        "lang": "gl",
+        "count": 1
+    },
+    {
+        "lang": "eu",
+        "count": 1
+    },
+    {
+        "lang": "pt-BR",
+        "count": 1
+    },
+    {
+        "lang": "be",
+        "count": 1
+    }
+]

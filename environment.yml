@@ -1,0 +1,17 @@
+# environment.yml
+name: cognitivesky
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pandas
+  - sqlite
+  - pip
+  - pip:
+      - transformers
+      - sentence-transformers
+      - umap-learn
+      - scikit-learn
+      - emoji
+      - torch
