@@ -1,0 +1,30 @@
+[
+  {
+    "label": "neutral",
+    "count": 8352
+  },
+  {
+    "label": "fear",
+    "count": 8145
+  },
+  {
+    "label": "sadness",
+    "count": 5458
+  },
+  {
+    "label": "joy",
+    "count": 2503
+  },
+  {
+    "label": "anger",
+    "count": 2176
+  },
+  {
+    "label": "disgust",
+    "count": 1688
+  },
+  {
+    "label": "surprise",
+    "count": 1129
+  }
+]
