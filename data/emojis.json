@@ -1,1 +1,202 @@
-[{"emoji":"\ud83d\ude2d","count":530},{"emoji":"\u2764","count":278},{"emoji":"\ud83d\udc94","count":275},{"emoji":"\ud83d\ude4f","count":273},{"emoji":"\u2728","count":254},{"emoji":"\ud83c\udffb","count":207},{"emoji":"\ud83d\ude02","count":187},{"emoji":"\ud83d\ude14","count":142},{"emoji":"\ud83e\udd23","count":137},{"emoji":"\ud83d\udc9a","count":134},{"emoji":"\ud83e\udd79","count":125},{"emoji":"\u2640","count":123},{"emoji":"\ud83d\udc47","count":115},{"emoji":"\ud83c\udf49","count":115},{"emoji":"\ud83d\udc99","count":113},{"emoji":"\ud83d\udd17","count":110},{"emoji":"\ud83d\udc49","count":108},{"emoji":"\ud83e\udec2","count":105},{"emoji":"\ud83d\ude25","count":104},{"emoji":"\ud83d\udc9c","count":103},{"emoji":"\ud83e\udde0","count":99},{"emoji":"\ud83d\ude05","count":90},{"emoji":"\ud83d\udd25","count":87},{"emoji":"\ud83e\udef6","count":86},{"emoji":"\ud83d\udc95","count":81},{"emoji":"\ud83d\udd4a","count":78},{"emoji":"\u27a1","count":72},{"emoji":"\ud83e\udd70","count":71},{"emoji":"\ud83d\udc96","count":70},{"emoji":"\ud83e\udd7a","count":68},{"emoji":"\u2642","count":68},{"emoji":"\ud83d\udea8","count":66},{"emoji":"\ud83d\udc80","count":65},{"emoji":"\ud83e\udd37","count":65},{"emoji":"\ud83d\udc9b","count":63},{"emoji":"\ud83d\ude43","count":62},{"emoji":"\ud83e\uddf5","count":62},{"emoji":"\ud83e\udd14","count":60},{"emoji":"\ud83e\udd26","count":59},{"emoji":"\ud83c\udffc","count":58},{"emoji":"\u2b07","count":58},{"emoji":"\u2b50","count":58},{"emoji":"\ud83d\udda4","count":57},{"emoji":"\ud83e\udd72","count":55},{"emoji":"\ud83d\udcab","count":55},{"emoji":"\ud83c\udfb6","count":55},{"emoji":"\ud83d\udcda","count":54},{"emoji":"\u2705","count":54},{"emoji":"\ud83c\udf39","count":54},{"emoji":"\ud83e\udee0","count":54}]
+[
+    {
+        "emoji": "\ud83d\ude2d",
+        "count": 530
+    },
+    {
+        "emoji": "\u2764",
+        "count": 278
+    },
+    {
+        "emoji": "\ud83d\udc94",
+        "count": 275
+    },
+    {
+        "emoji": "\ud83d\ude4f",
+        "count": 273
+    },
+    {
+        "emoji": "\u2728",
+        "count": 254
+    },
+    {
+        "emoji": "\ud83c\udffb",
+        "count": 207
+    },
+    {
+        "emoji": "\ud83d\ude02",
+        "count": 187
+    },
+    {
+        "emoji": "\ud83d\ude14",
+        "count": 142
+    },
+    {
+        "emoji": "\ud83e\udd23",
+        "count": 137
+    },
+    {
+        "emoji": "\ud83d\udc9a",
+        "count": 134
+    },
+    {
+        "emoji": "\ud83e\udd79",
+        "count": 125
+    },
+    {
+        "emoji": "\u2640",
+        "count": 123
+    },
+    {
+        "emoji": "\ud83d\udc47",
+        "count": 115
+    },
+    {
+        "emoji": "\ud83c\udf49",
+        "count": 115
+    },
+    {
+        "emoji": "\ud83d\udc99",
+        "count": 113
+    },
+    {
+        "emoji": "\ud83d\udd17",
+        "count": 110
+    },
+    {
+        "emoji": "\ud83d\udc49",
+        "count": 108
+    },
+    {
+        "emoji": "\ud83e\udec2",
+        "count": 105
+    },
+    {
+        "emoji": "\ud83d\ude25",
+        "count": 104
+    },
+    {
+        "emoji": "\ud83d\udc9c",
+        "count": 103
+    },
+    {
+        "emoji": "\ud83e\udde0",
+        "count": 99
+    },
+    {
+        "emoji": "\ud83d\ude05",
+        "count": 90
+    },
+    {
+        "emoji": "\ud83d\udd25",
+        "count": 87
+    },
+    {
+        "emoji": "\ud83e\udef6",
+        "count": 86
+    },
+    {
+        "emoji": "\ud83d\udc95",
+        "count": 81
+    },
+    {
+        "emoji": "\ud83d\udd4a",
+        "count": 78
+    },
+    {
+        "emoji": "\u27a1",
+        "count": 72
+    },
+    {
+        "emoji": "\ud83e\udd70",
+        "count": 71
+    },
+    {
+        "emoji": "\ud83d\udc96",
+        "count": 70
+    },
+    {
+        "emoji": "\ud83e\udd7a",
+        "count": 68
+    },
+    {
+        "emoji": "\u2642",
+        "count": 68
+    },
+    {
+        "emoji": "\ud83d\udea8",
+        "count": 66
+    },
+    {
+        "emoji": "\ud83d\udc80",
+        "count": 65
+    },
+    {
+        "emoji": "\ud83e\udd37",
+        "count": 65
+    },
+    {
+        "emoji": "\ud83d\udc9b",
+        "count": 63
+    },
+    {
+        "emoji": "\ud83d\ude43",
+        "count": 62
+    },
+    {
+        "emoji": "\ud83e\uddf5",
+        "count": 62
+    },
+    {
+        "emoji": "\ud83e\udd14",
+        "count": 60
+    },
+    {
+        "emoji": "\ud83e\udd26",
+        "count": 59
+    },
+    {
+        "emoji": "\ud83c\udffc",
+        "count": 58
+    },
+    {
+        "emoji": "\u2b07",
+        "count": 58
+    },
+    {
+        "emoji": "\u2b50",
+        "count": 58
+    },
+    {
+        "emoji": "\ud83d\udda4",
+        "count": 57
+    },
+    {
+        "emoji": "\ud83e\udd72",
+        "count": 55
+    },
+    {
+        "emoji": "\ud83d\udcab",
+        "count": 55
+    },
+    {
+        "emoji": "\ud83c\udfb6",
+        "count": 55
+    },
+    {
+        "emoji": "\ud83d\udcda",
+        "count": 54
+    },
+    {
+        "emoji": "\u2705",
+        "count": 54
+    },
+    {
+        "emoji": "\ud83c\udf39",
+        "count": 54
+    },
+    {
+        "emoji": "\ud83e\udee0",
+        "count": 54
+    }
+]
