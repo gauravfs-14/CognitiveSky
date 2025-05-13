@@ -33,4 +33,20 @@ step "🧠 Step 3: Analyzing sentiments..."
 python scripts/analyze_sentiment_emotion.py || { step "❌ Failed at scripts/analyze_sentiment_emotion.py"; exit 1; }
 
 separator
+step "💡 Step 4: Generating topics..."
+python scripts/generate_topics.py || { step "❌ Failed at scripts/generate_topics.py"; exit 1; }
+
+separator
+step "🏷️ Step 5: Generating topic labels..."
+python scripts/generate_topic_labels.py || { step "❌ Failed at scripts/generate_topic_labels.py"; exit 1; }
+
+separator
+step "📈 Step 6: Generating summary stats..."
+python scripts/generate_summary_stats.py || { step "❌ Failed at scripts/generate_summary_stats.py"; exit 1; }
+
+separator
+step "🔄 Step 7: Merging data..."
+python scripts/merge_semantic_topics.py || { step "❌ Failed at scripts/merge_semantic_topics.py"; exit 1; }
+
+separator
 step "✅ Pipeline complete!"
