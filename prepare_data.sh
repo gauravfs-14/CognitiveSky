@@ -45,7 +45,11 @@ step "📈 Step 6: Generating summary stats..."
 python scripts/generate_summary_stats.py || { step "❌ Failed at scripts/generate_summary_stats.py"; exit 1; }
 
 separator
-step "🔄 Step 7: Merging data..."
+step "🔃 Step 7: Generating user network..."
+python scripts/generate_user_networks.py || { step "❌ Failed at scripts/generate_user_networks.py"; exit 1; }
+
+separator
+step "🔄 Step 8: Merging data..."
 python scripts/merge_semantic_topics.py || { step "❌ Failed at scripts/merge_semantic_topics.py"; exit 1; }
 
 separator
