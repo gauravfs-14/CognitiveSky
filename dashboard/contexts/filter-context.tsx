@@ -1,126 +1,123 @@
-"use client"
+// filepath: /Users/gchhetri/Developer/PERSONAL/CognitiveSky/dashboard/contexts/filter-context.tsx
+"use client";
 
-import { createContext, useContext, type ReactNode } from "react"
-import { useQueryState } from "nuqs"
+import { createContext, useContext, type ReactNode } from "react";
+import { useQueryState } from "nuqs";
 
 export interface FilterState {
-  topics: number[]
-  emotions: string[]
-  dateRange: [Date, Date]
-  searchQuery: string
+  topics: number[];
+  emotions: string[];
+  dateRange: [Date, Date];
+  searchQuery: string;
 }
 
 interface FilterContextType {
-  topics: number[]
-  emotions: string[]
-  dateRange: [Date, Date]
-  searchQuery: string
-  setTopicFilter: (topicIds: number[]) => void
-  setEmotionFilter: (emotions: string[]) => void
-  setDateRangeFilter: (range: [Date, Date]) => void
-  setSearchQuery: (query: string) => void
-  resetFilters: () => void
-  isFilterActive: boolean
+  topics: number[];
+  emotions: string[];
+  dateRange: [Date, Date];
+  searchQuery: string;
+  setTopicFilter: (topicIds: number[]) => void;
+  setEmotionFilter: (emotions: string[]) => void;
+  setDateRangeFilter: (range: [Date, Date]) => void;
+  setSearchQuery: (query: string) => void;
+  resetFilters: () => void;
+  isFilterActive: boolean;
 }
 
-const FilterContext = createContext<FilterContextType | undefined>(undefined)
+const FilterContext = createContext<FilterContextType | undefined>(undefined);
 
 export function FilterProvider({ children }: { children: ReactNode }) {
   // Get date range for the last 30 days
-  const endDate = new Date()
-  const startDate = new Date()
-  startDate.setDate(startDate.getDate() - 30)
+  const endDate = new Date();
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - 30);
 
   // Set up URL query parameters using nuqs
-  const [topicsParam, setTopicsParam] = useQueryState("topics", {
-    defaultValue: "",
-    parse: (value) => (value ? value.split(",").map(Number) : []),
-    serialize: (value) => (value.length ? value.join(",") : null),
-  })
-
-  const [emotionsParam, setEmotionsParam] = useQueryState("emotions", {
-    defaultValue: "",
-    parse: (value) => (value ? value.split(",") : []),
-    serialize: (value) => (value.length ? value.join(",") : null),
-  })
-
-  const [dateRangeParam, setDateRangeParam] = useQueryState("dateRange", {
-    defaultValue: `${startDate.toISOString()},${endDate.toISOString()}`,
-    parse: (value) => {
-      if (!value) return [startDate, endDate]
-      try {
-        const [start, end] = value.split(",")
-        return [new Date(start), new Date(end)]
-      } catch (error) {
-        console.error("Error parsing date range:", error)
-        return [startDate, endDate]
-      }
-    },
-    serialize: (value) => {
-      try {
-        // Ensure both values are valid Date objects
-        const start = value[0] instanceof Date ? value[0] : new Date(value[0])
-        const end = value[1] instanceof Date ? value[1] : new Date(value[1])
-        return `${start.toISOString()},${end.toISOString()}`
-      } catch (error) {
-        console.error("Error serializing date range:", error)
-        return `${startDate.toISOString()},${endDate.toISOString()}`
-      }
-    },
-  })
-
-  const [searchQueryParam, setSearchQueryParam] = useQueryState("q", {
-    defaultValue: "",
-  })
+  const [topicsParam, setTopicsParam] = useQueryState("topics");
+  const [emotionsParam, setEmotionsParam] = useQueryState("emotions");
+  const [dateRangeParam, setDateRangeParam] = useQueryState("dateRange");
+  const [searchQueryParam, setSearchQueryParam] = useQueryState("q");
 
   // Parse URL parameters into actual filter values
-  const topics = topicsParam
-  const emotions = emotionsParam
+  const topics: number[] = topicsParam
+    ? topicsParam
+        .split(",")
+        .map(Number)
+        .filter((n) => !isNaN(n))
+    : [];
+
+  const emotions: string[] = emotionsParam
+    ? emotionsParam.split(",").filter(Boolean)
+    : [];
 
   // Ensure dateRange is always a valid tuple of Date objects
-  let dateRange: [Date, Date]
+  let dateRange: [Date, Date];
   try {
-    if (Array.isArray(dateRangeParam) && dateRangeParam.length === 2) {
-      dateRange = [
-        dateRangeParam[0] instanceof Date ? dateRangeParam[0] : new Date(dateRangeParam[0]),
-        dateRangeParam[1] instanceof Date ? dateRangeParam[1] : new Date(dateRangeParam[1]),
-      ]
+    if (dateRangeParam) {
+      const [start, end] = dateRangeParam.split(",");
+      const startDate1 = new Date(start);
+      const endDate1 = new Date(end);
+
+      // Validate dates are valid
+      if (!isNaN(startDate1.getTime()) && !isNaN(endDate1.getTime())) {
+        dateRange = [startDate1, endDate1];
+      } else {
+        dateRange = [startDate, endDate];
+      }
     } else {
-      dateRange = [startDate, endDate]
+      dateRange = [startDate, endDate];
     }
   } catch (error) {
-    console.error("Error processing date range:", error)
-    dateRange = [startDate, endDate]
+    console.error("Error processing date range:", error);
+    dateRange = [startDate, endDate];
   }
 
-  const searchQuery = searchQueryParam
+  const searchQuery = searchQueryParam || "";
 
   // Determine if any filters are active
-  const isFilterActive = topics.length > 0 || emotions.length > 0 || searchQuery !== ""
+  const isFilterActive =
+    topics.length > 0 ||
+    emotions.length > 0 ||
+    searchQuery !== "" ||
+    dateRange[0].getTime() !== startDate.getTime() ||
+    dateRange[1].getTime() !== endDate.getTime();
 
   // Filter setters
   const setTopicFilter = (topicIds: number[]) => {
-    setTopicsParam(topicIds)
-  }
+    if (topicIds.length === 0) {
+      setTopicsParam(null);
+    } else {
+      setTopicsParam(topicIds.join(","));
+    }
+  };
 
-  const setEmotionFilter = (emotions: string[]) => {
-    setEmotionsParam(emotions)
-  }
+  const setEmotionFilter = (emotionValues: string[]) => {
+    if (emotionValues.length === 0) {
+      setEmotionsParam(null);
+    } else {
+      setEmotionsParam(emotionValues.join(","));
+    }
+  };
 
   const setDateRangeFilter = (range: [Date, Date]) => {
-    setDateRangeParam(range)
-  }
+    const dateStr = `${range[0].toISOString()},${range[1].toISOString()}`;
+    setDateRangeParam(dateStr);
+  };
 
   const setSearchQuery = (query: string) => {
-    setSearchQueryParam(query)
-  }
+    if (!query) {
+      setSearchQueryParam(null);
+    } else {
+      setSearchQueryParam(query);
+    }
+  };
 
   const resetFilters = () => {
-    setTopicsParam([])
-    setEmotionsParam([])
-    setDateRangeParam([startDate, endDate])
-    setSearchQueryParam("")
-  }
+    setTopicsParam(null);
+    setEmotionsParam(null);
+    setDateRangeParam(`${startDate.toISOString()},${endDate.toISOString()}`);
+    setSearchQueryParam(null);
+  };
 
   return (
     <FilterContext.Provider
@@ -139,13 +136,13 @@ export function FilterProvider({ children }: { children: ReactNode }) {
     >
       {children}
     </FilterContext.Provider>
-  )
+  );
 }
 
 export function useFilters() {
-  const context = useContext(FilterContext)
+  const context = useContext(FilterContext);
   if (context === undefined) {
-    throw new Error("useFilters must be used within a FilterProvider")
+    throw new Error("useFilters must be used within a FilterProvider");
   }
-  return context
+  return context;
 }
