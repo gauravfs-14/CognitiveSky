@@ -39,16 +39,42 @@
 ## 🧱 Project Structure
 
 ```
-
 cognitivesky/
 ├── data/                  # Preprocessed JSON datasets
-├── scripts/               # Preprocessing scripts (Python/JS)
-├── public/                # Static assets
-├── components/            # React components (charts, filters, maps)
-├── pages/                 # Next.js / dashboard routes
-├── styles/                # Styling files
+│   ├── bluesky_posts.db   # SQLite database with raw posts
+│   ├── clean_posts.json   # Cleaned post data
+│   ├── communities.json   # Community detection results
+│   ├── emojis.json        # Emoji usage data
+│   ├── emotion_counts.json # Emotion analysis results
+│   ├── semantic_map.json  # UMAP dimensionality reduction
+│   ├── sentiment_counts.json # Sentiment analysis results
+│   └── topics.json        # Topic modeling results
+├── scripts/               # Python preprocessing scripts
+│   ├── analyze_sentiment_emotion.py # Sentiment & emotion analysis
+│   ├── extract_clean_posts.py # Data extraction from DB
+│   ├── generate_aggregates.py # Statistical aggregations
+│   ├── generate_topics.py # Generates topic embeddings
+│   ├── generate_user_networks.py # Community detection
+│   └── merge_semantic_topics.py # Final data integration
+├── prepare_data.sh        # Data pipeline execution script
+├── environment.yml        # Python dependencies
+├── dashboard/             # Next.js web application
+│   ├── app/               # Next.js app directory
+│   │   ├── page.tsx       # Main dashboard page
+│   │   ├── topics/        # Topic exploration routes
+│   │   ├── sentiment/     # Sentiment analysis routes
+│   │   ├── posts/         # Post browsing routes
+│   │   ├── export/        # Data export functionality
+│   │   └── timeline/      # Timeline visualization
+│   ├── components/        # React components
+│   │   ├── charts/        # Visualization components
+│   │   ├── ui/            # UI components
+│   │   └── ...
+│   ├── contexts/          # React context providers
+│   ├── hooks/             # Custom React hooks for data
+│   ├── public/            # Static assets
+│   └── package.json       # Frontend dependencies
 └── README.md              # This file
-
 ```
 
 ---
@@ -58,37 +84,65 @@ cognitivesky/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/cognitivesky.git
+git clone https://github.com/gauravfs-14/cognitivesky.git
 cd cognitivesky
 ```
 
-### 2. Install Dependencies
+### 2. Set Up Python Environment
 
 ```bash
-npm install
-# or
-yarn install
+# Create and activate conda environment
+conda env create -f environment.yml
+conda activate cognitivesky
 ```
 
-### 3. Start the Development Server
+### 3. Process Your Data
 
 ```bash
-npm run dev
+# Run the data preprocessing pipeline
+bash prepare_data.sh
 ```
 
-### 4. Preprocess Your Data
+This script will:
 
-Run the scripts in `scripts/` to convert your raw Bluesky `.json` exports into structured JSONs compatible with the dashboard:
+- Extract and clean Bluesky posts from the SQLite database
+- Generate aggregated statistics and visualizations
+- Analyze sentiment and emotions in posts
+- Create topic embeddings using Sentence-BERT
+- Generate semantic maps with UMAP
+- Detect user communities with the Louvain algorithm
 
-- sentiment + emotion tagging
-- topic embeddings
-- metadata extraction
+### 4. Set Up the Dashboard
+
+```bash
+# Change to dashboard directory
+cd dashboard
+
+# Install dependencies
+pnpm install
+
+# Start the development server
+pnpm dev
+```
+
+The dashboard will be available at http://localhost:3000
 
 ---
 
 ## 📦 Sample Data
 
-Until you integrate your real dataset, you can use mock files in `data/sample/` to test the UI and visualization behavior.
+The `data/` directory contains preprocessed JSON files that power the dashboard visualizations:
+
+- `clean_posts.json` - Cleaned and structured Bluesky posts
+- `clean_posts_with_sentiment.json` - Posts with sentiment scores
+- `sentiment_counts.json` - Aggregated sentiment statistics
+- `emotion_counts.json` - Emotion distribution data
+- `topics.json` - Topic modeling results
+- `hashtags.json` - Hashtag frequency and relationships
+- `timeline.json` - Temporal posting patterns
+- `semantic_map.json` - 2D UMAP projections for visualization
+
+The dashboard automatically loads these files for visualization.
 
 ---
 
@@ -101,20 +155,3 @@ Contributions are welcome! If you'd like to fix a bug, suggest a feature, or add
 ## 📄 License
 
 This project is licensed under the **MIT License**. See [`LICENSE`](./LICENSE) for more details.
-
----
-
-## 📚 Citation
-
-If you use this tool in your research, please cite or reference it as:
-
-> Chhetri, G. (2025). _CognitiveSky: A Tool for Exploring Mental Health Narratives on Bluesky_. GitHub Repository. [https://github.com/gauravfs-14/cognitivesky](https://github.com/yourusername/cognitivesky)
-
----
-
-## 🙌 Acknowledgements
-
-- Inspired by [TwiXplorer](https://github.com/smash-edin/twixplorer)
-- Sentiment model: [TweetEval - RoBERTa](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment)
-- Topic modeling via [Sentence-BERT](https://www.sbert.net/)
-- Visualizations powered by React, D3, Chart.js, and Tailwind
