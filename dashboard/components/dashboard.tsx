@@ -37,11 +37,12 @@ export default function Dashboard() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6"
     >
+      {/* First row - Mental Health Narratives Overview and Popular Hashtags */}
       <motion.div
         variants={item}
-        className="col-span-1 md:col-span-2 lg:col-span-3"
+        className="col-span-1 md:col-span-1 lg:col-span-1"
       >
         <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
           <CardHeader className="pb-2">
@@ -56,21 +57,10 @@ export default function Dashboard() {
         </Card>
       </motion.div>
 
-      <motion.div variants={item} className="col-span-1 md:col-span-1">
-        <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
-          <CardHeader className="pb-2">
-            <CardTitle>Emotion Distribution</CardTitle>
-            <CardDescription>
-              Emotional tone of mental health posts
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <EmotionDistribution />
-          </CardContent>
-        </Card>
-      </motion.div>
-
-      <motion.div variants={item} className="col-span-1 md:col-span-1">
+      <motion.div
+        variants={item}
+        className="col-span-1 md:col-span-1 lg:col-span-1"
+      >
         <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
           <CardHeader className="pb-2">
             <CardTitle>Popular Hashtags</CardTitle>
@@ -84,7 +74,28 @@ export default function Dashboard() {
         </Card>
       </motion.div>
 
-      <motion.div variants={item} className="col-span-1 md:col-span-1">
+      {/* Second row - Emotion Distribution and Popular Emojis */}
+      <motion.div
+        variants={item}
+        className="col-span-1 md:col-span-1 lg:col-span-1"
+      >
+        <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
+          <CardHeader className="pb-2">
+            <CardTitle>Emotion Distribution</CardTitle>
+            <CardDescription>
+              Emotional tone of mental health posts
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <EmotionDistribution />
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      <motion.div
+        variants={item}
+        className="col-span-1 md:col-span-1 lg:col-span-1"
+      >
         <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
           <CardHeader className="pb-2">
             <CardTitle>Popular Emojis</CardTitle>
@@ -98,6 +109,7 @@ export default function Dashboard() {
         </Card>
       </motion.div>
 
+      {/* Third row - Topic Semantic Map alone */}
       <motion.div
         variants={item}
         className="col-span-1 md:col-span-2 lg:col-span-2"
@@ -110,14 +122,7 @@ export default function Dashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent className="h-[500px] relative">
-            <div className="absolute top-0 left-0 right-0 bg-white/80 backdrop-blur-sm p-3 rounded-md text-sm text-gray-600 border border-sky-100 shadow-sm mb-2">
-              <p>
-                This visualization shows how posts cluster around different
-                mental health topics. Each point represents a post, and colors
-                indicate the topic. Similar posts appear closer together.
-              </p>
-            </div>
-            <div className="pt-14 h-full">
+            <div className="h-full">
               {/* TODO: Fix this component */}
               <TopicMap />
             </div>
@@ -125,9 +130,10 @@ export default function Dashboard() {
         </Card>
       </motion.div>
 
+      {/* Fourth row - Language Distribution alone */}
       <motion.div
         variants={item}
-        className="col-span-1 md:col-span-1 lg:col-span-1"
+        className="col-span-1 md:col-span-2 lg:col-span-2"
       >
         <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
           <CardHeader className="pb-2">
@@ -142,9 +148,10 @@ export default function Dashboard() {
         </Card>
       </motion.div>
 
+      {/* Fifth row - Post Timeline */}
       <motion.div
         variants={item}
-        className="col-span-1 md:col-span-3 lg:col-span-3"
+        className="col-span-1 md:col-span-2 lg:col-span-2"
       >
         <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
           <CardHeader className="pb-2">
@@ -157,9 +164,10 @@ export default function Dashboard() {
         </Card>
       </motion.div>
 
+      {/* Sixth row - User Interaction Network */}
       <motion.div
         variants={item}
-        className="col-span-1 md:col-span-3 lg:col-span-3"
+        className="col-span-1 md:col-span-2 lg:col-span-2"
       >
         <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
           <CardHeader className="pb-2">

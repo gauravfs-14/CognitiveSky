@@ -1,31 +1,44 @@
-"use client"
+"use client";
 
-import { useEmojiSentimentData } from "@/hooks/useEmojiSentimentData"
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts"
-import { Loader2 } from "lucide-react"
+import { useEmojiSentimentData } from "@/hooks/useEmojiSentimentData";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import { Loader2 } from "lucide-react";
 
 export function EmojiSentimentCorrelation() {
-  const { data, loading, error } = useEmojiSentimentData()
+  const { data, loading, error } = useEmojiSentimentData();
 
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
         <Loader2 className="h-8 w-8 animate-spin text-sky-500" />
       </div>
-    )
+    );
   }
 
   if (error) {
-    return <div className="flex justify-center items-center h-64 text-red-500">Error loading emoji sentiment data</div>
+    return (
+      <div className="flex justify-center items-center h-64 text-red-500">
+        Error loading emoji sentiment data
+      </div>
+    );
   }
 
   // Custom tick formatter for emoji display
   const EmojiTick = (props: any) => {
-    const { x, y, payload } = props
+    const { x, y, payload } = props;
 
     // Check if payload exists before accessing its properties
     if (!payload) {
-      return null
+      return <g />;
     }
 
     return (
@@ -34,13 +47,17 @@ export function EmojiSentimentCorrelation() {
           {payload.value}
         </text>
       </g>
-    )
-  }
+    );
+  };
 
   return (
     <div className="h-64">
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} layout="vertical" margin={{ top: 20, right: 30, left: 40, bottom: 5 }}>
+        <BarChart
+          data={data}
+          layout="vertical"
+          margin={{ top: 20, right: 30, left: 40, bottom: 5 }}
+        >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
           <XAxis type="number" />
           <YAxis type="category" dataKey="emoji" tick={EmojiTick} width={40} />
@@ -60,5 +77,5 @@ export function EmojiSentimentCorrelation() {
         </BarChart>
       </ResponsiveContainer>
     </div>
-  )
+  );
 }

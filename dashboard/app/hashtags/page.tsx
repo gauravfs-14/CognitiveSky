@@ -1,18 +1,22 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Hash } from "lucide-react"
-import { PageTitle } from "@/components/page-title"
-import { PopularHashtags } from "@/components/charts/popular-hashtags"
-import { PopularEmojis } from "@/components/charts/popular-emojis"
-import { EmojiSentimentCorrelation } from "@/components/charts/emoji-sentiment-correlation"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { useHashtagData } from "@/hooks/useHashtagData"
-import { useEmojiData } from "@/hooks/useEmojiData"
+import { motion } from "framer-motion";
+import { Hash } from "lucide-react";
+import { PageTitle } from "@/components/page-title";
+import { PopularHashtags } from "@/components/charts/popular-hashtags";
+import { PopularEmojis } from "@/components/charts/popular-emojis";
+import { EmojiSentimentCorrelation } from "@/components/charts/emoji-sentiment-correlation";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useHashtagData } from "@/hooks/useHashtagData";
 
 export default function HashtagsPage() {
-  const { data: hashtagData } = useHashtagData()
-  const { data: emojiData } = useEmojiData()
+  const { data: hashtagData } = useHashtagData();
 
   const container = {
     hidden: { opacity: 0 },
@@ -22,12 +26,12 @@ export default function HashtagsPage() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
-  }
+  };
 
   return (
     <>
@@ -47,7 +51,9 @@ export default function HashtagsPage() {
           <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Popular Hashtags</CardTitle>
-              <CardDescription>Most used hashtags in mental health discussions</CardDescription>
+              <CardDescription>
+                Most used hashtags in mental health discussions
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <PopularHashtags />
@@ -59,7 +65,9 @@ export default function HashtagsPage() {
           <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Popular Emojis</CardTitle>
-              <CardDescription>Most used emojis in mental health discussions</CardDescription>
+              <CardDescription>
+                Most used emojis in mental health discussions
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <PopularEmojis />
@@ -71,16 +79,20 @@ export default function HashtagsPage() {
           <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Hashtag Cloud</CardTitle>
-              <CardDescription>Visual representation of hashtag frequency</CardDescription>
+              <CardDescription>
+                Visual representation of hashtag frequency
+              </CardDescription>
             </CardHeader>
             <CardContent className="h-64 p-6">
+              {/* TODO: use word-cloud package instead */}
               <div className="h-full flex flex-wrap items-center justify-center gap-3">
                 {hashtagData.map((tag, index) => {
                   // Calculate size based on count
-                  const minSize = 12
-                  const maxSize = 32
-                  const maxCount = Math.max(...hashtagData.map((t) => t.count))
-                  const size = minSize + (tag.count / maxCount) * (maxSize - minSize)
+                  const minSize = 12;
+                  const maxSize = 32;
+                  const maxCount = Math.max(...hashtagData.map((t) => t.count));
+                  const size =
+                    minSize + (tag.count / maxCount) * (maxSize - minSize);
 
                   return (
                     <motion.div
@@ -93,7 +105,7 @@ export default function HashtagsPage() {
                     >
                       {tag.hashtag}
                     </motion.div>
-                  )
+                  );
                 })}
               </div>
             </CardContent>
@@ -104,7 +116,9 @@ export default function HashtagsPage() {
           <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Emoji Sentiment Correlation</CardTitle>
-              <CardDescription>How emojis correlate with sentiment</CardDescription>
+              <CardDescription>
+                How emojis correlate with sentiment
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <EmojiSentimentCorrelation />
@@ -113,5 +127,5 @@ export default function HashtagsPage() {
         </motion.div>
       </motion.div>
     </>
-  )
+  );
 }

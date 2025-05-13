@@ -17,133 +17,13 @@ export interface Post {
   emojis: string[];
 }
 
-// Sample author names
-const authors = [
-  "Alex Johnson",
-  "Sam Taylor",
-  "Jordan Smith",
-  "Casey Williams",
-  "Morgan Brown",
-  "Riley Davis",
-  "Quinn Miller",
-  "Taylor Wilson",
-  "Jamie Garcia",
-  "Avery Martinez",
-];
-
-// Sample post texts for each topic
-const samplePostTexts: { [key: number]: string[] } = {
-  0: [
-    "Feeling so anxious about my upcoming presentation. Can't sleep at all. #anxiety #stress",
-    "My anxiety has been through the roof lately. Any tips for managing stress? 😔 #mentalhealth",
-    "Does anyone else feel physical symptoms from anxiety? My chest gets so tight. #anxiety",
-    "Work stress is killing me. I can't seem to catch a break. #stress #burnout",
-    "Had a panic attack in public today. So embarrassing and scary. #anxiety #panicattack",
-  ],
-  1: [
-    "Been feeling so down lately. Nothing seems to bring me joy anymore. #depression",
-    "Depression is like carrying a heavy weight that no one else can see. 😞 #mentalhealth",
-    "Some days I can't even get out of bed. Depression is exhausting. #depression #tired",
-    "Does anyone else feel completely numb sometimes? #depression #mentalhealth",
-    "The sadness comes in waves. Today is a really bad day. 😢 #depression",
-  ],
-  2: [
-    "Started a new self-care routine. Meditation has been life-changing. ✨ #selfcare",
-    "Remember that self-care isn't selfish. You deserve to take care of yourself. #selfcare",
-    "What are your favorite self-care activities? Looking for new ideas. #selfcare #mentalhealth",
-    "Mental health days should be normalized. Taking one today. #selfcare #mentalhealth",
-    "Setting boundaries has been the best form of self-care for me. #boundaries #selfcare",
-  ],
-  3: [
-    "So grateful for this supportive community. You all make me feel less alone. ❤️ #community",
-    "Looking for support groups in the Boston area. Any recommendations? #support #mentalhealth",
-    "Community is everything when dealing with mental health challenges. #support #community",
-    "Thank you to everyone who reached out after my last post. It meant a lot. 🙏 #gratitude",
-    "How do you find supportive people who really understand what you're going through? #support",
-  ],
-  4: [
-    "Started therapy last week. Nervous but hopeful it will help. #therapy #mentalhealth",
-    "My new medication is finally starting to make a difference. #treatment #mentalhealth",
-    "CBT techniques have been really effective for my anxiety. #therapy #cbt",
-    "Looking for a new therapist who specializes in trauma. Any recommendations? #therapy",
-    "Just had my first psychiatrist appointment. Feeling validated. #treatment #mentalhealth",
-  ],
-};
-
-// Generate a larger set of posts for pagination
-const generatePosts = (count: number): Post[] => {
-  const posts: Post[] = [];
-  const now = new Date();
-
-  for (let i = 0; i < count; i++) {
-    const topic = i % 5; // Cycle through topics
-    const textIndex = i % samplePostTexts[topic].length;
-    const text = samplePostTexts[topic][textIndex];
-
-    // Extract hashtags
-    const hashtags = text.match(/#\w+/g) || [];
-
-    // Extract emojis
-    const emojiRegex = /[\p{Emoji}]/gu;
-    const emojis = text.match(emojiRegex) || [];
-
-    // Determine sentiment based on topic
-    let sentiment: "positive" | "neutral" | "negative";
-    if (topic === 0 || topic === 1) {
-      sentiment = "negative";
-    } else if (topic === 2) {
-      sentiment = "positive";
-    } else {
-      sentiment =
-        Math.random() > 0.5
-          ? "neutral"
-          : Math.random() > 0.5
-          ? "positive"
-          : "negative";
-    }
-
-    // Determine emotions
-    const emotions: string[] = [];
-    if (sentiment === "negative") {
-      emotions.push(Math.random() > 0.5 ? "Sadness" : "Fear");
-      if (Math.random() > 0.7) emotions.push("Anger");
-    } else if (sentiment === "positive") {
-      emotions.push(Math.random() > 0.5 ? "Joy" : "Surprise");
-    } else {
-      if (Math.random() > 0.5) emotions.push("Disgust");
-    }
-
-    // Generate date within the last 30 days
-    const date = new Date(now);
-    date.setDate(date.getDate() - Math.floor(Math.random() * 30));
-
-    posts.push({
-      id: `post_${i}`,
-      text,
-      date: date.toISOString(),
-      author: authors[Math.floor(Math.random() * authors.length)],
-      likes: Math.floor(Math.random() * 50),
-      reposts: Math.floor(Math.random() * 20),
-      topic,
-      sentiment,
-      emotions,
-      hashtags,
-      emojis,
-    });
-  }
-
-  return posts;
-};
-
-// Generate 200 posts
-const allPosts = generatePosts(200);
-
 export function usePostsData(page = 1, pageSize = 10) {
   const [posts, setPosts] = useState<Post[]>([]);
   const [totalPosts, setTotalPosts] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+  const [allPostsData, setAllPostsData] = useState<Post[]>([]);
 
   // Get filters
   const filters = useFilters() || {
@@ -162,13 +42,85 @@ export function usePostsData(page = 1, pageSize = 10) {
     isFilterActive,
   } = filters;
 
+  // Fetch all posts data from JSON file
+  useEffect(() => {
+    const loadAllPosts = async () => {
+      try {
+        if (allPostsData.length > 0) return; // Only load once
+
+        const response = await fetch("/data/clean_posts_full.json");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+
+        const postsData = await response.json();
+
+        // Transform the raw data to match our Post interface
+        const transformedPosts: Post[] = postsData.map((post: any) => {
+          // Extract hashtags from text
+          const hashtags = (post.text?.match(/#\w+/g) || []) as string[];
+
+          // Extract emojis from text
+          const emojiRegex = /[\p{Emoji}]/gu;
+          const emojis = (post.text?.match(emojiRegex) || []) as string[];
+
+          // Map sentiment labels to our format
+          let sentiment: "positive" | "neutral" | "negative";
+          if (post.sentiment === "label_2") {
+            sentiment = "positive";
+          } else if (post.sentiment === "label_1") {
+            sentiment = "neutral";
+          } else {
+            sentiment = "negative";
+          }
+
+          // Get the emotion as an array
+          const emotions = post.emotion
+            ? [post.emotion.charAt(0).toUpperCase() + post.emotion.slice(1)]
+            : [];
+
+          return {
+            id:
+              post.postId ||
+              `post_${Math.random().toString(36).substring(2, 11)}`,
+            text: post.text || "",
+            date: post.createdAt || new Date().toISOString(),
+            author: post.authorDid || "Anonymous",
+            likes: Math.floor(Math.random() * 50), // Random likes since not in data
+            reposts: Math.floor(Math.random() * 20), // Random reposts since not in data
+            topic: post.topic !== undefined ? post.topic : 0,
+            sentiment,
+            emotions,
+            hashtags,
+            emojis,
+          };
+        });
+
+        setAllPostsData(transformedPosts);
+        console.log(`Loaded ${transformedPosts.length} posts from real data`);
+      } catch (err) {
+        console.error("Error loading posts data:", err);
+        setError(
+          err instanceof Error ? err : new Error("Failed to load posts data")
+        );
+      }
+    };
+
+    loadAllPosts();
+  }, [allPostsData.length]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
 
+        // Make sure we have data loaded
+        if (allPostsData.length === 0) {
+          return; // Wait for data to load
+        }
+
         // Filter posts based on active filters
-        let filteredPosts = [...allPosts];
+        let filteredPosts = [...allPostsData];
 
         if (isFilterActive) {
           // Filter by topics
@@ -181,7 +133,9 @@ export function usePostsData(page = 1, pageSize = 10) {
           // Filter by emotions
           if (activeEmotions.length > 0) {
             filteredPosts = filteredPosts.filter((post) =>
-              post.emotions.some((emotion) => activeEmotions.includes(emotion))
+              post.emotions.some((emotion: string) =>
+                activeEmotions.includes(emotion)
+              )
             );
           }
 
@@ -203,7 +157,9 @@ export function usePostsData(page = 1, pageSize = 10) {
               (post) =>
                 post.text.toLowerCase().includes(query) ||
                 post.author.toLowerCase().includes(query) ||
-                post.hashtags.some((tag) => tag.toLowerCase().includes(query))
+                post.hashtags.some((tag: string) =>
+                  tag.toLowerCase().includes(query)
+                )
             );
           }
         }
@@ -241,6 +197,7 @@ export function usePostsData(page = 1, pageSize = 10) {
     activeEmotions,
     dateRange,
     searchQuery,
+    allPostsData,
   ]);
 
   return { posts, totalPosts, totalPages, loading, error };

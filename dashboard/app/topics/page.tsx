@@ -1,15 +1,21 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Network } from "lucide-react"
-import { PageTitle } from "@/components/page-title"
-import { TopicMap } from "@/components/charts/topic-map"
-import { TopicCorrelation } from "@/components/charts/topic-correlation"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { useTopicData } from "@/hooks/useTopicData"
+import { motion } from "framer-motion";
+import { Network } from "lucide-react";
+import { PageTitle } from "@/components/page-title";
+import { TopicMap } from "@/components/charts/topic-map";
+import { TopicCorrelation } from "@/components/charts/topic-correlation";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useTopicData } from "@/hooks/useTopicData";
 
 export default function TopicsPage() {
-  const { topics } = useTopicData()
+  const { topics } = useTopicData();
 
   const container = {
     hidden: { opacity: 0 },
@@ -19,12 +25,12 @@ export default function TopicsPage() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
-  }
+  };
 
   return (
     <>
@@ -38,13 +44,16 @@ export default function TopicsPage() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        className="grid grid-cols-1 gap-6"
       >
-        <motion.div variants={item} className="col-span-1 md:col-span-2">
+        {/* Row 1: Topic Semantic Map */}
+        <motion.div variants={item} className="col-span-1">
           <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Topic Semantic Map</CardTitle>
-              <CardDescription>Visualization of topic clusters in mental health discussions</CardDescription>
+              <CardDescription>
+                Visualization of topic clusters in mental health discussions
+              </CardDescription>
             </CardHeader>
             <CardContent className="h-[400px]">
               <TopicMap />
@@ -52,11 +61,17 @@ export default function TopicsPage() {
           </Card>
         </motion.div>
 
-        <motion.div variants={item} className="col-span-1">
+        {/* Row 2: Topic Distribution and Topic Correlation */}
+        <motion.div
+          variants={item}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
           <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Topic Distribution</CardTitle>
-              <CardDescription>Breakdown of topics by post count</CardDescription>
+              <CardDescription>
+                Breakdown of topics by post count
+              </CardDescription>
             </CardHeader>
             <CardContent className="h-[400px]">
               <div className="h-full flex flex-col">
@@ -64,14 +79,22 @@ export default function TopicsPage() {
                   {topics.map((topic) => (
                     <div key={topic.id} className="mb-4">
                       <div className="flex justify-between mb-1">
-                        <span className="font-medium text-sm">{topic.label}</span>
-                        <span className="text-sm text-gray-500">{topic.count} posts</span>
+                        <span className="font-medium text-sm">
+                          {topic.label}
+                        </span>
+                        <span className="text-sm text-gray-500">
+                          {topic.count} posts
+                        </span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
                         <div
                           className="h-2.5 rounded-full"
                           style={{
-                            width: `${(topic.count / Math.max(...topics.map((t) => t.count))) * 100}%`,
+                            width: `${
+                              (topic.count /
+                                Math.max(...topics.map((t) => t.count))) *
+                              100
+                            }%`,
                             backgroundColor: topic.color,
                           }}
                         ></div>
@@ -79,7 +102,10 @@ export default function TopicsPage() {
                       <div className="mt-2 text-xs text-gray-500">
                         <span>Keywords: </span>
                         {topic.keywords.map((keyword, i) => (
-                          <span key={i} className="inline-block bg-gray-100 rounded-full px-2 py-1 mr-1 mb-1">
+                          <span
+                            key={i}
+                            className="inline-block bg-gray-100 rounded-full px-2 py-1 mr-1 mb-1"
+                          >
                             {keyword}
                           </span>
                         ))}
@@ -90,20 +116,20 @@ export default function TopicsPage() {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
 
-        <motion.div variants={item} className="col-span-1 md:col-span-3">
-          <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
+          <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md col-span-2">
             <CardHeader className="pb-2">
               <CardTitle>Topic Correlation</CardTitle>
-              <CardDescription>How different topics relate to each other</CardDescription>
+              <CardDescription>
+                How different topics relate to each other
+              </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="h-[400px]">
               <TopicCorrelation />
             </CardContent>
           </Card>
         </motion.div>
       </motion.div>
     </>
-  )
+  );
 }

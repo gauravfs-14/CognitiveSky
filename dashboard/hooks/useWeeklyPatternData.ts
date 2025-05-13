@@ -1,42 +1,92 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 export interface WeeklyPatternData {
-  day: string
-  count: number
-  color?: string
+  day: string;
+  count: number;
+  color?: string;
 }
 
 export function useWeeklyPatternData() {
-  const [data, setData] = useState<WeeklyPatternData[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<Error | null>(null)
+  const [data, setData] = useState<WeeklyPatternData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // In a real app, this would be an API call
-        // For now, we'll generate static data
-        const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-        const colors = ["#60a5fa", "#93c5fd", "#60a5fa", "#3b82f6", "#2563eb", "#1d4ed8", "#1e40af"]
+        // Fetch real data from clean_posts_full.json
+        const response = await fetch("/data/clean_posts_full.json");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status}`);
+        }
 
-        const staticData: WeeklyPatternData[] = days.map((day, index) => ({
+        const postsData = await response.json();
+
+        // Initialize data for each day of the week
+        const days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        const colors = [
+          "#1e40af",
+          "#60a5fa",
+          "#93c5fd",
+          "#60a5fa",
+          "#3b82f6",
+          "#2563eb",
+          "#1d4ed8",
+        ];
+
+        // Count posts per day of the week
+        const dayCounts: Record<string, number> = {
+          Sunday: 0,
+          Monday: 0,
+          Tuesday: 0,
+          Wednesday: 0,
+          Thursday: 0,
+          Friday: 0,
+          Saturday: 0,
+        };
+
+        // Process posts to count by day of week
+        postsData.forEach((post: any) => {
+          if (!post.createdAt) return;
+
+          // Parse createdAt date and get day of week
+          const date = new Date(post.createdAt);
+          const dayOfWeek = days[date.getDay()]; // getDay() returns 0 for Sunday, 1 for Monday, etc.
+
+          // Increment counter for this day
+          dayCounts[dayOfWeek]++;
+        });
+
+        // Create the weekly pattern data array
+        const weeklyData: WeeklyPatternData[] = days.map((day, index) => ({
           day,
-          count: Math.floor(Math.random() * 100) + 20,
+          count: dayCounts[day],
           color: colors[index],
-        }))
+        }));
 
-        setData(staticData)
-        setLoading(false)
+        // Reorder days to start with Monday
+        const mondayFirst = [...weeklyData.slice(1), weeklyData[0]];
+
+        setData(mondayFirst);
+        setLoading(false);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error("Unknown error"))
-        setLoading(false)
+        setError(err instanceof Error ? err : new Error("Unknown error"));
+        setLoading(false);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
-  return { data, loading, error }
+  return { data, loading, error };
 }

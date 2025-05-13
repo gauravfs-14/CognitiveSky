@@ -1,77 +1,310 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useTopicCorrelationData } from "@/hooks/useTopicCorrelationData"
-import { useTopicData } from "@/hooks/useTopicData"
-import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from "recharts"
-import { Loader2, Info } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState, useMemo, useEffect, useRef } from "react";
+import {
+  useTopicCorrelationData,
+  TopicCorrelationData,
+} from "@/hooks/useTopicCorrelationData";
+import { useTopicData } from "@/hooks/useTopicData";
+import { Loader2, Info } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+// Generate color for heatmap based on value
+const getHeatmapColor = (value: number): string => {
+  // Color gradient from light blue to dark blue
+  if (value < 0.2) return "#e0f2fe"; // lightest blue
+  if (value < 0.4) return "#bae6fd";
+  if (value < 0.6) return "#7dd3fc";
+  if (value < 0.8) return "#38bdf8";
+  return "#0284c7"; // darkest blue
+};
+
+// Define types for the Heatmap component props
+interface HeatmapProps {
+  data: TopicCorrelationData[];
+  width: number;
+  height: number;
+  margin?: { top: number; right: number; bottom: number; left: number };
+}
+
+// Custom heatmap implementation
+const Heatmap = ({
+  data,
+  width,
+  height,
+  margin = { top: 60, right: 20, bottom: 60, left: 60 },
+}: HeatmapProps) => {
+  // If there's no data or dimensions are invalid, return early
+  if (!data || data.length === 0 || width <= 0 || height <= 0) {
+    return (
+      <svg width={width} height={height}>
+        <text
+          x={width / 2}
+          y={height / 2}
+          textAnchor="middle"
+          fontSize={14}
+          fill="#666"
+        >
+          No correlation data to display
+        </text>
+      </svg>
+    );
+  }
+
+  // Calculate the actual dimensions where cells will be placed
+  const innerWidth = Math.max(1, width - margin.left - margin.right);
+  const innerHeight = Math.max(1, height - margin.top - margin.bottom);
+
+  // Get unique row and column values
+  const uniqueSources = [...new Set(data.map((d) => d.source))];
+  const uniqueTargets = [...new Set(data.map((d) => d.target))];
+
+  // Calculate cell dimensions with safety checks
+  const cellWidth =
+    uniqueSources.length > 0 ? innerWidth / uniqueSources.length : 0;
+  const cellHeight =
+    uniqueTargets.length > 0 ? innerHeight / uniqueTargets.length : 0;
+
+  // If cells would be too small, don't try to render
+  if (cellWidth < 1 || cellHeight < 1) {
+    return (
+      <svg width={width} height={height}>
+        <text
+          x={width / 2}
+          y={height / 2}
+          textAnchor="middle"
+          fontSize={14}
+          fill="#666"
+        >
+          Insufficient space to render heatmap
+        </text>
+      </svg>
+    );
+  }
+  return (
+    <svg width={width} height={height}>
+      <g transform={`translate(${margin.left}, ${margin.top})`}>
+        {/* Render cells */}
+        {data.map((d, i) => {
+          const sourceIndex = uniqueSources.indexOf(d.source);
+          const targetIndex = uniqueTargets.indexOf(d.target);
+          // Skip invalid indices
+          if (sourceIndex < 0 || targetIndex < 0) return null;
+
+          const x = sourceIndex * cellWidth;
+          const y = targetIndex * cellHeight;
+
+          return (
+            <g key={`cell-${i}`} className="heatmap-cell">
+              <rect
+                x={x}
+                y={y}
+                width={cellWidth}
+                height={cellHeight}
+                fill={getHeatmapColor(d.value)}
+                stroke="#fff"
+                strokeWidth={1}
+              />
+              {d.value >= 0.2 && cellWidth > 30 && cellHeight > 20 && (
+                <text
+                  x={x + cellWidth / 2}
+                  y={y + cellHeight / 2}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fill={d.value >= 0.4 ? "#ffffff" : "#333333"}
+                  fontSize={Math.min(10, cellWidth / 5)}
+                >
+                  {(d.value * 100).toFixed(0)}%
+                </text>
+              )}
+              <title>{`${d.source} ↔ ${d.target}: ${(d.value * 100).toFixed(
+                0
+              )}%`}</title>
+            </g>
+          );
+        })}
+
+        {/* X-axis labels */}
+        {uniqueSources.map((source, i) => {
+          // Only render labels if they fit
+          if (cellWidth < 20) return null;
+          return (
+            <text
+              key={`x-label-${i}`}
+              x={i * cellWidth + cellWidth / 2}
+              y={-10}
+              textAnchor="middle"
+              fontSize={Math.min(10, cellWidth / 6)}
+              fill="#666"
+              transform={`rotate(-45, ${i * cellWidth + cellWidth / 2}, -10)`}
+            >
+              {source}
+            </text>
+          );
+        })}
+
+        {/* Y-axis labels */}
+        {uniqueTargets.map((target, i) => {
+          // Only render labels if they fit
+          if (cellHeight < 15) return null;
+          return (
+            <text
+              key={`y-label-${i}`}
+              x={-10}
+              y={i * cellHeight + cellHeight / 2}
+              textAnchor="end"
+              dominantBaseline="middle"
+              fontSize={Math.min(10, cellHeight / 3)}
+              fill="#666"
+            >
+              {target}
+            </text>
+          );
+        })}
+
+        {/* Axis titles */}
+        <text
+          x={innerWidth / 2}
+          y={innerHeight + 30}
+          textAnchor="middle"
+          fontSize={12}
+          fill="#333"
+        >
+          Source Topics
+        </text>
+        <text
+          transform={`translate(-40, ${innerHeight / 2}) rotate(-90)`}
+          textAnchor="middle"
+          fontSize={12}
+          fill="#333"
+        >
+          Target Topics
+        </text>
+      </g>
+    </svg>
+  );
+};
 
 export function TopicCorrelation() {
-  const { data, loading, error } = useTopicCorrelationData()
-  const { topics } = useTopicData()
-  const [showInfo, setShowInfo] = useState(false)
+  const { data, loading, error } = useTopicCorrelationData();
+  const { topics } = useTopicData();
+  const [showInfo, setShowInfo] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 800, height: 280 });
+
+  // Create a legend for the heatmap colors
+  const ColorLegend = () => (
+    <div className="flex items-center space-x-2 text-xs">
+      <span>Correlation:</span>
+      <div className="flex items-center">
+        <div
+          className="w-4 h-4"
+          style={{ backgroundColor: getHeatmapColor(0.1) }}
+        ></div>
+        <span className="ml-1">Low</span>
+      </div>
+      <div className="flex items-center">
+        <div
+          className="w-4 h-4"
+          style={{ backgroundColor: getHeatmapColor(0.5) }}
+        ></div>
+        <span className="ml-1">Medium</span>
+      </div>
+      <div className="flex items-center">
+        <div
+          className="w-4 h-4"
+          style={{ backgroundColor: getHeatmapColor(0.9) }}
+        ></div>
+        <span className="ml-1">High</span>
+      </div>
+    </div>
+  ); // Process data to ensure we only include each correlation once
+  // (either as source→target or target→source, not both)
+  const processedData = useMemo(() => {
+    if (!data || data.length === 0) return [];
+
+    // We'll create a map for faster lookups
+    const topicMap = new Map();
+    const seen = new Set();
+
+    // First pass: only keep unique pairs
+    const uniquePairs = data.filter((item) => {
+      // Create a unique key for this pair regardless of order
+      const pairKey = [item.source, item.target].sort().join("_");
+      if (seen.has(pairKey)) return false;
+      seen.add(pairKey);
+      return true;
+    });
+
+    // Limit to maximum rows/columns for better visibility
+    // If there are too many pairs, keep only the strongest correlations
+    let result = uniquePairs;
+    if (uniquePairs.length > 50) {
+      result = [...uniquePairs].sort((a, b) => b.value - a.value).slice(0, 50);
+    }
+
+    console.log(
+      `Processed ${data.length} correlations to ${result.length} unique pairs for visualization`
+    );
+    return result;
+  }, [data]);
+
+  // Update dimensions when the window resizes
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const { width } = containerRef.current.getBoundingClientRect();
+        setDimensions({
+          width: Math.max(600, width - 20), // Subtract padding
+          height: 280, // Adjusted to avoid scrollbars
+        });
+      }
+    };
+
+    // Initial update
+    updateDimensions();
+
+    // Update on resize
+    window.addEventListener("resize", updateDimensions);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  // Make sure we update dimensions when data changes
+  useEffect(() => {
+    if (data && data.length > 0) {
+      const updateDimensions = () => {
+        if (containerRef.current) {
+          const { width } = containerRef.current.getBoundingClientRect();
+          setDimensions({
+            width: Math.max(600, width - 20),
+            height: 280,
+          });
+        }
+      };
+      updateDimensions();
+    }
+  }, [data]);
 
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
         <Loader2 className="h-8 w-8 animate-spin text-sky-500" />
       </div>
-    )
+    );
   }
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-64 text-red-500">Error loading topic correlation data</div>
-    )
-  }
-
-  // Transform correlation data into a format suitable for a scatter plot
-  // with more meaningful positioning
-  const scatterData = data.map((item) => {
-    const sourceIndex = topics.findIndex((t) => t.label === item.source)
-    const targetIndex = topics.findIndex((t) => t.label === item.target)
-
-    // Calculate a more meaningful position based on topic indices
-    // This creates a grid-like layout where each cell represents a pair of topics
-    return {
-      x: sourceIndex,
-      y: targetIndex,
-      z: item.value * 100, // Scale up for better visibility
-      sourceLabel: item.source,
-      targetLabel: item.target,
-      value: item.value,
-    }
-  })
-
-  // Create a custom tooltip
-  const CustomTooltip = ({ active, payload }: any) => {
-    if (active && payload && payload.length) {
-      const data = payload[0].payload
-      return (
-        <div className="bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-lg text-sm">
-          <p className="font-semibold">{`${data.sourceLabel} ↔ ${data.targetLabel}`}</p>
-          <p className="text-gray-600">{`Correlation: ${(data.value * 100).toFixed(0)}%`}</p>
-          <p className="text-xs text-gray-500 mt-1">
-            {data.value > 0.7 ? "Strong correlation" : data.value > 0.4 ? "Moderate correlation" : "Weak correlation"}
-          </p>
-        </div>
-      )
-    }
-    return null
-  }
-
-  // Generate colors for the scatter points
-  const getColor = (value: number) => {
-    // Color scale from light blue to dark blue based on correlation strength
-    if (value < 0.4) return "#bfdbfe" // light blue
-    if (value < 0.6) return "#93c5fd" // medium light blue
-    if (value < 0.8) return "#60a5fa" // medium blue
-    return "#3b82f6" // darker blue
+      <div className="flex justify-center items-center h-64 text-red-500">
+        Error loading topic correlation data
+      </div>
+    );
   }
 
   return (
-    <div className="h-64 relative">
+    <div className="h-64 relative" ref={containerRef}>
       <Button
         variant="outline"
         size="sm"
@@ -84,70 +317,67 @@ export function TopicCorrelation() {
 
       {showInfo && (
         <div className="absolute top-10 right-0 z-10 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-lg text-sm max-w-xs">
-          <h4 className="font-semibold mb-1">How to read this chart:</h4>
+          <h4 className="font-semibold mb-1">How to read this heatmap:</h4>
           <ul className="list-disc pl-4 space-y-1">
-            <li>Each bubble represents a relationship between two topics</li>
-            <li>Bubble size indicates correlation strength</li>
+            <li>Each cell shows the correlation between two topics</li>
             <li>Darker blue indicates stronger correlation</li>
-            <li>Hover over bubbles to see exact correlation values</li>
-            <li>X and Y axes represent different topics</li>
+            <li>The percentage shows correlation strength</li>
+            <li>Topics are shown on both axes</li>
+            <li>
+              This visualization is based on actual topic co-occurrence in posts
+            </li>
           </ul>
         </div>
       )}
 
-      <ResponsiveContainer width="100%" height="100%">
-        <ScatterChart margin={{ top: 20, right: 20, bottom: 60, left: 60 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
-          <XAxis
-            type="number"
-            dataKey="x"
-            name="Source Topic"
-            tickFormatter={(value) => {
-              // Only show labels for integer values that correspond to topic indices
-              if (Number.isInteger(value) && value >= 0 && value < topics.length) {
-                return value.toString()
-              }
-              return ""
-            }}
-            axisLine={{ stroke: "#94a3b8" }}
-            label={{ value: "Source Topics", position: "insideBottom", offset: -10 }}
-          />
-          <YAxis
-            type="number"
-            dataKey="y"
-            name="Target Topic"
-            tickFormatter={(value) => {
-              // Only show labels for integer values that correspond to topic indices
-              if (Number.isInteger(value) && value >= 0 && value < topics.length) {
-                return value.toString()
-              }
-              return ""
-            }}
-            axisLine={{ stroke: "#94a3b8" }}
-            label={{ value: "Target Topics", position: "insideLeft", angle: -90, offset: -20 }}
-          />
-          <ZAxis type="number" dataKey="z" range={[40, 400]} />
-          <Tooltip content={<CustomTooltip />} />
-          <Scatter name="Topic Correlation" data={scatterData} fill="#8884d8">
-            {scatterData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={getColor(entry.value)} />
-            ))}
-          </Scatter>
-        </ScatterChart>
-      </ResponsiveContainer>
+      <div className="mb-2 flex justify-between items-center">
+        <h3 className="text-sm font-medium">Topic Correlations</h3>
+        <ColorLegend />
+      </div>
 
-      {/* Legend */}
-      <div className="absolute bottom-2 left-2 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-sm">
-        <div className="text-xs font-semibold mb-1">Topic Index</div>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-          {topics.map((topic, index) => (
+      <div className="h-56 overflow-auto" style={{ height: "235px" }}>
+        <div
+          style={{
+            minWidth: "600px",
+            minHeight: "235px",
+            position: "relative",
+          }}
+        >
+          {processedData.length > 0 ? (
+            <Heatmap
+              data={processedData}
+              width={dimensions.width}
+              height={dimensions.height}
+              margin={{ top: 40, right: 20, bottom: 40, left: 100 }}
+            />
+          ) : (
+            <div className="flex items-center justify-center h-full text-gray-500 text-sm">
+              No correlation data available
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Topic Legend */}
+      <div className="absolute bottom-2 right-2 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-sm max-w-xs max-h-32 overflow-auto">
+        <div className="text-xs font-semibold mb-1">Topics</div>
+        <div className="grid grid-cols-2 gap-x-2 gap-y-1">
+          {topics.slice(0, 6).map((topic, index) => (
             <div key={index} className="flex items-center">
-              <div className="w-3 h-3 rounded-full mr-1" style={{ backgroundColor: topic.color }} />
-              <span className="text-xs">{`${index}: ${topic.label}`}</span>
+              <div
+                className="w-2 h-2 rounded-full mr-1"
+                style={{ backgroundColor: topic.color }}
+              />
+              <span className="text-xs truncate">{topic.label}</span>
             </div>
           ))}
+          {topics.length > 6 && (
+            <div className="text-xs text-gray-500 col-span-2">
+              +{topics.length - 6} more topics
+            </div>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }
