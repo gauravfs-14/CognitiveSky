@@ -44,6 +44,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
+    "d3": "^7.9.0",
+    "d3-cloud": "^1.2.7",
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.5.1",
     "framer-motion": "latest",
@@ -62,6 +64,7 @@
     "react-resizable-panels": "^2.1.7",
     "react-router": "latest",
     "react-router-dom": "latest",
+    "react-wordcloud": "^1.2.7",
     "recharts": "latest",
     "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.5",
@@ -72,6 +75,8 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "@types/d3-cloud": "^1.2.9",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",

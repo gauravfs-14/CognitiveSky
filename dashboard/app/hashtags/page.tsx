@@ -6,6 +6,7 @@ import { PageTitle } from "@/components/page-title";
 import { PopularHashtags } from "@/components/charts/popular-hashtags";
 import { PopularEmojis } from "@/components/charts/popular-emojis";
 import { EmojiSentimentCorrelation } from "@/components/charts/emoji-sentiment-correlation";
+import { HashtagCloud } from "@/components/charts/hashtag-cloud";
 import {
   Card,
   CardContent,
@@ -83,31 +84,8 @@ export default function HashtagsPage() {
                 Visual representation of hashtag frequency
               </CardDescription>
             </CardHeader>
-            <CardContent className="h-64 p-6">
-              {/* TODO: use word-cloud package instead */}
-              <div className="h-full flex flex-wrap items-center justify-center gap-3">
-                {hashtagData.map((tag, index) => {
-                  // Calculate size based on count
-                  const minSize = 12;
-                  const maxSize = 32;
-                  const maxCount = Math.max(...hashtagData.map((t) => t.count));
-                  const size =
-                    minSize + (tag.count / maxCount) * (maxSize - minSize);
-
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.05, type: "spring" }}
-                      className="text-sky-600 hover:text-sky-800 transition-colors cursor-pointer"
-                      style={{ fontSize: `${size}px` }}
-                    >
-                      {tag.hashtag}
-                    </motion.div>
-                  );
-                })}
-              </div>
+            <CardContent className="h-80 w-full">
+              <HashtagCloud data={hashtagData} />
             </CardContent>
           </Card>
         </motion.div>
