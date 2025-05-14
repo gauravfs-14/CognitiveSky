@@ -53,4 +53,8 @@ step "🔄 Step 8: Merging data..."
 python scripts/merge_semantic_topics.py || { step "❌ Failed at scripts/merge_semantic_topics.py"; exit 1; }
 
 separator
+step "📦 Step 9: Generating dashbard dataset..."
+python scripts/generate_dashboard_data.py || { step "❌ Failed at scripts/generate_dashboard_data.py"; exit 1; }
+
+separator
 step "✅ Pipeline complete!"

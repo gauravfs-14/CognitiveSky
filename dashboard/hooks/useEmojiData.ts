@@ -16,10 +16,7 @@ export function useEmojiData() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // In a real app, this would be an API call
-        // For now, we'll use static data
         const staticData: EmojiData[] = rawData;
-
         setData(staticData);
         setLoading(false);
       } catch (err) {
