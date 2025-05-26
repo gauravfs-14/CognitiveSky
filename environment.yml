@@ -16,3 +16,6 @@ dependencies:
       - emoji
       - torch
       - python-louvain
+      - supabase
+      - libsql-client
+      - python-dotenv
