@@ -27,4 +27,4 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
-        run: python label_and_transfer.py
+        run: python scripts/label_and_transfer.py
