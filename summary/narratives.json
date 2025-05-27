@@ -2,26 +2,27 @@
   "2025-05-27": {
     "narratives": {
       "overall": {
-        "label_0": 10,
-        "label_1": 10,
-        "label_2": 1
+        "label_0": 25,
+        "label_1": 24,
+        "label_2": 7
       }
     },
     "emotions": {
       "overall": {
-        "anger": 1,
-        "disgust": 3,
-        "fear": 7,
+        "anger": 3,
+        "disgust": 5,
+        "fear": 22,
         "joy": 1,
-        "neutral": 4,
-        "sadness": 4,
-        "surprise": 1
+        "neutral": 13,
+        "sadness": 10,
+        "surprise": 2
       }
     },
     "languages": {
       "overall": {
-        "en": 17,
-        "ar": 2
+        "ar": 2,
+        "en": 27,
+        "sv": 1
       }
     }
   }
