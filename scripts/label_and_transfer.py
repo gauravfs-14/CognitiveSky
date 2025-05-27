@@ -1,9 +1,11 @@
-from dotenv import load_dotenv
 import os
 import json
+from dotenv import load_dotenv
 from supabase import create_client
 from transformers import pipeline
 import libsql_experimental as libsql
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.decomposition import NMF
 
 load_dotenv()
 
@@ -18,7 +20,7 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 sentiment_pipe = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment")
 emotion_pipe = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=1)
 
-# Connect to Turso (with local replica)
+# Connect to Turso
 conn = libsql.connect("/tmp/replica.db", sync_url=TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
 conn.execute("""CREATE TABLE IF NOT EXISTS posts (
     uri TEXT PRIMARY KEY,
@@ -31,8 +33,19 @@ conn.execute("""CREATE TABLE IF NOT EXISTS posts (
     embed TEXT,
     ingestion_time TEXT,
     sentiment TEXT,
-    emotion TEXT
+    emotion TEXT,
+    topic TEXT
 )""")
+
+def perform_topic_modeling(texts, n_topics=5):
+    vectorizer = TfidfVectorizer(max_features=1000, stop_words='english')
+    X = vectorizer.fit_transform(texts)
+    nmf = NMF(n_components=n_topics, random_state=42)
+    W = nmf.fit_transform(X)
+    H = nmf.components_
+    top_words = [vectorizer.get_feature_names_out()[i] for i in H.argmax(axis=1)]
+    topics = [top_words[topic_id] for topic_id in W.argmax(axis=1)]
+    return topics
 
 def label_and_migrate():
     print("🔍 Fetching unlabeled posts...")
@@ -44,7 +57,10 @@ def label_and_migrate():
         print("✅ No posts to process.")
         return
 
-    for post in posts:
+    texts = [post["text"] for post in posts]
+    topics = perform_topic_modeling(texts)
+
+    for i, post in enumerate(posts):
         try:
             text = post["text"]
             sentiment = sentiment_pipe(text)[0]["label"].lower()
@@ -58,8 +74,8 @@ def label_and_migrate():
 
             conn.execute(
                 """INSERT OR IGNORE INTO posts (
-                    uri, did, text, created_at, langs, facets, reply, embed, ingestion_time, sentiment, emotion
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                    uri, did, text, created_at, langs, facets, reply, embed, ingestion_time, sentiment, emotion, topic
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                 (
                     post["uri"],
                     post["did"],
@@ -71,7 +87,8 @@ def label_and_migrate():
                     embed,
                     post.get("ingestion_time"),
                     sentiment,
-                    emotion
+                    emotion,
+                    topics[i]
                 )
             )
 
@@ -88,7 +105,6 @@ def label_and_migrate():
     conn.commit()
     conn.sync()
     print(f"🎉 Finished processing. Total posts labeled and migrated: {all_processed}")
-
 
 if __name__ == "__main__":
     label_and_migrate()

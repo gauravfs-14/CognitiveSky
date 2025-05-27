@@ -1,57 +1,43 @@
-name: Daily Labeling and Snapshot Transfer
+name: Sharded Daily Labeling
 
 on:
-  # schedule:
-  #   - cron: "0 0 * * *" # Daily at midnight UTC
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 permissions:
-  contents: write # Needed to push commits
+  contents: write
 
 jobs:
-  pipeline:
+  label-shard:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        shard: [0, 1, 2, 3] # 4 parallel jobs for 20K/day
     env:
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
       TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN }}
-      BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
       BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+      BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
+      BATCH_OFFSET: ${{ matrix.shard }}
 
     steps:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v3
-
-      - name: ♻️ Cache pip dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
 
       - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      - name: 📦 Install Python Dependencies
+      - name: 📦 Install Dependencies
         run: |
+          pip install --upgrade pip
           pip install torch transformers supabase \
-            libsql-experimental python-dotenv httpx python-dateutil
+            libsql-experimental python-dotenv httpx python-dateutil scikit-learn \
+            sentence-transformers umap-learn emoji python-louvain
 
-      - name: 🧠 Run Labeling + Transfer
-        run: python scripts/label_and_transfer.py
-
-      - name: 📊 Generate Daily Snapshot
-        run: python scripts/generate_snapshot.py
-
-      - name: 📝 Commit summary JSON files
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add summary/*.json
-          git diff --cached --quiet || git commit -m "📊 Update summary snapshot on $(date +'%Y-%m-%d')"
-          git push
+      - name: 🧠 Run Summary Labeling
+        run: python scripts/summary.py

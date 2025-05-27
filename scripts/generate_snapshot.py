@@ -3,7 +3,7 @@ import json
 import hashlib
 import datetime
 import re
-from collections import Counter
+from collections import Counter, defaultdict
 from dotenv import load_dotenv
 import httpx
 import libsql_experimental as libsql
@@ -18,7 +18,7 @@ BLUESKY_PASSWORD = os.getenv("BLUESKY_PASSWORD")
 
 # === Constants ===
 today = datetime.date.today().isoformat()
-BATCH_SIZE = 100
+BATCH_SIZE = 500
 POST_META_BATCH_SIZE = 25
 
 # === Connect to DB ===
@@ -121,27 +121,26 @@ def get_user_meta_batch(dids):
     if not dids:
         return {}
 
-    # Filter out ones that are already cached in the DB
-    placeholders = ",".join("?" for _ in dids)
-    existing = conn.execute(
-        f"SELECT * FROM user_meta WHERE did IN ({placeholders})", tuple(dids)
-    ).fetchall()
+    cache = {}
+    for i in range(0, len(dids), 25):
+        batch = dids[i:i+25]
+        placeholders = ",".join("?" for _ in batch)
+        existing = conn.execute(
+            f"SELECT * FROM user_meta WHERE did IN ({placeholders})", tuple(batch)
+        ).fetchall()
 
-    cache = {
-        row[0]: dict(zip(["did", "followers", "posts", "handle"], row))
-        for row in existing
-    }
+        for row in existing:
+            cache[row[0]] = dict(zip(["did", "followers", "posts", "handle"], row))
 
-    to_fetch = [did for did in dids if did not in cache]
+        to_fetch = [did for did in batch if did not in cache]
+        if not to_fetch:
+            continue
 
-    # Now fetch from Bluesky API in batches
-    for i in range(0, len(to_fetch), 25):
-        batch = to_fetch[i:i + 25]
         try:
             res = httpx.get(
                 "https://bsky.social/xrpc/app.bsky.actor.getProfiles",
                 headers=bsky_headers,
-                params=[("actors", did) for did in batch],
+                params=[("actors", did) for did in to_fetch],
                 timeout=10
             )
             res.raise_for_status()
@@ -166,34 +165,22 @@ hashtags = Counter()
 emojis = Counter()
 posts_by_day = Counter()
 top_posts = []
-top_users = {}
+top_users = defaultdict(lambda: {"posts": 0, "likes": 0, "reposts": 0, "followers": 0, "handle": ""})
 columns = [col[1] for col in conn.execute("PRAGMA table_info(posts)").fetchall()]
-offset = 0
 all_uris = []
-
-while True:
-    rows = conn.execute("SELECT * FROM posts LIMIT ? OFFSET ?", (BATCH_SIZE, offset)).fetchall()
-    if not rows:
-        break
-    for tup in rows:
-        row = dict(zip(columns, tup))
-        uri = row["uri"]
-        created = isoparse(row["created_at"]).date()
-        posts_by_day[str(created)] += 1
-        all_uris.append(uri)
-        hashtags.update(extract_hashtags(row["text"]))
-        emojis.update(extract_emojis(row["text"]))
-    offset += BATCH_SIZE
-
-def is_valid_bsky_uri(uri):
-    return isinstance(uri, str) and uri.startswith("at://") and "/app.bsky.feed.post/" in uri
-
-# === Batch Enrichment ===
 meta_cache = {}
+
+cursor = conn.execute("SELECT uri, created_at, text, did FROM posts")
+while (row := cursor.fetchone()):
+    uri, created_at, text, did = row
+    all_uris.append(uri)
+    date = isoparse(created_at).date()
+    posts_by_day[str(date)] += 1
+    hashtags.update(extract_hashtags(text))
+    emojis.update(extract_emojis(text))
+
 for i in range(0, len(all_uris), POST_META_BATCH_SIZE):
-    batch = [u for u in all_uris[i:i+POST_META_BATCH_SIZE] if is_valid_bsky_uri(u)]
-    if not batch:
-        continue
+    batch = [u for u in all_uris[i:i+POST_META_BATCH_SIZE] if u.startswith("at://")]
     print("📤 Fetching posts batch:", i)
     enriched = fetch_post_batch(batch)
     meta_cache.update(enriched)
@@ -211,45 +198,39 @@ for i in range(0, len(all_uris), POST_META_BATCH_SIZE):
             post.get("author", {}).get("handle")
         ))
 
-
-
-all_rows = conn.execute("SELECT * FROM posts").fetchall()
+all_rows = conn.execute("SELECT uri, did FROM posts")
 all_dids = list({
-    meta_cache.get(dict(zip(columns, row))["uri"], {}).get("author_did", dict(zip(columns, row))["did"])
-    for row in all_rows
+    meta_cache.get(uri, {}).get("author_did", did)
+    for uri, did in all_rows
 })
 
 user_meta_cache = get_user_meta_batch(all_dids)
 
-for row in conn.execute("SELECT * FROM posts").fetchall():
-    row = dict(zip(columns, row))
-    meta = meta_cache.get(row["uri"], {})
-    did = meta.get("author_did", row["did"])
+cursor = conn.execute("SELECT uri, text, did, created_at FROM posts")
+while (row := cursor.fetchone()):
+    uri, text, did_fallback, created_at = row
+    meta = meta_cache.get(uri, {})
+    did = meta.get("author_did", did_fallback)
     profile = user_meta_cache.get(did, {})
     score = meta.get("likes", 0) + meta.get("reposts", 0) + meta.get("replies", 0)
+
     top_posts.append({
-        "uri": row["uri"],
-        "text": row["text"],
+        "uri": uri,
+        "text": text,
         "did": did,
         "likes": meta.get("likes", 0),
         "reposts": meta.get("reposts", 0),
         "replies": meta.get("replies", 0),
         "score": score,
-        "created_at": row["created_at"]
+        "created_at": created_at
     })
 
-    if did not in top_users:
-        top_users[did] = {
-            "posts": 0, "likes": 0, "reposts": 0,
-            "followers": profile.get("followers", 0),
-            "handle": profile.get("handle", "")
-        }
-
-    top_users[did]["posts"] += 1
-    top_users[did]["likes"] += meta.get("likes", 0)
-    top_users[did]["reposts"] += meta.get("reposts", 0)
-
-
+    user = top_users[did]
+    user["posts"] += 1
+    user["likes"] += meta.get("likes", 0)
+    user["reposts"] += meta.get("reposts", 0)
+    user["followers"] = profile.get("followers", user["followers"])
+    user["handle"] = profile.get("handle", user["handle"])
 
 # === SQL Summaries ===
 def sql_summary(query):
@@ -258,15 +239,13 @@ def sql_summary(query):
 store_snapshot("narratives", "overall", sql_summary("SELECT sentiment, COUNT(*) FROM posts GROUP BY sentiment"))
 store_snapshot("emotions", "overall", sql_summary("SELECT emotion, COUNT(*) FROM posts GROUP BY emotion"))
 
-langs_rows = conn.execute("SELECT langs FROM posts").fetchall()
 lang_counts = Counter()
-for (raw,) in langs_rows:
+for (raw,) in conn.execute("SELECT langs FROM posts"):
     if raw:
         try:
             for l in json.loads(raw):
                 lang_counts[l] += 1
-        except Exception:
-            continue
+        except: pass
 
 store_snapshot("languages", "overall", dict(lang_counts))
 store_snapshot("hashtags", "overall", dict(hashtags.most_common(100)))
@@ -300,7 +279,6 @@ def export_group_all_dates(types, filename):
     with open(f"summary/{filename}", "w") as f:
         json.dump(data, f, indent=2)
     print(f"📤 summary/{filename} written.")
-
 
 export_group_all_dates(["narratives", "emotions", "languages"], "narratives.json")
 export_group_all_dates(["hashtags", "emojis"], "hashtags.json")
