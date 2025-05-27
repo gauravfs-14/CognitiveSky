@@ -6,7 +6,6 @@ channels:
 dependencies:
   - python=3.10
   - pandas
-  - sqlite
   - pip
   - pip:
       - transformers
@@ -17,5 +16,5 @@ dependencies:
       - torch
       - python-louvain
       - supabase
-      - libsql-client
+      - libsql-experimental
       - python-dotenv
