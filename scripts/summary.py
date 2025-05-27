@@ -82,6 +82,36 @@ conn.execute("""CREATE TABLE IF NOT EXISTS summary_snapshots (
 )""")
 
 # === Helpers ===
+import time
+from httpcore import RemoteProtocolError
+import httpx
+
+def delete_with_retries(uri_list, max_retries=5, chunk_size=95):
+    for chunk_start in range(0, len(uri_list), chunk_size):
+        chunk = uri_list[chunk_start:chunk_start + chunk_size]
+        retries = 0
+        while retries < max_retries:
+            try:
+                supabase.table("posts_unlabeled").delete().in_("uri", chunk).execute()
+                break
+            except (httpx.HTTPError, httpx.RemoteProtocolError) as e:
+                wait = 2 ** retries
+                print(f"⚠️ Supabase delete failed for {len(chunk)} URIs: {e}. Retrying in {wait}s...")
+                time.sleep(wait)
+                retries += 1
+        if retries == max_retries:
+            print(f"❌ Failed to delete chunk after {max_retries} retries.")
+
+def safe_call_hf_pipeline(pipeline, texts, **kwargs):
+    for attempt in range(5):  # Retry up to 5 times
+        try:
+            return pipeline(texts, **kwargs)
+        except RemoteProtocolError as e:
+            print(f"⚠️ API call failed: {e}. Retrying in {2**attempt} seconds...")
+            time.sleep(2**attempt)
+    print("❌ Exhausted retries for Hugging Face pipeline.")
+    return [{"label": "neutral"}] * len(texts)
+
 def compute_hash(obj):
     return hashlib.sha256(json.dumps(obj, sort_keys=True).encode()).hexdigest()
 
@@ -226,7 +256,7 @@ def hardened_label_and_migrate():
             print(f"❌ Error processing post {post.get('uri')}: {e}")
 
     if uris_to_delete:
-        supabase.table("posts_unlabeled").delete().in_("uri", uris_to_delete).execute()
+        delete_with_retries(uris_to_delete)
 
     # === Conditional Snapshot Writing ===
     def safe_store(name, scope, data):
@@ -257,122 +287,6 @@ def hardened_label_and_migrate():
     conn.sync()
     print(f"🎉 Labeled and migrated {len(uris_to_delete)} posts with resilient snapshot generation.")
 
-
-    response = supabase.table("posts_unlabeled").select("*").range(OFFSET, OFFSET + BATCH_SIZE - 1).execute()
-    posts = response.data or []
-    if not posts:
-        print("✅ No posts to process.")
-        return
-
-    texts = [post["text"] for post in posts]  # or pre-trim to 1200 chars
-    topics, topic_words, topic_weights = perform_topic_modeling(texts)
-    # Perform NLP with safe batch + truncation
-    sentiments = sentiment_pipe(texts, batch_size=32, truncation=True, padding=True, max_length=512)
-    emotions = emotion_pipe(texts, batch_size=32, truncation=True, padding=True, max_length=512)
-
-    topic_by_day = defaultdict(Counter)
-    sentiment_by_topic = defaultdict(Counter)
-    emotion_by_topic = defaultdict(Counter)
-    top_posts_by_topic = defaultdict(list)
-    hashtags_by_topic = defaultdict(Counter)
-    emojis_by_topic = defaultdict(Counter)
-    user_by_topic = defaultdict(lambda: defaultdict(int))
-
-    global_hashtags = Counter()
-    global_emojis = Counter()
-    global_top_posts = []
-    global_users = defaultdict(lambda: {"posts": 0})
-    posts_by_day = Counter()
-    lang_counts = Counter()
-    uris_to_delete = []
-
-    for i, post in enumerate(posts):
-        try:
-            sentiment = sentiments[i]["label"].lower()
-            emotion_res = emotions[i][0] if isinstance(emotions[i], list) else emotions[i]
-            emotion = emotion_res["label"].lower()
-            topic = topics[i]
-            created_date = post.get("created_at", today)[:10]
-            score = sum(topic_weights[i])
-            langs = json.dumps(post.get("langs", []))
-
-            for l in json.loads(langs):
-                lang_counts[l] += 1
-
-            conn.execute("""INSERT OR IGNORE INTO posts (
-                uri, did, text, created_at, langs, facets, reply, embed, ingestion_time, sentiment, emotion, topic
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", (
-                post["uri"],
-                post["did"],
-                post["text"],
-                post["created_at"],
-                langs,
-                json.dumps(post.get("facets")),
-                json.dumps(post.get("reply")),
-                json.dumps(post.get("embed")),
-                post.get("ingestion_time"),
-                sentiment,
-                emotion,
-                topic
-            ))
-
-            conn.execute("INSERT OR REPLACE INTO topic_summary (date, topic, count) VALUES (?, ?, ?)",
-                         (created_date, topic, topic_by_day[created_date][topic] + 1))
-
-            topic_by_day[created_date][topic] += 1
-            sentiment_by_topic[topic][sentiment] += 1
-            emotion_by_topic[topic][emotion] += 1
-            top_posts_by_topic[topic].append({"uri": post["uri"], "text": post["text"], "score": score})
-            hashtags = extract_hashtags(post["text"])
-            emojis = extract_emojis(post["text"])
-            hashtags_by_topic[topic].update(hashtags)
-            emojis_by_topic[topic].update(emojis)
-            global_hashtags.update(hashtags)
-            global_emojis.update(emojis)
-            user_by_topic[topic][post["did"]] += 1
-            global_users[post["did"]]["posts"] += 1
-            global_top_posts.append({
-                "uri": post["uri"],
-                "text": post["text"],
-                "score": score,
-                "created_at": post.get("created_at"),
-                "did": post["did"]
-            })
-
-            date = isoparse(post.get("created_at", today)).date()
-            posts_by_day[str(date)] += 1
-            uris_to_delete.append(post["uri"])
-
-        except Exception as e:
-            print(f"❌ Error processing post {post.get('uri')}: {e}")
-
-    # === Supabase Batch Delete ===
-    if uris_to_delete:
-        supabase.table("posts_unlabeled").delete().in_("uri", uris_to_delete).execute()
-
-    # === Snapshots ===
-    store_snapshot("topics", "keywords", {f"topic_{i}": words for i, words in enumerate(topic_words)})
-    store_snapshot("topics", "distribution_over_time", topic_by_day)
-    store_snapshot("topics", "sentiment_by_topic", sentiment_by_topic)
-    store_snapshot("topics", "emotion_by_topic", emotion_by_topic)
-    store_snapshot("topics", "top_posts", {
-        topic: sorted(posts, key=lambda p: p["score"], reverse=True)[:10] for topic, posts in top_posts_by_topic.items()
-    })
-    store_snapshot("topics", "hashtags_by_topic", {k: dict(v.most_common(20)) for k, v in hashtags_by_topic.items()})
-    store_snapshot("topics", "emojis_by_topic", {k: dict(v.most_common(20)) for k, v in emojis_by_topic.items()})
-    store_snapshot("topics", "users_by_topic", {k: dict(sorted(v.items(), key=lambda item: item[1], reverse=True)[:10]) for k, v in user_by_topic.items()})
-    store_snapshot("narratives", "overall", sql_summary("SELECT sentiment, COUNT(*) FROM posts GROUP BY sentiment"))
-    store_snapshot("emotions", "overall", sql_summary("SELECT emotion, COUNT(*) FROM posts GROUP BY emotion"))
-    store_snapshot("languages", "overall", dict(lang_counts))
-    store_snapshot("hashtags", "overall", dict(global_hashtags.most_common(100)))
-    store_snapshot("emojis", "overall", dict(global_emojis.most_common(100)))
-    store_snapshot("volume", "timeline", dict(posts_by_day))
-    store_snapshot("posts", "top_by_interaction", sorted(global_top_posts, key=lambda p: p["score"], reverse=True)[:50])
-
-    conn.commit()
-    conn.sync()
-    print(f"🎉 Labeled and migrated {len(posts)} posts with full snapshot generation.")
-
 def export_snapshots_to_json():
     print("📤 Exporting historical snapshots to JSON...")
     os.makedirs("summary", exist_ok=True)
@@ -402,6 +316,9 @@ def export_snapshots_to_json():
 
 if __name__ == "__main__":
     os.makedirs("summary", exist_ok=True)
-    hardened_label_and_migrate()
-    export_snapshots_to_json()
-    print("✅ Summary script completed successfully.")
+    if os.getenv("EXPORT_ONLY") == "1":
+        export_snapshots_to_json()
+        print("✅ Only exported snapshots.")
+    else:
+        hardened_label_and_migrate()
+
