@@ -2,27 +2,31 @@
   "2025-05-27": {
     "narratives": {
       "overall": {
-        "label_0": 25,
-        "label_1": 24,
-        "label_2": 7
+        "label_0": 97,
+        "label_1": 79,
+        "label_2": 39
       }
     },
     "emotions": {
       "overall": {
-        "anger": 3,
-        "disgust": 5,
-        "fear": 22,
-        "joy": 1,
-        "neutral": 13,
-        "sadness": 10,
-        "surprise": 2
+        "anger": 14,
+        "disgust": 12,
+        "fear": 84,
+        "joy": 12,
+        "neutral": 40,
+        "sadness": 40,
+        "surprise": 13
       }
     },
     "languages": {
       "overall": {
-        "ar": 2,
-        "en": 27,
-        "sv": 1
+        "en": 141,
+        "ar": 1,
+        "en-US": 2,
+        "de": 1,
+        "pt": 2,
+        "es": 1,
+        "en-GB": 2
       }
     }
   }
