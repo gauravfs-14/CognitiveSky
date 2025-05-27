@@ -1,31 +1,57 @@
-name: Daily Labeling Pipeline
+name: Daily Labeling and Snapshot Transfer
 
 on:
-  schedule:
-    - cron: "0 0 * * *" # Daily at midnight UTC
-  workflow_dispatch: # Optional manual trigger
+  # schedule:
+  #   - cron: "0 0 * * *" # Daily at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write # Needed to push commits
 
 jobs:
-  label-transfer:
+  pipeline:
     runs-on: ubuntu-latest
 
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
+      TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN }}
+      BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
+      BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+
     steps:
-      - name: Checkout Repo
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: ♻️ Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      - name: Install dependencies
+      - name: 📦 Install Python Dependencies
         run: |
-          pip install torch transformers supabase libsql-experimental python-dotenv
+          pip install torch transformers supabase \
+            libsql-experimental python-dotenv httpx python-dateutil
 
-      - name: Run labeling + transfer
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-          TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
-          TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN }}
+      - name: 🧠 Run Labeling + Transfer
         run: python scripts/label_and_transfer.py
+
+      - name: 📊 Generate Daily Snapshot
+        run: python scripts/generate_snapshot.py
+
+      - name: 📝 Commit summary JSON files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add summary/*.json
+          git diff --cached --quiet || git commit -m "📊 Update summary snapshot on $(date +'%Y-%m-%d')"
+          git push

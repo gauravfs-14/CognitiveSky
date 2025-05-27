@@ -1,0 +1,38 @@
+{
+  "2025-05-26": {
+    "narratives": {
+      "overall": {
+        "label_0": 273,
+        "label_1": 175,
+        "label_2": 93
+      }
+    },
+    "emotions": {
+      "overall": {
+        "anger": 55,
+        "disgust": 23,
+        "fear": 169,
+        "joy": 25,
+        "neutral": 111,
+        "sadness": 131,
+        "surprise": 27
+      }
+    },
+    "languages": {
+      "overall": {
+        "en": 479,
+        "es": 2,
+        "fr": 1,
+        "pt": 8,
+        "de": 1,
+        "ko": 1,
+        "ar": 5,
+        "en-US": 5,
+        "ia": 1,
+        "ja": 1,
+        "tl": 2,
+        "en-GB": 1
+      }
+    }
+  }
+}
