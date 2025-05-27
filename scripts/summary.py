@@ -82,6 +82,36 @@ conn.execute("""CREATE TABLE IF NOT EXISTS summary_snapshots (
 )""")
 
 # === Helpers ===
+import time
+from httpcore import RemoteProtocolError
+import httpx
+
+def delete_with_retries(uri_list, max_retries=5, chunk_size=95):
+    for chunk_start in range(0, len(uri_list), chunk_size):
+        chunk = uri_list[chunk_start:chunk_start + chunk_size]
+        retries = 0
+        while retries < max_retries:
+            try:
+                supabase.table("posts_unlabeled").delete().in_("uri", chunk).execute()
+                break
+            except httpx.RemoteProtocolError as e:
+                wait = 2 ** retries
+                print(f"⚠️ Supabase delete failed for {len(chunk)} URIs: {e}. Retrying in {wait}s...")
+                time.sleep(wait)
+                retries += 1
+        if retries == max_retries:
+            print(f"❌ Failed to delete chunk after {max_retries} retries.")
+
+def safe_call_hf_pipeline(pipeline, texts, **kwargs):
+    for attempt in range(5):  # Retry up to 5 times
+        try:
+            return pipeline(texts, **kwargs)
+        except RemoteProtocolError as e:
+            print(f"⚠️ API call failed: {e}. Retrying in {2**attempt} seconds...")
+            time.sleep(2**attempt)
+    print("❌ Exhausted retries for Hugging Face pipeline.")
+    return [{"label": "neutral"}] * len(texts)
+
 def compute_hash(obj):
     return hashlib.sha256(json.dumps(obj, sort_keys=True).encode()).hexdigest()
 
@@ -226,7 +256,7 @@ def hardened_label_and_migrate():
             print(f"❌ Error processing post {post.get('uri')}: {e}")
 
     if uris_to_delete:
-        supabase.table("posts_unlabeled").delete().in_("uri", uris_to_delete).execute()
+        delete_with_retries(uris_to_delete)
 
     # === Conditional Snapshot Writing ===
     def safe_store(name, scope, data):
@@ -267,8 +297,8 @@ def hardened_label_and_migrate():
     texts = [post["text"] for post in posts]  # or pre-trim to 1200 chars
     topics, topic_words, topic_weights = perform_topic_modeling(texts)
     # Perform NLP with safe batch + truncation
-    sentiments = sentiment_pipe(texts, batch_size=32, truncation=True, padding=True, max_length=512)
-    emotions = emotion_pipe(texts, batch_size=32, truncation=True, padding=True, max_length=512)
+    sentiments = safe_call_hf_pipeline(sentiment_pipe, texts, batch_size=32, truncation=True, padding=True, max_length=512)
+    emotions = safe_call_hf_pipeline(emotion_pipe, texts, batch_size=32, truncation=True, padding=True, max_length=512)
 
     topic_by_day = defaultdict(Counter)
     sentiment_by_topic = defaultdict(Counter)
@@ -348,7 +378,7 @@ def hardened_label_and_migrate():
 
     # === Supabase Batch Delete ===
     if uris_to_delete:
-        supabase.table("posts_unlabeled").delete().in_("uri", uris_to_delete).execute()
+        delete_with_retries(uris_to_delete)
 
     # === Snapshots ===
     store_snapshot("topics", "keywords", {f"topic_{i}": words for i, words in enumerate(topic_words)})
@@ -402,6 +432,9 @@ def export_snapshots_to_json():
 
 if __name__ == "__main__":
     os.makedirs("summary", exist_ok=True)
-    hardened_label_and_migrate()
-    export_snapshots_to_json()
-    print("✅ Summary script completed successfully.")
+    if os.getenv("EXPORT_ONLY") == "1":
+        export_snapshots_to_json()
+        print("✅ Only exported snapshots.")
+    else:
+        hardened_label_and_migrate()
+
