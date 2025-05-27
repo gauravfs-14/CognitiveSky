@@ -1,0 +1,28 @@
+{
+  "2025-05-27": {
+    "narratives": {
+      "overall": {
+        "label_0": 10,
+        "label_1": 10,
+        "label_2": 1
+      }
+    },
+    "emotions": {
+      "overall": {
+        "anger": 1,
+        "disgust": 3,
+        "fear": 7,
+        "joy": 1,
+        "neutral": 4,
+        "sadness": 4,
+        "surprise": 1
+      }
+    },
+    "languages": {
+      "overall": {
+        "en": 17,
+        "ar": 2
+      }
+    }
+  }
+}

@@ -91,6 +91,7 @@ def delete_with_retries(uri_list, max_retries=5, chunk_size=95):
         chunk = uri_list[chunk_start:chunk_start + chunk_size]
         retries = 0
         while retries < max_retries:
+            print(f"🗑️ Deleting chunk of {len(chunk)} URIs...")
             try:
                 supabase.table("posts_unlabeled").delete().in_("uri", chunk).execute()
                 break
@@ -251,7 +252,11 @@ def hardened_label_and_migrate():
 
             date = isoparse(post.get("created_at", today)).date()
             posts_by_day[str(date)] += 1
-            uris_to_delete.append(post["uri"])
+            res = conn.execute("SELECT changes()").fetchone()
+            if res and res[0] > 0:
+                uris_to_delete.append(post["uri"])
+            else:
+                print(f"⚠️ Insert ignored for {post['uri']}")
         except Exception as e:
             print(f"❌ Error processing post {post.get('uri')}: {e}")
 
