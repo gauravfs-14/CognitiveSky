@@ -18,3 +18,4 @@ dependencies:
       - supabase
       - libsql-experimental
       - python-dotenv
+      - python-dateutil
