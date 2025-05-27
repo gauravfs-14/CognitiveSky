@@ -3,7 +3,6 @@ import json
 import hashlib
 import datetime
 import re
-import time
 from collections import Counter
 from dotenv import load_dotenv
 import httpx
@@ -13,18 +12,17 @@ from dateutil.parser import isoparse
 # === Load ENV ===
 load_dotenv()
 TURSO_DB_URL = os.getenv("TURSO_DB_URL")
-TURSO_AUTH_TOKEN = os.getenv("TURSO_DB_TOKEN")
+TURSO_DB_TOKEN = os.getenv("TURSO_DB_TOKEN")
 BLUESKY_USERNAME = os.getenv("BLUESKY_USERNAME")
 BLUESKY_PASSWORD = os.getenv("BLUESKY_PASSWORD")
 
 # === Constants ===
 today = datetime.date.today().isoformat()
-today_date = datetime.date.today()
-seven_days_ago = today_date - datetime.timedelta(days=7)
 BATCH_SIZE = 100
+POST_META_BATCH_SIZE = 25
 
 # === Connect to DB ===
-conn = libsql.connect("/tmp/replica.db", sync_url=TURSO_DB_URL, auth_token=TURSO_AUTH_TOKEN)
+conn = libsql.connect("/tmp/replica.db", sync_url=TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
 conn.sync()
 conn.execute("""
 CREATE TABLE IF NOT EXISTS summary_snapshots (
@@ -66,7 +64,7 @@ def store_snapshot(type_, scope, data):
         (today, type_, scope)
     ).fetchone()
 
-    if row and row["hash"] == hash_val:
+    if row and row[0] == hash_val:
         print(f"✅ Skipping unchanged {type_}:{scope}")
         return
 
@@ -91,7 +89,7 @@ def extract_emojis(text):
         r"]+", flags=re.UNICODE)
     return emoji_pattern.findall(text)
 
-# === Bluesky API Auth ===
+# === Bluesky Auth & Batch Post Fetch ===
 def create_bluesky_session():
     res = httpx.post("https://bsky.social/xrpc/com.atproto.server.createSession", json={
         "identifier": BLUESKY_USERNAME,
@@ -103,102 +101,158 @@ def create_bluesky_session():
 bsky_token = create_bluesky_session()
 bsky_headers = {"Authorization": f"Bearer {bsky_token}"}
 
-def get_post_meta(uri):
-    row = conn.execute("SELECT * FROM post_meta WHERE uri = ?", (uri,)).fetchone()
-    if row:
-        return dict(zip(["uri", "likes", "reposts", "replies", "author_did", "author_handle"], row))
+def fetch_post_batch(batch):
     try:
-        res = httpx.get(f"https://bsky.social/xrpc/app.bsky.feed.getPostThread?uri={uri}&depth=0", headers=bsky_headers, timeout=10)
+        params = [("uris", uri) for uri in batch]
+        res = httpx.get(
+            "https://bsky.social/xrpc/app.bsky.feed.getPosts",
+            headers=bsky_headers,
+            params=params,
+            timeout=10
+        )
         res.raise_for_status()
-        post = res.json().get("thread", {}).get("post", {})
-        meta = {
-            "uri": uri,
-            "likes": post.get("likeCount", 0),
-            "reposts": post.get("repostCount", 0),
-            "replies": post.get("replyCount", 0),
-            "author_did": post.get("author", {}).get("did", ""),
-            "author_handle": post.get("author", {}).get("handle", ""),
-        }
-        conn.execute("INSERT OR REPLACE INTO post_meta VALUES (?, ?, ?, ?, ?, ?)", tuple(meta.values()))
-        return meta
+        posts = res.json().get("posts", [])
+        return {post["uri"]: post for post in posts}
     except Exception as e:
-        print(f"⚠️ Failed to fetch post meta for {uri}: {e}")
-        return None
+        print(f"⚠️ Batch fetch failed: {e}")
+        return {}
 
-def get_user_meta(did):
-    row = conn.execute("SELECT * FROM user_meta WHERE did = ?", (did,)).fetchone()
-    if row:
-        return dict(zip(["did", "followers", "posts", "handle"], row))
-    try:
-        res = httpx.get(f"https://bsky.social/xrpc/app.bsky.actor.getProfile?actor={did}", headers=bsky_headers, timeout=10)
-        res.raise_for_status()
-        profile = res.json()
-        meta = {
-            "did": did,
-            "followers": profile.get("followersCount", 0),
-            "posts": profile.get("postsCount", 0),
-            "handle": profile.get("handle", ""),
-        }
-        conn.execute("INSERT OR REPLACE INTO user_meta VALUES (?, ?, ?, ?)", tuple(meta.values()))
-        return meta
-    except Exception as e:
-        print(f"⚠️ Failed to fetch user meta for {did}: {e}")
-        return None
+def get_user_meta_batch(dids):
+    if not dids:
+        return {}
 
-# === Summary Metrics ===
+    # Filter out ones that are already cached in the DB
+    placeholders = ",".join("?" for _ in dids)
+    existing = conn.execute(
+        f"SELECT * FROM user_meta WHERE did IN ({placeholders})", tuple(dids)
+    ).fetchall()
+
+    cache = {
+        row[0]: dict(zip(["did", "followers", "posts", "handle"], row))
+        for row in existing
+    }
+
+    to_fetch = [did for did in dids if did not in cache]
+
+    # Now fetch from Bluesky API in batches
+    for i in range(0, len(to_fetch), 25):
+        batch = to_fetch[i:i + 25]
+        try:
+            res = httpx.get(
+                "https://bsky.social/xrpc/app.bsky.actor.getProfiles",
+                headers=bsky_headers,
+                params=[("actors", did) for did in batch],
+                timeout=10
+            )
+            res.raise_for_status()
+            profiles = res.json().get("profiles", [])
+            for profile in profiles:
+                did = profile.get("did")
+                meta = {
+                    "did": did,
+                    "followers": profile.get("followersCount", 0),
+                    "posts": profile.get("postsCount", 0),
+                    "handle": profile.get("handle", "")
+                }
+                conn.execute("INSERT OR REPLACE INTO user_meta VALUES (?, ?, ?, ?)", tuple(meta.values()))
+                cache[did] = meta
+        except Exception as e:
+            print(f"⚠️ Failed batch user meta fetch: {e}")
+
+    return cache
+
+# === Aggregate Summary ===
 hashtags = Counter()
 emojis = Counter()
 posts_by_day = Counter()
 top_posts = []
 top_users = {}
-
+columns = [col[1] for col in conn.execute("PRAGMA table_info(posts)").fetchall()]
 offset = 0
+all_uris = []
+
 while True:
     rows = conn.execute("SELECT * FROM posts LIMIT ? OFFSET ?", (BATCH_SIZE, offset)).fetchall()
     if not rows:
         break
-    columns = [col[1] for col in conn.execute("PRAGMA table_info(posts)").fetchall()]
     for tup in rows:
         row = dict(zip(columns, tup))
+        uri = row["uri"]
         created = isoparse(row["created_at"]).date()
         posts_by_day[str(created)] += 1
-
-        for tag in extract_hashtags(row["text"]):
-            hashtags[tag] += 1
-        for emj in extract_emojis(row["text"]):
-            emojis[emj] += 1
-
-        meta = get_post_meta(row["uri"]) or {}
-        profile = get_user_meta(meta.get("author_did", row["did"])) or {}
-
-        score = meta.get("likes", 0) + meta.get("reposts", 0) + meta.get("replies", 0)
-        top_posts.append({
-            "uri": row["uri"],
-            "text": row["text"],
-            "did": meta.get("author_did", row["did"]),
-            "likes": meta.get("likes", 0),
-            "reposts": meta.get("reposts", 0),
-            "replies": meta.get("replies", 0),
-            "score": score,
-            "created_at": row["created_at"]
-        })
-
-        did = meta.get("author_did", row["did"])
-        if did not in top_users:
-            top_users[did] = {
-                "posts": 0, "likes": 0, "reposts": 0,
-                "followers": profile.get("followers", 0),
-                "handle": profile.get("handle", "")
-            }
-        top_users[did]["posts"] += 1
-        top_users[did]["likes"] += meta.get("likes", 0)
-        top_users[did]["reposts"] += meta.get("reposts", 0)
-
-        time.sleep(0.5)  # throttle to avoid hitting Bluesky rate limits
+        all_uris.append(uri)
+        hashtags.update(extract_hashtags(row["text"]))
+        emojis.update(extract_emojis(row["text"]))
     offset += BATCH_SIZE
 
-# === SQL-based summaries ===
-def sql_summary(query, key="label", val="count"):
+def is_valid_bsky_uri(uri):
+    return isinstance(uri, str) and uri.startswith("at://") and "/app.bsky.feed.post/" in uri
+
+# === Batch Enrichment ===
+meta_cache = {}
+for i in range(0, len(all_uris), POST_META_BATCH_SIZE):
+    batch = [u for u in all_uris[i:i+POST_META_BATCH_SIZE] if is_valid_bsky_uri(u)]
+    if not batch:
+        continue
+    print("📤 Fetching posts batch:", i)
+    enriched = fetch_post_batch(batch)
+    meta_cache.update(enriched)
+
+    for post in enriched.values():
+        conn.execute("""
+            INSERT OR REPLACE INTO post_meta (uri, likes, reposts, replies, author_did, author_handle)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (
+            post.get("uri"),
+            post.get("likeCount", 0),
+            post.get("repostCount", 0),
+            post.get("replyCount", 0),
+            post.get("author", {}).get("did"),
+            post.get("author", {}).get("handle")
+        ))
+
+
+
+all_rows = conn.execute("SELECT * FROM posts").fetchall()
+all_dids = list({
+    meta_cache.get(dict(zip(columns, row))["uri"], {}).get("author_did", dict(zip(columns, row))["did"])
+    for row in all_rows
+})
+
+user_meta_cache = get_user_meta_batch(all_dids)
+
+for row in conn.execute("SELECT * FROM posts").fetchall():
+    row = dict(zip(columns, row))
+    meta = meta_cache.get(row["uri"], {})
+    did = meta.get("author_did", row["did"])
+    profile = user_meta_cache.get(did, {})
+    score = meta.get("likes", 0) + meta.get("reposts", 0) + meta.get("replies", 0)
+    top_posts.append({
+        "uri": row["uri"],
+        "text": row["text"],
+        "did": did,
+        "likes": meta.get("likes", 0),
+        "reposts": meta.get("reposts", 0),
+        "replies": meta.get("replies", 0),
+        "score": score,
+        "created_at": row["created_at"]
+    })
+
+    if did not in top_users:
+        top_users[did] = {
+            "posts": 0, "likes": 0, "reposts": 0,
+            "followers": profile.get("followers", 0),
+            "handle": profile.get("handle", "")
+        }
+
+    top_users[did]["posts"] += 1
+    top_users[did]["likes"] += meta.get("likes", 0)
+    top_users[did]["reposts"] += meta.get("reposts", 0)
+
+
+
+# === SQL Summaries ===
+def sql_summary(query):
     return {r[0]: r[1] for r in conn.execute(query).fetchall()}
 
 store_snapshot("narratives", "overall", sql_summary("SELECT sentiment, COUNT(*) FROM posts GROUP BY sentiment"))
@@ -213,6 +267,7 @@ for (raw,) in langs_rows:
                 lang_counts[l] += 1
         except Exception:
             continue
+
 store_snapshot("languages", "overall", dict(lang_counts))
 store_snapshot("hashtags", "overall", dict(hashtags.most_common(100)))
 store_snapshot("emojis", "overall", dict(emojis.most_common(100)))
@@ -231,23 +286,25 @@ store_snapshot("users", "top_by_interactions", sorted(
 conn.commit()
 conn.sync()
 
-# === JSON EXPORT ===
+# === Export JSON ===
 os.makedirs("summary", exist_ok=True)
-def export_group(types, filename):
+def export_group_all_dates(types, filename):
     data = {}
     for t in types:
         rows = conn.execute(
-            "SELECT scope, data FROM summary_snapshots WHERE date=? AND type=?",
-            (today, t)
+            "SELECT date, scope, data FROM summary_snapshots WHERE type=?",
+            (t,)
         ).fetchall()
-        data[t] = {r[0]: json.loads(r[1]) for r in rows}
+        for date, scope, d in rows:
+            data.setdefault(date, {}).setdefault(t, {})[scope] = json.loads(d)
     with open(f"summary/{filename}", "w") as f:
         json.dump(data, f, indent=2)
     print(f"📤 summary/{filename} written.")
 
-export_group(["narratives", "emotions", "languages"], "narratives.json")
-export_group(["hashtags", "emojis"], "hashtags.json")
-export_group(["volume"], "activity.json")
-export_group(["users", "posts"], "engagement.json")
 
-print("✅ Snapshot complete with batching, caching, and SQL summaries.")
+export_group_all_dates(["narratives", "emotions", "languages"], "narratives.json")
+export_group_all_dates(["hashtags", "emojis"], "hashtags.json")
+export_group_all_dates(["volume"], "activity.json")
+export_group_all_dates(["users", "posts"], "engagement.json")
+
+print("✅ Snapshot complete with batching, caching, and batch enrichment.")

@@ -1,8 +1,8 @@
 name: Daily Labeling and Snapshot Transfer
 
 on:
-  schedule:
-    - cron: "0 0 * * *" # Daily at midnight UTC
+  # schedule:
+  #   - cron: "0 0 * * *" # Daily at midnight UTC
   workflow_dispatch:
 
 permissions:
