@@ -34,7 +34,6 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: |
-          pip install --upgrade pip
           pip install torch transformers supabase \
             libsql-experimental python-dotenv httpx python-dateutil scikit-learn \
             sentence-transformers umap-learn emoji python-louvain
