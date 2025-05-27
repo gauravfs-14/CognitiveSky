@@ -117,10 +117,10 @@ def label_and_migrate():
         print("✅ No posts to process.")
         return
 
-    texts = [post["text"] for post in posts]
+    texts = [post["text"] for post in posts]  # or pre-trim to 1200 chars
     topics, topic_words, topic_weights = perform_topic_modeling(texts)
-    sentiments = sentiment_pipe(texts, batch_size=32)
-    emotions = emotion_pipe(texts, batch_size=32)
+    sentiments = sentiment_pipe(texts, batch_size=32, truncation=True, padding=True)
+    emotions = emotion_pipe(texts, batch_size=32, truncation=True, padding=True)
 
     topic_by_day = defaultdict(Counter)
     sentiment_by_topic = defaultdict(Counter)
