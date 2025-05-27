@@ -225,6 +225,35 @@ def label_and_migrate():
     conn.sync()
     print(f"🎉 Labeled and migrated {len(posts)} posts with full snapshot generation.")
 
+def export_snapshots_to_json():
+    print("📤 Exporting historical snapshots to JSON...")
+    os.makedirs("summary", exist_ok=True)
+
+    files = {
+        "narratives": ["narratives", "emotions", "languages"],
+        "hashtags": ["hashtags", "emojis"],
+        "activity": ["volume"],
+        "engagement": ["posts", "users"],
+        "topics": ["topics"]
+    }
+
+    grouped_data = {file: {} for file in files}
+
+    rows = conn.execute("SELECT date, type, scope, data FROM summary_snapshots").fetchall()
+    for date, type_, scope, data_json in rows:
+        for file, types in files.items():
+            if type_ in types:
+                grouped_data[file].setdefault(date, {}).setdefault(type_, {})[scope] = json.loads(data_json)
+
+    for file, data in grouped_data.items():
+        path = f"summary/{file}.json"
+        with open(path, "w") as f:
+            json.dump(data, f, indent=2)
+        print(f"✅ Wrote {path}")
+
+
 if __name__ == "__main__":
     os.makedirs("summary", exist_ok=True)
     label_and_migrate()
+    export_snapshots_to_json()
+    print("✅ Summary script completed successfully.")
