@@ -3,177 +3,338 @@
     "topics": {
       "keywords": {
         "topic_0": [
-          "bsky",
-          "social",
-          "donations",
-          "hunger",
-          "suffering"
+          "got",
+          "crying",
+          "just",
+          "really",
+          "know"
         ],
         "topic_1": [
-          "nervous",
-          "gotta",
-          "tree",
-          "oooo",
-          "right"
+          "health",
+          "mental",
+          "day",
+          "local",
+          "drain"
         ],
         "topic_2": [
-          "therapy",
-          "quick",
-          "drawing",
-          "men",
-          "bet"
+          "meds",
+          "tired",
+          "evening",
+          "adhd",
+          "help"
         ],
         "topic_3": [
-          "need",
-          "cutting",
-          "futon",
-          "comfortable",
-          "sleep"
+          "don",
+          "worry",
+          "things",
+          "long",
+          "bluesky"
         ],
         "topic_4": [
-          "hard",
-          "tbh",
-          "extra",
-          "sucks",
-          "days"
+          "com",
+          "www",
+          "loss",
+          "new",
+          "uk"
         ]
       },
       "distribution_over_time": {
         "2025-05-27": {
-          "topic_0": 3,
-          "topic_3": 16,
-          "topic_2": 3,
-          "topic_4": 7,
-          "topic_1": 6
+          "topic_1": 32,
+          "topic_0": 26,
+          "topic_3": 22,
+          "topic_4": 58,
+          "topic_2": 20
+        },
+        "2017-01-01": {
+          "topic_4": 1
         }
       },
       "sentiment_by_topic": {
+        "topic_1": {
+          "label_2": 7,
+          "label_0": 17,
+          "label_1": 8
+        },
         "topic_0": {
-          "label_0": 3
+          "label_0": 13,
+          "label_2": 6,
+          "label_1": 7
         },
         "topic_3": {
-          "label_1": 7,
-          "label_0": 5,
-          "label_2": 4
-        },
-        "topic_2": {
-          "label_1": 2,
-          "label_0": 1
+          "label_2": 6,
+          "label_1": 8,
+          "label_0": 8
         },
         "topic_4": {
-          "label_2": 1,
-          "label_0": 5,
-          "label_1": 1
+          "label_1": 24,
+          "label_0": 25,
+          "label_2": 10
         },
-        "topic_1": {
-          "label_1": 4,
-          "label_2": 1,
-          "label_0": 1
+        "topic_2": {
+          "label_1": 8,
+          "label_0": 9,
+          "label_2": 3
         }
       },
       "emotion_by_topic": {
+        "topic_1": {
+          "joy": 4,
+          "sadness": 4,
+          "fear": 13,
+          "neutral": 5,
+          "anger": 4,
+          "surprise": 1,
+          "disgust": 1
+        },
         "topic_0": {
-          "fear": 2,
-          "sadness": 1
+          "sadness": 7,
+          "joy": 1,
+          "anger": 1,
+          "fear": 6,
+          "surprise": 6,
+          "neutral": 4,
+          "disgust": 1
         },
         "topic_3": {
-          "fear": 9,
-          "anger": 2,
-          "neutral": 4,
-          "sadness": 1
-        },
-        "topic_2": {
-          "neutral": 2,
-          "sadness": 1
+          "fear": 10,
+          "sadness": 4,
+          "disgust": 1,
+          "neutral": 6,
+          "joy": 1
         },
         "topic_4": {
-          "neutral": 1,
-          "sadness": 3,
-          "disgust": 1,
-          "fear": 1,
-          "surprise": 1
+          "neutral": 10,
+          "disgust": 2,
+          "fear": 26,
+          "sadness": 11,
+          "surprise": 3,
+          "joy": 3,
+          "anger": 4
         },
-        "topic_1": {
+        "topic_2": {
+          "fear": 7,
+          "sadness": 4,
+          "anger": 2,
+          "disgust": 2,
           "neutral": 2,
-          "fear": 3,
-          "disgust": 1
+          "surprise": 1,
+          "joy": 2
         }
       },
       "hashtags_by_topic": {
-        "topic_0": {},
+        "topic_1": {
+          "#mypressportal": 1,
+          "#pressrelease": 1,
+          "#AfricaNewsroom": 1,
+          "#bizcommunity": 1,
+          "#publicrelations": 1,
+          "#africa": 1,
+          "#southafrica": 1,
+          "#psilocybin": 1,
+          "#microdosing": 1,
+          "#macrodosing": 1,
+          "#TechPol": 1,
+          "#ENVtuber": 1,
+          "#Vtuber": 1,
+          "#Gamer": 1,
+          "#TwitchStreamer": 1,
+          "#VtuberSupport": 1,
+          "#VtuberUprising": 1,
+          "#VSky": 1,
+          "#BioMBIB": 1
+        },
+        "topic_0": {
+          "#GilQOTD": 1,
+          "#NorthernLights": 1,
+          "#LFC": 1,
+          "#haiku": 1,
+          "#napping": 1,
+          "#cartoons": 1,
+          "#vss365": 1
+        },
         "topic_3": {
-          "#morningmotivation": 1,
-          "#mondaymotivation": 1,
-          "#inspiration": 1,
-          "#wisdomquote": 1,
-          "#personalsuccess": 1,
-          "#izoate": 1,
-          "#howto": 1,
-          "#chatgpt": 1,
-          "#ai": 1
+          "#sizesky": 1,
+          "#footsky": 1,
+          "#vrchat": 1,
+          "#PizzaTower": 1,
+          "#PizzaTowerFanart": 1,
+          "#Peppino": 1,
+          "#PizzaFace": 1,
+          "#PeppinoPizzaTower": 1,
+          "#PizzaFacePizzaTower": 1,
+          "#PixelArt": 1,
+          "#Pixel": 1,
+          "#Pixelartwork": 1,
+          "#ForgotToPost": 1,
+          "#Fanart": 1,
+          "#Astronomy": 1,
+          "#Venus": 1
         },
-        "topic_2": {},
         "topic_4": {
-          "#TeacherLife": 1,
-          "#RoughDay": 1,
-          "#StillStanding": 1
+          "#uk": 2,
+          "#news": 2,
+          "#uknews": 2,
+          "#therianmask": 1,
+          "#therian": 1,
+          "#maskmaker": 1,
+          "#alterhuman": 1,
+          "#CoachingWithAmy": 1,
+          "#FullMoonEnergy": 1,
+          "#FavoriteVersion": 1,
+          "#EnergyWork": 1,
+          "#Grief": 1,
+          "#TruthBrigade": 1,
+          "#ocsky": 1,
+          "#oc": 1,
+          "#art": 1,
+          "#artist": 1,
+          "#webtoon": 1,
+          "#webcomic": 1,
+          "#poem": 1
         },
-        "topic_1": {}
+        "topic_2": {
+          "#mutualaid": 2,
+          "#helpsky": 2,
+          "#fundsky": 2,
+          "#mutualaidvoid": 2,
+          "#writer": 1,
+          "#writerscommunity": 1,
+          "#author": 1,
+          "#smut": 1,
+          "#writerlife": 1,
+          "#flashfiction": 1,
+          "#nanofiction": 1,
+          "#microfiction": 1,
+          "#erotica": 1,
+          "#primal": 1,
+          "#primalplay": 1,
+          "#domme": 1,
+          "#femdom": 1,
+          "#spicycontentcreator": 1
+        }
       },
       "emojis_by_topic": {
-        "topic_0": {
-          "\ud83d\ude2d": 4,
-          "\ud83d\udc94": 2,
-          "\ud83d\ude4f": 2
-        },
-        "topic_3": {
-          "\ud83d\udce2": 1,
+        "topic_1": {
+          "\ud83c\udf0c": 1,
+          "\ud83d\udd2d": 1,
+          "\ud83e\udd9b": 1,
+          "\ud83c\udffb": 1,
+          "\ud83d\ude31": 1,
           "\ud83d\udc49": 1
         },
-        "topic_2": {},
-        "topic_4": {},
-        "topic_1": {
-          "\ud83e\udd79": 1
+        "topic_0": {
+          "\ud83d\ude2d": 10,
+          "\ud83d\udc9c": 2,
+          "\ud83c\udf0c": 1,
+          "\ud83d\udd2d": 1,
+          "\ud83e\udd9b": 1,
+          "\ud83d\ude43": 1,
+          "\ud83d\udc1d": 1,
+          "\ud83d\udc94": 1,
+          "\ud83d\ude4f": 1,
+          "\ud83d\ude02": 1,
+          "\ud83d\ude10": 1
+        },
+        "topic_3": {
+          "\ud83d\udc63": 1,
+          "\ud83d\udc10": 1,
+          "\ud83e\udd9d": 1,
+          "\ud83d\udcf8": 1,
+          "\ud83d\ude2d": 1,
+          "\ud83e\udd37": 1,
+          "\u2642": 1
+        },
+        "topic_4": {
+          "\ud83d\udc9c": 2,
+          "\u265f": 2,
+          "\ud83c\udf99": 1,
+          "\ud83d\udd17": 1,
+          "\ud83d\ude03": 1,
+          "\ud83d\udc4d": 1,
+          "\ud83c\udffb": 1,
+          "\ud83e\udd26": 1,
+          "\u2640": 1,
+          "\ud83d\udc99": 1,
+          "\ud83d\udcda": 1,
+          "\ud83c\udde7": 1,
+          "\ud83c\uddf7": 1,
+          "\ud83c\uddfa": 1,
+          "\ud83c\uddf8": 1,
+          "\ud83d\udc15": 1
+        },
+        "topic_2": {
+          "\ud83d\udc80": 4,
+          "\ud83d\udc9c": 2,
+          "\ud83e\udd79": 2,
+          "\ud83e\udd8a": 1,
+          "\ud83d\udca4": 1,
+          "\ud83c\udffe": 1,
+          "\ud83c\udf36": 1,
+          "\ud83d\udc94": 1,
+          "\ud83d\ude14": 1
         }
       },
       "users_by_topic": {
+        "topic_1": {
+          "did:plc:3ryhtjlvlsyot57n7vixvtqb": 1,
+          "did:plc:tpevsfra3q26odg4wjz2cglu": 1,
+          "did:plc:4addv7du4gz3kbvcg2pffdkx": 1,
+          "did:plc:usuzndtqn24oc45yaaztbxq7": 1,
+          "did:plc:xz27fxp7tm4u5na754amme2n": 1,
+          "did:plc:w3lwjn33hikulgemxf2rbujx": 1,
+          "did:plc:bw3uobs6k4rx5hbn6irgvkrr": 1,
+          "did:plc:vz35eklbsdwmln3myunfrmzm": 1,
+          "did:plc:ijovqjjmxdcw32fvf3e53jo2": 1,
+          "did:plc:m7sa6jbzph2ln7a23ncy5g7f": 1
+        },
         "topic_0": {
-          "did:plc:p2msu5rdko5cfrmrqfip3bbp": 2,
-          "did:plc:lylnuicmwzslk6fv22xznhsj": 1
+          "did:plc:3p3frm2aaup2pt3dqpkotdxb": 1,
+          "did:plc:73tyisfrsxqe34o65igzglmy": 1,
+          "did:plc:6cjp3ellqlmlnvciwibabvkw": 1,
+          "did:plc:bw3uobs6k4rx5hbn6irgvkrr": 1,
+          "did:plc:6bxanfoz7fzymv3boi7g4uy2": 1,
+          "did:plc:2arocxore46ksmbrwpuuaa6f": 1,
+          "did:plc:hnoxkgomq6bkmxjwvqiol2kw": 1,
+          "did:plc:irroirp6bf45gz2dornizyqp": 1,
+          "did:plc:yui2qu6stt35sjgrf67wij66": 1,
+          "did:plc:3b7p2kehwe5k4eoebubmwga7": 1
         },
         "topic_3": {
-          "did:plc:ne7m7b4d5kh6olknylykzsvb": 1,
-          "did:plc:qgjok2o5uojmbtcxdijj2i25": 1,
-          "did:plc:2svm7wwx5k6dm3no3kaxbs64": 1,
-          "did:plc:i3fhjvvkbmirhyu4aeihhrnv": 1,
-          "did:plc:7ni6ktnv7pnp3pk6eosdznrg": 1,
-          "did:plc:wbaxdsd4wkxqeiymsc4xi6wj": 1,
-          "did:plc:45tvq2vvfzl6jwvosj2kwqfu": 1,
-          "did:plc:znpv4c2eh2oyzruyf47ve6bi": 1,
-          "did:plc:xrq7j6pu2zjkjqmw3wnfynij": 1,
-          "did:plc:kp5iay36ppiwmtmjpt7phk7a": 1
-        },
-        "topic_2": {
-          "did:plc:yid33ptm53rwv2mw6hcuhem7": 1,
-          "did:plc:e7phmksfmhkqs3gluxvz2awu": 1,
-          "did:plc:xww6ueqzaagqxohhrtorgmwf": 1
+          "did:plc:4yo4cagz67lxs7tbzrmwyosz": 1,
+          "did:plc:6wnaeki4ini5tdnorpkfnkm3": 1,
+          "did:plc:3rnl7cbpqals3kh237c7gyg6": 1,
+          "did:plc:xcfzdhno57jwjauejy4hja7g": 1,
+          "did:plc:3mu625t7vpkdv2awqk3blpcf": 1,
+          "did:plc:vbaie252owm7svtrftuxs6s2": 1,
+          "did:plc:vikkbuee2zv6absn55odust2": 1,
+          "did:plc:64cvlposhqveflskm3kwzkvu": 1,
+          "did:plc:7kx3uydf2abnvja7xltelgwk": 1,
+          "did:plc:apynol2cinlup4qx7hjm7saa": 1
         },
         "topic_4": {
-          "did:plc:y4l5g5to3r5hew6ha2zzzrrm": 1,
-          "did:plc:l6swhtm7ykp4nhm5meo7pq7v": 1,
-          "did:plc:vgbmaajxfttwzhepxsfdcijp": 1,
-          "did:plc:m76yt3rf5qajtejplmiw4zl3": 1,
-          "did:plc:kquincxxdinwnpuj66nobahy": 1,
-          "did:plc:wjsefzwyhdw24zqttqshkiy3": 1,
-          "did:plc:apzkzvk3hklpaoammcicvv53": 1
+          "did:plc:y3wyn2keqln5hdywt7btznbj": 2,
+          "did:plc:vizwdor43adw3277u2kkrssd": 2,
+          "did:plc:4qb5rb65bxfooh2p2czveuc5": 1,
+          "did:plc:yfsvzm53oeselkbhg432sdvm": 1,
+          "did:plc:ww22ddm5m7aerlywwyknutlx": 1,
+          "did:plc:r5y7zsf3ywpsr74roq5t6ape": 1,
+          "did:plc:yxapxhsxxcfsg2dvhrakxipc": 1,
+          "did:plc:qvh3thrldgjax2jvbu3x55oe": 1,
+          "did:plc:kgmbb43bj7j2vizekjvtsef3": 1,
+          "did:plc:lb7v3uq23wmm5spv2a27kehv": 1
         },
-        "topic_1": {
-          "did:plc:dtxeaqgso2p4drm533hhja5v": 1,
-          "did:plc:3okjilhyspcfyhe34xjizyaa": 1,
-          "did:plc:ws55sz2wc623ukovqsp2nkpy": 1,
-          "did:plc:4hm6gb7dzobynqrpypif3dck": 1,
-          "did:plc:5avfr3kjvetqafk5vkpdjfcq": 1,
-          "did:plc:5tei4txejyz7vmsryjs4ptcv": 1
+        "topic_2": {
+          "did:plc:pus6vyy3vxn7od4e6mqphkqd": 2,
+          "did:plc:7nhn5hmi7x3n2xpltiu47kae": 2,
+          "did:plc:dckyemkq4mftewsjhlozficm": 1,
+          "did:plc:blxr6v72xfpxtfbn5gubqe3j": 1,
+          "did:plc:udwtbukmxonvbsbl57n5ahc4": 1,
+          "did:plc:arim4i7rx6lfiqwdo3h5xrjn": 1,
+          "did:plc:u3efskiflbfwjbikj2gzzpsp": 1,
+          "did:plc:fweoypu6qhjqstn7wn5vkw6o": 1,
+          "did:plc:vfkhft3khz4szrbwabg5cdyo": 1,
+          "did:plc:5x4p5tgshfa7xef6f3jrv34h": 1
         }
       }
     }
