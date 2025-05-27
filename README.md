@@ -2,7 +2,12 @@
 
 **CognitiveSky** is an open-source research infrastructure and dashboard for analyzing mental health narratives on the Bluesky social platform. Inspired by [TwiXplorer](https://github.com/smash-edin/twixplorer), it integrates real-time data ingestion, robust NLP processing, and interactive visualization to empower researchers, advocates, and developers with actionable social insights.
 
----
+## 🌟 Features
+
+- **Real-time Data Ingestion:** Continuously collects public posts related to mental health from Bluesky using the Firehose API.
+- **NLP Processing:** Applies state-of-the-art sentiment analysis, emotion detection, and topic modeling to understand mental health narratives.
+- **Interactive Dashboard:** Visualizes trends, user engagement, and topic distributions using React and Next.js.
+- **Open Source:** Fully transparent and community-driven, allowing contributions from researchers and developers.
 
 ## ⚙️ System Architecture
 
