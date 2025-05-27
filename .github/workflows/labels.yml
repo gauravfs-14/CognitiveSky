@@ -47,7 +47,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - run: python scripts/summary.py
+      - run: EXPORT_ONLY=0 python scripts/summary.py
 
   commit-summary:
     runs-on: ubuntu-latest
@@ -63,6 +63,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - uses: actions/setup-python@v4
         with:
