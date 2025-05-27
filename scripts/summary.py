@@ -26,8 +26,23 @@ OFFSET = int(os.getenv("BATCH_OFFSET", "0")) * BATCH_SIZE
 
 # === Clients ===
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-sentiment_pipe = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment", truncation=True)
-emotion_pipe = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=1, truncation=True)
+sentiment_pipe = pipeline(
+    "sentiment-analysis",
+    model="cardiffnlp/twitter-roberta-base-sentiment",
+    tokenizer="cardiffnlp/twitter-roberta-base-sentiment",
+    device=-1,
+    return_all_scores=False
+)
+
+emotion_pipe = pipeline(
+    "text-classification",
+    model="j-hartmann/emotion-english-distilroberta-base",
+    tokenizer="j-hartmann/emotion-english-distilroberta-base",
+    top_k=1,
+    device=-1,
+    return_all_scores=False
+)
+
 
 # === Connect to Turso ===
 conn = libsql.connect("/tmp/turso_replica.db", sync_url=TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
@@ -119,8 +134,9 @@ def label_and_migrate():
 
     texts = [post["text"] for post in posts]  # or pre-trim to 1200 chars
     topics, topic_words, topic_weights = perform_topic_modeling(texts)
-    sentiments = sentiment_pipe(texts, batch_size=32, truncation=True, padding=True)
-    emotions = emotion_pipe(texts, batch_size=32, truncation=True, padding=True)
+    # Perform NLP with safe batch + truncation
+    sentiments = sentiment_pipe(texts, batch_size=32, truncation=True, padding=True, max_length=512)
+    emotions = emotion_pipe(texts, batch_size=32, truncation=True, padding=True, max_length=512)
 
     topic_by_day = defaultdict(Counter)
     sentiment_by_topic = defaultdict(Counter)
