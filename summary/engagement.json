@@ -1,356 +1,712 @@
 {
+  "2025-05-28": {
+    "posts": {
+      "top_by_interaction": [
+        {
+          "uri": "at://did:plc:hqqu6eoiuxnftibhd7hg4glg/app.bsky.feed.post/3lq6z3uyeic26",
+          "text": "TW: pregnancy loss",
+          "score": 0.751735784152337,
+          "created_at": "2025-05-28T01:04:34.926",
+          "did": "did:plc:hqqu6eoiuxnftibhd7hg4glg"
+        },
+        {
+          "uri": "at://did:plc:ves2pvalsh2fw65vlatzl4k6/app.bsky.feed.post/3lq72gttxue2n",
+          "text": "im crying i love you sunday",
+          "score": 0.5486393863561737,
+          "created_at": "2025-05-28T01:28:36.573",
+          "did": "did:plc:ves2pvalsh2fw65vlatzl4k6"
+        },
+        {
+          "uri": "at://did:plc:rk4xnytfoqdflge5kblezsrd/app.bsky.feed.post/3lq734zqar22u",
+          "text": "don\u2019t worry, baby. you weren\u2019t using that brain anyway.",
+          "score": 0.5364542873265234,
+          "created_at": "2025-05-28T01:41:00.94",
+          "did": "did:plc:rk4xnytfoqdflge5kblezsrd"
+        },
+        {
+          "uri": "at://did:plc:7uwvloz5lnqlsslhs5tfe66c/app.bsky.feed.post/3lq6yzadb3c2d",
+          "text": "Don\u2019t worry fellow citizens, you\u2019re next.",
+          "score": 0.5355149710258477,
+          "created_at": "2025-05-28T01:03:06.153",
+          "did": "did:plc:7uwvloz5lnqlsslhs5tfe66c"
+        },
+        {
+          "uri": "at://did:plc:6jhyhrw7tqkxelvesyjnykzl/app.bsky.feed.post/3lq6yirwtls2g",
+          "text": "It\u2019s Mental Health Awareness Month \ud83d\udc9a\n\nThis week, we\u2019re spotlighting our client, @activeminds.bsky.social, who brings the mental health conversation directly to college campuses nationwide. \n\n#MentalHealthAwareness",
+          "score": 0.5243184698136476,
+          "created_at": "2025-05-28T00:53:54.195",
+          "did": "did:plc:6jhyhrw7tqkxelvesyjnykzl"
+        },
+        {
+          "uri": "at://did:plc:yz6qt75b2zk5wfmr4w5giyp2/app.bsky.feed.post/3lq735ogsvs23",
+          "text": "I am sorry you are having to worry about this. I am in the same boat, with 2 sons with serious mental illnesses. One luckily on SSI  but the other is not. So I am supporting him by myself on SS. Both are in their 40s",
+          "score": 0.49593722998928214,
+          "created_at": "2025-05-28T01:41:22.65",
+          "did": "did:plc:yz6qt75b2zk5wfmr4w5giyp2"
+        },
+        {
+          "uri": "at://did:plc:uhqfa576hl7ls67bof5fb2py/app.bsky.feed.post/3lq6zywgscc2v",
+          "text": "ECONOMIC JUSTICE AND MENTAL HEALTH\n\nThis. Is. Good. News.\n\nUnions protect and defend people who work against the insane power of the bosses. Good unions do more good for mental health in America than the combined power of all of us associated with \"mental health care.\"\n\n#unionsforall #whyyousadbro?",
+          "score": 0.49236097374244736,
+          "created_at": "2025-05-28T01:20:49.523",
+          "did": "did:plc:uhqfa576hl7ls67bof5fb2py"
+        },
+        {
+          "uri": "at://did:plc:u2zjvwiyyiezc6hlxypomtj4/app.bsky.feed.post/3lq72bw75c22e",
+          "text": "has anyone ever \"listen to yourself\"ed\n\ni just mock people who are Very Serious about crying for argentina",
+          "score": 0.48401358551198675,
+          "created_at": "2025-05-28T01:25:51.264",
+          "did": "did:plc:u2zjvwiyyiezc6hlxypomtj4"
+        },
+        {
+          "uri": "at://did:plc:yetdkong3mudicsvvr23zwhj/app.bsky.feed.post/3lq6zvskxp22g",
+          "text": "i can\u2019t stop crying and i have no idea why",
+          "score": 0.47276819651834784,
+          "created_at": "2025-05-28T01:19:04.805",
+          "did": "did:plc:yetdkong3mudicsvvr23zwhj"
+        },
+        {
+          "uri": "at://did:plc:p2ma3lujrsyfbjq5b4a7nipr/app.bsky.feed.post/3lq6ydn6bw22f",
+          "text": "ouuuh. uh, well\u2026 there\u2019s a possibility they break up! don\u2019t worry too much about it, hyperdrive. why don\u2019t you stop thinking about girls for a bit?",
+          "score": 0.47039847508570115,
+          "created_at": "2025-05-28T00:51:01.424",
+          "did": "did:plc:p2ma3lujrsyfbjq5b4a7nipr"
+        },
+        {
+          "uri": "at://did:plc:i76jn3kavyutmmpsexpqus3y/app.bsky.feed.post/3lq72mjfeas2s",
+          "text": "No, I'm not having an nervous breakdown, it's just a rapid unscheduled disassembly of my mental health",
+          "score": 0.452454207821001,
+          "created_at": "2025-05-28T01:31:46.936",
+          "did": "did:plc:i76jn3kavyutmmpsexpqus3y"
+        },
+        {
+          "uri": "at://did:plc:abdr5lzpkqjfz4pbzzxvlr72/app.bsky.feed.post/3lq73gk6ris27",
+          "text": "Anyone else gauge how their mental health is doing based on how many cups are in their room? Just me?",
+          "score": 0.44467674785880207,
+          "created_at": "2025-05-28T01:46:20.183",
+          "did": "did:plc:abdr5lzpkqjfz4pbzzxvlr72"
+        },
+        {
+          "uri": "at://did:plc:3y37l3eyk2pybq3t7siszf32/app.bsky.feed.post/3lq6zwfpq3s26",
+          "text": "live look at me trying to process yet another tatum paxley loss",
+          "score": 0.4408615143813442,
+          "created_at": "2025-05-28T01:19:24.882",
+          "did": "did:plc:3y37l3eyk2pybq3t7siszf32"
+        },
+        {
+          "uri": "at://did:plc:zggloatjcw4yu7nlwzjlnc3c/app.bsky.feed.post/3lq6z4hp5mk2w",
+          "text": "Somewhere Musk is probably literally crying right now and I love that for him",
+          "score": 0.4285217827536803,
+          "created_at": "2025-05-28T01:04:54.547",
+          "did": "did:plc:zggloatjcw4yu7nlwzjlnc3c"
+        },
+        {
+          "uri": "at://did:plc:are4vmuavumktgcpc3pq5ucg/app.bsky.feed.post/3lq6yw6fygk2i",
+          "text": "@cnn.com you guys done with the huge Biden mental health cover up yet or",
+          "score": 0.427032864974885,
+          "created_at": "2025-05-28T01:01:23.482",
+          "did": "did:plc:are4vmuavumktgcpc3pq5ucg"
+        },
+        {
+          "uri": "at://did:plc:w4xxay3lz4ensdzhwbc74eya/app.bsky.feed.post/3lq6yleejts2v",
+          "text": "Knicks basketball helps me worry about something other than all the other stuff to worry about.",
+          "score": 0.4106817250170707,
+          "created_at": "2025-05-28T00:55:20.627",
+          "did": "did:plc:w4xxay3lz4ensdzhwbc74eya"
+        },
+        {
+          "uri": "at://did:plc:okwi2nj7zapqqki7sl7m7cxp/app.bsky.feed.post/3lq6yiu4myk2b",
+          "text": "it's amazing that there is a country in the top 8 earners in the world and its deliberately driving children into even worse poverty than they were already in (which is closing on 20%) and it's like: don't worry guys, we'll do it on AI. really convenient actually, don't have to meet anyone starving",
+          "score": 0.3935939406488572,
+          "created_at": "2025-05-28T00:53:56.482",
+          "did": "did:plc:okwi2nj7zapqqki7sl7m7cxp"
+        },
+        {
+          "uri": "at://did:plc:lpuob6tm7og5xhtp6tt2uaf2/app.bsky.feed.post/3lq727vgxps2v",
+          "text": "Sefikura fic idea\n\nCloud dealing with the grief of killing his true love while everyone congratulates him for doing the deed. They praise him for being the hero of the planet. He has to constantly hear people insulting Sephiroth and enjoying his demise while barely holding onto his mental health.",
+          "score": 0.39192103101847,
+          "created_at": "2025-05-28T01:24:43.363",
+          "did": "did:plc:lpuob6tm7og5xhtp6tt2uaf2"
+        },
+        {
+          "uri": "at://did:plc:mivfmd2qyxfadrkr6fa7qemd/app.bsky.feed.post/3lq6ymgzccs2y",
+          "text": "Something for people to consider.\nNot my mental health team?\nNot interested in your opinion.\nI've just chucked a petty bully I knew since age 11, because I will not be treated like shit, played with, & told I'm paranoid for thinking my phone might be hacked after I caught Gamaredon on my PC.\nPlease.",
+          "score": 0.3916973597550438,
+          "created_at": "2025-05-28T00:55:56.956",
+          "did": "did:plc:mivfmd2qyxfadrkr6fa7qemd"
+        },
+        {
+          "uri": "at://did:plc:mvrpowgusvawa3szrg7cmy3t/app.bsky.feed.post/3lq73h4k3h22r",
+          "text": "Don't worry, all 4 of these guys said these while getting a DUI. The constant remains",
+          "score": 0.38888748337865703,
+          "created_at": "2025-05-28T01:46:39.428",
+          "did": "did:plc:mvrpowgusvawa3szrg7cmy3t"
+        },
+        {
+          "uri": "at://did:plc:cikmnvbb5n5skztjw64y3ac2/app.bsky.feed.post/3lq6zjkqyu22d",
+          "text": "\ud83c\udde6\ud83c\uddfa New on the OTARC Blog\n\nThe Olga Tennison Autism Research Centre is proud to have contributed evidence, expertise, and lived experience to the the National Roadmap to Improve the Health and Mental Health of Autistic People. \n\nwww.otarc.com.au/2025/nationa...",
+          "score": 0.38803713600943773,
+          "created_at": "2025-05-28T01:12:13.961",
+          "did": "did:plc:cikmnvbb5n5skztjw64y3ac2"
+        },
+        {
+          "uri": "at://did:plc:ljwzdrz7t4bhcsgugnqzxoc3/app.bsky.feed.post/3lq6ybb3xi22v",
+          "text": "when is the media going to start talking about all the money being lost by deporting people, getting rid of the international students, loss of tourism, tariffs,etc. One day we re going to wake up and say \"what happened?\"",
+          "score": 0.3863033666715021,
+          "created_at": "2025-05-28T00:49:41.656",
+          "did": "did:plc:ljwzdrz7t4bhcsgugnqzxoc3"
+        },
+        {
+          "uri": "at://did:plc:jmmctlkvlhxvq2h5ct5qcdiz/app.bsky.feed.post/3lq723tmu3c2i",
+          "text": "Dang, this is pretty much saying please stop being an idiot, we'll buy some of your ai chips at our own loss, you're wrecking everything.\n\nfinance.yahoo.com/news/japan-p...",
+          "score": 0.38598132373984917,
+          "created_at": "2025-05-28T01:22:27.241",
+          "did": "did:plc:jmmctlkvlhxvq2h5ct5qcdiz"
+        },
+        {
+          "uri": "at://did:plc:kr7ipya5qmfqy3wdtkmn5rn4/app.bsky.feed.post/3lq6zotavuk24",
+          "text": "Well, you know what Don the Con? If you would keep your ego in check and your pride locked tight and shut your mouth and stop pissing off the world we wouldn't have to worry about needing a golden dome.",
+          "score": 0.36926601140179227,
+          "created_at": "2025-05-28T01:15:10.623",
+          "did": "did:plc:kr7ipya5qmfqy3wdtkmn5rn4"
+        },
+        {
+          "uri": "at://did:plc:v7rlqymgbdkt66i4zajsxnkm/app.bsky.feed.post/3lq6y5giknk2q",
+          "text": "A sense of calm swept over me when I heard...\n\nLoss of attitude control \n\nReports say \n\nsuborbital spin\n\nA deep satisfaction",
+          "score": 0.3670735737232999,
+          "created_at": "2025-05-28T00:47:33.094",
+          "did": "did:plc:v7rlqymgbdkt66i4zajsxnkm"
+        },
+        {
+          "uri": "at://did:plc:7kq2mmp7y7hd3kpemmai3tag/app.bsky.feed.post/3lq6yvmu3fp22",
+          "text": "Should we just manage AI like we do agile\u00a0coaches?\n\nThis is a bit of a worry. I have been getting into AI and finding it really good. There is hype but also surprising value. At the moment I am using Claude to clean up old content in Confluence and to summarise the outcomes of multiple workshops\u2026",
+          "score": 0.3670596292694717,
+          "created_at": "2025-05-28T01:01:03",
+          "did": "did:plc:7kq2mmp7y7hd3kpemmai3tag"
+        },
+        {
+          "uri": "at://did:plc:wgqs2kxs6m523vtrcxisnyvb/app.bsky.feed.post/3lq6ze3mi4s2k",
+          "text": "I'm crying real tears",
+          "score": 0.3603341229698006,
+          "created_at": "2025-05-28T01:09:10.31",
+          "did": "did:plc:wgqs2kxs6m523vtrcxisnyvb"
+        },
+        {
+          "uri": "at://did:plc:nv6p5jiik6zzjree3f2mczwz/app.bsky.feed.post/3lq736b3jn226",
+          "text": "State Trump won by just 1% faces $314M loss in vital aid\n\nwww.rawstory.com/state-trump-...",
+          "score": 0.36002297720010573,
+          "created_at": "2025-05-28T01:41:42.203",
+          "did": "did:plc:nv6p5jiik6zzjree3f2mczwz"
+        },
+        {
+          "uri": "at://did:plc:rxlnh6sjsyxhndpvv4cbtpnx/app.bsky.feed.post/3lq72jz4dbc2n",
+          "text": "Learning that popularity on social media mostly requires your particular mental illness to compel you to only ever post about one subject and nothing else. \n\nUnfortunately I have the mental illness that makes me lose focus and talk about something different every time, so RIP.",
+          "score": 0.3522255691466983,
+          "created_at": "2025-05-28T01:30:22.754",
+          "did": "did:plc:rxlnh6sjsyxhndpvv4cbtpnx"
+        },
+        {
+          "uri": "at://did:plc:iy36p4cpakvq7g6zmov5khql/app.bsky.feed.post/3lq72akfze22y",
+          "text": "Shout to @pickletehdromer.bsky.social for being one of 3 women who sent me detailed videos on how to inject my estrogen. I sat there crying for an hour but I did it!\n\nWithout here I'd still be crying.",
+          "score": 0.34829849894924736,
+          "created_at": "2025-05-28T01:25:05.349",
+          "did": "did:plc:iy36p4cpakvq7g6zmov5khql"
+        },
+        {
+          "uri": "at://did:plc:osdli35csdy7lkcpvvnzlszf/app.bsky.feed.post/3lq6zfcbi4c2t",
+          "text": "I\u2019m at a such a total loss of how do you get people to see reason. Basic math \ud83e\uddee If a bday party \ud83c\udf89 for one person will be even 50M\nbut just fine w/ authorizing cuts to Medicaid, Headstart, whatever else du jour, they will continue to defend parade is better use of money. How?",
+          "score": 0.34367136556862116,
+          "created_at": "2025-05-28T01:09:50.846",
+          "did": "did:plc:osdli35csdy7lkcpvvnzlszf"
+        },
+        {
+          "uri": "at://did:plc:3ydrrm6dzglc3z3qw4iij74g/app.bsky.feed.post/3lq72sxkoj22f",
+          "text": "oh fun. I guess we're just crying for no reason then. Gotcha",
+          "score": 0.3416726188394307,
+          "created_at": "2025-05-28T01:35:23.115",
+          "did": "did:plc:3ydrrm6dzglc3z3qw4iij74g"
+        },
+        {
+          "uri": "at://did:plc:hvja7agxrfiui7u3i7vtkz54/app.bsky.feed.post/3lq72xwmems2t",
+          "text": "I think with the loss of a loved one, I\u2019m gonna scale back my online presence even more. I\u2019m gonna still have things to say and post but family means more to me than a simple hobby of mine.\nI plan on posting a new drawing this summer, I have a couple ideas on what to make. But yeah that\u2019s about it \u2764\ufe0f",
+          "score": 0.33431797717917444,
+          "created_at": "2025-05-28T01:38:09.896",
+          "did": "did:plc:hvja7agxrfiui7u3i7vtkz54"
+        },
+        {
+          "uri": "at://did:plc:nznz4vvmdlsrvhuy7dz666ae/app.bsky.feed.post/3lq73hokax22k",
+          "text": "\ud83c\udfb2\u265f\ufe0f First time trying #Daybreak at 2 players. Either we got really unlucky or this is much harder at 2 than at 3+. There first play we lost in round 4. The second play was a much quicker loss. I had nearly no cards to build a tableau.\n#DaybreakGame #boardgames #gamenighr",
+          "score": 0.3285073342442741,
+          "created_at": "2025-05-28T01:46:58.284",
+          "did": "did:plc:nznz4vvmdlsrvhuy7dz666ae"
+        },
+        {
+          "uri": "at://did:plc:c3hxrx4kiv2wpdemuos5lljq/app.bsky.feed.post/3lq6zkwdgwc2k",
+          "text": "Welp, now that I've written that letter, I'm just gonna go to bed early and have nightmares about all the other people I love cutting me out of their lives and leaving me in the dust.",
+          "score": 0.32737720181039676,
+          "created_at": "2025-05-28T01:12:59.653",
+          "did": "did:plc:c3hxrx4kiv2wpdemuos5lljq"
+        },
+        {
+          "uri": "at://did:plc:trkbaw7mi7o3h3utgiycfunc/app.bsky.feed.post/3lq6zizc62223",
+          "text": "\u201cI\u2019d never thought negatively about my future until that moment. I think that\u2019s the real loss of innocence: the first time you glimpse the boundaries that will limit your own potential.\u201d\n\u2015 Steve Toltz, \u2018A Fraction of the Whole\u2019 \n#BookSky",
+          "score": 0.32392041461849874,
+          "created_at": "2025-05-28T01:11:55.647",
+          "did": "did:plc:trkbaw7mi7o3h3utgiycfunc"
+        },
+        {
+          "uri": "at://did:plc:clxxt5abvlivxcc4rupbopm2/app.bsky.feed.post/3lq6ymma7522r",
+          "text": "thank you all so so much for the help. i can\u2019t believe you have already helped me cover the entire bill due to our apartment complex. i\u2019m at a loss for words.",
+          "score": 0.3232642670926106,
+          "created_at": "2025-05-28T00:56:02.429",
+          "did": "did:plc:clxxt5abvlivxcc4rupbopm2"
+        },
+        {
+          "uri": "at://did:plc:5ptuq4hwkudum5givrmdnmzw/app.bsky.feed.post/3lq6zki3xq22d",
+          "text": "Orange Shitler Jr does not know the meaning of sacrifice. It is vulgar that he would claim his \"ultimate sacrifice\" was loss of money.  What a scumbag.",
+          "score": 0.32187361419666954,
+          "created_at": "2025-05-28T01:12:44.729",
+          "did": "did:plc:5ptuq4hwkudum5givrmdnmzw"
+        },
+        {
+          "uri": "at://did:plc:wqgvu6vlnpenudahy2x4kzcv/app.bsky.feed.post/3lq733rmok225",
+          "text": "The Twins got to Taj early, and in a game where hits were few and far between -- the Rays couldn't manufacture enough in a 4-2 loss. \n\nRBI:\nAranda (29)\nMisner (15)\n\nSP: Bradley 7IP 5H 2ER 1BB 6K (L)\nPEN: 2IP 2H 1ER 0BB 4K\n\n#RaysUp",
+          "score": 0.3217465198151489,
+          "created_at": "2025-05-28T01:40:18.87",
+          "did": "did:plc:wqgvu6vlnpenudahy2x4kzcv"
+        },
+        {
+          "uri": "at://did:plc:fuqtgp5hvl6c4s3qjfjuvln4/app.bsky.feed.post/3lq6zgobbw22k",
+          "text": "Hyman out for the game. Big loss.  Gotta rally around him now. Elevate your game and get er done. #LetsGoOilers",
+          "score": 0.32162091409952404,
+          "created_at": "2025-05-28T01:10:36.977",
+          "did": "did:plc:fuqtgp5hvl6c4s3qjfjuvln4"
+        },
+        {
+          "uri": "at://did:plc:npm7v3vlq7c2nvymay5qm4op/app.bsky.feed.post/3lq72ef6hcs2q",
+          "text": "woke up with a weird white splotch on the edge of my iris and IT HURTSSSS I HAVEN'T BEEN ABLE TO STOP CRYING WHAT IS IT I'M SCARED",
+          "score": 0.3212997361594085,
+          "created_at": "2025-05-28T01:27:14.08",
+          "did": "did:plc:npm7v3vlq7c2nvymay5qm4op"
+        },
+        {
+          "uri": "at://did:plc:iobxmnywhuxrlbnk6a6bkqrp/app.bsky.feed.post/3lq6zphjplk2n",
+          "text": "I should also note I\u2019m perfectly safe and fine, there is nothing to worry about. Just letting you know why my replies and comments have been rather lacklustre lately.",
+          "score": 0.3144047776165276,
+          "created_at": "2025-05-28T01:15:31.902",
+          "did": "did:plc:iobxmnywhuxrlbnk6a6bkqrp"
+        },
+        {
+          "uri": "at://did:plc:4drt7fjpelvfbgs6qqhltta2/app.bsky.feed.post/3lq73kygyfk2z",
+          "text": "Man I don't drink or do drugs but food is absolutely my addiction\nSerious stress eating problem when.. Well, I get stressed\nVery self aware that I'm gaining weight again and I.don't.like.it\u2122",
+          "score": 0.31302566410027344,
+          "created_at": "2025-05-28T01:48:49.349",
+          "did": "did:plc:4drt7fjpelvfbgs6qqhltta2"
+        },
+        {
+          "uri": "at://did:plc:g6chxvo44sk6yoy24n4bmbhs/app.bsky.feed.post/3lq73qoqjas26",
+          "text": "Today for the sake of mental health, I switched to reading the news at the end of the day.  It sure helped to not start the day with anxiety and sadness.  \nIt\u2019s a big change \u2014 for several decades I\u2019ve started the day with reading the newspaper(s).",
+          "score": 0.30627663142371464,
+          "created_at": "2025-05-28T01:52:00.504",
+          "did": "did:plc:g6chxvo44sk6yoy24n4bmbhs"
+        },
+        {
+          "uri": "at://did:plc:ewdeox4ck6x4ih7x3i5abjsk/app.bsky.feed.post/3lq73liyjpk2l",
+          "text": "My current active PCs for my various D&D games are pretty near untraumatized/have had very minimal dramatically torturous experiences and this is all very new to me. \n\nDon't worry. At least some of them are still a little unhinged. Like my klepto rogue that accidentally pissed off a powerful cult.",
+          "score": 0.3059462839927751,
+          "created_at": "2025-05-28T01:49:06.703",
+          "did": "did:plc:ewdeox4ck6x4ih7x3i5abjsk"
+        },
+        {
+          "uri": "at://did:plc:7ml7kkafoewoeumwf76cfczh/app.bsky.feed.post/3lq6y64o6ns2y",
+          "text": "Right now someone is about to die by suicide. It could be a loved one and it could be you. Either way, please reach out, and confirm each other\u2019s safety and mental wellness. Don\u2019t wait until the time is convenient for you, because the opportunity may never come to fruition.",
+          "score": 0.2983585716201363,
+          "created_at": "2025-05-28T00:47:56.347",
+          "did": "did:plc:7ml7kkafoewoeumwf76cfczh"
+        },
+        {
+          "uri": "at://did:plc:h24enpzyqt54lqyggvqta6mp/app.bsky.feed.post/3lq6ytkhjn22c",
+          "text": "I have a hockey game in an hour which is probably the best thing for my mental health. Definitely for my dog\u2019s.\n\nIf one of these idiots decides to do something productive someone text me",
+          "score": 0.29617403057514796,
+          "created_at": "2025-05-28T00:59:55.452",
+          "did": "did:plc:h24enpzyqt54lqyggvqta6mp"
+        },
+        {
+          "uri": "at://did:plc:wpe5wcj7y3hfv3huorblcage/app.bsky.feed.post/3lq72n6rbyk2j",
+          "text": "\u201cToday, able-bodied people decide whether sick people have the right to commit suicide or not.\n\nWell, sick people are expensive, and who really wants to take care of them?\u201d",
+          "score": 0.2956399652564669,
+          "created_at": "2025-05-28T01:32:09.346",
+          "did": "did:plc:wpe5wcj7y3hfv3huorblcage"
+        },
+        {
+          "uri": "at://did:plc:kriqkh4qvl3wekn5qag747vi/app.bsky.feed.post/3lq73eoiz722b",
+          "text": "I literally blocked someone on here for having 2 freeform locs as a beard. Please don\u2019t stress me out \ud83d\ude2d\ud83d\ude2d",
+          "score": 0.2925299745022675,
+          "created_at": "2025-05-28T01:45:17.605",
+          "did": "did:plc:kriqkh4qvl3wekn5qag747vi"
+        },
+        {
+          "uri": "at://did:plc:jgrfr2j5f7g2tp3ld6cdi6ez/app.bsky.feed.post/3lq6zaywbms2a",
+          "text": "Oh look it's me and I wonder why I'm \ud83e\udd0f\ud83c\udffe this close to a fucking mental breakdown",
+          "score": 0.2841036656547106,
+          "created_at": "2025-05-28T01:07:26.824",
+          "did": "did:plc:jgrfr2j5f7g2tp3ld6cdi6ez"
+        }
+      ]
+    }
+  },
   "2025-05-27": {
     "posts": {
       "top_by_interaction": [
         {
-          "uri": "at://did:plc:huflrowt45lzk7e4l5eydt4i/app.bsky.feed.post/3lq6iyzecik2d",
-          "text": "Mental health day at the local storm drain",
-          "score": 0.6149164871690874,
-          "created_at": "2025-05-27T20:16:38.882",
-          "did": "did:plc:huflrowt45lzk7e4l5eydt4i"
+          "uri": "at://did:plc:7d7l5cz4mfk7vak2j63byzjb/app.bsky.feed.post/3lq6mrxtcts2f",
+          "text": "ugly crying! at the airport",
+          "score": 0.6187137410998582,
+          "created_at": "2025-05-27T21:24:17.459",
+          "did": "did:plc:7d7l5cz4mfk7vak2j63byzjb"
         },
         {
-          "uri": "at://did:plc:4pppxjkmed7vctaj2bslfxwz/app.bsky.feed.post/3lq6jjngq722k",
-          "text": "Don't worry. You aren't.",
-          "score": 0.5720255691502887,
-          "created_at": "2025-05-27T20:25:56.898",
-          "did": "did:plc:4pppxjkmed7vctaj2bslfxwz"
+          "uri": "at://did:plc:2j6chyd2eltgot24b64jgpmi/app.bsky.feed.post/3lq6mxo7ues2g",
+          "text": "Why do I always get a headache after crying.",
+          "score": 0.6187137410998582,
+          "created_at": "2025-05-27T21:27:28.712",
+          "did": "did:plc:2j6chyd2eltgot24b64jgpmi"
         },
         {
-          "uri": "at://did:plc:756iu2kotsgjbm4hu36rjfur/app.bsky.feed.post/3lq6ioyzacs2g",
-          "text": "Kaiser has an incredibly detailed website useful for anything you may actually need health-wise, from refilling meds to emailing your doctor, except mental health, which only provides you the option to call your local office to do literally anything.",
-          "score": 0.5582325678563099,
-          "created_at": "2025-05-27T20:11:03.072",
-          "did": "did:plc:756iu2kotsgjbm4hu36rjfur"
+          "uri": "at://did:plc:kpy4ny4c5bzteopcc4musxij/app.bsky.feed.post/3lq6q7rd2bk2y",
+          "text": "Apollo Justice and Athena Cykes crying in the background.\n\n...well after SoJ Apollo has at least his own office #TrialsOfInnocence",
+          "score": 0.6187137410998582,
+          "created_at": "2025-05-27T22:25:41.621",
+          "did": "did:plc:kpy4ny4c5bzteopcc4musxij"
         },
         {
-          "uri": "at://did:plc:dg6zdvv5wo6h6y7o3r3tedkg/app.bsky.feed.post/3lq6jkuonnk2t",
-          "text": "Metabolism\nThe Illuminating Science of Biophotons\nIs there a connection between cellular light and mental health?\nPublished: April 26, 2025\nIn: Psychology Today\nwww.psychologytoday.com/us/blog/the-...",
-          "score": 0.5508120436648016,
-          "created_at": "2025-05-27T20:26:38.053",
-          "did": "did:plc:dg6zdvv5wo6h6y7o3r3tedkg"
+          "uri": "at://did:plc:jlfmfwd3jb5nng6vdjiahhfq/app.bsky.feed.post/3lq6k746dwc2p",
+          "text": "this is doing more for my mental health than therapy today",
+          "score": 0.5508247522374838,
+          "created_at": "2025-05-27T20:37:56.998",
+          "did": "did:plc:jlfmfwd3jb5nng6vdjiahhfq"
         },
         {
-          "uri": "at://did:plc:usuzndtqn24oc45yaaztbxq7/app.bsky.feed.post/3lq6hqlnirk2k",
-          "text": "It\u2019s Episode 60 of the Feel Better Every Day Podcast this week!\n\nFor World Digestive Health Day, Jayne Leonard's back with a simple way to improve our gut health, ADHD symptoms and mental health.\n\nSole to Soul Circle members can join us for a deeper dive thefeelbettereverydaypodcast.com",
-          "score": 0.5347137796811081,
-          "created_at": "2025-05-27T19:54:02.421",
-          "did": "did:plc:usuzndtqn24oc45yaaztbxq7"
+          "uri": "at://did:plc:guwnhoezzsmxyv7br7asqv7m/app.bsky.feed.post/3lq6nhfid5k2x",
+          "text": "Mental health break.",
+          "score": 0.4973881225547801,
+          "created_at": "2025-05-27T21:36:16.421",
+          "did": "did:plc:guwnhoezzsmxyv7br7asqv7m"
         },
         {
-          "uri": "at://did:plc:rzxr4w3eefn4gdfnsqlopeje/app.bsky.feed.post/3lq6iz5vtps2p",
-          "text": "don't worry guys, bluesky can be perfect so long as we all get get along. first things first, listening to audio books is considered reading.",
-          "score": 0.506953622461851,
-          "created_at": "2025-05-27T20:16:43.747",
-          "did": "did:plc:rzxr4w3eefn4gdfnsqlopeje"
+          "uri": "at://did:plc:rq4e2uymmxnmebgjqr3pcg2n/app.bsky.feed.post/3lq6pemrzv352",
+          "text": "Crying on a Tuesday like a big dummy",
+          "score": 0.4822958999008239,
+          "created_at": "2025-05-27T22:10:09",
+          "did": "did:plc:rq4e2uymmxnmebgjqr3pcg2n"
         },
         {
-          "uri": "at://did:plc:dff7qkixzbfxhmaf5xbb7ihq/app.bsky.feed.post/3lq6iodro7s2c",
-          "text": "New report published in @nytimes.com shows how badly #BHeard is failing. The vast majority of mental health calls are still being responded to be the NYPD, and even when BHeard teams respond, they don't meet #MentalHealth best practices. This is NOT the solution.\n\nwww.nytimes.com/2025/05/23/n...",
-          "score": 0.49816987995754736,
-          "created_at": "2025-05-27T20:10:40.803",
-          "did": "did:plc:dff7qkixzbfxhmaf5xbb7ihq"
+          "uri": "at://did:plc:gjem7hmr6czl7ehsfm7bigla/app.bsky.feed.post/3lq6jszu44s24",
+          "text": "\u201dOne of the keys to this success lies in improving the mental health of workers.\"",
+          "score": 0.47474268922228136,
+          "created_at": "2025-05-27T20:31:11.911",
+          "did": "did:plc:gjem7hmr6czl7ehsfm7bigla"
         },
         {
-          "uri": "at://did:plc:7kx3uydf2abnvja7xltelgwk/app.bsky.feed.post/3lq6izruxuk22",
-          "text": "don't worry guys, bluesky can be perfect so long as we all get along. first things first, we just need to agree what resolutions & leadership we need to vote on at DSA National Convention",
-          "score": 0.4950064019126952,
-          "created_at": "2025-05-27T20:17:04.686",
-          "did": "did:plc:7kx3uydf2abnvja7xltelgwk"
+          "uri": "at://did:plc:hyx3rasqxwjiswucmpq6lmtr/app.bsky.feed.post/3lq6qalproq2x",
+          "text": "Maternal Mental Health Has Declined, Study\u00a0Says\n\nNew research involving nearly 200,000 mothers found that one in 12 rated her mental health as fair or poor. Source link",
+          "score": 0.4440134735966712,
+          "created_at": "2025-05-27T22:26:07",
+          "did": "did:plc:hyx3rasqxwjiswucmpq6lmtr"
         },
         {
-          "uri": "at://did:plc:7nhn5hmi7x3n2xpltiu47kae/app.bsky.feed.post/3lq6iunn5ds2j",
-          "text": "Urgent \ud83d\udc9c Topaz\u2019s meds cost $1501.50; I\u2019m $1172 short. Trying to get her treatment shipped today \ud83e\udd79 If you can help or share, please! \n\nLinktr.ee/hiitsbritt \n\n#mutualaid #helpsky #fundsky #mutualaidvoid",
-          "score": 0.46709107337508876,
-          "created_at": "2025-05-27T20:14:12.467",
-          "did": "did:plc:7nhn5hmi7x3n2xpltiu47kae"
+          "uri": "at://did:plc:d2zauz7uozd4nmuz5qvv4ms7/app.bsky.feed.post/3lq6jxhld3c2e",
+          "text": "5 in 5 employees are impacted by mental well-being in the workplace.\n\nOur Mental Health Collection is here to support all of them AND the leaders who care. Dive into the data, best practices, and future-focused insights at www.H3HR.com",
+          "score": 0.44378932459751647,
+          "created_at": "2025-05-27T20:33:40.497",
+          "did": "did:plc:d2zauz7uozd4nmuz5qvv4ms7"
         },
         {
-          "uri": "at://did:plc:dckyemkq4mftewsjhlozficm/app.bsky.feed.post/3lq6hrdnhxs2x",
-          "text": "Well, gonna change my diabetic meds\nThe current one has been making me way to sick and its been getting worse.\nAlso got a appointment to get back on ADHD meds again after many years of not taking them. Im tired of not being able to get anything done. -_-",
-          "score": 0.4637991025677175,
-          "created_at": "2025-05-27T19:54:27.588",
-          "did": "did:plc:dckyemkq4mftewsjhlozficm"
+          "uri": "at://did:plc:vv2lycendh4ddceblo43laat/app.bsky.feed.post/3lq6lmkdmj72v",
+          "text": "\ud83e\uddd8\u200d\u2642\ufe0f Mental health > Market gains! Remember Savage Squad, your wellbeing comes first. Take breaks, set boundaries, and practice self-care. Markets are temporary, but your mental health is forever. \ud83c\udf1f Stay balanced, stay profitable! \ud83d\udcaa #CryptoWellness #MentalHealthMonth2025",
+          "score": 0.43107568832224114,
+          "created_at": "2025-05-27T21:03:21",
+          "did": "did:plc:vv2lycendh4ddceblo43laat"
         },
         {
-          "uri": "at://did:plc:7nhn5hmi7x3n2xpltiu47kae/app.bsky.feed.post/3lq6ivfoaoc2j",
-          "text": "Hi all \ud83d\udc9c Update: Topaz\u2019s treatment is $1501.50. I\u2019m $1172 short and need help to ship meds today \ud83e\udd79 Please donate or share if you can!\n\nLinktr.ee/hiitsbritt \n\n#mutualaid #helpsky #fundsky #mutualaidvoid",
-          "score": 0.4637983288799262,
-          "created_at": "2025-05-27T20:14:37.668",
-          "did": "did:plc:7nhn5hmi7x3n2xpltiu47kae"
+          "uri": "at://did:plc:imm33h2mgs5lddliami6o77b/app.bsky.feed.post/3lq6oixz4ms2y",
+          "text": "Actually crying laughing at Philomena Cunk",
+          "score": 0.42417128408121624,
+          "created_at": "2025-05-27T21:55:03.135",
+          "did": "did:plc:imm33h2mgs5lddliami6o77b"
         },
         {
-          "uri": "at://did:plc:pus6vyy3vxn7od4e6mqphkqd/app.bsky.feed.post/3lq6irkbbic2i",
-          "text": "Sometimes I get anxious in the evening. When I'm tired or when I overwork myself.\n\nSorry. I'll try to relax, maybe get an evening snack. I shouldn't post stuff when I'm moody.\n\nTomorrow will be nice again. I'm just tired. \ud83e\udd8a\ud83d\udca4",
-          "score": 0.46045256269848284,
-          "created_at": "2025-05-27T20:12:28.27",
-          "did": "did:plc:pus6vyy3vxn7od4e6mqphkqd"
+          "uri": "at://did:plc:hkbpxuu3cldjmpqvbmawkls2/app.bsky.feed.post/3lq73xgccqk2b",
+          "text": "I see some talk on CFs but this post has been neglected. Crying like a jilted teenager now.",
+          "score": 0.42120655048669076,
+          "created_at": "2025-05-28T01:55:46.53",
+          "did": "did:plc:hkbpxuu3cldjmpqvbmawkls2"
         },
         {
-          "uri": "at://did:plc:zlrk644clhqf3mun2jbtinz3/app.bsky.feed.post/3lq6i6sbltk2y",
-          "text": "I was about to start thinking my mental health is slowly but surely healing in this place, but alas, it clearly does not...",
-          "score": 0.4563118409354178,
-          "created_at": "2025-05-27T20:01:59.134",
-          "did": "did:plc:zlrk644clhqf3mun2jbtinz3"
+          "uri": "at://did:plc:s43smv2hiwkml2kts6xvp6vw/app.bsky.feed.post/3lq6ot63i222n",
+          "text": "Naomi always crying in interviews. Like girl you think Serena never lost? Get up!",
+          "score": 0.4087575340168753,
+          "created_at": "2025-05-27T22:00:45.056",
+          "did": "did:plc:s43smv2hiwkml2kts6xvp6vw"
         },
         {
-          "uri": "at://did:plc:blxr6v72xfpxtfbn5gubqe3j/app.bsky.feed.post/3lq6isbrcw225",
-          "text": "When you're so unfocused and tired even with your ADHD meds x.x\n\n*Falls asleep on someone*",
-          "score": 0.44201127671772866,
-          "created_at": "2025-05-27T20:12:52.91",
-          "did": "did:plc:blxr6v72xfpxtfbn5gubqe3j"
+          "uri": "at://did:plc:ssrdecklrjk77z7ect3ujvjg/app.bsky.feed.post/3lq6pqlwr3223",
+          "text": "\"Deep cuts to school mental health, STD clinic, medical examiners could hit Multnomah County,\" but this deputy made $170,000 in overtime in 2024. \n\nwww.oregonlive.com/politics/202...",
+          "score": 0.392817747709796,
+          "created_at": "2025-05-27T22:17:12.639",
+          "did": "did:plc:ssrdecklrjk77z7ect3ujvjg"
         },
         {
-          "uri": "at://did:plc:vizwdor43adw3277u2kkrssd/app.bsky.feed.post/3lq6j2fhhhc2w",
-          "text": "ADHD Breakthrough: Genes Linked to Behavior Pathways\n\nhttps://www.europesays.com/uk/136769/\n\nNIJMEGEN, The Netherlands, 27 May 2025 \u2013 In a comprehensive Genomic Press interview published today, Professor Barbara Franke\u2026#uk #news #uknews",
-          "score": 0.43390527387785005,
-          "created_at": "2025-05-27T20:17:24",
-          "did": "did:plc:vizwdor43adw3277u2kkrssd"
+          "uri": "at://did:plc:lo2pi4kocb6rbrnmgwq4line/app.bsky.feed.post/3lq6kul4xbs2q",
+          "text": "I don\u2019t have the language to describe how it feels to have like the worst mental health of your life and to know that your main motivator to just keep going is like guilt and fear of letting people down and for people to be like YOU SEEM SO HAPPY thanks it\u2019s literally fake and I\u2019m taxing myself -",
+          "score": 0.3902705202231542,
+          "created_at": "2025-05-27T20:49:57.323",
+          "did": "did:plc:lo2pi4kocb6rbrnmgwq4line"
         },
         {
-          "uri": "at://did:plc:vizwdor43adw3277u2kkrssd/app.bsky.feed.post/3lq6iztryyz2c",
-          "text": "Mixed reality glasses can give \u2018the whole world back\u2019 to people with partial vision loss\n\nhttps://www.europesays.com/uk/136780/\n\nThe research team\u2019s software allows a head-mounted computer camera to process real-time video of the surroundings and compress\u2026#uk #news #uknews",
-          "score": 0.42754305503423023,
-          "created_at": "2025-05-27T20:17:05",
-          "did": "did:plc:vizwdor43adw3277u2kkrssd"
+          "uri": "at://did:plc:piuwugzzwezrarcv6yhpjes7/app.bsky.feed.post/3lq6m3qrhsc23",
+          "text": "I remember when I used to think that crying in a practice room was a top tier crying strategy, and then I met a walk in cooler.",
+          "score": 0.3878613630941925,
+          "created_at": "2025-05-27T21:11:51.861",
+          "did": "did:plc:piuwugzzwezrarcv6yhpjes7"
         },
         {
-          "uri": "at://did:plc:mb4zijndsfoimd3eracvflp6/app.bsky.feed.post/3lq6jielf3t2f",
-          "text": "Looking for a specific type of romance book\n\nhttps://www.booksns.com/139139/\n\nHi everyone, I\u2019m looking for romance novel recommendations where both main characters have things they need to work on. A lot of stories tend to focus on one protagonist with trauma or mental health challenges, while \u2026",
-          "score": 0.4265223517598752,
-          "created_at": "2025-05-27T20:25:11",
-          "did": "did:plc:mb4zijndsfoimd3eracvflp6"
+          "uri": "at://did:plc:22r2cuemwzxt7ba35eqwbnap/app.bsky.feed.post/3lq6lokg5ks24",
+          "text": "Rough mental health day. I wish I had someone to fuck the happy back in me.",
+          "score": 0.37707502739310883,
+          "created_at": "2025-05-27T21:04:28.991",
+          "did": "did:plc:22r2cuemwzxt7ba35eqwbnap"
         },
         {
-          "uri": "at://did:plc:pus6vyy3vxn7od4e6mqphkqd/app.bsky.feed.post/3lq6ikjxnvc2i",
-          "text": "I only get anxious in the evening. When I'm tired or when I overwork myself.\n\nSorry. I'll try to relax, maybe get an evening snack. I shouldn't post stuff when I'm moody.",
-          "score": 0.41315050985864427,
-          "created_at": "2025-05-27T20:08:33.074",
-          "did": "did:plc:pus6vyy3vxn7od4e6mqphkqd"
+          "uri": "at://did:plc:qghl4r6svykigorjdfgg724d/app.bsky.feed.post/3lq6lo7il222o",
+          "text": "Don't worry. They rescued it in time. :)\n#amazingcultivationsimulator",
+          "score": 0.37426428012997554,
+          "created_at": "2025-05-27T21:04:17.513",
+          "did": "did:plc:qghl4r6svykigorjdfgg724d"
         },
         {
-          "uri": "at://did:plc:3p3frm2aaup2pt3dqpkotdxb/app.bsky.feed.post/3lq6ho6mdz222",
-          "text": "Yes I just broke down crying because of the weather \nIt\u2019s so silly I know\nBut it\u2019s just really got ti me so much \ud83d\ude2d\ud83d\ude2d\ud83d\ude2d",
-          "score": 0.4038573960267833,
-          "created_at": "2025-05-27T19:52:41.645",
-          "did": "did:plc:3p3frm2aaup2pt3dqpkotdxb"
+          "uri": "at://did:plc:gyq45nxdqqqfpj4wh4cusrpe/app.bsky.feed.post/3lq6pkc47ak2i",
+          "text": "\ud83d\udea8 Major cuts to Regina\u2019s Public School band programs \ud83d\udea8\n\nThis isn\u2019t just about music.\nIt\u2019s about equity, mental health, belonging, and giving every child a chance to thrive.\n\n\ud83d\udd17 For everything you need know and links to how you can help, visit: www.saskartsalliance.ca/champion/sto...",
+          "score": 0.3694555882848536,
+          "created_at": "2025-05-27T22:13:41.017",
+          "did": "did:plc:gyq45nxdqqqfpj4wh4cusrpe"
         },
         {
-          "uri": "at://did:plc:63tfsmki4rrran57qosz3af7/app.bsky.feed.post/3lq6in4rfv22e",
-          "text": "still thinking about the therapist who solved 10 years of my mental health issues by saying \"dump him and watch Fleabag\"",
-          "score": 0.3963248597232803,
-          "created_at": "2025-05-27T20:09:59.9",
-          "did": "did:plc:63tfsmki4rrran57qosz3af7"
+          "uri": "at://did:plc:6zfncmmn44p4kexvc2lxf7fs/app.bsky.feed.post/3lq6jzekcps2b",
+          "text": "Very Bad mental health day and I am stuck at work for another two and a half hours save me Cassandra Pentaghast\u2026",
+          "score": 0.3638801386515391,
+          "created_at": "2025-05-27T20:34:44.452",
+          "did": "did:plc:6zfncmmn44p4kexvc2lxf7fs"
         },
         {
-          "uri": "at://did:plc:4yo4cagz67lxs7tbzrmwyosz/app.bsky.feed.post/3lq6hnf4hmc2u",
-          "text": "#sizesky #footsky #vrchat\n\nI might not be at full power in this state - but doesn't mean I can't create a lil destruction for the disrespect! But don't worry, least get a good view of those my soles before ya tramped below em~ \ud83d\udc63\u2728\ud83d\udc10\n\nJust some fun shots @orionspaceracc.bsky.social got of me \ud83e\udd9d\ud83d\udcf8",
-          "score": 0.38054626576356404,
-          "created_at": "2025-05-27T19:52:14.862",
-          "did": "did:plc:4yo4cagz67lxs7tbzrmwyosz"
+          "uri": "at://did:plc:quz43tn33rerzpg6qxuhtjfr/app.bsky.feed.post/3lq6lvz2gvc2r",
+          "text": "Just a wee trim, nothing to worry about \ud83d\ude05",
+          "score": 0.35732950712238276,
+          "created_at": "2025-05-27T21:08:39.202",
+          "did": "did:plc:quz43tn33rerzpg6qxuhtjfr"
         },
         {
-          "uri": "at://did:plc:w3lwjn33hikulgemxf2rbujx/app.bsky.feed.post/3lq6ht3ozjk2c",
-          "text": "Today we celebrate Psychology Day! IDFPR recognizes the vital contributions psychologists make to mental health, well-being, and public service. Thank you to all licensed psychologists who support our communities across Illinois every day.",
-          "score": 0.37483504853079125,
-          "created_at": "2025-05-27T19:55:26.356",
-          "did": "did:plc:w3lwjn33hikulgemxf2rbujx"
+          "uri": "at://did:plc:irxdqpoxqzotqwmfjj4u7pg6/app.bsky.feed.post/3lq6ot5l7s32o",
+          "text": "1 in 3 youth with mental health crisis spends over 12 hours in emergency department waiting for psychiatric\u00a0bed\n\nCredit: Pixabay/CC0 Public Domain Approximately 1 in 3 pediatric mental health Emergency Department (ED) visits resulting in admission or transfer exceeded 12 hours, and over 1 in 8\u2026",
+          "score": 0.3554912484952105,
+          "created_at": "2025-05-27T22:00:42",
+          "did": "did:plc:irxdqpoxqzotqwmfjj4u7pg6"
         },
         {
-          "uri": "at://did:plc:4yfagco3g3k5sl5buzy5sm64/app.bsky.feed.post/3lq6jbzy4fc2o",
-          "text": "The quotes got me crying \ud83d\ude2d\ud83d\ude2d\ud83d\ude2d\ud83d\ude2d\ud83d\ude2d",
-          "score": 0.37320533104834996,
-          "created_at": "2025-05-27T20:21:41.618",
-          "did": "did:plc:4yfagco3g3k5sl5buzy5sm64"
+          "uri": "at://did:plc:bvry25fvz7wsb4oxopu5scuk/app.bsky.feed.post/3lq6maqvw7s2f",
+          "text": "Found an old sketch of this crying boy",
+          "score": 0.3396646375265381,
+          "created_at": "2025-05-27T21:14:39.767",
+          "did": "did:plc:bvry25fvz7wsb4oxopu5scuk"
         },
         {
-          "uri": "at://did:plc:6x746rseeckezqiznyjwaopa/app.bsky.feed.post/3lq6ja4spoc2n",
-          "text": "From @olgalautman.bsky.social for Mental Health Awareness Month.\n\n\u201cThe gaslighting, manipulation, and erosion of reality\u201d of tyranny strain us.\n\nMedia erodes reality by reporting \u201cas if nothing has fundamentally changed.\u201d\n\nTAKE A BREAK if you need it.\n\n*SELF-CARE!*\n\nopen.substack.com/pub/olgalaut...",
-          "score": 0.3616398663660434,
-          "created_at": "2025-05-27T20:20:37.477",
-          "did": "did:plc:6x746rseeckezqiznyjwaopa"
+          "uri": "at://did:plc:rvabowepyri5tj6avvnpswiy/app.bsky.feed.post/3lq6pm6mn2s24",
+          "text": "Another loss for the orange tyrant man-baby.\nwww.joemygod.com/2025/05/judg...",
+          "score": 0.3373880764088724,
+          "created_at": "2025-05-27T22:14:44.479",
+          "did": "did:plc:rvabowepyri5tj6avvnpswiy"
         },
         {
-          "uri": "at://did:plc:fclm57g7kwjwmlhanlvs5675/app.bsky.feed.post/3lq6jmk6ix227",
-          "text": "I thought it was just fatigue.\nThen came the night sweats.\nThe itching.\nThe weight loss.\nI never expected it to be stage 3 lymphoma.\n\ud83d\udc9c Tomorrow I\u2019m sharing how I was finally diagnosed \u2014 and what I wish I knew sooner.\nwww.youtube.com/shorts/clH7_...\n#lymphomasymptoms #nonhodgkinslymphoma",
-          "score": 0.3539190388799438,
-          "created_at": "2025-05-27T20:27:34.147",
-          "did": "did:plc:fclm57g7kwjwmlhanlvs5675"
+          "uri": "at://did:plc:uus4lq7zfweclwixypiiakqb/app.bsky.feed.post/3lq6p3xmut22d",
+          "text": "Whenever I get a new follower I always feel like I need to post some disclaimer, like \u201cHey jsyk, I don\u2019t like this pairing/character that you do, I hope that\u2019s okay, but I do like this pairing/character that you like, so don\u2019t worry, I don\u2019t think you\u2019re a bad person just please don\u2019t hate me I\u2019m re",
+          "score": 0.33682799144572734,
+          "created_at": "2025-05-27T22:05:40.277",
+          "did": "did:plc:uus4lq7zfweclwixypiiakqb"
         },
         {
-          "uri": "at://did:plc:vaba7tf7ylt2kaavf4t2kotp/app.bsky.feed.post/3lq6jco6jbj2v",
-          "text": "We\u2019re witnessing the reversal of Reconstruction. \u201cICE raids are the new night rides. Detention centers are the new plantations. The trauma, the terror, the family separations \u2014 they\u2019re not unintended consequences. They are the point.\u201d [friendomedia.substack.com]",
-          "score": 0.34804009083421383,
-          "created_at": "2025-05-27T20:22:02",
-          "did": "did:plc:vaba7tf7ylt2kaavf4t2kotp"
+          "uri": "at://did:plc:mutq3xrn5le3btbpzw22ohij/app.bsky.feed.post/3lq6p7r4eac2g",
+          "text": "Don't worry babe it's just a stage kiss",
+          "score": 0.33148709925831626,
+          "created_at": "2025-05-27T22:07:47.662",
+          "did": "did:plc:mutq3xrn5le3btbpzw22ohij"
         },
         {
-          "uri": "at://did:plc:hoz4x5pq673zja5cn2anzgek/app.bsky.feed.post/3lq6iovq42k2k",
-          "text": "No one knows exactly how many people outside Washington have been affected by Trump\u2019s war on the federal government.\n\nBut we found 10. A farmer. A scientist. A student. A mental health advocate. And more.",
-          "score": 0.34718586821097397,
-          "created_at": "2025-05-27T20:10:59.626",
-          "did": "did:plc:hoz4x5pq673zja5cn2anzgek"
+          "uri": "at://did:plc:eyrcgjjd52zcgk2pdl7bbihz/app.bsky.feed.post/3lq6mkdmtek24",
+          "text": "Not to worry.  Travel from the countries has already stalled .",
+          "score": 0.32995743941516104,
+          "created_at": "2025-05-27T21:20:01.395",
+          "did": "did:plc:eyrcgjjd52zcgk2pdl7bbihz"
         },
         {
-          "uri": "at://did:plc:yxapxhsxxcfsg2dvhrakxipc/app.bsky.feed.post/3lq6hr6h5pc23",
-          "text": "Scientists with ADHD speak up: when fire meets focus www.nature.com/articles/d41...",
-          "score": 0.3452964985013884,
-          "created_at": "2025-05-27T19:54:22.137",
-          "did": "did:plc:yxapxhsxxcfsg2dvhrakxipc"
+          "uri": "at://did:plc:xgf6kqkzrr6dlek5354cs5kl/app.bsky.feed.post/3lq6llx7aon2x",
+          "text": "\ud83e\uddf6 Crafting isn't just a hobby\u2014it's self-care in action! This Mental Health Awareness Month, remember that every stitch, brush stroke, and creative moment is a step toward mindfulness and healing. Join our community and craft your way to calm \ud83d\udc9a #MentalHealthAwareness",
+          "score": 0.32266873424682574,
+          "created_at": "2025-05-27T21:03:00",
+          "did": "did:plc:xgf6kqkzrr6dlek5354cs5kl"
         },
         {
-          "uri": "at://did:plc:pmeavc6nml6enpdkze4dqacj/app.bsky.feed.post/3lq6ivyj3os2r",
-          "text": "Reminder of just how empty a soul he is! \nyoutube.com/shorts/NGD9v...",
-          "score": 0.3338152168330648,
-          "created_at": "2025-05-27T20:14:57.424",
-          "did": "did:plc:pmeavc6nml6enpdkze4dqacj"
+          "uri": "at://did:plc:xgf6kqkzrr6dlek5354cs5kl/app.bsky.feed.post/3lq6loixhtc2d",
+          "text": "\ud83e\uddf6 Crafting isn't just a hobby\u2014it's self-care in action! This Mental Health Awareness Month, remember that every stitch, brush stroke, and creative moment is a step toward mindfulness and healing. Join our community and craft your way to calm \ud83d\udc9a #MentalHealthAwareness",
+          "score": 0.32266873424682574,
+          "created_at": "2025-05-27T21:04:26",
+          "did": "did:plc:xgf6kqkzrr6dlek5354cs5kl"
         },
         {
-          "uri": "at://did:plc:mqyjo2zfzv6q3sibehk5qquz/app.bsky.feed.post/3lq6ib5qwu22w",
-          "text": "Like just cause I squeeze it and nothing came out don't mean nothing is in there. You just gotta put pressure on the right spots and something will come out. If nothing coming out after that, and I took the pump out and tapped, and used my flashlight to see if more is there, then it is empty.",
-          "score": 0.33050985953948225,
-          "created_at": "2025-05-27T20:03:18.276",
-          "did": "did:plc:mqyjo2zfzv6q3sibehk5qquz"
+          "uri": "at://did:plc:agztmylzv4zozeiujj6o6wv2/app.bsky.feed.post/3lq6l25iroc24",
+          "text": "guys, i havent played sims in AGES so i'm not up to the new stuff it has. but i think my viktor sim is preganant? how do they tell you?!?!?!? i just made him have a drink at 9 AM im crying",
+          "score": 0.31850378589473133,
+          "created_at": "2025-05-27T20:53:04.355",
+          "did": "did:plc:agztmylzv4zozeiujj6o6wv2"
         },
         {
-          "uri": "at://did:plc:64cvlposhqveflskm3kwzkvu/app.bsky.feed.post/3lq6inrjulc23",
-          "text": "i don't feel the hyperactive part of my adhd until i have to stand behind someone on an escalator",
-          "score": 0.30140991460556044,
-          "created_at": "2025-05-27T20:10:21.667",
-          "did": "did:plc:64cvlposhqveflskm3kwzkvu"
+          "uri": "at://did:plc:rqcsoj3g6i6jfk2r5o663fhm/app.bsky.feed.post/3lq6m4epqm22y",
+          "text": "\u201cAs someone who is diagnosed with depression, anxiety, and ADHD at an early age, learning how to adapt to life with mental health struggles has been a challenge. And of course, as we are all unique, no one journey is the same.\u201d (1/6) youtu.be/1pbBBvwMyhk  \n#NMHC #MentalHealthAwarenessMonth #MHAM2025",
+          "score": 0.3176916547861867,
+          "created_at": "2025-05-27T21:12:12.776",
+          "did": "did:plc:rqcsoj3g6i6jfk2r5o663fhm"
         },
         {
-          "uri": "at://did:plc:zwycxbfqr7unty3iia4iqd4z/app.bsky.feed.post/3lq6jmtdkdn2o",
-          "text": "a grandmother smuggling meds.",
-          "score": 0.3008969640876224,
-          "created_at": "2025-05-27T20:27:38.288489",
-          "did": "did:plc:zwycxbfqr7unty3iia4iqd4z"
+          "uri": "at://did:plc:kvci27ty66e5zokjjavzkdo4/app.bsky.feed.post/3lq6m6aht4s2y",
+          "text": "That's the thing with these men, like I like you sure I was so excited to have my husband one day. But I don't like you like that, you know how they're like 'baby I need you' from the trauma of being with all their women loool \n\nI don't need them like that lol just forget it",
+          "score": 0.31415343916847366,
+          "created_at": "2025-05-27T21:13:15.431",
+          "did": "did:plc:kvci27ty66e5zokjjavzkdo4"
         },
         {
-          "uri": "at://did:plc:scv7b4gixidkolnm3cqpzlhu/app.bsky.feed.post/3lq6hyy52dj2k",
-          "text": "My family and I have been going through some stuff. Playing Clair Obscur has so far been interesting. It has things to say about loss and grief, and it\u2019s been somewhat cathartic to play.",
-          "score": 0.2982642154920373,
-          "created_at": "2025-05-27T19:58:43.057",
-          "did": "did:plc:scv7b4gixidkolnm3cqpzlhu"
+          "uri": "at://did:plc:6ztkvtxn4fwz5bmrsydscetx/app.bsky.feed.post/3lq6nfnlhnr2a",
+          "text": "We\u2019re social creatures. Loneliness, like thirst or hunger, puts our body into a state of distress. Former Surgeon General Vivek Murthy explained this on @nbcnews.com's Meet the Press, which devoted Sunday\u2019s show to America\u2019s mental health crisis.",
+          "score": 0.3088744796873172,
+          "created_at": "2025-05-27T21:35:16.498",
+          "did": "did:plc:6ztkvtxn4fwz5bmrsydscetx"
         },
         {
-          "uri": "at://did:plc:vbaie252owm7svtrftuxs6s2/app.bsky.feed.post/3lq6ijeoyu22l",
-          "text": "Don\u2019t worry, the MAGAts let them go so far at this point they will eventually be celebrating killing you and your kids too. Like in that poem about doing nothing when they came for the trans kids, journalists, immigrants or whatever. Except some people did something when they were eating the pets",
-          "score": 0.2938444262676622,
-          "created_at": "2025-05-27T20:07:53.991",
-          "did": "did:plc:vbaie252owm7svtrftuxs6s2"
+          "uri": "at://did:plc:ap2b2wvozcts4jqny23o2ggo/app.bsky.feed.post/3lq6ln73nfk2k",
+          "text": "\ud83e\ude7a Did you know? SAMHSA says you can screen adolescents for substance use in just 2 minutes!\u23f1\ufe0f\n\nThis Mental Health Awareness Month, take action today! Prioritize early screenings and explore key resources to promote prevention and healthier choices. #MHAM\nsamhsa.gov/substance-us...",
+          "score": 0.29443577710510666,
+          "created_at": "2025-05-27T21:03:43.559",
+          "did": "did:plc:ap2b2wvozcts4jqny23o2ggo"
         },
         {
-          "uri": "at://did:plc:6hfm5npukrun7ccwicuvvo3d/app.bsky.feed.post/3lq6j5qa2rk2t",
-          "text": "Good thing I just switched to another provider for my phone....the cell service isn't what Verizon's is, but it's not terrible either. \nAt least we no longer have to worry about knowing which companies are assholes \ud83e\udd37\u200d\u2642\ufe0f Adding them on my nope list right next to Target.",
-          "score": 0.2928424826912715,
-          "created_at": "2025-05-27T20:19:16.993",
-          "did": "did:plc:6hfm5npukrun7ccwicuvvo3d"
+          "uri": "at://did:plc:frebskz6alqrmqeki5dklbab/app.bsky.feed.post/3lq6ov2k57s2d",
+          "text": "Boy these suicide ideations keep trying to come back. I've been numb and crying all day, and now that I'm back home, I just want to drink this beer and watch anime.",
+          "score": 0.2916391150318694,
+          "created_at": "2025-05-27T22:01:48.451",
+          "did": "did:plc:frebskz6alqrmqeki5dklbab"
         },
         {
-          "uri": "at://did:plc:6bxanfoz7fzymv3boi7g4uy2/app.bsky.feed.post/3lq6hq4m6gk2d",
-          "text": "Toasty got spayed this morning and I was super anxious the whole time but we just got the call that she is out of surgery, doing fine, and we can pick her up in a couple hours. Whew!",
-          "score": 0.29279797272789665,
-          "created_at": "2025-05-27T19:53:46.651",
-          "did": "did:plc:6bxanfoz7fzymv3boi7g4uy2"
+          "uri": "at://did:plc:is5f24ikn3cg5seyvegrdbwg/app.bsky.feed.post/3lq6nboxzis2o",
+          "text": "tapping my foot and smiling and crying and grinning and waving my head around a little and choking up and",
+          "score": 0.2895964534406893,
+          "created_at": "2025-05-27T21:33:05.044",
+          "did": "did:plc:is5f24ikn3cg5seyvegrdbwg"
         },
         {
-          "uri": "at://did:plc:x4l2wu76b6sggu34i5xee4g3/app.bsky.feed.post/3lq6i7xstc222",
-          "text": "Tom Homan, the ICE ghoul, security cost American Taxpayers $1 MILLION a month to protect this clown. And he makes MILLIONs as a \"consultant\" to private prison, just like Bondi and Trump.  \nWhere's DOGE cutting waste - ahhh, nowhere!\nwww.latintimes.com/border-czars...",
-          "score": 0.28844472876680904,
-          "created_at": "2025-05-27T20:02:38.497",
-          "did": "did:plc:x4l2wu76b6sggu34i5xee4g3"
+          "uri": "at://did:plc:7534z7ircjndl3loyzsxmuve/app.bsky.feed.post/3lq6jwuf7pk2f",
+          "text": "don't worry guys, bluesky can be perfect so long as we all get along. first things first, we just need to agree about what trans women are good",
+          "score": 0.2892525590475463,
+          "created_at": "2025-05-27T20:33:20.399",
+          "did": "did:plc:7534z7ircjndl3loyzsxmuve"
         },
         {
-          "uri": "at://did:plc:d7kjdsdrxeuv3np2ulnzkkqi/app.bsky.feed.post/3lq6jbfxbkk2l",
-          "text": "If they don't do anything wrong they have nothing to worry about, but I can't wait to see Jasmine Crockett leading the House Oversight Committee if the Democrats retake control of the House.",
-          "score": 0.27914728310510684,
-          "created_at": "2025-05-27T20:21:20.619",
-          "did": "did:plc:d7kjdsdrxeuv3np2ulnzkkqi"
+          "uri": "at://did:plc:jlfmfwd3jb5nng6vdjiahhfq/app.bsky.feed.post/3lq6llcyjec2p",
+          "text": "new therapist gave me my diagnosis today and literally said \u201ci was so surprised by your surveys, people with results like yours are usually in clinics but you seem so fine? how are you doing that?\u201d and i was just like \u201cwdym i could not be hiding the real feels??? \ud83d\ude42\ud83d\ude42\ud83d\ude42\u201d\n\nfailing upwards at therapy ig",
+          "score": 0.28811288340949515,
+          "created_at": "2025-05-27T21:02:40.542",
+          "did": "did:plc:jlfmfwd3jb5nng6vdjiahhfq"
         },
         {
-          "uri": "at://did:plc:5zww7zorx2ajw7hqrhuix3ba/app.bsky.feed.post/3lq6i42em3y2t",
-          "text": "Classic Album Review: Weerd Science | Friends & Nervous Breakdowns\n\nhttps://www.byteseu.com/1050438/\n\nThis came out in 2005 \u2014 or at least that\u2019s when I got it. Here\u2019s what I said about it back then (with some minor editing): \u00a0 Weerd Science is the hip-hop alter ego of a guy named Josh Eppard. \u2026",
-          "score": 0.2766517591683676,
-          "created_at": "2025-05-27T20:00:24",
-          "did": "did:plc:5zww7zorx2ajw7hqrhuix3ba"
+          "uri": "at://did:plc:vwxsney6o75p3423hbrb3q7a/app.bsky.feed.post/3lq6qb3o3m22i",
+          "text": "Trump's Disrespect for Veterans Should Worry You | Anchor Watch with Bobby Jones\nwww.lincolnsquare.media/p/trumps-dis...",
+          "score": 0.2826734196006329,
+          "created_at": "2025-05-27T22:26:26.024",
+          "did": "did:plc:vwxsney6o75p3423hbrb3q7a"
         },
         {
-          "uri": "at://did:plc:mtxsd6kfvlqilvhymdywlqmw/app.bsky.feed.post/3lq6jbjht4k2p",
-          "text": "NPR)and 3 of its local stations have sued Trump, arguing that his executive order cutting funding to the 246-station network violates their free speech a&relies on an authority that he does not have.Trump instructed the CPB +other fed agencies to cease funding.",
-          "score": 0.2701632033679739,
-          "created_at": "2025-05-27T20:21:24.307",
-          "did": "did:plc:mtxsd6kfvlqilvhymdywlqmw"
+          "uri": "at://did:plc:afcrqfimoznibfbkrvdsuchz/app.bsky.feed.post/3lq6lk5sk5j2e",
+          "text": "If you worry about being \u201ccreepy\u201d:\n\n- Relevance is earned, not granted.\n- Your network shrank because you got busy, not old.\n- Anyone judging your outreach is just clinging to comfort. www.faarkihopeitsnottoolate.com/p/strategic...",
+          "score": 0.2821408521052219,
+          "created_at": "2025-05-27T21:02:01.329475",
+          "did": "did:plc:afcrqfimoznibfbkrvdsuchz"
         },
         {
-          "uri": "at://did:plc:t4onaz7cw6tnyghdcyjh4ty6/app.bsky.feed.post/3lq6iznkytc2d",
-          "text": "'As floodwaters recede, more than 600 people have joined a community recovery group to help clean up affected homes on the NSW Mid-coast.'\n\nwww.abc.net.au/news/2025-05...",
-          "score": 0.2652885015251901,
-          "created_at": "2025-05-27T20:17:00.169",
-          "did": "did:plc:t4onaz7cw6tnyghdcyjh4ty6"
+          "uri": "at://did:plc:gsncvrhs3lxypfrfxwft5edc/app.bsky.feed.post/3lq6krc5o7k2i",
+          "text": "NPR sues over Trump order cutting off its funding, citing First Amendment minnesotareformer.com/2025/05/27/r...",
+          "score": 0.27798477742323097,
+          "created_at": "2025-05-27T20:48:07.246",
+          "did": "did:plc:gsncvrhs3lxypfrfxwft5edc"
         },
         {
-          "uri": "at://did:plc:z4d5k3g22vnxxpyhiyhlw7c4/app.bsky.feed.post/3lq6jhadpuc2m",
-          "text": "\"The resolution is poignant and heartbreaking in its realism around loss and grief but also an uplifting reminder of the value of family, both blood and found . . .\" #yalit",
-          "score": 0.26445011552481146,
-          "created_at": "2025-05-27T20:24:36.061",
-          "did": "did:plc:z4d5k3g22vnxxpyhiyhlw7c4"
+          "uri": "at://did:plc:24gwu27s7ga7upayb2s6456p/app.bsky.feed.post/3lq6jpthcfv2n",
+          "text": "The loss of a child is an indescribable pain, a grief that reshapes your world and leaves an\nhttps://brettmurphyx.com/2025/05/27/how-to-deal-with-others-celebrating-their-child-after-your-childs-passing/",
+          "score": 0.2764430187973889,
+          "created_at": "2025-05-27T20:29:23.139431",
+          "did": "did:plc:24gwu27s7ga7upayb2s6456p"
         },
         {
-          "uri": "at://did:plc:m4rkbmkp6y44ckwmb4z7dn6j/app.bsky.feed.post/3lq6hm4ej2c23",
-          "text": "\"Robbing Rob Bresnahan\" in Forty Fort PA at May 27th rally against his awful Medicaid cutting tax scheme. \n@jenpsaki.msnbc.com \n@maddow.msnbc.com",
-          "score": 0.2619278301209473,
-          "created_at": "2025-05-27T19:51:32.171",
-          "did": "did:plc:m4rkbmkp6y44ckwmb4z7dn6j"
+          "uri": "at://did:plc:tx3u5bl5thvnrbm2lox3fdmv/app.bsky.feed.post/3lq6l6raskc2x",
+          "text": "Don't worry guys, #FoodSky can be perfect so long as we all get along. First things first, we just need to agree catsup does not go on hot dogs.",
+          "score": 0.27299195819448907,
+          "created_at": "2025-05-27T20:55:39.286",
+          "did": "did:plc:tx3u5bl5thvnrbm2lox3fdmv"
         },
         {
-          "uri": "at://did:plc:vikkbuee2zv6absn55odust2/app.bsky.feed.post/3lq6jejx6zc2w",
-          "text": "It would be nice if supposed progressive voices in Southern states that are SO concerned with the idea of outside (or internal) critique of all the bullshit would stop acting in ways that make it a layup for people to criticize.\n\nWe don\u2019t need \u201chigh minded\u201d coverage of chuds cutting their noses off.",
-          "score": 0.25845720057067945,
-          "created_at": "2025-05-27T20:23:05.472",
-          "did": "did:plc:vikkbuee2zv6absn55odust2"
+          "uri": "at://did:plc:mtmvaawripzr5fwa6mpcgc7h/app.bsky.feed.post/3lq6pbghg7k2h",
+          "text": "#NewMusic from @catbearmusic.bsky.social as Who Cares? takes a sensitive look at social anxiety. Read more about the track on the @analoguetrash.com #musicblog \ud83d\udda4\n\nwww.analoguetrash.com/blog/catbear...",
+          "score": 0.2724053601143836,
+          "created_at": "2025-05-27T22:08:43.576",
+          "did": "did:plc:mtmvaawripzr5fwa6mpcgc7h"
         },
         {
-          "uri": "at://did:plc:ethtgjszwmeussjrvcoequ6r/app.bsky.feed.post/3lq6jlhvmec2d",
-          "text": "\u201cThey don\u2019t care about the debt. This is not about the debt.\u201d\n\nBecause this was never about reducing the debt. It\u2019s about cutting health care and handing tax breaks to the wealthy.",
-          "score": 0.2574990829592788,
-          "created_at": "2025-05-27T20:26:58.206",
-          "did": "did:plc:ethtgjszwmeussjrvcoequ6r"
+          "uri": "at://did:plc:twf77y366c2yqieuiuwawivd/app.bsky.feed.post/3lq6k6xfo6k2e",
+          "text": "I didn't get the luck of getting commissions on my sfw acc....\n\nI'm afraid I might have to risk myself and my mental health to open Nsfw commissions officially",
+          "score": 0.27110833110679156,
+          "created_at": "2025-05-27T20:37:51.994",
+          "did": "did:plc:twf77y366c2yqieuiuwawivd"
         },
         {
-          "uri": "at://did:plc:vz35eklbsdwmln3myunfrmzm/app.bsky.feed.post/3lq6ithxvfd2r",
-          "text": "Mental Health Tips - Enhancing Well-being For Aspiring Doctors - MyPressportal - Free Press Releases South Africa \n #mypressportal #pressrelease #AfricaNewsroom #bizcommunity #publicrelations #africa #southafrica ",
-          "score": 0.2555370255974697,
-          "created_at": "2025-05-27T20:13:31.382622",
-          "did": "did:plc:vz35eklbsdwmln3myunfrmzm"
+          "uri": "at://did:plc:iyb2jhkavzeg2kgwcsfdavjg/app.bsky.feed.post/3lq6okajlwk2g",
+          "text": "Don't worry guys. Bluesky can be perfect so long as we all get along. First things first, we just need to agree that Carrie Bradshaw was wrong to marry Mr. Big.",
+          "score": 0.2686883112965563,
+          "created_at": "2025-05-27T21:55:45.621",
+          "did": "did:plc:iyb2jhkavzeg2kgwcsfdavjg"
         },
         {
-          "uri": "at://did:plc:qvh3thrldgjax2jvbu3x55oe/app.bsky.feed.post/3lq6hslkqvx2t",
-          "text": "We are entering one of the biggest games of the season for the Edmonton Oilers. A win, and they go up three games to one in the Conference Final. A loss, and the series heads back to Dallas tied at two. After a blowout loss in game three, we can be s... https://oilerhockey.com/article/24935",
-          "score": 0.253824576687029,
-          "created_at": "2025-05-27T19:55:09",
-          "did": "did:plc:qvh3thrldgjax2jvbu3x55oe"
+          "uri": "at://did:plc:ytttm276k427qrhdvtgemqpu/app.bsky.feed.post/3lq6nyhokuc2u",
+          "text": "This piece offers a glimpse into the heart of my upcoming book, The Mental Health Guide for Cis and Trans Queer Guys: Skills to Cope and Thrive as Your Authentic Self, launching June 1st with New Harbinger Publications. shorturl.at/X1AXA\n\n#QueerMentalHealth #TransMentalHealth #LGBTQBooks",
+          "score": 0.26845723688649537,
+          "created_at": "2025-05-27T21:45:49.15",
+          "did": "did:plc:ytttm276k427qrhdvtgemqpu"
         },
         {
-          "uri": "at://did:plc:73tyisfrsxqe34o65igzglmy/app.bsky.feed.post/3lq6iczxhc22o",
-          "text": "Literally only my second therapy appointment and I feel like im already going through a breakthrough...\n\nI really like this therapist yall.",
-          "score": 0.2528555503568969,
-          "created_at": "2025-05-27T20:04:21.409",
-          "did": "did:plc:73tyisfrsxqe34o65igzglmy"
+          "uri": "at://did:plc:jfzh2unjcjsnbw3nntyaipgr/app.bsky.feed.post/3lq6myud3ys25",
+          "text": "#Apnews #US #consumer #confidence rebounds after five straight months of declines amid #tariff anxiety www.youtube.com/shorts/11xsm...\napnews.com/article/cons...",
+          "score": 0.2683075568327213,
+          "created_at": "2025-05-27T21:28:08.663",
+          "did": "did:plc:jfzh2unjcjsnbw3nntyaipgr"
         },
         {
-          "uri": "at://did:plc:qdm4fybwlkz7zia7b7v7veu3/app.bsky.feed.post/3lq6iznq7t22m",
-          "text": "National Public Radio and three local stations filed a lawsuit Tuesday against President Donald Trump, arguing that an executive order aimed at cutting federal funding for the organization is illegal.",
-          "score": 0.2503288840106303,
-          "created_at": "2025-05-27T20:17:00.327",
-          "did": "did:plc:qdm4fybwlkz7zia7b7v7veu3"
+          "uri": "at://did:plc:hjncqpa6urtjjk6hu3u2zhie/app.bsky.feed.post/3lq6nqwuea22t",
+          "text": "bad mental health right now. gonna be alone to deal with it.\n\ngonna cancel stream tonight. sorry everyone.",
+          "score": 0.262773593124472,
+          "created_at": "2025-05-27T21:41:36.633",
+          "did": "did:plc:hjncqpa6urtjjk6hu3u2zhie"
         },
         {
-          "uri": "at://did:plc:6ns6tuufzusqwzqkfok4q3qh/app.bsky.feed.post/3lq6jh2m6ss24",
-          "text": "Day 69 Subathon: Haha Nice!\n\nLate start because of farm chores!\n(need extra recovery from allergies)\n\nStarting 5pmish PST!! \nMonster Con!\n\nCome hang out in chat early!\n\nJoin us Here! www.twitch.tv/vuthra \n\n#ENVtuber #Vtuber #Gamer #TwitchStreamer #VtuberSupport #VtuberUprising #VSky",
-          "score": 0.2479500458440802,
-          "created_at": "2025-05-27T20:24:30.047",
-          "did": "did:plc:6ns6tuufzusqwzqkfok4q3qh"
+          "uri": "at://did:plc:apfdkzikljmptk6qiex35swy/app.bsky.feed.post/3lq6pe6apxi2b",
+          "text": "World-first CRISPR gene therapy could 'transform' treatment for rare diseases: https://www.abc.net.au/news/health/2025-05-28/world-first-crispr-therapy-transform-gene-editing-treatments/105337184",
+          "score": 0.26166679919617475,
+          "created_at": "2025-05-27T22:10:15.42",
+          "did": "did:plc:apfdkzikljmptk6qiex35swy"
         }
       ]
     }
