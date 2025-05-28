@@ -119,11 +119,11 @@ export function useSummaryData(): UseSummaryDataResult {
         };
 
         setState({ loading: false, error: null, data });
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("❌ Data fetch/validation failed", err);
         setState({
           loading: false,
-          error: err?.message || "Unknown error",
+          error: err instanceof Error ? err.message : "Unknown error",
           data: null,
         });
       }
