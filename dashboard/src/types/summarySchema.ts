@@ -1,65 +1,91 @@
+// summarySchema.ts
 import { z } from "zod";
 
-// Basic label → count mappings
-const LabelCount = z.record(z.string(), z.number());
-const VolumeTimeline = z.record(z.string(), z.number());
-
-const TopPost = z.object({
-  uri: z.string(),
-  text: z.string(),
-  score: z.number(),
-  created_at: z.string(),
-  did: z.string(),
+// === META ===
+export const metaSchema = z.object({
+  date: z.string(),
+  complete: z.object({
+    total_posts: z.number(),
+    total_sentiments: z.number(),
+    total_emotions: z.number(),
+    total_languages: z.number(),
+    total_topics: z.number(),
+    total_hashtags: z.number(),
+    total_emojis: z.number(),
+  }),
+  last_week: z.object({
+    total_posts: z.number(),
+    total_sentiments: z.number(),
+    total_emotions: z.number(),
+    total_languages: z.number(),
+    total_topics: z.number(),
+    total_hashtags: z.number(),
+    total_emojis: z.number(),
+  }),
+  averages: z.object({
+    avg_posts_per_day: z.number(),
+    avg_hashtags_per_day: z.number(),
+    avg_emojis_per_day: z.number(),
+  }),
+  top: z.object({
+    sentiment: z.string(),
+    emotion: z.string(),
+    language: z.string(),
+    hashtag: z.string(),
+    emoji: z.string(),
+  }),
 });
-const TopPostsArray = z.array(TopPost);
+export type MetaSummary = z.infer<typeof metaSchema>;
 
-const UserStats = z.record(z.string(), z.object({ posts: z.number() }));
-
-const EngagementData = z.object({
-  posts: TopPostsArray,
-  users: UserStats,
+// === ACTIVITY ===
+export const dailyActivitySchema = z.object({
+  volume: z.number(),
+  sentiment: z.record(z.number()),
+  emotion: z.record(z.number()),
+  language: z.record(z.number()),
 });
+export const activitySummarySchema = z.record(dailyActivitySchema);
+export type DailyActivity = z.infer<typeof dailyActivitySchema>;
+export type ActivitySummary = z.infer<typeof activitySummarySchema>;
 
-const HashtagEmojiData = z.object({
-  hashtags: z.record(z.string(), z.number()),
-  emojis: z.record(z.string(), z.number()),
+// === HASHTAGS / EMOJIS ===
+export const dailyTagSummarySchema = z.record(z.number());
+export const timeSeriesTagsSchema = z.record(dailyTagSummarySchema);
+export type DailyTagSummary = z.infer<typeof dailyTagSummarySchema>;
+export type TimeSeriesTags = z.infer<typeof timeSeriesTagsSchema>;
+
+// === EMOJI SENTIMENT ===
+export const emojiSentimentSchema = z.record(z.record(z.number()));
+export type EmojiSentiment = z.infer<typeof emojiSentimentSchema>;
+
+// === HASHTAG GRAPH ===
+export const hashtagEdgeSchema = z.object({
+  source: z.string(),
+  target: z.string(),
+  weight: z.number(),
 });
+export const hashtagGraphSchema = z.array(hashtagEdgeSchema);
+export type HashtagEdge = z.infer<typeof hashtagEdgeSchema>;
+export type HashtagGraph = z.infer<typeof hashtagGraphSchema>;
 
-const NarrativeData = z.object({
-  narratives: LabelCount,
-  emotions: LabelCount,
-  languages: LabelCount,
+// === SENTIMENT / EMOTION BY TOPIC ===
+export const topicDistributionSchema = z.record(z.number());
+export const topicSentimentEmotionSchema = z.record(topicDistributionSchema);
+export type TopicDistribution = z.infer<typeof topicDistributionSchema>;
+export type TopicSentimentOrEmotion = z.infer<
+  typeof topicSentimentEmotionSchema
+>;
+
+// === TOPICS ===
+export const topicSummarySchema = z.object({
+  label: z.array(z.string()),
+  count: z.number(),
+  daily: z.record(z.number()),
+  sentiment: z.record(z.number()),
+  emotion: z.record(z.number()),
+  hashtags: z.array(z.string()),
+  emojis: z.array(z.string()),
 });
-
-const TopicKeywordSummary = z.record(z.string(), z.array(z.string()));
-const TopicTimeDistribution = z.record(
-  z.string(),
-  z.record(z.string(), z.number())
-);
-const SentimentByTopic = z.record(z.string(), z.record(z.string(), z.number()));
-const EmotionByTopic = z.record(z.string(), z.record(z.string(), z.number()));
-const TopPostsByTopic = z.record(z.string(), TopPostsArray);
-const HashtagsByTopic = z.record(z.string(), z.record(z.string(), z.number()));
-const EmojisByTopic = z.record(z.string(), z.record(z.string(), z.number()));
-const UsersByTopic = z.record(z.string(), z.record(z.string(), z.number()));
-
-const TopicData = z.object({
-  keywords: TopicKeywordSummary,
-  distribution_over_time: TopicTimeDistribution,
-  sentiment_by_topic: SentimentByTopic,
-  emotion_by_topic: EmotionByTopic,
-  top_posts: TopPostsByTopic,
-  hashtags_by_topic: HashtagsByTopic,
-  emojis_by_topic: EmojisByTopic,
-  users_by_topic: UsersByTopic,
-});
-
-export const SummarySchema = z.object({
-  activity: VolumeTimeline,
-  engagement: EngagementData,
-  hashtags: HashtagEmojiData,
-  narratives: NarrativeData,
-  topics: TopicData,
-});
-
-export type SummaryData = z.infer<typeof SummarySchema>;
+export const topicsSummarySchema = z.record(topicSummarySchema);
+export type TopicSummary = z.infer<typeof topicSummarySchema>;
+export type TopicsSummary = z.infer<typeof topicsSummarySchema>;

@@ -1,105 +1,72 @@
-export type LabelCount = { [label: string]: number };
-export type VolumeTimeline = { [date: string]: number };
-
-export interface TopPost {
-  uri: string;
-  text: string;
-  score: number;
-  created_at: string;
-  did: string;
-}
-
-export interface UserStats {
-  [did: string]: {
-    posts: number;
+export type MetaSummary = {
+  date: string;
+  complete: {
+    total_posts: number;
+    total_sentiments: number;
+    total_emotions: number;
+    total_languages: number;
+    total_topics: number;
+    total_hashtags: number;
+    total_emojis: number;
   };
-}
-
-export type TopPostsGlobal = Array<TopPost>;
-
-export interface EngagementData {
-  posts: TopPostsGlobal;
-  users: UserStats;
-}
-
-export interface HashtagCount {
-  [hashtag: string]: number;
-}
-
-export interface EmojiCount {
-  [emoji: string]: number;
-}
-
-export interface HashtagEmojiData {
-  hashtags: HashtagCount;
-  emojis: EmojiCount;
-}
-
-export interface NarrativeData {
-  narratives: LabelCount;
-  emotions: LabelCount;
-  languages: LabelCount;
-}
-
-export interface TopicKeywordSummary {
-  [topic: string]: string[];
-}
-
-export interface TopicTimeDistribution {
-  [date: string]: {
-    [topic: string]: number;
+  last_week: {
+    total_posts: number;
+    total_sentiments: number;
+    total_emotions: number;
+    total_languages: number;
+    total_topics: number;
+    total_hashtags: number;
+    total_emojis: number;
   };
-}
-
-export interface SentimentByTopic {
-  [topic: string]: {
-    [sentiment: string]: number;
+  averages: {
+    avg_posts_per_day: number;
+    avg_hashtags_per_day: number;
+    avg_emojis_per_day: number;
   };
-}
-
-export interface EmotionByTopic {
-  [topic: string]: {
-    [emotion: string]: number;
+  top: {
+    sentiment: string;
+    emotion: string;
+    language: string;
+    hashtag: string;
+    emoji: string;
   };
-}
+};
 
-export interface TopPostsByTopic {
-  [topic: string]: TopPost[];
-}
+export type DailyActivity = {
+  volume: number;
+  sentiment: Record<string, number>;
+  emotion: Record<string, number>;
+  language: Record<string, number>;
+};
 
-export interface HashtagsByTopic {
-  [topic: string]: {
-    [hashtag: string]: number;
-  };
-}
+export type ActivitySummary = Record<string, DailyActivity>; // keyed by date
 
-export interface EmojisByTopic {
-  [topic: string]: {
-    [emoji: string]: number;
-  };
-}
+export type DailyTagSummary = Record<string, number>;
 
-export interface UsersByTopic {
-  [topic: string]: {
-    [did: string]: number;
-  };
-}
+export type TimeSeriesTags = Record<string, DailyTagSummary>; // keyed by date
 
-export interface TopicData {
-  keywords: TopicKeywordSummary;
-  distribution_over_time: TopicTimeDistribution;
-  sentiment_by_topic: SentimentByTopic;
-  emotion_by_topic: EmotionByTopic;
-  top_posts: TopPostsByTopic;
-  hashtags_by_topic: HashtagsByTopic;
-  emojis_by_topic: EmojisByTopic;
-  users_by_topic: UsersByTopic;
-}
+export type EmojiSentiment = Record<string, Record<string, number>>; // sentiment -> emoji -> count
 
-export interface SummaryData {
-  activity: VolumeTimeline;
-  engagement: EngagementData;
-  hashtags: HashtagEmojiData;
-  narratives: NarrativeData;
-  topics: TopicData;
-}
+export type HashtagEdge = {
+  source: string;
+  target: string;
+  weight: number;
+};
+
+export type HashtagGraph = HashtagEdge[];
+
+export type TopicDistribution = Record<string, number>; // topic -> count
+
+export type TopicSentimentOrEmotion = Record<string, TopicDistribution>;
+
+export type TopicSummary = {
+  label: string[];
+  count: number;
+  daily: Record<string, number>;
+  sentiment: Record<string, number>;
+  emotion: Record<string, number>;
+  hashtags: string[];
+  emojis: string[];
+};
+
+export type TopicsSummary = Record<string, TopicSummary>; // topic name -> summary

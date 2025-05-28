@@ -13,10 +13,10 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useSummaryData } from "@/hooks/use-summary-data";
+import { useChartData } from "@/hooks/use-chart-data";
 
 export default function TimelinePostVolumeChart() {
-  const { jsonData, loading, error } = useSummaryData();
+  const { chartData: jsonData, error, loading } = useChartData();
 
   if (loading) {
     return (
@@ -36,7 +36,11 @@ export default function TimelinePostVolumeChart() {
       </>
     );
   }
-  if (!jsonData || !jsonData.activity) {
+  if (
+    !jsonData ||
+    !jsonData.volumeTimeSeries ||
+    jsonData.volumeTimeSeries.length === 0
+  ) {
     return (
       <div className="flex items-center justify-center h-full">
         <p>No activity data available</p>
@@ -44,13 +48,10 @@ export default function TimelinePostVolumeChart() {
     );
   }
 
-  const chartData = Object.entries(jsonData.activity)
-    .sort(([a], [b]) => new Date(a).getTime() - new Date(b).getTime())
-    .slice(0, 10)
-    .map(([date, posts]) => ({
-      date,
-      posts,
-    }));
+  const chartData = jsonData.volumeTimeSeries.map((item) => ({
+    date: item.date,
+    posts: item.volume,
+  }));
 
   const chartConfig = {
     posts: {

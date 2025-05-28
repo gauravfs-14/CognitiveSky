@@ -4,64 +4,31 @@
 import { useEffect, useState } from "react";
 import { SummaryData, SummarySchema } from "@/types/summarySchema";
 
-// Raw GitHub snapshot links
-const ACTIVITY_LINK =
-  "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/activity.json";
-const ENGAGEMENT_LINK =
-  "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/engagement.json";
-const HASHTAGS_LINK =
-  "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/hashtags.json";
-const NARRATIVES_LINK =
-  "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/narratives.json";
-const TOPICS_LINK =
-  "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/topics.json";
-
-const extractScope = (snapshot: any, type: string): any => {
-  const dates = Object.keys(snapshot);
-  for (const date of dates.reverse()) {
-    const day = snapshot[date];
-    if (day?.[type]?.overall) {
-      return day[type].overall;
-    }
-  }
-  return {};
+const RAW_LINKS = {
+  activity:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/activity.json",
+  emoji_sentiment:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/emoji_sentiment.json",
+  emojis:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/emojis.json",
+  emotion_by_topic:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/emotion_by_topic.json",
+  hashtag_graph:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/hashtag_graph.json",
+  hashtags:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/hashtags.json",
+  meta: "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/meta.json",
+  sentiment_by_topic:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/sentiment_by_topic.json",
+  topics:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/topics.json",
 };
 
-// Flatten structure: { date: { type: { scope: value } } } → { scope: value }
-const flattenSnapshotFile = (snapshot: any): Record<string, any> => {
-  const merged: Record<string, any> = {};
-
-  for (const date of Object.keys(snapshot)) {
-    const types = snapshot[date];
-
-    for (const type of Object.keys(types)) {
-      for (const scope of Object.keys(types[type])) {
-        if (type === "volume" && scope === "timeline") {
-          // Merge timeline entries across all dates
-          merged.timeline ??= {};
-          Object.assign(merged.timeline, types[type][scope]);
-        } else {
-          merged[scope] = types[type][scope];
-        }
-      }
-    }
-  }
-
-  return merged;
-};
-
-// Combine users across topics into a single DID → post count map
-const flattenUsersByTopic = (
-  usersByTopic: Record<string, Record<string, number>>
-) => {
-  const userMap: Record<string, { posts: number }> = {};
-  for (const topic of Object.values(usersByTopic)) {
-    for (const [did, count] of Object.entries(topic)) {
-      if (!userMap[did]) userMap[did] = { posts: 0 };
-      userMap[did].posts += count;
-    }
-  }
-  return userMap;
+// Flatten function for activity, hashtags, emojis (time series)
+const flattenTimeSeries = (snapshot: Record<string, any>) => {
+  // Your snapshot is { date1: { ...counts }, date2: { ...counts }, ... }
+  // Return as is, or normalize keys if needed.
+  return snapshot || {};
 };
 
 export const useStaticJSONData = () => {
@@ -72,72 +39,70 @@ export const useStaticJSONData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responses = await Promise.all([
-          fetch(ACTIVITY_LINK),
-          fetch(ENGAGEMENT_LINK),
-          fetch(HASHTAGS_LINK),
-          fetch(NARRATIVES_LINK),
-          fetch(TOPICS_LINK),
-        ]);
+        // Fetch all snapshot files concurrently
+        const responses = await Promise.all(
+          Object.values(RAW_LINKS).map((url) => fetch(url))
+        );
 
+        // Check if all fetches succeeded
         if (!responses.every((res) => res.ok)) {
-          throw new Error("Failed to fetch one or more resources");
+          throw new Error("Failed to fetch one or more snapshot files.");
         }
 
+        // Parse all JSON data
         const [
           activityRaw,
-          engagementRaw,
+          emojiSentimentRaw,
+          emojisRaw,
+          emotionByTopicRaw,
+          hashtagGraphRaw,
           hashtagsRaw,
-          narrativesRaw,
+          metaRaw,
+          sentimentByTopicRaw,
           topicsRaw,
         ] = await Promise.all(responses.map((r) => r.json()));
 
-        const activity = flattenSnapshotFile(activityRaw);
-        const engagement = flattenSnapshotFile(engagementRaw);
-        const topics = flattenSnapshotFile(topicsRaw);
+        // Flatten or directly use as per expected structure
 
-        const hashtags = extractScope(hashtagsRaw, "hashtags");
-        const emojis = extractScope(hashtagsRaw, "emojis");
+        // activity.json is a time series: { date: { volume, sentiment, emotion, language } }
+        const activity = flattenTimeSeries(activityRaw);
 
-        const narratives = extractScope(narrativesRaw, "narratives");
-        const emotions = extractScope(narrativesRaw, "emotions");
-        const languages = extractScope(narrativesRaw, "languages");
+        // hashtags.json and emojis.json are time series too
+        const hashtags = flattenTimeSeries(hashtagsRaw);
+        const emojis = flattenTimeSeries(emojisRaw);
 
+        // emoji_sentiment.json is { sentiment_label: { emoji: count, ... }, ... }
+        const emojiSentiment = emojiSentimentRaw || {};
+
+        // hashtag_graph.json is an array of edges
+        const hashtagGraph = hashtagGraphRaw || [];
+
+        // sentiment_by_topic.json and emotion_by_topic.json are objects keyed by topic
+        const sentimentByTopic = sentimentByTopicRaw || {};
+        const emotionByTopic = emotionByTopicRaw || {};
+
+        // meta.json contains summary info object directly
+        const meta = metaRaw || {};
+
+        // topics.json is an object keyed by topic
+        const topics = topicsRaw || {};
+
+        // Compose final parsed data shape
         const parsed = {
-          activity: activity.timeline ?? {},
-
-          engagement: {
-            posts: engagement.top_by_interaction ?? [],
-            users: flattenUsersByTopic(topics.users_by_topic ?? {}),
-          },
-
-          hashtags: {
-            hashtags,
-            emojis,
-          },
-
-          narratives: {
-            narratives,
-            emotions,
-            languages,
-          },
-
-          topics: {
-            keywords: topics.keywords ?? {},
-            distribution_over_time: topics.distribution_over_time ?? {},
-            sentiment_by_topic: topics.sentiment_by_topic ?? {},
-            emotion_by_topic: topics.emotion_by_topic ?? {},
-            top_posts: topics.top_posts ?? {},
-            hashtags_by_topic: topics.hashtags_by_topic ?? {},
-            emojis_by_topic: topics.emojis_by_topic ?? {},
-            users_by_topic: topics.users_by_topic ?? {},
-          },
+          meta,
+          activity,
+          hashtags,
+          emojis,
+          emoji_sentiment: emojiSentiment,
+          hashtag_graph: hashtagGraph,
+          sentiment_by_topic: sentimentByTopic,
+          emotion_by_topic: emotionByTopic,
+          topics,
         };
 
         console.log("📦 Parsed data:", parsed);
 
         const result = SummarySchema.safeParse(parsed);
-
         if (!result.success) {
           console.error("❌ Validation Error:", result.error.flatten());
           console.dir(result.error, { depth: null });

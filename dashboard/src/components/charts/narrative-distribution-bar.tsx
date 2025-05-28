@@ -13,20 +13,27 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useSummaryData } from "@/hooks/use-summary-data";
+import { useChartData } from "@/hooks/use-chart-data";
 
-const sentimentLabelMap = {
-  label_2: "Positive",
+const sentimentLabelMap: {
+  [key: string]: string;
+  label_0: "Negative";
+  label_1: "Neutral";
+  label_2: "Positive";
+} = {
   label_0: "Negative",
   label_1: "Neutral",
-} as const;
+  label_2: "Positive",
+};
 
 export default function NarrativeDistributionBar({
-  narrative = "narratives",
+  type = "language",
+  maxItems = 5,
 }: {
-  narrative?: "languages" | "emotions" | "narratives";
+  type?: "language" | "sentiment" | "emotions" | "emoji" | "hashtags";
+  maxItems?: number;
 }) {
-  const { jsonData, loading, error } = useSummaryData();
+  const { chartData: jsonData, loading, error } = useChartData();
 
   if (loading) {
     return (
@@ -46,7 +53,14 @@ export default function NarrativeDistributionBar({
       </>
     );
   }
-  if (!jsonData || !jsonData.narratives) {
+  if (
+    !jsonData ||
+    !jsonData.languageOverall ||
+    !jsonData.sentimentOverall ||
+    !jsonData.emotionOverall ||
+    !jsonData.emojiOverall ||
+    !jsonData.hashtagOverall
+  ) {
     return (
       <div className="flex items-center justify-center h-full">
         <p>No activity data available</p>
@@ -54,20 +68,39 @@ export default function NarrativeDistributionBar({
     );
   }
 
-  const chartData = Object.entries(jsonData.narratives[narrative])
-    .sort((a, b) => {
-      const aPosts = a[1] as number;
-      const bPosts = b[1] as number;
-      return bPosts - aPosts; // Sort in descending order
+  const overall_data = {
+    language: jsonData.languageOverall,
+    sentiment: jsonData.sentimentOverall,
+    emotions: jsonData.emotionOverall,
+    emoji: jsonData.emojiOverall,
+    hashtags: jsonData.hashtagOverall,
+  };
+
+  const colors = {
+    language: "var(--chart-1)",
+    sentiment: "var(--chart-2)",
+    emotions: "var(--chart-3)",
+    emoji: "var(--chart-4)",
+    hashtags: "var(--chart-5)",
+  };
+
+  const chartData = overall_data[type]
+    .map((item) => {
+      if (type === "sentiment") {
+        return {
+          label: sentimentLabelMap[item.name] || item.name,
+          posts: item.value,
+        };
+      }
+      return {
+        label: item.name,
+        posts: item.value,
+      };
     })
-    .slice(0, 7)
-    .map(([label, posts]) => ({
-      label:
-        narrative === "narratives"
-          ? sentimentLabelMap[label as keyof typeof sentimentLabelMap]
-          : label,
-      posts,
-    }));
+    .sort((a, b) => b.posts - a.posts)
+    .slice(0, maxItems);
+
+  console.log("Chart Data:", chartData);
 
   const chartConfig = {
     posts: {
@@ -108,21 +141,9 @@ export default function NarrativeDistributionBar({
             <Bar
               dataKey="posts"
               type="natural"
-              fill={
-                narrative == "narratives"
-                  ? "var(--chart-2)"
-                  : narrative == "emotions"
-                  ? "var(--chart-3)"
-                  : "var(--chart-4)"
-              }
+              fill={colors[type]}
               fillOpacity={0.4}
-              stroke={
-                narrative == "narratives"
-                  ? "var(--chart-2)"
-                  : narrative == "emotions"
-                  ? "var(--chart-3)"
-                  : "var(--chart-4)"
-              }
+              stroke={colors[type]}
               radius={[4, 4, 0, 0]}
             />
           </BarChart>

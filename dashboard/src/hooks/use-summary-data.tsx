@@ -1,57 +1,135 @@
-import { useStaticJSONData } from "@/lib/helpers/getStaticJSONData";
+import { useEffect, useState } from "react";
+import {
+  MetaSummary,
+  metaSchema,
+  activitySummarySchema,
+  emojiSentimentSchema,
+  timeSeriesTagsSchema,
+  topicSentimentEmotionSchema,
+  hashtagGraphSchema,
+  topicsSummarySchema,
+  ActivitySummary,
+  EmojiSentiment,
+  TimeSeriesTags,
+  TopicSentimentOrEmotion,
+  HashtagGraph,
+  TopicsSummary,
+} from "@/types/summarySchema";
 
-export function useSummaryData() {
-  const { data, error, loading } = useStaticJSONData();
+const RAW_LINKS = {
+  activity:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/activity.json",
+  emoji_sentiment:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/emoji_sentiment.json",
+  emojis:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/emojis.json",
+  emotion_by_topic:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/emotion_by_topic.json",
+  hashtag_graph:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/hashtag_graph.json",
+  hashtags:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/hashtags.json",
+  meta: "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/meta.json",
+  sentiment_by_topic:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/sentiment_by_topic.json",
+  topics:
+    "https://raw.githubusercontent.com/gauravfs-14/CognitiveSky/refs/heads/main/summary/topics.json",
+};
 
-  if (loading || error || !data) {
-    return {
-      jsonData: data,
-      error,
-      loading,
-      summary: {
-        totalPosts: null,
-        totalSentiments: null,
-        topEmotionKey: "None",
-        topEmotionCount: 0,
-        totalLanguages: null,
-        totalHashtags: null,
-        totalEmojis: null,
-        totalTopics: null,
-        avgPostPerDay: null,
-      },
+export type SummaryData = {
+  meta: MetaSummary;
+  activity: ActivitySummary;
+  emojis: TimeSeriesTags;
+  hashtags: TimeSeriesTags;
+  emoji_sentiment: EmojiSentiment;
+  sentiment_by_topic: TopicSentimentOrEmotion;
+  emotion_by_topic: TopicSentimentOrEmotion;
+  hashtag_graph: HashtagGraph;
+  topics: TopicsSummary;
+};
+
+type UseSummaryDataResult =
+  | {
+      loading: true;
+      error: null;
+      data: null;
+    }
+  | {
+      loading: false;
+      error: string | null;
+      data: SummaryData | null;
     };
-  }
 
-  const totalPosts = Object.values(data.activity).reduce((a, b) => a + b, 0);
-  const totalSentiments = Object.values(data.narratives.narratives).reduce(
-    (sum, count) => sum + count,
-    0
-  );
+export function useSummaryData(): UseSummaryDataResult {
+  const [state, setState] = useState<UseSummaryDataResult>({
+    loading: true,
+    error: null,
+    data: null,
+  });
 
-  const [topEmotionKey, topEmotionCount] = Object.entries(
-    data.narratives.emotions
-  ).sort((a, b) => b[1] - a[1])[0] || ["None", 0];
+  useEffect(() => {
+    const fetchAndValidate = async () => {
+      const urlsInOrder = [
+        RAW_LINKS.meta,
+        RAW_LINKS.activity,
+        RAW_LINKS.emojis,
+        RAW_LINKS.hashtags,
+        RAW_LINKS.emoji_sentiment,
+        RAW_LINKS.sentiment_by_topic,
+        RAW_LINKS.emotion_by_topic,
+        RAW_LINKS.hashtag_graph,
+        RAW_LINKS.topics,
+      ];
+      try {
+        const [
+          metaRes,
+          activityRes,
+          emojisRes,
+          hashtagsRes,
+          emojiSentimentRes,
+          sentimentByTopicRes,
+          emotionByTopicRes,
+          hashtagGraphRes,
+          topicsRes,
+        ] = await Promise.all(
+          urlsInOrder.map((url) =>
+            fetch(url).then((res) => {
+              if (!res.ok)
+                throw new Error(`HTTP error: ${res.status} for ${url}`);
+              return res.json();
+            })
+          )
+        );
 
-  const totalLanguages = Object.keys(data.narratives.languages).length;
-  const totalHashtags = Object.keys(data.hashtags.hashtags).length;
-  const totalEmojis = Object.keys(data.hashtags.emojis).length;
-  const totalTopics = Object.keys(data.topics.keywords).length;
-  const avgPostPerDay = totalPosts / Object.keys(data.activity).length;
+        console.log("metaRes", metaRes);
 
-  return {
-    jsonData: data,
-    error,
-    loading,
-    summary: {
-      totalPosts,
-      totalSentiments,
-      topEmotionKey,
-      topEmotionCount,
-      totalLanguages,
-      totalHashtags,
-      totalEmojis,
-      totalTopics,
-      avgPostPerDay,
-    },
-  };
+        const data: SummaryData = {
+          meta: metaSchema.parse(metaRes),
+          activity: activitySummarySchema.parse(activityRes),
+          emojis: timeSeriesTagsSchema.parse(emojisRes),
+          hashtags: timeSeriesTagsSchema.parse(hashtagsRes),
+          emoji_sentiment: emojiSentimentSchema.parse(emojiSentimentRes),
+          sentiment_by_topic:
+            topicSentimentEmotionSchema.parse(sentimentByTopicRes),
+          emotion_by_topic:
+            topicSentimentEmotionSchema.parse(emotionByTopicRes),
+          hashtag_graph: hashtagGraphSchema.parse(hashtagGraphRes),
+          topics: topicsSummarySchema.parse(topicsRes),
+        };
+
+        setState({ loading: false, error: null, data });
+      } catch (err: any) {
+        console.error("❌ Data fetch/validation failed", err);
+        setState({
+          loading: false,
+          error: err?.message || "Unknown error",
+          data: null,
+        });
+      }
+    };
+
+    fetchAndValidate();
+  }, []);
+
+  return state;
 }

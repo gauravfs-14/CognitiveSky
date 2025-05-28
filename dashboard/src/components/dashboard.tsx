@@ -10,7 +10,6 @@ import {
 import QuickStatsCards from "./quick-stats";
 import TimelinePostVolumeChart from "./charts/timeline-post-volume";
 import NarrativeDistributionBar from "./charts/narrative-distribution-bar";
-import HashtagEmojiDistribution from "./charts/hashtag-emoji-distribution";
 
 export default function Dashboard() {
   const container = {
@@ -39,6 +38,7 @@ export default function Dashboard() {
         variants={item}
         className="col-span-1 md:col-span-2 xl:col-span-3 flex flex-wrap gap-4"
       >
+        {/* TODO: Fix and display more relevant informations */}
         <QuickStatsCards />
       </motion.div>
 
@@ -73,7 +73,7 @@ export default function Dashboard() {
             <CardContent className="h-[400px] relative">
               {/* Placeholder for future chart */}
               <div className="h-full w-full flex items-center justify-center text-gray-500">
-                <NarrativeDistributionBar narrative="languages" />
+                <NarrativeDistributionBar type="language" />
               </div>
             </CardContent>
           </Card>
@@ -89,7 +89,7 @@ export default function Dashboard() {
             <CardContent className="h-[400px] relative">
               {/* Placeholder for future chart */}
               <div className="h-full w-full flex items-center justify-center text-gray-500">
-                <NarrativeDistributionBar narrative="emotions" />
+                <NarrativeDistributionBar type="emotions" />
               </div>
             </CardContent>
           </Card>
@@ -105,7 +105,7 @@ export default function Dashboard() {
             <CardContent className="h-[400px] relative">
               {/* Placeholder for future chart */}
               <div className="h-full w-full flex items-center justify-center text-gray-500">
-                <NarrativeDistributionBar narrative="narratives" />
+                <NarrativeDistributionBar type="sentiment" />
               </div>
             </CardContent>
           </Card>
@@ -124,7 +124,7 @@ export default function Dashboard() {
             <CardContent className="h-[400px] relative">
               {/* Placeholder for future chart */}
               <div className="h-full w-full flex items-center justify-center text-gray-500">
-                <HashtagEmojiDistribution type="hashtags" />
+                <NarrativeDistributionBar type="hashtags" maxItems={10} />
               </div>
             </CardContent>
           </Card>
@@ -140,7 +140,7 @@ export default function Dashboard() {
             <CardContent className="h-[400px] relative">
               {/* Placeholder for future chart */}
               <div className="h-full w-full flex items-center justify-center text-gray-500">
-                <HashtagEmojiDistribution type="emojis" />
+                <NarrativeDistributionBar type="emoji" maxItems={10} />
               </div>
             </CardContent>
           </Card>
