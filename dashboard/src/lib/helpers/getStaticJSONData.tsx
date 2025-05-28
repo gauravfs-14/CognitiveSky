@@ -30,14 +30,23 @@ const extractScope = (snapshot: any, type: string): any => {
 // Flatten structure: { date: { type: { scope: value } } } → { scope: value }
 const flattenSnapshotFile = (snapshot: any): Record<string, any> => {
   const merged: Record<string, any> = {};
+
   for (const date of Object.keys(snapshot)) {
     const types = snapshot[date];
+
     for (const type of Object.keys(types)) {
       for (const scope of Object.keys(types[type])) {
-        merged[scope] = types[type][scope];
+        if (type === "volume" && scope === "timeline") {
+          // Merge timeline entries across all dates
+          merged.timeline ??= {};
+          Object.assign(merged.timeline, types[type][scope]);
+        } else {
+          merged[scope] = types[type][scope];
+        }
       }
     }
   }
+
   return merged;
 };
 
