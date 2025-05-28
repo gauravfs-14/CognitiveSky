@@ -1,0 +1,58 @@
+name: Daily Labeling and Summary Export
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs every day at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  label-and-generate:
+    runs-on: ubuntu-latest
+
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
+      TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN }}
+      BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+      BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/huggingface
+          key: ${{ runner.os }}-hf-${{ hashFiles('scripts/summary.py') }}
+          restore-keys: |
+            ${{ runner.os }}-hf-
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - run: pip install -r requirements.txt
+
+      - name: 🔄 Label, Migrate Snapshots
+        run: EXPORT_ONLY=0 python scripts/summary.py
+
+      - name: 📦 Export Snapshots
+        run: EXPORT_ONLY=1 python scripts/summary.py
+
+      - name: 📝 Commit Updated Snapshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add summary/*.json
+          git diff --cached --quiet || git commit -m "📊 Daily snapshot update for $(date +'%Y-%m-%d')"
+          git push

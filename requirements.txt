@@ -6,7 +6,3 @@ python-dotenv
 httpx
 python-dateutil
 scikit-learn
-sentence-transformers
-umap-learn
-emoji
-python-louvain
