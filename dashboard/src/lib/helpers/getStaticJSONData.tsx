@@ -55,7 +55,7 @@ const flattenUsersByTopic = (
   return userMap;
 };
 
-export const getStaticJSONData = () => {
+export const useStaticJSONData = () => {
   const [data, setData] = useState<SummaryData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);

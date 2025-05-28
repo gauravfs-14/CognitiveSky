@@ -1,7 +1,7 @@
-import { getStaticJSONData } from "@/lib/helpers/getStaticJSONData";
+import { useStaticJSONData } from "@/lib/helpers/getStaticJSONData";
 
 export function useSummaryData() {
-  const { data, error, loading } = getStaticJSONData();
+  const { data, error, loading } = useStaticJSONData();
 
   if (loading || error || !data) {
     return {
