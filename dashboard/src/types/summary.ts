@@ -15,7 +15,7 @@ export interface UserStats {
   };
 }
 
-export interface TopPostsGlobal extends Array<TopPost> {}
+export type TopPostsGlobal = Array<TopPost>;
 
 export interface EngagementData {
   posts: TopPostsGlobal;
