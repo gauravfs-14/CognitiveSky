@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { useEffect, useState } from "react";
 import {
   MetaSummary,
