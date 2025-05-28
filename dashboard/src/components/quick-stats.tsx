@@ -1,4 +1,3 @@
-import { useSummaryData } from "@/hooks/use-summary-data";
 import {
   BarChart2,
   MessageCircle,
@@ -10,8 +9,6 @@ import {
   Calendar,
   TrendingUp,
   TrendingDown,
-  AlertCircle,
-  Percent,
 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useChartData } from "@/hooks/use-chart-data";
