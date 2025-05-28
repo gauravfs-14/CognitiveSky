@@ -35,6 +35,8 @@ export default function NarrativeDistributionBar({
 }) {
   const { chartData: jsonData, loading, error } = useChartData();
 
+  console.log("Chart Data:", jsonData);
+
   if (loading) {
     return (
       <>
@@ -100,7 +102,7 @@ export default function NarrativeDistributionBar({
     .sort((a, b) => b.posts - a.posts)
     .slice(0, maxItems);
 
-  console.log("Chart Data:", chartData);
+  // console.log("Chart Data:", chartData);
 
   const chartConfig = {
     posts: {

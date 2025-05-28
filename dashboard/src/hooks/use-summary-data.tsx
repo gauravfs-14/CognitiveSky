@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { useEffect, useState } from "react";
 import {
   MetaSummary,
@@ -102,7 +101,7 @@ export function useSummaryData(): UseSummaryDataResult {
           )
         );
 
-        console.log("metaRes", metaRes);
+        // console.log("metaRes", metaRes);
 
         const data: SummaryData = {
           meta: metaSchema.parse(metaRes),
