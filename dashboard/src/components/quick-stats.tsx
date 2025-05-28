@@ -155,17 +155,6 @@ export default function QuickStatsCards() {
       ? ((topEmotion.value / totalEmotions) * 100).toFixed(1)
       : "0";
 
-  // Calculate simple growth rate for posts (current vs last week)
-  const postGrowth =
-    summary?.total.total_posts &&
-    summary?.lastWeek.total_posts &&
-    summary.lastWeek.total_posts > 0
-      ? (
-          (summary.total.total_posts / summary.lastWeek.total_posts - 1) *
-          100
-        ).toFixed(1)
-      : "0";
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
       <StatCard
