@@ -2,7 +2,7 @@
 import os
 import json
 import hashlib
-import datetime
+from datetime import datetime, timedelta, date
 import re
 from collections import Counter, defaultdict
 from dotenv import load_dotenv
@@ -14,7 +14,7 @@ from sklearn.decomposition import NMF
 from dateutil.parser import isoparse
 
 # === Constants ===
-today = datetime.date.today().isoformat()
+today = date.today().isoformat()
 
 # === Load ENV ===
 load_dotenv()
@@ -83,7 +83,6 @@ def hardened_label_and_migrate():
 
     # --- Supabase Ingestion ---
     print("🧹 Fetching unlabeled posts from Supabase...")
-    from datetime import datetime, timedelta
 
     start_dt = (datetime.utcnow() - timedelta(days=7)).isoformat() + "Z"
     end_dt = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + "Z"
@@ -182,8 +181,8 @@ def hardened_label_and_migrate():
     print("📊 Generating all snapshot files...")
 
     # Define date range: last 7 days excluding today
-    end_date = (datetime.date.today() - datetime.timedelta(days=1)).isoformat()  # yesterday
-    start_date = (datetime.date.today() - datetime.timedelta(days=7)).isoformat()  # 7 days before yesterday
+    end_date = (today - datetime.timedelta(days=1)).isoformat()  # yesterday
+    start_date = (today - datetime.timedelta(days=7)).isoformat()  # 7 days before yesterday
 
     print(f"📅 Analyzing posts from {start_date} to {end_date}...")
 
