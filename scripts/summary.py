@@ -369,7 +369,7 @@ def export_snapshots_to_json():
         parsed = json.loads(data_json)
 
         # Special unwrapping for flat types
-        if type_ in ["activity", "hashtags", "emojis"]:
+        if type_ in ["activity", "hashtags", "emojis", "emoji_sentiment", "emotion_by_topic", "sentiment_by_topic"]:
             # If snapshot is like { "2025-05-28": {...} }, extract inner dict
             if isinstance(parsed, dict) and date in parsed:
                 parsed = parsed[date]

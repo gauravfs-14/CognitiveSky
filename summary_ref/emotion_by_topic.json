@@ -1,0 +1,20 @@
+{
+  "topic_0": {
+    "joy": 42,
+    "sadness": 51,
+    "fear": 74,
+    "neutral": 63
+  },
+  "topic_1": {
+    "joy": 39,
+    "sadness": 85,
+    "fear": 94,
+    "neutral": 44
+  },
+  "topic_2": {
+    "joy": 74,
+    "sadness": 74,
+    "fear": 36,
+    "neutral": 45
+  }
+}

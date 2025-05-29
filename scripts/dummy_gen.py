@@ -7,7 +7,7 @@ def random_choice_weighted(choices):
     items, weights = zip(*choices.items())
     return random.choices(items, weights=weights)[0]
 
-def generate_dummy_json_files(output_dir="summary", days=7):
+def generate_dummy_json_files(output_dir="summary_ref", days=7):
     os.makedirs(output_dir, exist_ok=True)
     today = datetime.date.today()
     dates = [(today - datetime.timedelta(days=i)).isoformat() for i in reversed(range(days))]
