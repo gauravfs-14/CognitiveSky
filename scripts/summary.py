@@ -14,7 +14,7 @@ from sklearn.decomposition import NMF
 from dateutil.parser import isoparse
 
 # === Constants ===
-today = date.today().isoformat()
+today = date.today()
 
 # === Load ENV ===
 load_dotenv()
@@ -261,7 +261,7 @@ def hardened_label_and_migrate():
 
     last_7 = list(activity.values())
     store_snapshot("meta", "meta", {
-        "date": today,
+        "date": today.isoformat(),
         "complete": {
             "total_posts": len(all_posts),
             "total_sentiments": len(all_sent),
