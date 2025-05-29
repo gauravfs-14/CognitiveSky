@@ -18,7 +18,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export default function Dashboard() {
-  const { chartData, loading, error } = useChartData();
+  const { chartData } = useChartData();
 
   const container = {
     hidden: { opacity: 0 },

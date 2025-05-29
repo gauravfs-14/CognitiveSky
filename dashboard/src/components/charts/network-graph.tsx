@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useState } from "react";
 import { ScatterChart, Scatter, ResponsiveContainer, ZAxis } from "recharts";
@@ -47,7 +48,7 @@ export const NetworkGraph = ({
   description,
   height = 400,
 }: NetworkGraphProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
   // Colors for different node groups
   const colorScale = [
