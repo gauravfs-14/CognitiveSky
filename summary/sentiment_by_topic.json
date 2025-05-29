@@ -1,17 +1,1 @@
-{
-  "topic_0": {
-    "positive": 83,
-    "neutral": 16,
-    "negative": 52
-  },
-  "topic_1": {
-    "positive": 22,
-    "neutral": 10,
-    "negative": 76
-  },
-  "topic_2": {
-    "positive": 50,
-    "neutral": 22,
-    "negative": 26
-  }
-}
+{}
