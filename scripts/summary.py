@@ -186,10 +186,13 @@ def hardened_label_and_migrate():
 
     print(f"📅 Analyzing posts from {start_date} to {end_date}...")
 
-    rows = conn.execute("""
+    rows = conn.execute(
+        """
         SELECT created_at, sentiment, emotion, topic, langs, text FROM posts
         WHERE date(created_at) BETWEEN ? AND ?
-    """, (start_date, end_date)).fetchall()
+        """,
+        (start_date, end_date)
+    ).fetchall()
 
     # === Initialize counters ===
     activity = defaultdict(lambda: {"volume": 0, "sentiment": Counter(), "emotion": Counter(), "language": Counter()})

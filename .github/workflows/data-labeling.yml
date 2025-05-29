@@ -41,7 +41,7 @@ jobs:
         with:
           python-version: "3.10"
 
-      - run: pip install -r requirements.txt
+      - run: pip install --prefer-binary -r requirements.txt
 
       - name: 🔄 Label, Migrate Snapshots
         run: EXPORT_ONLY=0 python scripts/summary.py

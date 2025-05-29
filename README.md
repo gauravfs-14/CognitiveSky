@@ -24,6 +24,8 @@ The CognitiveSky system is built around two primary components:
 
 ### 2. Summarization & Labeling Pipeline (`summary.py`)
 
+[![Daily Labeling and Summary Export](https://github.com/gauravfs-14/CognitiveSky/actions/workflows/data-labeling.yml/badge.svg)](https://github.com/gauravfs-14/CognitiveSky/actions/workflows/data-labeling.yml)
+
 - **Language:** Python
 - **Trigger:** Scheduled daily via GitHub Actions (4 parallel shards × 500 posts)
 - **Purpose:** Processes unlabeled posts using:
