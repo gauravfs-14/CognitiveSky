@@ -1,8 +1,27 @@
 # 🧠 CognitiveSky
 
+[![GitHub Stars](https://img.shields.io/github/stars/gauravfs-14/CognitiveSky?style=social)](https://github.com/gauravfs-14/CognitiveSky)
+[![GitHub Forks](https://img.shields.io/github/forks/gauravfs-14/CognitiveSky?style=social)](https://github.com/gauravfs-14/CognitiveSky)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+[![Daily Labeling and Summary Export](https://github.com/gauravfs-14/CognitiveSky/actions/workflows/data-labeling.yml/badge.svg)](https://github.com/gauravfs-14/CognitiveSky/actions/workflows/data-labeling.yml)
+
 **CognitiveSky** is an open-source research infrastructure and dashboard for analyzing mental health narratives on the Bluesky social platform. Inspired by [TwiXplorer](https://github.com/smash-edin/twixplorer), it integrates real-time data ingestion, robust NLP processing, and interactive visualization to empower researchers, advocates, and developers with actionable social insights.
 
 > **Live Dashboard:** [CognitiveSky Dashboard](https://cognitivesky.vercel.app)
+
+## 📖 Table of Contents
+
+- [🌟 Features](#-features)
+- [⚙️ System Architecture](#️-system-architecture)
+- [🔨 Tools And Technologies](#-tools-and-technologies)
+- [🧪 Data Flow](#-data-flow)
+- [📦 Summary Outputs](#-summary-outputs)
+- [📊 Dashboard](#-dashboard)
+- [🚀 Get Started](#-get-started)
+- [🛠️ Makefile Commands](#️-makefile-commands)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [Acknowledgements](#acknowledgements)
 
 ## 🌟 Features
 
@@ -36,6 +55,31 @@ The CognitiveSky system is built around two primary components:
   - Topic modeling (NMF + TF-IDF)
 - **Database:** Processes are stored in Turso (libSQL)
 - **Output:** JSON snapshots written to `/summary/*.json` for dashboard rendering
+
+## 🔨 Tools And Technologies
+
+### Data Ingestion `mh_worker`
+
+- **Node.js:** For real-time data ingestion
+- **Bluesky Firehose API:** Streams public posts using `@atproto/sync` and `@atproto/api` libraries
+- **Supabase:** Acts as the database for storing unlabeled posts
+- **Oracle Cloud:** Hosts the worker for continuous operation
+
+### NLP Processing and Summarization `summary.py`
+
+- **Python:** Main language for NLP processing
+- **Transformers:** For sentiment and emotion analysis using pre-trained models
+- **Turso (libSQL):** Lightweight database for storing labeled data
+- **GitHub Actions:** Automates daily processing and export of summaries
+- **NLP Libraries:** 
+  - `transformers` for sentiment and emotion analysis
+  - `scikit-learn` for topic modeling
+
+### Dashboard
+
+- **React + Next.js:** Frontend framework for building the dashboard
+- **Tailwind CSS + shadcn/ui:** For styling the dashboard components
+- **Recharts:** For data visualization
 
 ## 🧪 Data Flow
 
@@ -105,8 +149,6 @@ Each is grouped by date to support historical and temporal exploration in the da
   - Most active users and posts
   - Narrative shifts across time
 - **Data Source:** JSON files from `summary/` directory
-
----
 
 ## 🚀 Get Started
 
