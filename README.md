@@ -2,6 +2,8 @@
 
 **CognitiveSky** is an open-source research infrastructure and dashboard for analyzing mental health narratives on the Bluesky social platform. Inspired by [TwiXplorer](https://github.com/smash-edin/twixplorer), it integrates real-time data ingestion, robust NLP processing, and interactive visualization to empower researchers, advocates, and developers with actionable social insights.
 
+> **Live Dashboard:** [CognitiveSky Dashboard](https://cognitivesky.vercel.app)
+
 ## 🌟 Features
 
 - **Real-time Data Ingestion:** Continuously collects public posts related to mental health from Bluesky using the Firehose API.
@@ -13,7 +15,7 @@
 
 The CognitiveSky system is built around two primary components:
 
-### 1. Mental Health Worker (mh_worker)
+### 1. Mental Health Worker (`mh_worker`)
 
 - **Language:** Node.js
 - **Host:** Oracle Cloud (free-tier VM)
@@ -34,8 +36,6 @@ The CognitiveSky system is built around two primary components:
   - Topic modeling (NMF + TF-IDF)
 - **Database:** Processes are stored in Turso (libSQL)
 - **Output:** JSON snapshots written to `/summary/*.json` for dashboard rendering
-
----
 
 ## 🧪 Data Flow
 
@@ -83,8 +83,6 @@ The CognitiveSky system is built around two primary components:
     └────────────────────┘
 ```
 
----
-
 ## 📦 Summary Outputs
 
 Every run of the summarization pipeline generates JSON files like:
@@ -97,8 +95,6 @@ Every run of the summarization pipeline generates JSON files like:
 - `summary/topics.json`: Topic distributions, keywords, and per-topic sentiment/emotion/hashtags
 
 Each is grouped by date to support historical and temporal exploration in the dashboard.
-
----
 
 ## 📊 Dashboard
 
@@ -186,7 +182,27 @@ Or export just the snapshots:
 EXPORT_ONLY=1 python scripts/summary.py
 ```
 
----
+## 🛠️ Makefile Commands
+
+The project includes a Makefile for streamlined testing and production workflows. Below are the available commands:
+
+### Test Commands
+
+- `make test-label`: Run full labeling and snapshot generation in `TEST_MODE`.
+- `make test-export`: Export summary JSONs only from the test database.
+- `make test-db-to-db`: Generate snapshot DB from labeled posts in `TEST_MODE`.
+- `make test-full`: Run full labeling and snapshot generation in `TEST_MODE`, followed by exporting JSONs.
+
+### Production Commands
+
+- `make prod-label`: Run full labeling and snapshot generation on the production database.
+- `make prod-export`: Export summary JSONs only from the production database.
+
+### Utility Commands
+
+- `make clean-test-db`: Remove the local test database.
+- `make gen-dummy`: Generate dummy data for testing.
+- `make help`: Display the list of available Makefile commands.
 
 ## 🤝 Contributing
 
@@ -197,8 +213,6 @@ We welcome contributions from researchers, developers, and mental health advocat
 - Extend to other languages or regions
 - Report bugs or submit PRs
 
----
-
 ## 📄 License
 
 This project is licensed under the **MIT License**. See [`LICENSE`](./LICENSE) for details.
@@ -207,4 +221,4 @@ This project is licensed under the **MIT License**. See [`LICENSE`](./LICENSE) f
 
 This project was initially inspired by [TwiXplorer](https://github.com/smash-edin/twixplorer) and aims to build a similar infrastructure for Bluesky mental health narratives. Special thanks to the Bluesky community for their support and resources.
 
-Developed by [Gaurab Chhetri](https://gaurabchhetri.com), Supported by [AIT Lab](https://ait-lab.vercel.app).
+Developed by [Gaurab Chhetri](https://gaurabchhetri.com.np), Supported by [AIT Lab](https://ait-lab.vercel.app).

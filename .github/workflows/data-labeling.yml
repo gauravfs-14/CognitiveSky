@@ -32,7 +32,9 @@ jobs:
 
       - uses: actions/cache@v3
         with:
-          path: ~/.cache/huggingface
+          path: |
+            ~/.cache/huggingface
+            ~/.cache/torch/transformers
           key: ${{ runner.os }}-hf-${{ hashFiles('scripts/summary.py') }}
           restore-keys: |
             ${{ runner.os }}-hf-
