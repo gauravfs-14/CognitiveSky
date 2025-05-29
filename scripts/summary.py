@@ -181,8 +181,8 @@ def hardened_label_and_migrate():
     print("📊 Generating all snapshot files...")
 
     # Define date range: last 7 days excluding today
-    end_date = (today - datetime.timedelta(days=1)).isoformat()  # yesterday
-    start_date = (today - datetime.timedelta(days=7)).isoformat()  # 7 days before yesterday
+    end_date = (today - timedelta(days=1)).isoformat()  # yesterday
+    start_date = (today - timedelta(days=7)).isoformat()  # 7 days before yesterday
 
     print(f"📅 Analyzing posts from {start_date} to {end_date}...")
 
@@ -327,7 +327,6 @@ def hardened_label_and_migrate():
 # === Export-only mode ===
 def export_snapshots_to_json():
     import collections
-    import datetime
 
     os.makedirs("summary", exist_ok=True)
     files = {
@@ -344,8 +343,8 @@ def export_snapshots_to_json():
     data_map = {f: {} for f in files}
 
     # Define last 7 full days (excluding today)
-    end_date = (datetime.date.today() - datetime.timedelta(days=1)).isoformat()  # yesterday
-    start_date = (datetime.date.today() - datetime.timedelta(days=7)).isoformat()  # 7 days before yesterday
+    end_date = (today - timedelta(days=1)).isoformat()
+    start_date = (today - timedelta(days=7)).isoformat()
 
     # Fetch all snapshot rows in that range
     rows = conn.execute(
