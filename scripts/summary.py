@@ -14,7 +14,7 @@ from sklearn.decomposition import NMF
 from dateutil.parser import isoparse
 
 # === Constants ===
-today = date.today()
+today = date.today().isoformat()
 
 # === Load ENV ===
 load_dotenv()
@@ -25,8 +25,6 @@ TURSO_DB_TOKEN = os.getenv("TURSO_DB_TOKEN")
 
 # === Clients ===
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-sentiment_pipe = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment", tokenizer="cardiffnlp/twitter-roberta-base-sentiment", device=-1)
-emotion_pipe = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", tokenizer="j-hartmann/emotion-english-distilroberta-base", top_k=1, device=-1)
 
 # === DB Connection ===
 conn = libsql.connect("/tmp/turso_replica.db", sync_url=TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
@@ -79,6 +77,8 @@ def store_snapshot(type_, scope, data):
 
 # === Label, Migrate, and Generate Snapshots ===
 def hardened_label_and_migrate():
+    sentiment_pipe = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment", tokenizer="cardiffnlp/twitter-roberta-base-sentiment", device=-1)
+    emotion_pipe = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", tokenizer="j-hartmann/emotion-english-distilroberta-base", top_k=1, device=-1)
     print("🚀 Starting labeling and snapshot generation process...")
 
     # --- Supabase Ingestion ---
@@ -181,8 +181,8 @@ def hardened_label_and_migrate():
     print("📊 Generating all snapshot files...")
 
     # Define date range: last 7 days excluding today
-    end_date = (today - timedelta(days=1)).isoformat()  # yesterday
-    start_date = (today - timedelta(days=7)).isoformat()  # 7 days before yesterday
+    end_date = (date.today() - timedelta(days=1)).isoformat()  # yesterday
+    start_date = (date.today() - timedelta(days=7)).isoformat()  # 7 days before yesterday
 
     print(f"📅 Analyzing posts from {start_date} to {end_date}...")
 
@@ -193,7 +193,11 @@ def hardened_label_and_migrate():
         """,
         (start_date, end_date)
     ).fetchall()
+    compute_and_store_snapshot(rows, topic_words)
 
+def compute_and_store_snapshot(rows, topic_words=None):
+    if topic_words is None:
+        topic_words = [["general"]] * 8  # Default topics if not provided
     # === Initialize counters ===
     activity = defaultdict(lambda: {"volume": 0, "sentiment": Counter(), "emotion": Counter(), "language": Counter()})
     hashtags_daily = defaultdict(Counter)
@@ -263,8 +267,14 @@ def hardened_label_and_migrate():
         all_emjs.update(emoji_re.findall(text))
 
     last_7 = list(activity.values())
+    # Add checks to handle empty data in last_7
+    if not last_7:
+        print("⚠️ No data available for snapshot generation.")
+        return
+
+    # Update top calculations to handle empty lists
     store_snapshot("meta", "meta", {
-        "date": today.isoformat(),
+        "date": today,
         "complete": {
             "total_posts": len(all_posts),
             "total_sentiments": len(all_sent),
@@ -284,19 +294,18 @@ def hardened_label_and_migrate():
             "total_emojis": len(set(k for d in emojis_daily.values() for k in d)),
         },
         "averages": {
-            "avg_posts_per_day": round(sum(x["volume"] for x in last_7) / 7, 2),
-            "avg_hashtags_per_day": round(sum(sum(v.values()) for v in hashtags_daily.values()) / 7, 2),
-            "avg_emojis_per_day": round(sum(sum(v.values()) for v in emojis_daily.values()) / 7, 2),
+            "avg_posts_per_day": round(sum(x["volume"] for x in last_7) / 7, 2) if last_7 else 0,
+            "avg_hashtags_per_day": round(sum(sum(v.values()) for v in hashtags_daily.values()) / 7, 2) if hashtags_daily else 0,
+            "avg_emojis_per_day": round(sum(sum(v.values()) for v in emojis_daily.values()) / 7, 2) if emojis_daily else 0,
         },
         "top": {
-            "sentiment": Counter(k for x in last_7 for k in x["sentiment"].elements()).most_common(1)[0][0],
-            "emotion": Counter(k for x in last_7 for k in x["emotion"].elements()).most_common(1)[0][0],
-            "language": Counter(k for x in last_7 for k in x["language"].elements()).most_common(1)[0][0],
-            "hashtag": all_tags.most_common(1)[0][0],
-            "emoji": all_emjs.most_common(1)[0][0]
+            "sentiment": Counter(k for x in last_7 for k in x["sentiment"].elements()).most_common(1)[0][0] if last_7 and Counter(k for x in last_7 for k in x["sentiment"].elements()).most_common(1) else None,
+            "emotion": Counter(k for x in last_7 for k in x["emotion"].elements()).most_common(1)[0][0] if last_7 and Counter(k for x in last_7 for k in x["emotion"].elements()).most_common(1) else None,
+            "language": Counter(k for x in last_7 for k in x["language"].elements()).most_common(1)[0][0] if last_7 and Counter(k for x in last_7 for k in x["language"].elements()).most_common(1) else None,
+            "hashtag": all_tags.most_common(1)[0][0] if all_tags.most_common(1) else None,
+            "emoji": all_emjs.most_common(1)[0][0] if all_emjs.most_common(1) else None
         }
     })
-
 
     store_snapshot("activity", "activity", dict(activity))
     store_snapshot("hashtags", "hashtags", {k: dict(v) for k, v in hashtags_daily.items()})
@@ -325,11 +334,10 @@ def hardened_label_and_migrate():
         for k, v in topic_summary.items()
     })
 
-
-
 # === Export-only mode ===
 def export_snapshots_to_json():
     import collections
+    from datetime import date, timedelta
 
     os.makedirs("summary", exist_ok=True)
     files = {
@@ -346,8 +354,8 @@ def export_snapshots_to_json():
     data_map = {f: {} for f in files}
 
     # Define last 7 full days (excluding today)
-    end_date = (today - timedelta(days=1)).isoformat()
-    start_date = (today - timedelta(days=7)).isoformat()
+    end_date = (date.today() - timedelta(days=1)).isoformat()  # yesterday
+    start_date = (date.today() - timedelta(days=7)).isoformat()  # 7 days before yesterday
 
     # Fetch all snapshot rows in that range
     rows = conn.execute(
@@ -603,6 +611,30 @@ def export_snapshots_to_json():
             json.dump(json_to_dump, out, indent=2)
         print(f"✅ Wrote summary/{f}.json")
 
+def generate_snapshots_from_turso():
+    print("📊 Generating all snapshot files (directly from Turso DB)...")
+
+    # Define date range: last 7 days excluding today
+    end_date = (date.today() - timedelta(days=1)).isoformat()  # yesterday
+    start_date = (date.today() - timedelta(days=7)).isoformat()  # 7 days before yesterday
+
+    print(f"📅 Analyzing posts from {start_date} to {end_date}...")
+
+    rows = conn.execute(
+        """
+        SELECT created_at, sentiment, emotion, topic, langs, text FROM posts
+        WHERE date(created_at) BETWEEN ? AND ?
+        """,
+        (start_date, end_date)
+    ).fetchall()
+    # rows = conn.execute("SELECT created_at, sentiment, emotion, topic, langs, text FROM posts").fetchall()
+
+    print(f"🔍 Found {len(rows)} posts in the specified date range.")
+
+    if not rows:
+        print("⚠️ No posts found in the specified date range.")
+        return
+    compute_and_store_snapshot(rows)
 
 
 # === Entrypoint ===
@@ -611,6 +643,9 @@ if __name__ == "__main__":
     if os.getenv("EXPORT_ONLY") == "1":
         export_snapshots_to_json()
         print("✅ Only exported snapshots.")
+    elif os.getenv("SKIP_LABELING") == "1":
+        generate_snapshots_from_turso()
+        print("✅ Generated snapshots from Turso.")
     else:
         hardened_label_and_migrate()
     conn.commit()
