@@ -4,7 +4,6 @@ import { Hash } from "lucide-react";
 import { PageTitle } from "@/components/page-title";
 import { useChartData } from "@/hooks/use-chart-data";
 import { motion } from "framer-motion";
-import { WordCloud } from "@/components/charts/word-cloud";
 import { NetworkGraph } from "@/components/charts/network-graph";
 import {
   Card,
@@ -169,11 +168,7 @@ export default function HashtagsEmojiPage() {
                       </h3>
                       <div className="h-[400px] bg-gray-50 rounded-lg p-4">
                         <div className="h-full w-full">
-                          <WordCloud
-                            words={emojiWordCloudData}
-                            title=""
-                            description=""
-                          />
+                          <VisxWordCloud words={emojiWordCloudData} />
                         </div>
                       </div>
                     </div>
