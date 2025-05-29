@@ -4,7 +4,6 @@ import { Hash } from "lucide-react";
 import { PageTitle } from "@/components/page-title";
 import { useChartData } from "@/hooks/use-chart-data";
 import { motion } from "framer-motion";
-import { NetworkGraph } from "@/components/charts/network-graph";
 import {
   Card,
   CardContent,
@@ -179,7 +178,7 @@ export default function HashtagsEmojiPage() {
           </Card>
         </motion.div>
 
-        {/* Hashtag Network Graph */}
+        {/* Hashtag Network Graph
         <motion.div variants={item} className="col-span-1 md:col-span-3">
           <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
@@ -197,7 +196,7 @@ export default function HashtagsEmojiPage() {
               />
             </CardContent>
           </Card>
-        </motion.div>
+        </motion.div> */}
 
         {/* Hashtag Time Series */}
         <motion.div variants={item} className="col-span-1 md:col-span-3">

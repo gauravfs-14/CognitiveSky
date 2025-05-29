@@ -7,12 +7,12 @@ import {
   Hash,
   Clock,
   HelpCircle,
-  FileDown,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTitle } from "./ui/sheet";
+import { usePathname } from "next/navigation";
 
 interface SidebarProps {
   open: boolean;
@@ -44,6 +44,8 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
 
 const SideBarContent = ({ open, setOpen }: SidebarProps) => {
   const isMobile = useIsMobile();
+  const currentPath = usePathname(); // Use usePathname to get the current route
+
   const sidebarVariants = {
     open: { width: "240px", transition: { duration: 0.3 } },
     closed: { width: "72px", transition: { duration: 0.3 } },
@@ -60,9 +62,9 @@ const SideBarContent = ({ open, setOpen }: SidebarProps) => {
     { icon: Network, label: "Topic Clusters", href: "/topics" },
     { icon: Hash, label: "Hashtags & Emojis", href: "/hashtags" },
     { icon: Clock, label: "Timeline", href: "/timeline" },
-    { icon: FileDown, label: "Export Reports", href: "/export" },
     { icon: HelpCircle, label: "Help", href: "/help" },
   ];
+
   return (
     <motion.div
       variants={sidebarVariants}
@@ -93,6 +95,7 @@ const SideBarContent = ({ open, setOpen }: SidebarProps) => {
                 href={item.href}
                 className={cn(
                   "flex items-center p-2 rounded-lg hover:bg-sky-700 transition-colors",
+                  currentPath === item.href ? "bg-sky-700" : "",
                   open ? "justify-start" : "justify-center"
                 )}
                 onClick={() => {

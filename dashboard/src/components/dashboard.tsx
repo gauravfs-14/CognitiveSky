@@ -71,11 +71,11 @@ export default function Dashboard() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"
+      className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 md:gap-6"
     >
       <motion.div
         variants={item}
-        className="col-span-1 md:col-span-2 xl:col-span-3 flex flex-wrap gap-4"
+        className="col-span-1 sm:col-span-2 xl:col-span-3 flex flex-wrap gap-3 sm:gap-4"
       >
         <QuickStatsCards />
       </motion.div>
@@ -83,24 +83,26 @@ export default function Dashboard() {
       {/* Post Volume Chart */}
       <motion.div
         variants={item}
-        className="col-span-1 md:col-span-2 xl:col-span-3"
+        className="col-span-1 sm:col-span-2 xl:col-span-3"
       >
         <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
-          <CardHeader className="pb-2 flex flex-row items-center justify-between">
+          <CardHeader className="pb-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <div>
-              <CardTitle>Post Volume Timeline</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-base sm:text-lg">
+                Post Volume Timeline
+              </CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
                 Mental health-related post activity over time
               </CardDescription>
             </div>
             <Link
               href="/timeline"
-              className="text-sky-600 hover:text-sky-800 text-sm flex items-center"
+              className="text-sky-600 hover:text-sky-800 text-xs sm:text-sm flex items-center whitespace-nowrap"
             >
               View details <ArrowRight size={14} className="ml-1" />
             </Link>
           </CardHeader>
-          <CardContent className="h-[400px] relative">
+          <CardContent className="h-[300px] sm:h-[350px] md:h-[400px] relative p-2 sm:p-4">
             <div className="h-full w-full">
               <TimelinePostVolumeChart />
             </div>
@@ -109,7 +111,7 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Sentiment Analysis */}
-      <motion.div variants={item} className="col-span-1 md:col-span-2">
+      <motion.div variants={item} className="col-span-1 sm:col-span-2">
         <StackedAreaChart
           data={chartData?.sentimentTimeSeries || []}
           title="Sentiment Trends"
@@ -121,21 +123,23 @@ export default function Dashboard() {
       {/* Sentiment Distribution Bar */}
       <motion.div variants={item} className="col-span-1">
         <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
-          <CardHeader className="pb-2 flex flex-row items-center justify-between">
+          <CardHeader className="pb-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <div>
-              <CardTitle>Sentiment Distribution</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-base sm:text-lg">
+                Sentiment Distribution
+              </CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
                 Distribution of positive, neutral, and negative sentiment
               </CardDescription>
             </div>
             <Link
               href="/sentiment"
-              className="text-sky-600 hover:text-sky-800 text-sm flex items-center"
+              className="text-sky-600 hover:text-sky-800 text-xs sm:text-sm flex items-center whitespace-nowrap"
             >
               View details <ArrowRight size={14} className="ml-1" />
             </Link>
           </CardHeader>
-          <CardContent className="h-[400px] relative">
+          <CardContent className="h-[250px] sm:h-[300px] md:h-[400px] relative p-2 sm:p-4">
             <div className="h-full w-full flex items-center justify-center text-gray-500">
               <NarrativeDistributionBar type="sentiment" />
             </div>
@@ -144,7 +148,7 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Emotion Time Series */}
-      <motion.div variants={item} className="col-span-1 md:col-span-2">
+      <motion.div variants={item} className="col-span-1 sm:col-span-2">
         <MultiLineTimeSeries
           data={chartData?.emotionTimeSeries || []}
           title="Emotion Trends"
@@ -156,21 +160,23 @@ export default function Dashboard() {
       {/* Emotion Distribution */}
       <motion.div variants={item} className="col-span-1">
         <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
-          <CardHeader className="pb-2 flex flex-row items-center justify-between">
+          <CardHeader className="pb-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <div>
-              <CardTitle>Emotion Distribution</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-base sm:text-lg">
+                Emotion Distribution
+              </CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
                 Distribution of emotions in mental health posts
               </CardDescription>
             </div>
             <Link
               href="/sentiment"
-              className="text-sky-600 hover:text-sky-800 text-sm flex items-center"
+              className="text-sky-600 hover:text-sky-800 text-xs sm:text-sm flex items-center whitespace-nowrap"
             >
               View details <ArrowRight size={14} className="ml-1" />
             </Link>
           </CardHeader>
-          <CardContent className="h-[400px] relative">
+          <CardContent className="h-[250px] sm:h-[300px] md:h-[400px] relative p-2 sm:p-4">
             <div className="h-full w-full flex items-center justify-center text-gray-500">
               <NarrativeDistributionBar type="emotions" />
             </div>
@@ -182,12 +188,14 @@ export default function Dashboard() {
       <motion.div variants={item} className="col-span-1">
         <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
           <CardHeader className="pb-2">
-            <CardTitle>Language Distribution</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-base sm:text-lg">
+              Language Distribution
+            </CardTitle>
+            <CardDescription className="text-xs sm:text-sm">
               Breakdown of languages used in mental health posts
             </CardDescription>
           </CardHeader>
-          <CardContent className="h-[400px] relative">
+          <CardContent className="h-[250px] sm:h-[300px] md:h-[400px] relative p-2 sm:p-4">
             <div className="h-full w-full flex items-center justify-center text-gray-500">
               <NarrativeDistributionBar type="language" />
             </div>
@@ -214,36 +222,41 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Topic Distribution */}
-      <motion.div variants={item} className="col-span-1 md:col-span-3">
+      <motion.div
+        variants={item}
+        className="col-span-1 sm:col-span-2 xl:col-span-3"
+      >
         <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
-          <CardHeader className="pb-2 flex flex-row items-center justify-between">
+          <CardHeader className="pb-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <div>
-              <CardTitle>Topic Clusters Overview</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-base sm:text-lg">
+                Topic Clusters Overview
+              </CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
                 Key topics identified in mental health discussions
               </CardDescription>
             </div>
             <Link
               href="/topics"
-              className="text-sky-600 hover:text-sky-800 text-sm flex items-center"
+              className="text-sky-600 hover:text-sky-800 text-xs sm:text-sm flex items-center whitespace-nowrap"
             >
               View details <ArrowRight size={14} className="ml-1" />
             </Link>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <CardContent className="p-2 sm:p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {chartData?.topicsOverview?.map((topic) => (
                 <div
                   key={topic.topic}
-                  className="bg-white/50 p-4 rounded-lg border border-sky-100"
+                  className="bg-white/50 p-3 sm:p-4 rounded-lg border border-sky-100"
                 >
-                  <h3 className="font-semibold text-lg mb-2">
+                  <h3 className="font-semibold text-base sm:text-lg mb-2 line-clamp-1">
                     {topic.label.join(", ")}
                   </h3>
-                  <div className="text-sm text-gray-600 mb-1">
+                  <div className="text-xs sm:text-sm text-gray-600 mb-1">
                     <span className="font-medium">{topic.count}</span> posts
                   </div>
-                  <div className="text-sm text-gray-600 mb-3">
+                  <div className="text-xs sm:text-sm text-gray-600 mb-3">
                     Top sentiment:{" "}
                     {topic.sentiment.sort((a, b) => b.value - a.value)[0]?.name}
                   </div>
@@ -251,7 +264,7 @@ export default function Dashboard() {
                     {topic.hashtags.slice(0, 3).map((hashtag) => (
                       <span
                         key={hashtag}
-                        className="text-xs bg-sky-100 text-sky-800 px-2 py-1 rounded-full"
+                        className="text-xs bg-sky-100 text-sky-800 px-2 py-1 rounded-full truncate max-w-full"
                       >
                         {hashtag}
                       </span>
