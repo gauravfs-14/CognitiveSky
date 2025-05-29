@@ -190,10 +190,10 @@ EXPORT_ONLY=1 python scripts/summary.py
 
 We welcome contributions from researchers, developers, and mental health advocates. You can:
 
-* Suggest new metrics or visualizations
-* Help improve NLP model support
-* Extend to other languages or regions
-* Report bugs or submit PRs
+- Suggest new metrics or visualizations
+- Help improve NLP model support
+- Extend to other languages or regions
+- Report bugs or submit PRs
 
 ---
 
