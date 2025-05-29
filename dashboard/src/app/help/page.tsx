@@ -210,7 +210,7 @@ export default function HelpPage() {
             <CardHeader className="pb-2">
               <CardTitle>Need Assistance?</CardTitle>
               <CardDescription>
-                We're here to help you get the most out of CognitiveSky
+                We&apos;re here to help you get the most out of CognitiveSky
               </CardDescription>
             </CardHeader>
 
