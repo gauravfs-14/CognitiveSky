@@ -43,6 +43,8 @@ The CognitiveSky system is built around two primary components:
 - **Frequency:** Continuous, 24×7 ingestion
 - **Output:** Raw mental-health-related posts in Supabase
 
+> **Read more about the worker:** [mh_worker README](https://github.com/gauravfs-14/CognitiveSky/tree/main/mh_worker)
+
 ### 2. Summarization & Labeling Pipeline (`summary.py`)
 
 [![Daily Labeling and Summary Export](https://github.com/gauravfs-14/CognitiveSky/actions/workflows/data-labeling.yml/badge.svg)](https://github.com/gauravfs-14/CognitiveSky/actions/workflows/data-labeling.yml)
@@ -55,6 +57,8 @@ The CognitiveSky system is built around two primary components:
   - Topic modeling (NMF + TF-IDF)
 - **Database:** Processes are stored in Turso (libSQL)
 - **Output:** JSON snapshots written to `/summary/*.json` for dashboard rendering
+
+> **View Latest Summary Output:** [Latest Summary JSON](https://github.com/gauravfs-14/CognitiveSky/tree/main/summary)
 
 ## 🔨 Tools And Technologies
 
@@ -140,6 +144,8 @@ Every run of the summarization pipeline generates JSON files like:
 
 Each is grouped by date to support historical and temporal exploration in the dashboard.
 
+> **View Example Output:** [Sample JSON Output](https://github.com/gauravfs-14/CognitiveSky/tree/main/summary_ref)
+
 ## 📊 Dashboard
 
 - **Framework:** React + Next.js + Recharts
@@ -149,6 +155,8 @@ Each is grouped by date to support historical and temporal exploration in the da
   - Most active users and posts
   - Narrative shifts across time
 - **Data Source:** JSON files from `summary/` directory
+
+> **Live Demo:** [CognitiveSky Dashboard](https://cognitivesky.vercel.app) | **Source Code:** [Dashboard Code](https://github.com/gauravfs-14/CognitiveSky/tree/main/dashboard)
 
 ## 🚀 Get Started
 
@@ -261,6 +269,13 @@ This project is licensed under the **MIT License**. See [`LICENSE`](./LICENSE) f
 
 ## Acknowledgements
 
-This project was initially inspired by [TwiXplorer](https://github.com/smash-edin/twixplorer) and aims to build a similar infrastructure for Bluesky mental health narratives. Special thanks to the Bluesky community for their support and resources.
+This project was initially inspired by [TwiXplorer](https://github.com/smash-edin/twixplorer) and aims to build a similar infrastructure for Bluesky mental health narratives. Special thanks to:
+
+- **Bluesky Community:** For their support and resources.
+- **Oracle Cloud:** For providing the Forever Free Tier VM hosting the `mh_worker`.
+- **Supabase:** For enabling seamless database integration and real-time data storage.
+- **Hugging Face Transformers:** For providing pre-trained models used in sentiment and emotion analysis.
+- **AIT Lab:** For their guidance, collaboration, and technical support.
+- **Open Source Contributors:** For their valuable feedback, suggestions, and code contributions.
 
 Developed by [Gaurab Chhetri](https://gaurabchhetri.com.np), Supported by [AIT Lab](https://ait-lab.vercel.app).
