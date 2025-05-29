@@ -2,9 +2,9 @@
   "2025-05-28": {
     "volume": 1411,
     "sentiment": {
-      "label_1": 499,
-      "label_0": 606,
-      "label_2": 306
+      "neutral": 499,
+      "negative": 606,
+      "positive": 306
     },
     "emotion": {
       "fear": 462,

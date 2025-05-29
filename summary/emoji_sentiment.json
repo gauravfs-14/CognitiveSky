@@ -1,5 +1,5 @@
 {
-  "label_0": {
+  "negative": {
     "\ud83d\ude2d": 18,
     "\ud83d\udde3": 1,
     "\ud83d\udc4f": 1,
@@ -53,7 +53,7 @@
     "\ud83c\udffc": 1,
     "\ud83d\ude97": 1
   },
-  "label_1": {
+  "neutral": {
     "\ud83d\ude34": 1,
     "\ud83d\uddbc": 1,
     "\ud83c\udf39": 1,
@@ -124,7 +124,7 @@
     "\ud83c\udffc": 1,
     "\u2640": 1
   },
-  "label_2": {
+  "positive": {
     "\ud83d\udda4": 1,
     "\ud83d\ude84": 2,
     "\ud83c\udff4": 1,
