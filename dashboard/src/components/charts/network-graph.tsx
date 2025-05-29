@@ -66,54 +66,91 @@ export const NetworkGraph = ({
 
   // Create a force-directed-like layout
   // For simplicity, using a circular layout with some randomness
-  const processedNodes = nodes.map((node, index) => {
-    const angle = (index / nodes.length) * 2 * Math.PI;
-    const radius = 40;
+  const processedNodes = nodes
+    .map((node, index) => {
+      try {
+        const angle = (index / nodes.length) * 2 * Math.PI;
+        const radius = 40;
 
-    // Position in circle + randomness
-    const xBase = 50 + radius * Math.cos(angle);
-    const yBase = 50 + radius * Math.sin(angle);
+        // Position in circle + randomness
+        const xBase = 50 + radius * Math.cos(angle);
+        const yBase = 50 + radius * Math.sin(angle);
 
-    // Add some randomness to avoid perfect circle
-    const x = xBase + (Math.random() - 0.5) * 10;
-    const y = yBase + (Math.random() - 0.5) * 10;
+        // Add some randomness to avoid perfect circle
+        const x = xBase + (Math.random() - 0.5) * 10;
+        const y = yBase + (Math.random() - 0.5) * 10;
 
-    return {
-      ...node,
-      x,
-      y,
-      fill: colorScale[(node.group - 1) % colorScale.length],
-      radius: Math.sqrt(node.value) * 1.5 + 3,
-    };
-  });
+        return {
+          ...node,
+          x,
+          y,
+          fill: colorScale[(node.group - 1) % colorScale.length],
+          radius: Math.sqrt(node.value) * 1.5 + 3,
+        };
+      } catch (error) {
+        console.error(`Error processing node ${node.id}:`, error);
+        return null;
+      }
+    })
+    .filter(Boolean);
+
+  if (processedNodes.length === 0) {
+    console.warn("No nodes were processed. Check the input data.");
+  }
 
   // Process links for rendering
   const linkData = links
     .map((link) => {
-      const sourceNode =
-        typeof link.source === "string"
-          ? processedNodes.find((n) => n.id === link.source)
-          : processedNodes.find((n) => n.id === (link.source as Node).id);
+      try {
+        const sourceNode =
+          typeof link.source === "string"
+            ? processedNodes.find(
+                (n): n is NonNullable<typeof n> =>
+                  n !== null && n.id === link.source
+              )
+            : processedNodes.find(
+                (n): n is NonNullable<typeof n> =>
+                  n !== null && n.id === (link.source as Node).id
+              );
 
-      const targetNode =
-        typeof link.target === "string"
-          ? processedNodes.find((n) => n.id === link.target)
-          : processedNodes.find((n) => n.id === (link.target as Node).id);
+        const targetNode =
+          typeof link.target === "string"
+            ? processedNodes.find(
+                (n): n is NonNullable<typeof n> =>
+                  n !== null && n.id === link.target
+              )
+            : processedNodes.find(
+                (n): n is NonNullable<typeof n> =>
+                  n !== null && n.id === (link.target as Node).id
+              );
 
-      if (!sourceNode || !targetNode) return null;
+        if (!sourceNode || !targetNode) {
+          console.warn(
+            `Link skipped due to missing nodes. Source: ${link.source}, Target: ${link.target}`
+          );
+          return null;
+        }
 
-      return {
-        sourceId: sourceNode.id,
-        targetId: targetNode.id,
-        sourceX: sourceNode.x,
-        sourceY: sourceNode.y,
-        targetX: targetNode.x,
-        targetY: targetNode.y,
-        value: link.value,
-        thickness: Math.sqrt(link.value) * 0.5 + 0.5,
-      };
+        return {
+          sourceId: sourceNode.id,
+          targetId: targetNode.id,
+          sourceX: sourceNode.x,
+          sourceY: sourceNode.y,
+          targetX: targetNode.x,
+          targetY: targetNode.y,
+          value: link.value,
+          thickness: Math.sqrt(link.value) * 0.5 + 0.5,
+        };
+      } catch (error) {
+        console.error(`Error processing link:`, error);
+        return null;
+      }
     })
     .filter(Boolean);
+
+  if (linkData.length === 0) {
+    console.warn("No links were processed. Check the input data.");
+  }
 
   // Chart configuration
   const chartConfig = {
