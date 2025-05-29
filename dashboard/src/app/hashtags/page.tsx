@@ -62,28 +62,28 @@ export default function HashtagsEmojiPage() {
       }))
     : [];
 
-  // Prepare network graph data
-  const hashtagNetworkData = chartData?.hashtagGraph
-    ? {
-        nodes: Array.from(
-          new Set([
-            ...chartData.hashtagGraph.map((link) => link.source),
-            ...chartData.hashtagGraph.map((link) => link.target),
-          ])
-        ).map((hashtag, index) => ({
-          id: hashtag as string,
-          group: (index % 5) + 1,
-          value:
-            chartData.hashtagOverall.find((h) => h.name === hashtag)?.value ||
-            10,
-        })),
-        links: chartData.hashtagGraph.map((link) => ({
-          source: link.source,
-          target: link.target,
-          value: link.weight,
-        })),
-      }
-    : { nodes: [], links: [] };
+  // // Prepare network graph data
+  // const hashtagNetworkData = chartData?.hashtagGraph
+  //   ? {
+  //       nodes: Array.from(
+  //         new Set([
+  //           ...chartData.hashtagGraph.map((link) => link.source),
+  //           ...chartData.hashtagGraph.map((link) => link.target),
+  //         ])
+  //       ).map((hashtag, index) => ({
+  //         id: hashtag as string,
+  //         group: (index % 5) + 1,
+  //         value:
+  //           chartData.hashtagOverall.find((h) => h.name === hashtag)?.value ||
+  //           10,
+  //       })),
+  //       links: chartData.hashtagGraph.map((link) => ({
+  //         source: link.source,
+  //         target: link.target,
+  //         value: link.weight,
+  //       })),
+  //     }
+  //   : { nodes: [], links: [] };
 
   // Process time series data for hashtags
   const hashtagTimeSeriesData = chartData?.hashtagTimeSeries || [];
