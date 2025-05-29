@@ -125,12 +125,12 @@ export default function SentimentPage() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 mt-6"
+        className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 md:gap-6"
       >
         {/* Sentiment Over Time */}
         <motion.div
           variants={item}
-          className="col-span-1 md:col-span-2 xl:col-span-3"
+          className="col-span-1 sm:col-span-2 xl:col-span-3"
         >
           <StackedAreaChart
             data={chartData?.sentimentTimeSeries || []}
@@ -142,7 +142,10 @@ export default function SentimentPage() {
         </motion.div>
 
         {/* Sentiment Distribution */}
-        <motion.div variants={item} className="col-span-1">
+        <motion.div
+          variants={item}
+          className="col-span-1 sm:col-span-2 xl:col-span-1"
+        >
           <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Overall Sentiment Distribution</CardTitle>
@@ -157,7 +160,10 @@ export default function SentimentPage() {
         </motion.div>
 
         {/* Emotion Over Time */}
-        <motion.div variants={item} className="col-span-1 md:col-span-2">
+        <motion.div
+          variants={item}
+          className="col-span-1 md:col-span-2 xl:col-span-2"
+        >
           <MultiLineTimeSeries
             data={chartData?.emotionTimeSeries || []}
             title="Emotion Trends"
@@ -168,7 +174,10 @@ export default function SentimentPage() {
         </motion.div>
 
         {/* Sentiment by Topics */}
-        <motion.div variants={item} className="col-span-1 md:col-span-3">
+        <motion.div
+          variants={item}
+          className="col-span-1 md:col-span-2 xl:col-span-3"
+        >
           <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Sentiment by Topic</CardTitle>
@@ -242,7 +251,10 @@ export default function SentimentPage() {
         </motion.div>
 
         {/* Emoji Sentiment */}
-        <motion.div variants={item} className="col-span-1">
+        <motion.div
+          variants={item}
+          className="col-span-1 md:col-span-2 xl:col-span-1"
+        >
           <WordCloud
             words={emojiSentimentData.positive}
             title="Positive Sentiment Emojis"
@@ -250,7 +262,10 @@ export default function SentimentPage() {
           />
         </motion.div>
 
-        <motion.div variants={item} className="col-span-1">
+        <motion.div
+          variants={item}
+          className="col-span-1 md:col-span-2 xl:col-span-1"
+        >
           <WordCloud
             words={emojiSentimentData.neutral}
             title="Neutral Sentiment Emojis"
@@ -258,7 +273,10 @@ export default function SentimentPage() {
           />
         </motion.div>
 
-        <motion.div variants={item} className="col-span-1">
+        <motion.div
+          variants={item}
+          className="col-span-1 md:col-span-2 xl:col-span-1"
+        >
           <WordCloud
             words={emojiSentimentData.negative}
             title="Negative Sentiment Emojis"

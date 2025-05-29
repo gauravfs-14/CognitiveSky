@@ -105,13 +105,10 @@ export default function HashtagsEmojiPage() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 mt-6"
+        className="grid grid-cols-1 gap-4 md:gap-6 mt-6"
       >
         {/* Hashtag and Emoji Overview */}
-        <motion.div
-          variants={item}
-          className="col-span-1 md:col-span-2 xl:col-span-3"
-        >
+        <motion.div variants={item} className="col-span-1">
           <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Hashtags & Emojis Overview</CardTitle>
@@ -199,7 +196,7 @@ export default function HashtagsEmojiPage() {
         </motion.div> */}
 
         {/* Hashtag Time Series */}
-        <motion.div variants={item} className="col-span-1 md:col-span-3">
+        <motion.div variants={item} className="col-span-1">
           <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Hashtag Trends Over Time</CardTitle>
@@ -287,7 +284,7 @@ export default function HashtagsEmojiPage() {
         </motion.div>
 
         {/* Emoji Time Series */}
-        <motion.div variants={item} className="col-span-1 md:col-span-3">
+        <motion.div variants={item} className="col-span-">
           <Card className="overflow-hidden backdrop-blur-sm bg-white/80 border-sky-100 shadow-md">
             <CardHeader className="pb-2">
               <CardTitle>Emoji Trends Over Time</CardTitle>

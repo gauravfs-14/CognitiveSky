@@ -64,12 +64,12 @@ export default function TopicsPage() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 gap-4 md:gap-6 mt-6"
+        className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-6"
       >
         {/* Topic Overview Cards */}
         <motion.div
           variants={item}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 md:gap-6"
         >
           {chartData.topicsOverview.map((topic) => (
             <Card
