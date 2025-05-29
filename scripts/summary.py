@@ -610,3 +610,5 @@ if __name__ == "__main__":
         print("✅ Only exported snapshots.")
     else:
         hardened_label_and_migrate()
+    conn.commit()
+    conn.sync()
