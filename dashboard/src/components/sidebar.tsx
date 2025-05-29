@@ -7,7 +7,6 @@ import {
   Hash,
   Clock,
   HelpCircle,
-  MessageSquare,
   FileDown,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -61,7 +60,6 @@ const SideBarContent = ({ open, setOpen }: SidebarProps) => {
     { icon: Network, label: "Topic Clusters", href: "/topics" },
     { icon: Hash, label: "Hashtags & Emojis", href: "/hashtags" },
     { icon: Clock, label: "Timeline", href: "/timeline" },
-    { icon: MessageSquare, label: "Posts", href: "/posts" },
     { icon: FileDown, label: "Export Reports", href: "/export" },
     { icon: HelpCircle, label: "Help", href: "/help" },
   ];
