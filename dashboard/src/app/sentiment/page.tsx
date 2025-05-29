@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/card";
 
 export default function SentimentPage() {
-  const { chartData, loading, error } = useChartData();
+  const { chartData } = useChartData();
 
   const container = {
     hidden: { opacity: 0 },
@@ -34,40 +34,74 @@ export default function SentimentPage() {
     show: { opacity: 1, y: 0 },
   };
 
-  // Prepare sentiment time series data
-  const sentimentTimeSeriesKeys = [
-    { key: "positive", color: "#4ade80", name: "Positive" },
-    { key: "neutral", color: "#60a5fa", name: "Neutral" },
-    { key: "negative", color: "#f87171", name: "Negative" },
+  // Define a rotating list of 10 colors for all categories
+  const colorPalette = [
+    "#4ade80", // green
+    "#60a5fa", // blue
+    "#f87171", // red
+    "#fbbf24", // yellow
+    "#818cf8", // indigo
+    "#fb7185", // rose
+    "#94a3b8", // slate
+    "#a855f7", // purple
+    "#14b8a6", // teal
+    "#f472b6", // pink
   ];
 
-  // Prepare emotion time series data
-  const emotionTimeSeriesKeys = [
-    { key: "joy", color: "#fbbf24", name: "Joy" },
-    { key: "sadness", color: "#818cf8", name: "Sadness" },
-    { key: "fear", color: "#fb7185", name: "Fear" },
-    { key: "neutral", color: "#94a3b8", name: "Neutral" },
-  ];
+  // Dynamically prepare sentiment time series keys from data
+  const sentimentTimeSeriesKeys = chartData?.sentimentTimeSeries?.length
+    ? Array.from(
+        new Set(
+          chartData.sentimentTimeSeries.flatMap((item) =>
+            Object.keys(item).filter(
+              (key) => key !== "date" && key !== "timestamp"
+            )
+          )
+        )
+      ).map((key, index) => ({
+        key,
+        color: colorPalette[index % colorPalette.length],
+        name: key.charAt(0).toUpperCase() + key.slice(1),
+      }))
+    : [
+        { key: "positive", color: colorPalette[0], name: "Positive" },
+        { key: "neutral", color: colorPalette[1], name: "Neutral" },
+        { key: "negative", color: colorPalette[2], name: "Negative" },
+      ];
+
+  // Dynamically prepare emotion time series keys from data
+  const emotionTimeSeriesKeys = chartData?.emotionTimeSeries?.length
+    ? Array.from(
+        new Set(
+          chartData.emotionTimeSeries.flatMap((item) =>
+            Object.keys(item).filter(
+              (key) => key !== "date" && key !== "timestamp"
+            )
+          )
+        )
+      ).map((key, index) => ({
+        key,
+        color: colorPalette[index % colorPalette.length],
+        name: key.charAt(0).toUpperCase() + key.slice(1),
+      }))
+    : [
+        { key: "joy", color: colorPalette[0], name: "Joy" },
+        { key: "sadness", color: colorPalette[1], name: "Sadness" },
+        { key: "fear", color: colorPalette[2], name: "Fear" },
+        { key: "neutral", color: colorPalette[3], name: "Neutral" },
+      ];
 
   // Prepare emoji sentiment data
   const emojiSentimentData = chartData?.emojiSentimentBars
-    ? {
-        positive:
-          chartData.emojiSentimentBars.positive?.map((item) => ({
+    ? Object.fromEntries(
+        Object.entries(chartData.emojiSentimentBars).map(([key, items]) => [
+          key,
+          items?.map((item) => ({
             text: item.name,
             value: item.value,
           })) || [],
-        negative:
-          chartData.emojiSentimentBars.negative?.map((item) => ({
-            text: item.name,
-            value: item.value,
-          })) || [],
-        neutral:
-          chartData.emojiSentimentBars.neutral?.map((item) => ({
-            text: item.name,
-            value: item.value,
-          })) || [],
-      }
+        ])
+      )
     : { positive: [], negative: [], neutral: [] };
 
   // Prepare data for topic sentiment

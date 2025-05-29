@@ -30,7 +30,7 @@ import {
 } from "@/components/ui/chart";
 
 export default function TimelinePage() {
-  const { chartData, loading, error } = useChartData();
+  const { chartData } = useChartData();
 
   const container = {
     hidden: { opacity: 0 },
@@ -47,43 +47,94 @@ export default function TimelinePage() {
     show: { opacity: 1, y: 0 },
   };
 
-  // Prepare sentiment time series data
-  const sentimentTimeSeriesKeys = [
-    { key: "positive", color: "#4ade80", name: "Positive" },
-    { key: "neutral", color: "#60a5fa", name: "Neutral" },
-    { key: "negative", color: "#f87171", name: "Negative" },
+  // Define a rotating list of 10 colors for all categories
+  const colorPalette = [
+    "#4ade80", // green
+    "#60a5fa", // blue
+    "#f87171", // red
+    "#fbbf24", // yellow
+    "#818cf8", // indigo
+    "#fb7185", // rose
+    "#94a3b8", // slate
+    "#a855f7", // purple
+    "#14b8a6", // teal
+    "#f472b6", // pink
   ];
 
-  // Prepare emotion time series data
-  const emotionTimeSeriesKeys = [
-    { key: "joy", color: "#fbbf24", name: "Joy" },
-    { key: "sadness", color: "#818cf8", name: "Sadness" },
-    { key: "fear", color: "#fb7185", name: "Fear" },
-    { key: "neutral", color: "#94a3b8", name: "Neutral" },
-  ];
+  // Dynamically prepare sentiment time series keys from data
+  const sentimentTimeSeriesKeys = chartData?.sentimentTimeSeries?.length
+    ? Array.from(
+        new Set(
+          chartData.sentimentTimeSeries.flatMap((item) =>
+            Object.keys(item).filter(
+              (key) => key !== "date" && key !== "timestamp"
+            )
+          )
+        )
+      ).map((key, index) => ({
+        key,
+        color: colorPalette[index % colorPalette.length],
+        name: key.charAt(0).toUpperCase() + key.slice(1),
+      }))
+    : [
+        { key: "positive", color: colorPalette[0], name: "Positive" },
+        { key: "neutral", color: colorPalette[1], name: "Neutral" },
+        { key: "negative", color: colorPalette[2], name: "Negative" },
+      ];
 
-  // Prepare language time series data
-  const languageTimeSeriesKeys = [
-    { key: "english", color: "#10b981", name: "English" },
-    { key: "spanish", color: "#6366f1", name: "Spanish" },
-    { key: "french", color: "#f43f5e", name: "French" },
-  ];
+  // Dynamically prepare emotion time series keys from data
+  const emotionTimeSeriesKeys = chartData?.emotionTimeSeries?.length
+    ? Array.from(
+        new Set(
+          chartData.emotionTimeSeries.flatMap((item) =>
+            Object.keys(item).filter(
+              (key) => key !== "date" && key !== "timestamp"
+            )
+          )
+        )
+      ).map((key, index) => ({
+        key,
+        color: colorPalette[index % colorPalette.length],
+        name: key.charAt(0).toUpperCase() + key.slice(1),
+      }))
+    : [
+        { key: "joy", color: colorPalette[0], name: "Joy" },
+        { key: "sadness", color: colorPalette[1], name: "Sadness" },
+        { key: "fear", color: colorPalette[2], name: "Fear" },
+        { key: "neutral", color: colorPalette[3], name: "Neutral" },
+      ];
 
-  // Prepare topic time series data
+  // Dynamically prepare language time series keys from data
+  const languageTimeSeriesKeys = chartData?.languageTimeSeries?.length
+    ? Array.from(
+        new Set(
+          chartData.languageTimeSeries.flatMap((item) =>
+            Object.keys(item).filter(
+              (key) => key !== "date" && key !== "timestamp"
+            )
+          )
+        )
+      ).map((key, index) => ({
+        key,
+        color: colorPalette[index % colorPalette.length],
+        name: key.charAt(0).toUpperCase() + key.slice(1),
+      }))
+    : [
+        { key: "english", color: colorPalette[0], name: "English" },
+        { key: "spanish", color: colorPalette[1], name: "Spanish" },
+        { key: "french", color: colorPalette[2], name: "French" },
+      ];
+
+  // Prepare topic time series data with rotating colors
   const topicTimeSeriesData = chartData?.topicsOverview
-    ? chartData.topicsOverview.map((topic) => {
+    ? chartData.topicsOverview.map((topic, index) => {
         return {
           label: topic.label.join(", "),
           data: topic.daily.map((day) => ({
             date: day.date,
             [topic.topic]: day[topic.topic],
           })),
-          color:
-            topic.topic === "topic_0"
-              ? "#0ea5e9"
-              : topic.topic === "topic_1"
-              ? "#8b5cf6"
-              : "#ec4899",
+          color: colorPalette[index % colorPalette.length],
         };
       })
     : [];

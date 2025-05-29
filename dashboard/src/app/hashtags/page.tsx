@@ -30,7 +30,7 @@ import {
 import VisxWordCloud from "@/components/charts/visx-wordcloud";
 
 export default function HashtagsEmojiPage() {
-  const { chartData, loading, error } = useChartData();
+  const { chartData } = useChartData();
 
   const container = {
     hidden: { opacity: 0 },

@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/chart";
 
 export default function TopicsPage() {
-  const { chartData, loading, error } = useChartData();
+  const { chartData } = useChartData();
 
   const container = {
     hidden: { opacity: 0 },
