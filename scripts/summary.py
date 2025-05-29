@@ -503,6 +503,9 @@ def export_snapshots_to_json():
                 if date not in merged:
                     merged[date] = collections.Counter()
                 merged[date].update(daily_data)
+                if key == "activity":
+                    merged[date]["sentiment"] = remap_sentiments(merged[date].get("sentiment", {}))
+
 
             # Convert counters back to dict for JSON serialization
             data_map[key] = {d: dict(c) for d, c in merged.items()}
@@ -560,7 +563,8 @@ def export_snapshots_to_json():
         merged_emoji_sentiment = collections.defaultdict(collections.Counter)
         for date in data_map["emoji_sentiment"]:
             for sent_label, em_counts in data_map["emoji_sentiment"][date].items():
-                merged_emoji_sentiment[sent_label].update(em_counts)
+                remapped_label = sentiment_map.get(sent_label, sent_label)
+                merged_emoji_sentiment[remapped_label].update(em_counts)
         # Convert counters to dicts
         for k in merged_emoji_sentiment:
             merged_emoji_sentiment[k] = dict(merged_emoji_sentiment[k])
@@ -594,7 +598,7 @@ def export_snapshots_to_json():
                     merged[topic].update(counts)
             # Convert counters to dict
             for topic in merged:
-                merged[topic] = dict(merged[topic])
+                merged[topic] = remap_sentiments(merged[topic])
             data_map[key] = merged
     # Unwrap double date nesting for activity, hashtags, emojis
     for key in ["activity", "hashtags", "emojis"]:
