@@ -366,9 +366,17 @@ def export_snapshots_to_json():
 
     # Group raw data by file type, date, and scope
     for date, type_, scope, data_json in rows:
-        for f, types in files.items():
-            if type_ in types:
-                data_map[f].setdefault(date, {})[scope] = json.loads(data_json)
+        parsed = json.loads(data_json)
+
+        # Special unwrapping for flat types
+        if type_ in ["activity", "hashtags", "emojis"]:
+            # If snapshot is like { "2025-05-28": {...} }, extract inner dict
+            if isinstance(parsed, dict) and date in parsed:
+                parsed = parsed[date]
+            data_map[type_][date] = parsed
+        else:
+            data_map[type_].setdefault(date, {})[scope] = parsed
+
 
 
     # Helper: remap sentiment labels from model keys to human readable
