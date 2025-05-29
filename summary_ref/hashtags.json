@@ -1,0 +1,50 @@
+{
+  "2025-05-22": {
+    "#MentalHealth": 3,
+    "#YouMatter": 14,
+    "#Healing": 28,
+    "#Support": 22,
+    "#YouAreNotAlone": 4
+  },
+  "2025-05-23": {
+    "#MentalHealth": 11,
+    "#YouMatter": 26,
+    "#Healing": 28,
+    "#Support": 6,
+    "#YouAreNotAlone": 8
+  },
+  "2025-05-24": {
+    "#MentalHealth": 13,
+    "#YouMatter": 12,
+    "#Healing": 16,
+    "#Support": 10,
+    "#YouAreNotAlone": 17
+  },
+  "2025-05-25": {
+    "#MentalHealth": 2,
+    "#YouMatter": 21,
+    "#Healing": 9,
+    "#Support": 15,
+    "#YouAreNotAlone": 23
+  },
+  "2025-05-26": {
+    "#MentalHealth": 6,
+    "#YouMatter": 19,
+    "#Healing": 28,
+    "#YouAreNotAlone": 15
+  },
+  "2025-05-27": {
+    "#MentalHealth": 2,
+    "#YouMatter": 11,
+    "#Healing": 17,
+    "#Support": 6,
+    "#YouAreNotAlone": 25
+  },
+  "2025-05-28": {
+    "#MentalHealth": 19,
+    "#YouMatter": 9,
+    "#Healing": 23,
+    "#Support": 1,
+    "#YouAreNotAlone": 25
+  }
+}

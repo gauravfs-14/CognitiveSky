@@ -1,0 +1,122 @@
+{
+  "topic_0": {
+    "label": [
+      "mental",
+      "health",
+      "support",
+      "talk",
+      "wellness"
+    ],
+    "count": 98,
+    "daily": {
+      "2025-05-22": 10,
+      "2025-05-23": 9,
+      "2025-05-24": 9,
+      "2025-05-25": 2,
+      "2025-05-26": 7,
+      "2025-05-27": 11,
+      "2025-05-28": 11
+    },
+    "sentiment": {
+      "positive": 50,
+      "neutral": 25,
+      "negative": 9
+    },
+    "emotion": {
+      "joy": 24,
+      "sadness": 39,
+      "fear": 0,
+      "neutral": 2
+    },
+    "hashtags": [
+      "#YouAreNotAlone",
+      "#MentalHealth",
+      "#YouMatter"
+    ],
+    "emojis": [
+      "\ud83d\udc94",
+      "\ud83d\ude42",
+      "\ud83d\ude0a"
+    ]
+  },
+  "topic_1": {
+    "label": [
+      "therapy",
+      "anxiety",
+      "stress",
+      "help",
+      "mind"
+    ],
+    "count": 94,
+    "daily": {
+      "2025-05-22": 13,
+      "2025-05-23": 9,
+      "2025-05-24": 11,
+      "2025-05-25": 15,
+      "2025-05-26": 4,
+      "2025-05-27": 6,
+      "2025-05-28": 7
+    },
+    "sentiment": {
+      "positive": 17,
+      "neutral": 45,
+      "negative": 39
+    },
+    "emotion": {
+      "joy": 0,
+      "sadness": 46,
+      "fear": 44,
+      "neutral": 1
+    },
+    "hashtags": [
+      "#Healing",
+      "#YouMatter",
+      "#Support"
+    ],
+    "emojis": [
+      "\ud83d\ude42",
+      "\ud83d\ude22",
+      "\ud83d\ude0a"
+    ]
+  },
+  "topic_2": {
+    "label": [
+      "depression",
+      "hope",
+      "recovery",
+      "life",
+      "healing"
+    ],
+    "count": 12,
+    "daily": {
+      "2025-05-22": 7,
+      "2025-05-23": 6,
+      "2025-05-24": 10,
+      "2025-05-25": 14,
+      "2025-05-26": 3,
+      "2025-05-27": 10,
+      "2025-05-28": 10
+    },
+    "sentiment": {
+      "positive": 3,
+      "neutral": 39,
+      "negative": 12
+    },
+    "emotion": {
+      "joy": 11,
+      "sadness": 44,
+      "fear": 49,
+      "neutral": 19
+    },
+    "hashtags": [
+      "#YouMatter",
+      "#Healing",
+      "#Support"
+    ],
+    "emojis": [
+      "\ud83d\ude4f",
+      "\ud83d\udc94",
+      "\ud83d\ude22"
+    ]
+  }
+}
