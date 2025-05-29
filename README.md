@@ -1,5 +1,10 @@
 # 🧠 CognitiveSky
 
+[![GitHub Stars](https://img.shields.io/github/stars/gauravfs-14/CognitiveSky?style=social)](https://github.com/gauravfs-14/CognitiveSky)
+[![GitHub Forks](https://img.shields.io/github/forks/gauravfs-14/CognitiveSky?style=social)](https://github.com/gauravfs-14/CognitiveSky)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+[![Daily Labeling and Summary Export](https://github.com/gauravfs-14/CognitiveSky/actions/workflows/data-labeling.yml/badge.svg)](https://github.com/gauravfs-14/CognitiveSky/actions/workflows/data-labeling.yml)
+
 **CognitiveSky** is an open-source research infrastructure and dashboard for analyzing mental health narratives on the Bluesky social platform. Inspired by [TwiXplorer](https://github.com/smash-edin/twixplorer), it integrates real-time data ingestion, robust NLP processing, and interactive visualization to empower researchers, advocates, and developers with actionable social insights.
 
 > **Live Dashboard:** [CognitiveSky Dashboard](https://cognitivesky.vercel.app)
