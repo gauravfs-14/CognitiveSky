@@ -1,17 +1,44 @@
 {
-  "topic_0": {
-    "positive": 83,
-    "neutral": 16,
-    "negative": 52
-  },
-  "topic_1": {
-    "positive": 22,
-    "neutral": 10,
-    "negative": 76
-  },
-  "topic_2": {
-    "positive": 50,
-    "neutral": 22,
-    "negative": 26
+  "sentiment_by_topic": {
+    "topic_0": {
+      "label_1": 124,
+      "label_0": 205,
+      "label_2": 95
+    },
+    "topic_7": {
+      "label_0": 88,
+      "label_2": 33,
+      "label_1": 89
+    },
+    "topic_3": {
+      "label_1": 109,
+      "label_0": 89,
+      "label_2": 41
+    },
+    "topic_4": {
+      "label_0": 56,
+      "label_2": 37,
+      "label_1": 55
+    },
+    "topic_5": {
+      "label_1": 40,
+      "label_0": 69,
+      "label_2": 25
+    },
+    "topic_6": {
+      "label_2": 18,
+      "label_0": 29,
+      "label_1": 16
+    },
+    "topic_1": {
+      "label_0": 30,
+      "label_2": 43,
+      "label_1": 51
+    },
+    "topic_2": {
+      "label_0": 40,
+      "label_1": 16,
+      "label_2": 14
+    }
   }
 }

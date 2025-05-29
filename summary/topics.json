@@ -1,122 +1,379 @@
 {
   "topic_0": {
     "label": [
-      "mental",
-      "health",
-      "support",
-      "talk",
-      "wellness"
+      "general"
     ],
-    "count": 69,
+    "count": 424,
     "daily": {
-      "2025-05-22": 10,
-      "2025-05-23": 13,
-      "2025-05-24": 10,
-      "2025-05-25": 18,
-      "2025-05-26": 14,
-      "2025-05-27": 17,
-      "2025-05-28": 11
+      "2025-05-28": 423,
+      "2025-05-27": 1
     },
     "sentiment": {
-      "positive": 38,
-      "neutral": 38,
-      "negative": 8
+      "label_1": 124,
+      "label_0": 205,
+      "label_2": 95
     },
     "emotion": {
-      "joy": 7,
-      "sadness": 36,
-      "fear": 20,
-      "neutral": 50
+      "fear": 151,
+      "sadness": 79,
+      "joy": 37,
+      "neutral": 82,
+      "anger": 19,
+      "surprise": 28,
+      "disgust": 28
     },
     "hashtags": [
-      "#Support",
-      "#YouAreNotAlone",
-      "#YouMatter"
+      "#depression",
+      "#art",
+      "#mentalhealth",
+      "#anxiety",
+      "#painting",
+      "#drawing",
+      "#\u9451\u8cde",
+      "#\u6d0b\u697d",
+      "#\u9752\u7a7a\u97f3\u697d\u90e8",
+      "#songoftheday"
     ],
     "emojis": [
-      "\ud83d\ude0a",
-      "\ud83d\ude42",
-      "\ud83d\ude4f"
+      "\ud83d\ude2d",
+      "\ud83d\ude05",
+      "\ud83c\udf1e",
+      "\ud83d\ude02",
+      "\ud83d\ude4f",
+      "\ud83d\ude2c",
+      "\ud83d\ude0e",
+      "\ud83d\ude43",
+      "\ud83d\udc3e",
+      "\ud83d\ude29"
+    ]
+  },
+  "topic_7": {
+    "label": [
+      "general"
+    ],
+    "count": 210,
+    "daily": {
+      "2025-05-28": 210
+    },
+    "sentiment": {
+      "label_0": 88,
+      "label_2": 33,
+      "label_1": 89
+    },
+    "emotion": {
+      "sadness": 55,
+      "fear": 58,
+      "neutral": 63,
+      "disgust": 7,
+      "joy": 6,
+      "anger": 15,
+      "surprise": 6
+    },
+    "hashtags": [
+      "#grief",
+      "#transistor",
+      "#Semiconductors",
+      "#diode",
+      "#mosfet",
+      "#thyristor",
+      "#jfet",
+      "#weightloss",
+      "#junction",
+      "#bipolar"
+    ],
+    "emojis": [
+      "\ud83d\ude2d",
+      "\ud83d\uddd3",
+      "\ud83d\uddbc",
+      "\ud83d\udc47",
+      "\ud83c\udf1c",
+      "\ud83d\udea8",
+      "\ud83d\udcc9",
+      "\ud83d\ude1e",
+      "\ud83c\udfc6",
+      "\ud83d\udc94"
+    ]
+  },
+  "topic_3": {
+    "label": [
+      "general"
+    ],
+    "count": 239,
+    "daily": {
+      "2025-05-28": 239
+    },
+    "sentiment": {
+      "label_1": 109,
+      "label_0": 89,
+      "label_2": 41
+    },
+    "emotion": {
+      "neutral": 73,
+      "sadness": 25,
+      "surprise": 9,
+      "fear": 66,
+      "anger": 36,
+      "disgust": 11,
+      "joy": 19
+    },
+    "hashtags": [
+      "#TrumpRegime",
+      "#PTSD",
+      "#l5jqk83qnfzd",
+      "#Neurodivergent",
+      "#SPOTY",
+      "#SCOTUS",
+      "#oakflat",
+      "#author",
+      "#writing",
+      "#booksky"
+    ],
+    "emojis": [
+      "\ud83d\udc49",
+      "\ud83d\udd25",
+      "\ud83d\udcc5",
+      "\ud83c\udffe",
+      "\ud83d\ude08",
+      "\ud83d\udea8",
+      "\ud83d\udc95",
+      "\ud83d\ude44",
+      "\ud83d\ude34",
+      "\ud83d\udc2d"
+    ]
+  },
+  "topic_4": {
+    "label": [
+      "general"
+    ],
+    "count": 148,
+    "daily": {
+      "2025-05-28": 148
+    },
+    "sentiment": {
+      "label_0": 56,
+      "label_2": 37,
+      "label_1": 55
+    },
+    "emotion": {
+      "anger": 9,
+      "joy": 15,
+      "fear": 46,
+      "sadness": 29,
+      "neutral": 40,
+      "surprise": 6,
+      "disgust": 3
+    },
+    "hashtags": [
+      "#MentalHealth",
+      "#mentalhealth",
+      "#Canada",
+      "#MHAM2025",
+      "#MentalHealthAwarenessMonth",
+      "#Days",
+      "#IllusionOfControl",
+      "#blackmetal",
+      "#extrememetal",
+      "#heavymetal"
+    ],
+    "emojis": [
+      "\ud83c\udde6",
+      "\ud83d\ude4b",
+      "\ud83d\udce2",
+      "\ud83d\ude2d",
+      "\ud83d\udde3",
+      "\ud83c\udff4",
+      "\ud83c\uddfa",
+      "\ud83d\udc47",
+      "\u2642",
+      "\ud83c\udf99"
+    ]
+  },
+  "topic_5": {
+    "label": [
+      "general"
+    ],
+    "count": 134,
+    "daily": {
+      "2025-05-28": 134
+    },
+    "sentiment": {
+      "label_1": 40,
+      "label_0": 69,
+      "label_2": 25
+    },
+    "emotion": {
+      "neutral": 34,
+      "disgust": 7,
+      "fear": 60,
+      "surprise": 6,
+      "anger": 11,
+      "sadness": 12,
+      "joy": 4
+    },
+    "hashtags": [
+      "#furry",
+      "#furryatt",
+      "#art",
+      "#bike",
+      "#modernrock",
+      "#radio",
+      "#nowplaying",
+      "#x92",
+      "#calgary",
+      "#d\u00e9sert"
+    ],
+    "emojis": [
+      "\ud83d\ude2d",
+      "\ud83d\ude18",
+      "\ud83d\ude0f",
+      "\ud83c\udfa4",
+      "\ud83d\ude84",
+      "\ud83d\ude02",
+      "\ud83c\uddfa",
+      "\ud83c\udfdc",
+      "\ud83d\udc49",
+      "\ud83d\ude1a"
+    ]
+  },
+  "topic_6": {
+    "label": [
+      "general"
+    ],
+    "count": 63,
+    "daily": {
+      "2025-05-28": 63
+    },
+    "sentiment": {
+      "label_2": 18,
+      "label_0": 29,
+      "label_1": 16
+    },
+    "emotion": {
+      "surprise": 5,
+      "neutral": 14,
+      "sadness": 18,
+      "anger": 2,
+      "fear": 15,
+      "disgust": 2,
+      "joy": 7
+    },
+    "hashtags": [
+      "#ADHD",
+      "#lowbloodsugar",
+      "#mentalhealthadvocacy",
+      "#mentalhealthawarenessmonth",
+      "#breastcancer",
+      "#Haiku",
+      "#Poetry",
+      "#Meds",
+      "#furryart",
+      "#feralart"
+    ],
+    "emojis": [
+      "\ud83d\udc94",
+      "\ud83c\udffb",
+      "\ud83d\udc89",
+      "\ud83c\udf5e",
+      "\ud83d\udc9b",
+      "\ud83c\udff3",
+      "\ud83d\udee1",
+      "\ud83c\udf3a",
+      "\ud83d\udc96",
+      "\ud83d\udc8a"
     ]
   },
   "topic_1": {
     "label": [
-      "therapy",
-      "anxiety",
-      "stress",
-      "help",
-      "mind"
+      "general"
     ],
-    "count": 71,
+    "count": 124,
     "daily": {
-      "2025-05-22": 6,
-      "2025-05-23": 8,
-      "2025-05-24": 13,
-      "2025-05-25": 6,
-      "2025-05-26": 13,
-      "2025-05-27": 11,
-      "2025-05-28": 2
+      "2025-05-28": 124
     },
     "sentiment": {
-      "positive": 40,
-      "neutral": 31,
-      "negative": 43
+      "label_0": 30,
+      "label_2": 43,
+      "label_1": 51
     },
     "emotion": {
-      "joy": 41,
-      "sadness": 8,
-      "fear": 28,
-      "neutral": 28
+      "sadness": 26,
+      "fear": 55,
+      "neutral": 19,
+      "surprise": 3,
+      "anger": 5,
+      "joy": 13,
+      "disgust": 3
     },
     "hashtags": [
-      "#MentalHealth",
-      "#Support",
-      "#YouAreNotAlone"
+      "#depression",
+      "#Booksky",
+      "#transgender",
+      "#transhealth",
+      "#Ratiorine",
+      "#\u7406\u7802",
+      "#\u30ec\u30a4\u30c1\u30e5\u30ea",
+      "#MentalHealthAwareness",
+      "#PersonalityDisorders",
+      "#AlphaHealingCenter"
     ],
     "emojis": [
+      "\ud83d\udc94",
       "\ud83d\ude4f",
-      "\ud83d\ude22",
-      "\ud83d\ude0a"
+      "\ud83d\udc9e",
+      "\ud83d\udd4a",
+      "\ud83d\ude2d",
+      "\ud83c\udf39",
+      "\u2640",
+      "\ud83d\udcaa",
+      "\ud83c\udffb",
+      "\ud83d\udc89"
     ]
   },
   "topic_2": {
     "label": [
-      "depression",
-      "hope",
-      "recovery",
-      "life",
-      "healing"
+      "general"
     ],
-    "count": 92,
+    "count": 70,
     "daily": {
-      "2025-05-22": 20,
-      "2025-05-23": 13,
-      "2025-05-24": 19,
-      "2025-05-25": 5,
-      "2025-05-26": 12,
-      "2025-05-27": 17,
-      "2025-05-28": 18
+      "2025-05-28": 70
     },
     "sentiment": {
-      "positive": 6,
-      "neutral": 36,
-      "negative": 3
+      "label_0": 40,
+      "label_1": 16,
+      "label_2": 14
     },
     "emotion": {
-      "joy": 43,
-      "sadness": 44,
-      "fear": 48,
-      "neutral": 18
+      "anger": 12,
+      "sadness": 18,
+      "joy": 8,
+      "surprise": 5,
+      "disgust": 6,
+      "neutral": 10,
+      "fear": 11
     },
     "hashtags": [
-      "#Support",
-      "#Healing",
-      "#YouMatter"
+      "#MentalHealth",
+      "#NowPlaying",
+      "#\u8db3\u7acb\u533a\u6c11\u653e\u9001",
+      "#\u4e94\u53cd\u91ceFM",
+      "#enhypen",
+      "#ASEA2025",
+      "#Vent",
+      "#Ventart",
+      "#ventdrawing",
+      "#Crying"
     ],
     "emojis": [
-      "\ud83d\ude0a",
-      "\ud83d\udc94",
-      "\ud83d\ude22"
+      "\ud83d\ude2d",
+      "\u26a0",
+      "\ud83d\udc9e",
+      "\ud83d\ude44",
+      "\ud83d\udc3e",
+      "\ud83d\ude4f",
+      "\u2699",
+      "\ud83d\udca1",
+      "\ud83d\ude02",
+      "\ud83d\udc9a"
     ]
   }
 }
