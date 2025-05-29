@@ -35,7 +35,7 @@ export default function NarrativeDistributionBar({
 }) {
   const { chartData: jsonData, loading, error } = useChartData();
 
-  console.log("Chart Data:", jsonData);
+  // console.log("Chart Data:", jsonData);
 
   if (loading) {
     return (

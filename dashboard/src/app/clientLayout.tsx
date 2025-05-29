@@ -24,7 +24,7 @@ export default function ClientLayout({
         <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
         <div className="flex flex-col flex-1 overflow-y-auto">
           <TopBar setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
-          <main className=" p-4 md:p-6 continer max-w-7xl mx-auto">
+          <main className=" p-4 md:p-6 continer max-w-7xl mx-auto w-full">
             {children}
           </main>
         </div>
