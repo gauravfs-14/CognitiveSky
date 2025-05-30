@@ -436,7 +436,7 @@ def export_snapshots_to_json():
     data_map = {f: {} for f in files}
 
     # Define last 7 full days (excluding today)
-    end_date = (date.today()).isoformat()  # yesterday
+    end_date = (date.today() - timedelta(days=1)).isoformat()  # yesterday
     start_date = (date.today() - timedelta(days=7)).isoformat()  # 7 days before yesterday
 
     # Fetch all snapshot rows in that range
@@ -444,7 +444,8 @@ def export_snapshots_to_json():
         rows = conn.execute("SELECT date, type, scope, data FROM summary_snapshots").fetchall()
     else:
         rows = conn.execute(
-        "SELECT date, type, scope, data FROM summary_snapshots"
+        "SELECT date, type, scope, data FROM summary_snapshots WHERE date BETWEEN ? AND ?", 
+        (start_date, end_date)
         ).fetchall()
 
     # Group raw data by file type, date, and scope
