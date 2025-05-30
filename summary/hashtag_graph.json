@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "source": "#MentalHealth",
+    "target": "#Healing",
+    "weight": 20
+  },
+  {
+    "source": "#Support",
+    "target": "#YouMatter",
+    "weight": 15
+  }
+]

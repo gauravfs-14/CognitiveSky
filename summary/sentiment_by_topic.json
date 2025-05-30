@@ -1,42 +1,17 @@
 {
   "topic_0": {
-    "neutral": 405,
-    "negative": 738,
-    "positive": 307
-  },
-  "topic_7": {
-    "negative": 305,
-    "positive": 117,
-    "neutral": 329
-  },
-  "topic_3": {
-    "neutral": 244,
-    "negative": 247,
-    "positive": 108
-  },
-  "topic_4": {
-    "negative": 187,
-    "positive": 121,
-    "neutral": 165
-  },
-  "topic_5": {
-    "neutral": 133,
-    "negative": 196,
-    "positive": 77
-  },
-  "topic_6": {
-    "positive": 56,
-    "negative": 100,
-    "neutral": 73
+    "positive": 73,
+    "neutral": 96,
+    "negative": 44
   },
   "topic_1": {
-    "negative": 119,
-    "positive": 128,
-    "neutral": 147
+    "positive": 13,
+    "neutral": 91,
+    "negative": 90
   },
   "topic_2": {
-    "negative": 111,
-    "neutral": 66,
-    "positive": 67
+    "positive": 62,
+    "neutral": 53,
+    "negative": 21
   }
 }
