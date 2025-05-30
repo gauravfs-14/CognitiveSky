@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "date": "2025-05-28",
+=======
+  "date": "2025-05-27",
+>>>>>>> parent of ff4839f (📊 Daily snapshot update for 2025-05-30)
   "complete": {
     "total_posts": 15000,
     "total_sentiments": 3,
