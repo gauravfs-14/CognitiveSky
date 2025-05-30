@@ -1,33 +1,33 @@
 {
   "date": "2025-05-28",
   "complete": {
-    "total_posts": 15000,
+    "total_posts": 1412,
     "total_sentiments": 3,
-    "total_emotions": 4,
-    "total_languages": 3,
-    "total_topics": 3,
-    "total_hashtags": 5,
-    "total_emojis": 5
+    "total_emotions": 7,
+    "total_languages": 23,
+    "total_topics": 8,
+    "total_hashtags": 830,
+    "total_emojis": 154
   },
   "last_week": {
-    "total_posts": 1400,
-    "total_sentiments": 3,
-    "total_emotions": 4,
-    "total_languages": 3,
-    "total_topics": 3,
-    "total_hashtags": 12,
-    "total_emojis": 7
+    "total_posts": 1412,
+    "total_sentiments": 1,
+    "total_emotions": 1,
+    "total_languages": 1,
+    "total_topics": 1,
+    "total_hashtags": 1,
+    "total_emojis": 1
   },
   "averages": {
-    "avg_posts_per_day": 200,
-    "avg_hashtags_per_day": 15,
-    "avg_emojis_per_day": 10
+    "avg_posts_per_day": 201.71,
+    "avg_hashtags_per_day": 118.57,
+    "avg_emojis_per_day": 22.0
   },
   "top": {
-    "sentiment": "neutral",
-    "emotion": "joy",
-    "language": "english",
-    "hashtag": "#MentalHealth",
-    "emoji": "\ud83d\ude0a"
+    "sentiment": "label_0",
+    "emotion": "fear",
+    "language": "en",
+    "hashtag": "#mentalhealth",
+    "emoji": "\ud83d\udc94"
   }
 }
