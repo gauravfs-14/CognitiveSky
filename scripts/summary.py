@@ -112,73 +112,65 @@ if IS_TEST:
     conn.commit()
     safe_sync()
 
-# === Label, Migrate, and Generate Snapshots ===
-def hardened_label_and_migrate():
+# === Labeling and Model Setup ===
+def load_models():
     from transformers import AutoTokenizer, AutoModelForSequenceClassification
     import torch
-    import torch.nn.functional as F
 
-    def safe_snapshot_download(model_id, local_dir=None):
-        from huggingface_hub import snapshot_download
-        import logging
-        try:
-            if IS_TEST:
-                os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
-                os.environ["TRANSFORMERS_VERBOSITY"] = "error"
-                logging.getLogger("transformers").setLevel(logging.ERROR)
-
-                return snapshot_download(
-                    repo_id=model_id,
-                    local_dir=local_dir,
-                    ignore_patterns=["*.msgpack", "*.h5"],
-                    local_files_only=False  # fallback to download if missing
-                )
-            else:
-                os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
-                os.environ["TRANSFORMERS_VERBOSITY"] = "error"
-                logging.getLogger("transformers").setLevel(logging.ERROR)
-
-                return snapshot_download(
-                    repo_id=model_id,
-                    local_dir=local_dir,
-                    ignore_patterns=["*.msgpack", "*.h5"],
-                    local_files_only=False  # fallback to download if missing
-                )
-        except Exception as e:
-            print(f"⚠️ HuggingFace model download failed for '{model_id}': {e}")
-            return None
-
-    if safe_snapshot_download("cardiffnlp/twitter-roberta-base-sentiment") is None:
-        print("❌ Skipping sentiment labeling due to model download failure.")
-        exit(1)
-    if safe_snapshot_download("j-hartmann/emotion-english-distilroberta-base") is None:
-        print("❌ Skipping emotion labeling due to model download failure.")
-        exit(1)
-
-    # Device
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-    # === Load Models with Fail-Safe Wrapping ===
-    try:
-        sent_tok = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
-        sent_model = AutoModelForSequenceClassification.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment").to(DEVICE)
-        sentiment_labels = [sent_model.config.id2label[i].lower() for i in range(len(sent_model.config.id2label))]
-        print("✅ Sentiment model loaded.")
-    except Exception as e:
-        print(f"❌ Failed to load sentiment model: {e}")
-        exit(1)
+    if IS_TEST:
+        print("🧪 Test mode: downloading models on the fly...")
+        sentiment_id = "cardiffnlp/twitter-roberta-base-sentiment"
+        emotion_id = "j-hartmann/emotion-english-distilroberta-base"
 
-    try:
-        emot_tok = AutoTokenizer.from_pretrained("j-hartmann/emotion-english-distilroberta-base")
-        emot_model = AutoModelForSequenceClassification.from_pretrained("j-hartmann/emotion-english-distilroberta-base").to(DEVICE)
-        emotion_labels = [emot_model.config.id2label[i].lower() for i in range(len(emot_model.config.id2label))]
-        print("✅ Emotion model loaded.")
-    except Exception as e:
-        print(f"❌ Failed to load emotion model: {e}")
-        exit(1)
+        try:
+            sent_tok = AutoTokenizer.from_pretrained(sentiment_id)
+            sent_model = AutoModelForSequenceClassification.from_pretrained(sentiment_id).to(DEVICE)
+            sentiment_labels = [sent_model.config.id2label[i].lower() for i in range(len(sent_model.config.id2label))]
+            print("✅ Sentiment model loaded from online (test mode).")
+        except Exception as e:
+            print(f"❌ Failed to load sentiment model online: {e}")
+            exit(1)
 
+        try:
+            emot_tok = AutoTokenizer.from_pretrained(emotion_id)
+            emot_model = AutoModelForSequenceClassification.from_pretrained(emotion_id).to(DEVICE)
+            emotion_labels = [emot_model.config.id2label[i].lower() for i in range(len(emot_model.config.id2label))]
+            print("✅ Emotion model loaded from online (test mode).")
+        except Exception as e:
+            print(f"❌ Failed to load emotion model online: {e}")
+            exit(1)
+    else:
+        hf_home = os.getenv("HF_HOME", os.path.expanduser("~/.hf_models"))
+        sent_model_path = os.path.join(hf_home, "sentiment")
+        emot_model_path = os.path.join(hf_home, "emotion")
 
+        try:
+            sent_tok = AutoTokenizer.from_pretrained(sent_model_path)
+            sent_model = AutoModelForSequenceClassification.from_pretrained(sent_model_path).to(DEVICE)
+            sentiment_labels = [sent_model.config.id2label[i].lower() for i in range(len(sent_model.config.id2label))]
+            print("✅ Sentiment model loaded from cache.")
+        except Exception as e:
+            print(f"❌ Failed to load sentiment model from cache: {e}")
+            exit(1)
 
+        try:
+            emot_tok = AutoTokenizer.from_pretrained(emot_model_path)
+            emot_model = AutoModelForSequenceClassification.from_pretrained(emot_model_path).to(DEVICE)
+            emotion_labels = [emot_model.config.id2label[i].lower() for i in range(len(emot_model.config.id2label))]
+            print("✅ Emotion model loaded from cache.")
+        except Exception as e:
+            print(f"❌ Failed to load emotion model from cache: {e}")
+            exit(1)
+
+    return sent_tok, sent_model, sentiment_labels, emot_tok, emot_model, emotion_labels, DEVICE
+
+# === Label, Migrate, and Generate Snapshots ===
+def hardened_label_and_migrate(sent_tok, sent_model, sentiment_labels, emot_tok, emot_model, emotion_labels, DEVICE):
+    import torch
+    import torch.nn.functional as F
+    
     def fast_infer(texts, tokenizer, model, label_map):
         LABEL_BATCH_SIZE = 64
         results = []
@@ -805,6 +797,7 @@ def generate_snapshots_from_turso():
 # === Entrypoint ===
 if __name__ == "__main__":
     os.makedirs("summary", exist_ok=True)
+
     if os.getenv("EXPORT_ONLY") == "1":
         export_snapshots_to_json()
         print("✅ Only exported snapshots.")
@@ -812,6 +805,7 @@ if __name__ == "__main__":
         generate_snapshots_from_turso()
         print("✅ Generated snapshots from Turso.")
     else:
-        hardened_label_and_migrate()
+        sent_tok, sent_model, sentiment_labels, emot_tok, emot_model, emotion_labels, DEVICE = load_models()
+        hardened_label_and_migrate(sent_tok, sent_model, sentiment_labels, emot_tok, emot_model, emotion_labels, DEVICE)
     conn.commit()
     safe_sync()
