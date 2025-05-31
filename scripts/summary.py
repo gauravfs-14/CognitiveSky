@@ -39,7 +39,8 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 # === DB Connection ===
 if IS_TEST:
     conn = libsql.connect("test_turso_local.db")
-    prod_conn = libsql.connect("/tmp/turso_replica.db", sync_url=TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
+    prod_conn = libsql.connect(TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
+
     try:
         prod_conn.execute("SELECT 1")
         print("✅ Production database connection successful.")
@@ -48,7 +49,7 @@ if IS_TEST:
         exit(1)
 
 else:
-    conn = libsql.connect("/tmp/turso_replica.db", sync_url=TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
+    conn = libsql.connect(TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
 try:
     conn.execute("SELECT 1")
     print("✅ Database connection successful.")
