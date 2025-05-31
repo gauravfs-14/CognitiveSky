@@ -143,8 +143,8 @@ def load_models():
             exit(1)
     else:
         hf_home = os.getenv("HF_HOME", os.path.expanduser("~/.hf_models"))
-        sent_model_path = os.path.join(hf_home, "sentiment")
-        emot_model_path = os.path.join(hf_home, "emotion")
+        sent_model_path = os.path.expanduser(os.path.join(hf_home, "sentiment"))
+        emot_model_path = os.path.expanduser(os.path.join(hf_home, "emotion"))
 
         try:
             sent_tok = AutoTokenizer.from_pretrained(sent_model_path)
@@ -792,7 +792,6 @@ def generate_snapshots_from_turso():
         print("⚠️ No posts found in the specified date range.")
         return
     compute_and_store_snapshot(rows)
-
 
 # === Entrypoint ===
 if __name__ == "__main__":
