@@ -290,6 +290,8 @@ def hardened_label_and_migrate(sent_tok, sent_model, sentiment_labels, emot_tok,
             res = conn.execute("SELECT changes()").fetchone()
             if res and res[0] > 0:
                 success_count += 1
+                if success_count % 100 == 0:
+                    print(f"✅ Inserted {success_count} posts so far...", flush=True)
             else:
                 print(f"⚠️ Insert ignored or duplicate: {post.get('uri')}")
  
