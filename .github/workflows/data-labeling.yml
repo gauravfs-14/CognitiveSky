@@ -57,6 +57,11 @@ jobs:
           mkdir -p ~/.hf_models/sentiment ~/.hf_models/emotion
           python scripts/download_model_gh_action.py
 
+      - name: 🔍 List downloaded models
+        run: |
+          ls -lah ~/.hf_models/sentiment
+          ls -lah ~/.hf_models/emotion
+
       - name: 🔄 Label, Migrate Snapshots
         run: |
           echo "🚀 Running labeling and migration..."
