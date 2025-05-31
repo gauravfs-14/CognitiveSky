@@ -1,4 +1,6 @@
 # === CognitiveSky Full Pipeline: Part 1 ===
+print("✅ summary.py is running...")
+
 import os
 import json
 import hashlib

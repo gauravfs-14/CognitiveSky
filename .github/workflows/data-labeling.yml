@@ -62,6 +62,12 @@ jobs:
           ls -lah ~/.hf_models/sentiment
           ls -lah ~/.hf_models/emotion
 
+      - name: 🔍 Show project structure
+        run: |
+          pwd
+          ls -lah
+          ls -lah scripts/
+
       - name: 🔄 Label, Migrate Snapshots
         run: |
           echo "🚀 Running labeling and migration..."
