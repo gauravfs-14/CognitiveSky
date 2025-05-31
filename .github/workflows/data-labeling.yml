@@ -11,7 +11,7 @@ permissions:
 jobs:
   label-and-generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 60 # Prevent GitHub from hard-killing long jobs
+    timeout-minutes: 60
 
     env:
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
@@ -20,10 +20,11 @@ jobs:
       TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN }}
       BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
       BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
-      HF_HOME: ~/.hf_models # Restrict HuggingFace cache to scoped path
+      HF_HOME: ~/.hf_models
 
     steps:
-      - uses: actions/checkout@v3
+      - name: 📅 Checkout code
+        uses: actions/checkout@v3
 
       - name: 🛠️ Restore pip cache
         uses: actions/cache@v3
@@ -43,7 +44,26 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-hf-
 
-      - uses: actions/setup-python@v4
+      - name: ⬇️ Download models if not cached
+        run: |
+          mkdir -p ~/.hf_models/sentiment ~/.hf_models/emotion
+          python -c "
+            import os
+            from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+            sentiment_path = os.path.expanduser('~/.hf_models/sentiment')
+            if not os.path.exists(os.path.join(sentiment_path, 'config.json')):
+                AutoTokenizer.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment').save_pretrained(sentiment_path)
+                AutoModelForSequenceClassification.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment').save_pretrained(sentiment_path)
+
+            emotion_path = os.path.expanduser('~/.hf_models/emotion')
+            if not os.path.exists(os.path.join(emotion_path, 'config.json')):
+                AutoTokenizer.from_pretrained('j-hartmann/emotion-english-distilroberta-base').save_pretrained(emotion_path)
+                AutoModelForSequenceClassification.from_pretrained('j-hartmann/emotion-english-distilroberta-base').save_pretrained(emotion_path)
+            "
+
+      - name: 🐳 Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
@@ -51,12 +71,16 @@ jobs:
         run: pip install --prefer-binary -r requirements.txt
 
       - name: 🔄 Label, Migrate Snapshots
-        run: EXPORT_ONLY=0 python scripts/summary.py
+        run: |
+          echo "🚀 Running labeling and migration..."
+          EXPORT_ONLY=0 python scripts/summary.py
 
       - name: 📦 Export Snapshots
-        run: EXPORT_ONLY=1 python scripts/summary.py
+        run: |
+          echo "📄 Exporting snapshot JSONs..."
+          EXPORT_ONLY=1 python scripts/summary.py
 
-      - name: 📝 Commit Updated Snapshots
+      - name: 📜 Commit Updated Snapshots
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
