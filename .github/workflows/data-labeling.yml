@@ -72,13 +72,13 @@ jobs:
         run: |
           echo "🚀 Running labeling and migration..."
           ls scripts/
-          EXPORT_ONLY=0 -u python scripts/summary.py
+          EXPORT_ONLY=0 python -u scripts/summary.py
 
       - name: 📦 Export Snapshots
         run: |
           echo "📄 Exporting snapshot JSONs..."
           ls scripts/
-          EXPORT_ONLY=1 -u python scripts/summary.py
+          EXPORT_ONLY=1 python -u scripts/summary.py
 
       - name: 📜 Commit Updated Snapshots
         run: |
