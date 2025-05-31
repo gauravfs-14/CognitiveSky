@@ -91,39 +91,55 @@ def hardened_label_and_migrate():
     def safe_snapshot_download(model_id, local_dir=None):
         from huggingface_hub import snapshot_download
         import logging
-        if IS_TEST:
-            return snapshot_download(repo_id=model_id, local_dir=local_dir, ignore_patterns=["*.msgpack", "*.h5"])
-        else:
-            # ✅ Suppress all logs in prod and use cache
-            os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
-            os.environ["TRANSFORMERS_VERBOSITY"] = "error"
-            logging.getLogger("transformers").setLevel(logging.ERROR)
+        try:
+            if IS_TEST:
+                return snapshot_download(repo_id=model_id, local_dir=local_dir, ignore_patterns=["*.msgpack", "*.h5"])
+            else:
+                os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+                os.environ["TRANSFORMERS_VERBOSITY"] = "error"
+                logging.getLogger("transformers").setLevel(logging.ERROR)
 
-            return snapshot_download(
-                repo_id=model_id,
-                local_dir=local_dir,
-                ignore_patterns=["*.msgpack", "*.h5"],
-                local_files_only=False  # fallback to download if missing
-            )
+                return snapshot_download(
+                    repo_id=model_id,
+                    local_dir=local_dir,
+                    ignore_patterns=["*.msgpack", "*.h5"],
+                    local_files_only=False  # fallback to download if missing
+                )
+        except Exception as e:
+            print(f"⚠️ HuggingFace model download failed for '{model_id}': {e}")
+            return None
 
-
-    safe_snapshot_download("cardiffnlp/twitter-roberta-base-sentiment")
-    safe_snapshot_download("j-hartmann/emotion-english-distilroberta-base")
+    if safe_snapshot_download("cardiffnlp/twitter-roberta-base-sentiment") is None:
+        print("❌ Skipping sentiment labeling due to model download failure.")
+        exit(1)
+    if safe_snapshot_download("j-hartmann/emotion-english-distilroberta-base") is None:
+        print("❌ Skipping emotion labeling due to model download failure.")
+        exit(1)
 
     # Device
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-    # === Load Models ===
-    # Sentiment
-    sent_tok = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
-    sent_model = AutoModelForSequenceClassification.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment").to(DEVICE)
+    # === Load Models with Fail-Safe Wrapping ===
+    try:
+        sent_tok = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
+        sent_model = AutoModelForSequenceClassification.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment").to(DEVICE)
+        sentiment_labels = [sent_model.config.id2label[i].lower() for i in range(len(sent_model.config.id2label))]
+        print("✅ Sentiment model loaded.")
+    except Exception as e:
+        print(f"❌ Failed to load sentiment model: {e}")
+        exit(1)
 
-    # Emotion
-    emot_tok = AutoTokenizer.from_pretrained("j-hartmann/emotion-english-distilroberta-base")
-    emot_model = AutoModelForSequenceClassification.from_pretrained("j-hartmann/emotion-english-distilroberta-base").to(DEVICE)
 
-    sentiment_labels = [sent_model.config.id2label[i].lower() for i in range(len(sent_model.config.id2label))]
-    emotion_labels = [emot_model.config.id2label[i].lower() for i in range(len(emot_model.config.id2label))]
+    try:
+        emot_tok = AutoTokenizer.from_pretrained("j-hartmann/emotion-english-distilroberta-base")
+        emot_model = AutoModelForSequenceClassification.from_pretrained("j-hartmann/emotion-english-distilroberta-base").to(DEVICE)
+        emotion_labels = [emot_model.config.id2label[i].lower() for i in range(len(emot_model.config.id2label))]
+        print("✅ Emotion model loaded.")
+    except Exception as e:
+        print(f"❌ Failed to load emotion model: {e}")
+        exit(1)
+
+
 
     def fast_infer(texts, tokenizer, model, label_map):
         inputs = tokenizer(texts, truncation=True, padding=True, max_length=128, return_tensors="pt").to(DEVICE)
@@ -240,10 +256,10 @@ def hardened_label_and_migrate():
     print(f"✅ Successfully migrated {success_count}/{len(unlabeled_posts)} posts to Turso DB.")
 
     # --- Supabase Cleanup ---
-    print("🗑️ Deleting processed posts from Supabase...")
     try:
         uris = [p["uri"] for p in unlabeled_posts if p.get("uri")]
         if not IS_TEST:
+            print("🗑️ Deleting processed posts from Supabase...")
             for i in range(0, len(uris), 100):
                 supabase.table("posts_unlabeled").delete().in_("uri", uris[i:i + 100]).execute()
             print("✅ Supabase cleared of migrated posts.")
