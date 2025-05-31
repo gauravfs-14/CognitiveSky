@@ -14,6 +14,8 @@ from dateutil.parser import isoparse
 
 # === Constants ===
 today = date.today().isoformat()
+start_date = (date.today() - timedelta(days=7)).isoformat()  # 7 days before today
+end_date = (date.today() - timedelta(days=1)).isoformat()  # yesterday
 
 # === Load ENV ===
 load_dotenv()
@@ -26,9 +28,18 @@ IS_TEST = os.getenv("TEST_MODE") == "1"
 # === Clients ===
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+
 # === DB Connection ===
 if IS_TEST:
     conn = libsql.connect("test_turso_local.db")
+    prod_conn = libsql.connect("/tmp/turso_replica.db", sync_url=TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
+    try:
+        prod_conn.execute("SELECT 1")
+        print("✅ Production database connection successful.")
+    except Exception as e:
+        print(f"❌ Production database connection failed: {e}")
+        exit(1)
+
 else:
     conn = libsql.connect("/tmp/turso_replica.db", sync_url=TURSO_DB_URL, auth_token=TURSO_DB_TOKEN)
 try:
@@ -73,14 +84,33 @@ def safe_sync():
 
 def store_snapshot(type_, scope, data):
     hash_val = compute_hash(data)
-    row = conn.execute("SELECT hash FROM summary_snapshots WHERE date=? AND type=? AND scope=?", (today, type_, scope)).fetchone()
+    row = conn.execute("SELECT hash FROM summary_snapshots WHERE date=? AND type=? AND scope=?", (end_date, type_, scope)).fetchone()
     if row and row[0] == hash_val:
         print(f"✅ Skipped unchanged {type_}:{scope}")
         return
-    conn.execute("INSERT OR REPLACE INTO summary_snapshots VALUES (?, ?, ?, ?, ?)", (today, type_, scope, hash_val, json.dumps(data)))
+    conn.execute("INSERT OR REPLACE INTO summary_snapshots VALUES (?, ?, ?, ?, ?)", (end_date, type_, scope, hash_val, json.dumps(data)))
     conn.commit()
     safe_sync()
     print(f"📦 Stored {type_}:{scope}")
+
+if IS_TEST:
+    print("🧪 Syncing test DB with production DB...")
+
+    for table in ["posts", "summary_snapshots"]:
+        # Fetch from prod
+        rows = prod_conn.execute(f"SELECT * FROM {table}").fetchall()
+        columns = [d[1] for d in prod_conn.execute(f"PRAGMA table_info({table})").fetchall()]
+        if not rows:
+            print(f"⚠️ No data found in production `{table}` table.")
+            continue
+        # Insert into test
+        for row in rows:
+            placeholders = ", ".join(["?"] * len(row))
+            conn.execute(f"INSERT OR IGNORE INTO {table} ({', '.join(columns)}) VALUES ({placeholders})", row)
+
+        print(f"✅ Synced {len(rows)} rows into test `{table}` table.")
+    conn.commit()
+    safe_sync()
 
 # === Label, Migrate, and Generate Snapshots ===
 def hardened_label_and_migrate():
@@ -93,7 +123,16 @@ def hardened_label_and_migrate():
         import logging
         try:
             if IS_TEST:
-                return snapshot_download(repo_id=model_id, local_dir=local_dir, ignore_patterns=["*.msgpack", "*.h5"])
+                os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+                os.environ["TRANSFORMERS_VERBOSITY"] = "error"
+                logging.getLogger("transformers").setLevel(logging.ERROR)
+
+                return snapshot_download(
+                    repo_id=model_id,
+                    local_dir=local_dir,
+                    ignore_patterns=["*.msgpack", "*.h5"],
+                    local_files_only=False  # fallback to download if missing
+                )
             else:
                 os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
                 os.environ["TRANSFORMERS_VERBOSITY"] = "error"
@@ -129,7 +168,6 @@ def hardened_label_and_migrate():
         print(f"❌ Failed to load sentiment model: {e}")
         exit(1)
 
-
     try:
         emot_tok = AutoTokenizer.from_pretrained("j-hartmann/emotion-english-distilroberta-base")
         emot_model = AutoModelForSequenceClassification.from_pretrained("j-hartmann/emotion-english-distilroberta-base").to(DEVICE)
@@ -142,12 +180,19 @@ def hardened_label_and_migrate():
 
 
     def fast_infer(texts, tokenizer, model, label_map):
-        inputs = tokenizer(texts, truncation=True, padding=True, max_length=128, return_tensors="pt").to(DEVICE)
-        with torch.no_grad():
-            logits = model(**inputs).logits
-        probs = F.softmax(logits, dim=-1)
-        preds = torch.argmax(probs, dim=-1)
-        return [label_map[i.item()] for i in preds]
+        LABEL_BATCH_SIZE = 64
+        results = []
+        for i in range(0, len(texts), LABEL_BATCH_SIZE):
+            batch = texts[i:i + LABEL_BATCH_SIZE]
+            inputs = tokenizer(batch, truncation=True, padding=True, max_length=128, return_tensors="pt").to(DEVICE)
+            with torch.no_grad():
+                logits = model(**inputs).logits
+            probs = F.softmax(logits, dim=-1)
+            preds = torch.argmax(probs, dim=-1)
+            results.extend([label_map[i.item()] for i in preds])
+            del inputs, logits, probs, preds  # Free memory
+            torch.cuda.empty_cache() if DEVICE == "cuda" else None
+        return results
 
     print("🚀 Starting labeling and snapshot generation process...")
 
@@ -166,6 +211,8 @@ def hardened_label_and_migrate():
             print(f"🧪 Test mode: Fetching batch {offset // BATCH_SIZE + 1} of unlabeled posts.")
             batch = supabase.table("posts_unlabeled")\
                      .select("*")\
+                        .gte("created_at", start_dt)\
+                        .lt("created_at", end_dt)\
                      .range(offset, offset + BATCH_SIZE - 1)\
                      .execute().data or []
         else:  
@@ -206,7 +253,7 @@ def hardened_label_and_migrate():
     # --- Topic Modeling ---
     print("🧠 Performing topic modeling...")
     try:
-        vectorizer = TfidfVectorizer(max_features=1000, stop_words='english')
+        vectorizer = TfidfVectorizer(max_features=300, stop_words='english')
         X = vectorizer.fit_transform(texts)
         nmf = NMF(n_components=8, random_state=42)
         W = nmf.fit_transform(X)
@@ -271,16 +318,14 @@ def hardened_label_and_migrate():
     # --- Snapshot Generation ---
     print("📊 Generating all snapshot files...")
 
-    # Define date range: last 7 days excluding today
-    end_date = (date.today() - timedelta(days=1)).isoformat()  # yesterday
-    start_date = (date.today() - timedelta(days=7)).isoformat()  # 7 days before yesterday
-
     if IS_TEST:
         print(f"🧪 Test mode: Analyzing (all posts).")
         rows = conn.execute(
             """
             SELECT created_at, sentiment, emotion, topic, langs, text FROM posts
-            """
+            WHERE date(created_at) BETWEEN ? AND ?
+            """,
+            (start_date, end_date)
         ).fetchall()
     else:
         print(f"📅 Analyzing posts from {start_date} to {end_date}...")
@@ -451,17 +496,16 @@ def export_snapshots_to_json():
     }
     data_map = {f: {} for f in files}
 
-    # Define last 7 full days (excluding today)
-    end_date = (date.today() - timedelta(days=1)).isoformat()  # yesterday
-    start_date = (date.today() - timedelta(days=7)).isoformat()  # 7 days before yesterday
-
     # Fetch all snapshot rows in that range
     if IS_TEST:
-        rows = conn.execute("SELECT date, type, scope, data FROM summary_snapshots").fetchall()
+        rows = conn.execute(
+            "SELECT date, type, scope, data FROM summary_snapshots WHERE date BETWEEN ? AND ?", 
+            (start_date, end_date)
+        ).fetchall()
     else:
         rows = conn.execute(
-        "SELECT date, type, scope, data FROM summary_snapshots WHERE date BETWEEN ? AND ?", 
-        (start_date, end_date)
+            "SELECT date, type, scope, data FROM summary_snapshots WHERE date BETWEEN ? AND ?", 
+            (start_date, end_date)
         ).fetchall()
 
     # Group raw data by file type, date, and scope
@@ -730,11 +774,14 @@ def generate_snapshots_from_turso():
     start_date = (date.today() - timedelta(days=7)).isoformat()  # 7 days before yesterday
 
     if IS_TEST:
-        print(f"🧪 Test mode: Analyzing (all posts).")
+        print(f"📅 Analyzing posts from {start_date} to {end_date}...")
+
         rows = conn.execute(
             """
             SELECT created_at, sentiment, emotion, topic, langs, text FROM posts
-            """
+            WHERE date(created_at) BETWEEN ? AND ?
+            """,
+            (start_date, end_date)
         ).fetchall()
     else:
         print(f"📅 Analyzing posts from {start_date} to {end_date}...")
