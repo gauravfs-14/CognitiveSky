@@ -20,6 +20,8 @@ test-db-to-db:
 
 test-full:
 	@echo "🔄 Running full labeling + snapshot in TEST_MODE..."
+	make clean-test-db
+	@echo "📦 Exporting summary JSONs only from test DB..."
 	TEST_MODE=1 EXPORT_ONLY=0 $(PYTHON) $(SCRIPT) && TEST_MODE=1 EXPORT_ONLY=1 $(PYTHON) $(SCRIPT)
 
 # === Production Commands ===
