@@ -55,7 +55,7 @@ jobs:
       - name: ⬇️ Download models if not cached
         run: |
           mkdir -p ~/.hf_models/sentiment ~/.hf_models/emotion
-          python scripts/download_model_gh_action.py
+          python -u scripts/download_model_gh_action.py
 
       - name: 🔍 List downloaded models
         run: |
@@ -71,12 +71,14 @@ jobs:
       - name: 🔄 Label, Migrate Snapshots
         run: |
           echo "🚀 Running labeling and migration..."
-          EXPORT_ONLY=0 python scripts/summary.py
+          ls scripts/
+          EXPORT_ONLY=0 -u python scripts/summary.py
 
       - name: 📦 Export Snapshots
         run: |
           echo "📄 Exporting snapshot JSONs..."
-          EXPORT_ONLY=1 python scripts/summary.py
+          ls scripts/
+          EXPORT_ONLY=1 -u python scripts/summary.py
 
       - name: 📜 Commit Updated Snapshots
         run: |
