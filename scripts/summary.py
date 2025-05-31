@@ -87,8 +87,7 @@ def compute_hash(obj):
     return hashlib.sha256(json.dumps(obj, sort_keys=True).encode()).hexdigest()
 
 def safe_sync():
-    if not IS_TEST:
-        conn.sync()
+    pass
 
 def store_snapshot(type_, scope, data):
     hash_val = compute_hash(data)
