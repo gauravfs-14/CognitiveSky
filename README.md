@@ -7,7 +7,7 @@
 
 **CognitiveSky** is an open-source research infrastructure and dashboard for analyzing mental health narratives on the Bluesky social platform. Inspired by [TwiXplorer](https://github.com/smash-edin/twixplorer), it integrates real-time data ingestion, robust NLP processing, and interactive visualization to empower researchers, advocates, and developers with actionable social insights.
 
-> **Live Dashboard:** [CognitiveSky Dashboard](https://cognitivesky.vercel.app)
+> **Live Dashboard:** [CognitiveSky Dashboard](https://cognitivesky.gaurabchhetri.com.np/)
 
 ## 📖 Table of Contents
 
@@ -156,7 +156,7 @@ Each is grouped by date to support historical and temporal exploration in the da
   - Narrative shifts across time
 - **Data Source:** JSON files from `summary/` directory
 
-> **Live Demo:** [CognitiveSky Dashboard](https://cognitivesky.vercel.app) | **Source Code:** [Dashboard Code](https://github.com/gauravfs-14/CognitiveSky/tree/main/dashboard)
+> **Live Demo:** [CognitiveSky Dashboard](https://cognitivesky.gaurabchhetri.com.np/) | **Source Code:** [Dashboard Code](https://github.com/gauravfs-14/CognitiveSky/tree/main/dashboard)
 
 ## 🚀 Get Started
 
