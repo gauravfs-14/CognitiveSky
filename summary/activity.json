@@ -40,5 +40,54 @@
       "ru": 1,
       "EN": 2
     }
+  },
+  "2025-05-30": {
+    "volume": 5401,
+    "sentiment": {
+      "positive": 1113,
+      "negative": 2463,
+      "neutral": 1825
+    },
+    "emotion": {
+      "joy": 401,
+      "sadness": 1091,
+      "surprise": 275,
+      "neutral": 1190,
+      "fear": 1663,
+      "disgust": 266,
+      "anger": 515
+    },
+    "language": {
+      "en": 4545,
+      "de": 37,
+      "en-US": 39,
+      "fr": 29,
+      "sq": 2,
+      "ar": 15,
+      "cy": 1,
+      "es": 16,
+      "pt": 25,
+      "ko": 7,
+      "nl": 10,
+      "it": 5,
+      "en-us": 2,
+      "ja": 21,
+      "en-GB": 6,
+      "fr-FR": 2,
+      "jp": 1,
+      "sv": 4,
+      "pl": 2,
+      "zh": 1,
+      "la": 1,
+      "id": 1,
+      "ru": 2,
+      "en-AU": 2,
+      "cs": 1,
+      "tr": 4,
+      "nb": 1,
+      "tl": 1,
+      "ab": 1,
+      "gl": 1
+    }
   }
 }
