@@ -25,6 +25,11 @@ TURSO_DB_URL = os.getenv("TURSO_DB_URL")
 TURSO_DB_TOKEN = os.getenv("TURSO_DB_TOKEN")
 IS_TEST = os.getenv("TEST_MODE") == "1"
 
+# Validate required environment variables
+if not SUPABASE_URL or not SUPABASE_KEY or not TURSO_DB_URL or not TURSO_DB_TOKEN:
+    print("❌ Missing required environment variables. Please set SUPABASE_URL, SUPABASE_KEY, TURSO_DB_URL, and TURSO_DB_TOKEN.")
+    exit(1)
+
 # === Clients ===
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
@@ -147,6 +152,7 @@ def load_models():
         emot_model_path = os.path.expanduser(os.path.join(hf_home, "emotion"))
 
         try:
+            print("🔄 Loading sentiment model from:", sent_model_path)
             sent_tok = AutoTokenizer.from_pretrained(sent_model_path)
             sent_model = AutoModelForSequenceClassification.from_pretrained(sent_model_path).to(DEVICE)
             sentiment_labels = [sent_model.config.id2label[i].lower() for i in range(len(sent_model.config.id2label))]
@@ -156,6 +162,7 @@ def load_models():
             exit(1)
 
         try:
+            print("🔄 Loading emotion model from:", emot_model_path)
             emot_tok = AutoTokenizer.from_pretrained(emot_model_path)
             emot_model = AutoModelForSequenceClassification.from_pretrained(emot_model_path).to(DEVICE)
             emotion_labels = [emot_model.config.id2label[i].lower() for i in range(len(emot_model.config.id2label))]
@@ -797,13 +804,18 @@ def generate_snapshots_from_turso():
 if __name__ == "__main__":
     os.makedirs("summary", exist_ok=True)
 
+    print("🔄 Starting summary.py...")
+
     if os.getenv("EXPORT_ONLY") == "1":
+        print("🗂️ Exporting snapshots to JSON files...")
         export_snapshots_to_json()
         print("✅ Only exported snapshots.")
     elif os.getenv("SKIP_LABELING") == "1":
+        print("🧪 Skipping labeling and generating snapshots from Turso DB...")
         generate_snapshots_from_turso()
         print("✅ Generated snapshots from Turso.")
     else:
+        print("🔍 Fetching and labeling posts, then generating snapshots...")
         sent_tok, sent_model, sentiment_labels, emot_tok, emot_model, emotion_labels, DEVICE = load_models()
         hardened_label_and_migrate(sent_tok, sent_model, sentiment_labels, emot_tok, emot_model, emotion_labels, DEVICE)
     conn.commit()
