@@ -269,41 +269,46 @@ def hardened_label_and_migrate(sent_tok, sent_model, sentiment_labels, emot_tok,
         topic_words = [["general"]] * 8
 
     # --- Turso Migration ---
-    print("🧬 Migrating labeled posts to Turso DB...")
-    success_count = 0
+    from math import ceil
+
+    print("🧬 Migrating labeled posts to Turso DB (chunked bulk mode)...")
+
+    insert_sql = """
+        INSERT OR IGNORE INTO posts (
+            uri, did, text, created_at, langs, facets, reply, embed,
+            ingestion_time, sentiment, emotion, topic
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """
+
+    values = []
     for i, post in enumerate(unlabeled_posts):
-        sentiment = sentiments[i]
-        emotion = emotions[i]
-        topic = topics[i]
         try:
-            conn.execute("""
-                    INSERT OR IGNORE INTO posts (
-                    uri, did, text, created_at, langs, facets, reply, embed,
-                    ingestion_time, sentiment, emotion, topic
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    """, (
-                    post.get("uri"), post.get("did"), post.get("text"), post.get("created_at"),
-                    json.dumps(post.get("langs", [])), json.dumps(post.get("facets")),
-                    json.dumps(post.get("reply")), json.dumps(post.get("embed")),
-                    post.get("ingestion_time"), sentiment, emotion, topic
-                    ))
-            res = conn.execute("SELECT changes()").fetchone()
-            if res and res[0] > 0:
-                success_count += 1
-                if success_count % 100 == 0:
-                    print(f"✅ Inserted {success_count} posts so far...", flush=True)
-            else:
-                print(f"⚠️ Insert ignored or duplicate: {post.get('uri')}")
- 
+            values.append((
+                post.get("uri"), post.get("did"), post.get("text"), post.get("created_at"),
+                json.dumps(post.get("langs", [])), json.dumps(post.get("facets")),
+                json.dumps(post.get("reply")), json.dumps(post.get("embed")),
+                post.get("ingestion_time"), sentiments[i], emotions[i], topics[i]
+            ))
         except Exception as e:
-            print(f"❌ Failed to migrate post {post.get('uri')}: {e}")
-    if success_count == 0:
-        print("⚠️ No posts were migrated. Skipping snapshot generation.")
+            print(f"❌ Failed to prepare post {post.get('uri')}: {e}")
+
+    chunk_size = 500
+    total = len(values)
+    inserted_total = 0
+
+    try:
+        for i in range(0, total, chunk_size):
+            chunk = values[i:i+chunk_size]
+            conn.executemany(insert_sql, chunk)
+            inserted_total += len(chunk)
+            print(f"✅ Inserted {inserted_total}/{total} posts...", flush=True)
+        conn.commit()
+        safe_sync()
+    except Exception as e:
+        print(f"❌ Bulk insert failed at {inserted_total}/{total}: {e}")
         exit(1)
 
-    conn.commit()
-    safe_sync()
-    print(f"✅ Successfully migrated {success_count}/{len(unlabeled_posts)} posts to Turso DB.")
+    print(f"✅ Successfully migrated {inserted_total} posts to Turso DB.")
 
     # --- Supabase Cleanup ---
     try:
