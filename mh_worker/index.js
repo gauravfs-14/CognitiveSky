@@ -96,62 +96,51 @@ const mentalHealthRegexes = MENTAL_HEALTH_KEYWORDS.map(
     new RegExp(`\\b${kw.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")}\\b`, "i")
 );
 
-function isMentalHealthPost(text = "") {
-  return mentalHealthRegexes.some((regex) => regex.test(text));
-}
-// === Insert Queue Config ===
+const isMentalHealthPost = (() => {
+  const cache = new Map(); // LRU-like in-memory cache (very lightweight)
+  return (text = "") => {
+    if (cache.has(text)) return cache.get(text);
+    const match = mentalHealthRegexes.some((regex) => regex.test(text));
+    if (cache.size > 500) cache.clear(); // avoid unbounded growth
+    cache.set(text, match);
+    return match;
+  };
+})();
+
+// === Queue Config ===
 const INSERT_BATCH_SIZE = 100;
 const INSERT_INTERVAL_MS = 5000;
 const MAX_QUEUE_LENGTH = 1000;
 const MAX_RETRIES = 3;
-
 let insertQueue = [];
 let isInserting = false;
 
-// === Optional: Memory Monitor ===
-// setInterval(() => {
-//   const mem = process.memoryUsage();
-//   console.log(`[MEMORY] RSS: ${(mem.rss / 1024 / 1024).toFixed(2)}MB`);
-// }, 60000);
-
-// === Flush Queue Safely ===
+// === Flush Queue (Safe) ===
 const flushQueue = async () => {
-  if (insertQueue.length === 0 || isInserting) return;
-
+  if (isInserting || insertQueue.length === 0) return;
   isInserting = true;
-  const batch = insertQueue.splice(0, INSERT_BATCH_SIZE);
 
+  const batch = insertQueue.splice(0, INSERT_BATCH_SIZE);
   try {
     const { error } = await supabase.from("posts_unlabeled").insert(batch);
     if (error) {
-      console.error("❌ Supabase batch insert error:", error.message);
-      // Mark retries and requeue if within limit
-      batch.forEach((item) => {
-        item._retries = (item._retries || 0) + 1;
-      });
-      const retryable = batch.filter((item) => item._retries <= MAX_RETRIES);
-      if (retryable.length > 0) {
-        insertQueue.unshift(...retryable);
-      }
-    } else {
-      console.log(`✅ Inserted batch of ${batch.length}`);
-    }
-  } catch (err) {
-    console.error("🔥 Unexpected insert error:", err.stack || err);
-    batch.forEach((item) => {
-      item._retries = (item._retries || 0) + 1;
-    });
-    const retryable = batch.filter((item) => item._retries <= MAX_RETRIES);
-    if (retryable.length > 0) {
+      console.warn("❌ Supabase insert error:", error.message);
+      const retryable = batch
+        .map((item) => ({ ...item, _retries: (item._retries || 0) + 1 }))
+        .filter((item) => item._retries <= MAX_RETRIES);
       insertQueue.unshift(...retryable);
     }
-  }
-
-  isInserting = false;
-
-  // Truncate queue if too large
-  if (insertQueue.length > MAX_QUEUE_LENGTH) {
-    insertQueue = insertQueue.slice(-MAX_QUEUE_LENGTH);
+  } catch (err) {
+    console.error("🔥 Insert exception:", err.stack || err);
+    const retryable = batch
+      .map((item) => ({ ...item, _retries: (item._retries || 0) + 1 }))
+      .filter((item) => item._retries <= MAX_RETRIES);
+    insertQueue.unshift(...retryable);
+  } finally {
+    isInserting = false;
+    if (insertQueue.length > MAX_QUEUE_LENGTH) {
+      insertQueue = insertQueue.slice(-MAX_QUEUE_LENGTH); // keep latest
+    }
   }
 };
 
@@ -159,12 +148,12 @@ setInterval(flushQueue, INSERT_INTERVAL_MS);
 
 // === Graceful Shutdown ===
 process.on("SIGINT", async () => {
-  console.log("🛑 Shutting down — flushing remaining posts...");
+  console.log("🛑 SIGINT — flushing queue...");
   await flushQueue();
   process.exit(0);
 });
 
-// === Firehose Setup ===
+// === Firehose Stream ===
 const idResolver = new IdResolver();
 let firehoseStarted = false;
 
@@ -177,12 +166,12 @@ const firehose = new Firehose({
     try {
       if (evt.event !== "create") return;
       const post = evt.record;
-      if (!post?.text || post.reply) return;
-      if (post?.$type !== "app.bsky.feed.post") return;
+      if (!post?.text || post.reply || post?.$type !== "app.bsky.feed.post")
+        return;
       if (!isMentalHealthPost(post.text)) return;
       if (!evt.did) return;
 
-      const record = {
+      insertQueue.push({
         uri: evt.uri.toString(),
         did: evt.did,
         text: post.text,
@@ -192,12 +181,10 @@ const firehose = new Firehose({
         reply: null,
         embed: post.embed || null,
         ingestion_time: new Date().toISOString(),
-      };
+      });
 
-      insertQueue.push(record);
-
-      if (insertQueue.length >= INSERT_BATCH_SIZE * 2) {
-        console.log("⚠️ Queue large — flushing early...");
+      // Early flush trigger if backlog is large
+      if (insertQueue.length >= INSERT_BATCH_SIZE * 2 && !isInserting) {
         await flushQueue();
       }
     } catch (err) {
@@ -206,10 +193,20 @@ const firehose = new Firehose({
   },
 
   onError: (err) => {
-    console.error("🔥 Firehose stream error:", err.stack || err);
+    console.error("🔥 Firehose error:", err.stack || err);
   },
 });
 
+// === Memory Monitor (Only if high usage) ===
+setInterval(() => {
+  const { rss } = process.memoryUsage();
+  const mb = rss / 1024 / 1024;
+  if (mb > 120) {
+    console.warn(`[MEMORY WARNING] RSS: ${mb.toFixed(1)}MB`);
+  }
+}, 60000);
+
+// === Start Once ===
 if (!firehoseStarted) {
   firehoseStarted = true;
   firehose.start();
