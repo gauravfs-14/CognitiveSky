@@ -89,5 +89,43 @@
       "ab": 1,
       "gl": 1
     }
+  },
+  "2025-05-31": {
+    "volume": 1132,
+    "sentiment": {
+      "negative": 545,
+      "positive": 233,
+      "neutral": 354
+    },
+    "emotion": {
+      "anger": 102,
+      "sadness": 270,
+      "fear": 324,
+      "surprise": 62,
+      "neutral": 223,
+      "joy": 85,
+      "disgust": 66
+    },
+    "language": {
+      "en": 979,
+      "en-AU": 1,
+      "nb": 1,
+      "no": 1,
+      "la": 4,
+      "en-US": 13,
+      "ja": 1,
+      "pt": 2,
+      "tl": 1,
+      "en-GB": 1,
+      "id": 2,
+      "es": 5,
+      "vi": 1,
+      "fr": 2,
+      "zh-CN": 1,
+      "zh-HK": 1,
+      "zh-TW": 1,
+      "de": 4,
+      "de-DE": 1
+    }
   }
 }
