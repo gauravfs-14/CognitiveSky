@@ -127,5 +127,58 @@
       "de": 4,
       "de-DE": 1
     }
+  },
+  "2025-06-01": {
+    "volume": 4409,
+    "sentiment": {
+      "positive": 955,
+      "negative": 2063,
+      "neutral": 1391
+    },
+    "emotion": {
+      "fear": 1348,
+      "joy": 393,
+      "anger": 375,
+      "neutral": 899,
+      "surprise": 231,
+      "sadness": 932,
+      "disgust": 231
+    },
+    "language": {
+      "en": 3693,
+      "de": 35,
+      "en-US": 34,
+      "ja": 20,
+      "pt": 28,
+      "fr": 26,
+      "fr-FR": 3,
+      "ar": 58,
+      "fi": 1,
+      "sv": 3,
+      "av": 2,
+      "es": 19,
+      "ko": 5,
+      "en-AU": 3,
+      "la": 3,
+      "nl": 4,
+      "zh": 5,
+      "id": 3,
+      "tr": 2,
+      "th": 2,
+      "en-GB": 5,
+      "af": 1,
+      "ak": 1,
+      "cs": 1,
+      "it": 3,
+      "ht": 1,
+      "ga": 1,
+      "uk": 1,
+      "ca": 1,
+      "sr": 1,
+      "ru": 1,
+      "eu": 1,
+      "sq": 1,
+      "am": 1
+    }
   }
 }
