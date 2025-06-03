@@ -180,5 +180,62 @@
       "sq": 1,
       "am": 1
     }
+  },
+  "2025-06-02": {
+    "volume": 4986,
+    "sentiment": {
+      "negative": 2451,
+      "positive": 1053,
+      "neutral": 1482
+    },
+    "emotion": {
+      "neutral": 1050,
+      "sadness": 1149,
+      "fear": 1524,
+      "surprise": 252,
+      "joy": 421,
+      "disgust": 217,
+      "anger": 373
+    },
+    "language": {
+      "en": 3917,
+      "de": 41,
+      "ar": 222,
+      "es": 24,
+      "ro": 2,
+      "ja": 27,
+      "fr": 43,
+      "en-US": 41,
+      "it": 6,
+      "vi": 1,
+      "nb": 2,
+      "pt": 28,
+      "th": 2,
+      "ko": 7,
+      "ga": 1,
+      "he": 1,
+      "nl": 9,
+      "en-GB": 4,
+      "pl": 2,
+      "fr-FR": 1,
+      "zh": 1,
+      "ru": 6,
+      "ay": 1,
+      "sv": 2,
+      "id": 1,
+      "ms": 1,
+      "en-AU": 1,
+      "tr": 1,
+      "da": 3,
+      "ca": 1,
+      "af": 1,
+      "av": 1,
+      "eu": 2,
+      "tl": 2,
+      "sq": 1,
+      "uk": 1,
+      "fi": 1,
+      "pt-BR": 1
+    }
   }
 }
