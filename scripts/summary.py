@@ -541,6 +541,13 @@ def export_snapshots_to_json():
         elif type_ in ["sentiment_by_topic", "emotion_by_topic"]:
             for topic, counts in parsed.items():
                 parsed[topic] = remap_sentiments(counts)
+        elif type_ == "topics":
+            if isinstance(parsed, dict) and "topics" in parsed:
+                parsed = parsed["topics"]
+            for topic, info in parsed.items():
+                if "sentiment" in info:
+                    info["sentiment"] = remap_sentiments(info["sentiment"])
+            data_map["topics"] = parsed
 
         data_map[type_] = parsed
 
