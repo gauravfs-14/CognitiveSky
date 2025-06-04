@@ -1,0 +1,458 @@
+{
+  "topic_0": {
+    "label": [
+      "like",
+      "just",
+      "time",
+      "people",
+      "anxiety"
+    ],
+    "count": 6328,
+    "daily": {
+      "2025-05-28": 423,
+      "2025-05-29": 602,
+      "2025-05-30": 2036,
+      "2025-05-31": 296,
+      "2025-06-01": 1671,
+      "2025-06-02": 469,
+      "2025-06-03": 831
+    },
+    "sentiment": {
+      "label_1": 1643,
+      "label_0": 3509,
+      "label_2": 1176
+    },
+    "emotion": {
+      "fear": 1845,
+      "sadness": 1565,
+      "joy": 444,
+      "neutral": 1167,
+      "anger": 511,
+      "surprise": 394,
+      "disgust": 402
+    },
+    "hashtags": [
+      "#art",
+      "#adhd",
+      "#depression",
+      "#ADHD",
+      "#painting",
+      "#drawing",
+      "#sketch",
+      "#booksky",
+      "#MastoArt",
+      "#kleinekunstklasse"
+    ],
+    "emojis": [
+      "😭",
+      "😂",
+      "🙏",
+      "🔥",
+      "🏻",
+      "💜",
+      "💔",
+      "💙",
+      "💖",
+      "😅"
+    ]
+  },
+  "topic_7": {
+    "label": [
+      "therapy",
+      "healthcare",
+      "need",
+      "judge",
+      "federal"
+    ],
+    "count": 1682,
+    "daily": {
+      "2025-05-28": 210,
+      "2025-05-29": 331,
+      "2025-05-30": 289,
+      "2025-05-31": 197,
+      "2025-06-01": 224,
+      "2025-06-02": 308,
+      "2025-06-03": 123
+    },
+    "sentiment": {
+      "label_0": 632,
+      "label_2": 374,
+      "label_1": 676
+    },
+    "emotion": {
+      "sadness": 302,
+      "fear": 461,
+      "neutral": 474,
+      "disgust": 59,
+      "joy": 158,
+      "anger": 161,
+      "surprise": 67
+    },
+    "hashtags": [
+      "#stress",
+      "#mentalhealth",
+      "#HealingEnergyJewelry",
+      "#HandmadeInUSA",
+      "#ChakraJewelry",
+      "#healthcare",
+      "#art",
+      "#strategy",
+      "#mindfulness",
+      "#news"
+    ],
+    "emojis": [
+      "😭",
+      "😂",
+      "🚨",
+      "🔥",
+      "👇",
+      "♀",
+      "👉",
+      "🔗",
+      "🌿",
+      "😩"
+    ]
+  },
+  "topic_3": {
+    "label": [
+      "cutting",
+      "trump",
+      "climate",
+      "global",
+      "funding"
+    ],
+    "count": 2030,
+    "daily": {
+      "2025-05-28": 239,
+      "2025-05-29": 121,
+      "2025-05-30": 448,
+      "2025-05-31": 99,
+      "2025-06-01": 480,
+      "2025-06-02": 491,
+      "2025-06-03": 152
+    },
+    "sentiment": {
+      "label_1": 660,
+      "label_0": 849,
+      "label_2": 521
+    },
+    "emotion": {
+      "neutral": 562,
+      "sadness": 372,
+      "surprise": 74,
+      "fear": 461,
+      "anger": 190,
+      "disgust": 97,
+      "joy": 274
+    },
+    "hashtags": [
+      "#MentalHealth",
+      "#mentalhealth",
+      "#CitizenPortal",
+      "#art",
+      "#MentalHealthMatters",
+      "#hiring",
+      "#jobalert",
+      "#jobsearch",
+      "#RespectTheAmazon",
+      "#depression"
+    ],
+    "emojis": [
+      "🏳",
+      "🌈",
+      "⚧",
+      "😭",
+      "🌿",
+      "🔗",
+      "⚠",
+      "💙",
+      "💜",
+      "💚"
+    ]
+  },
+  "topic_4": {
+    "label": [
+      "crying",
+      "know",
+      "im",
+      "love",
+      "started"
+    ],
+    "count": 1903,
+    "daily": {
+      "2025-05-28": 149,
+      "2025-05-29": 177,
+      "2025-05-30": 541,
+      "2025-05-31": 42,
+      "2025-06-01": 633,
+      "2025-06-02": 263,
+      "2025-06-03": 98
+    },
+    "sentiment": {
+      "label_0": 798,
+      "label_2": 402,
+      "label_1": 703
+    },
+    "emotion": {
+      "anger": 160,
+      "joy": 145,
+      "fear": 686,
+      "sadness": 337,
+      "neutral": 404,
+      "surprise": 92,
+      "disgust": 79
+    },
+    "hashtags": [
+      "#news",
+      "#bipolar",
+      "#mentalhealth",
+      "#transistor",
+      "#Semiconductors",
+      "#diode",
+      "#mosfet",
+      "#jfet",
+      "#junction",
+      "#examples"
+    ],
+    "emojis": [
+      "😭",
+      "👉",
+      "😂",
+      "👇",
+      "🔥",
+      "💖",
+      "👀",
+      "🙏",
+      "💔",
+      "🔗"
+    ]
+  },
+  "topic_5": {
+    "label": [
+      "com",
+      "www",
+      "https",
+      "news",
+      "2025"
+    ],
+    "count": 2214,
+    "daily": {
+      "2025-05-28": 134,
+      "2025-05-29": 138,
+      "2025-05-30": 449,
+      "2025-05-31": 133,
+      "2025-06-01": 293,
+      "2025-06-02": 752,
+      "2025-06-03": 315
+    },
+    "sentiment": {
+      "label_1": 866,
+      "label_0": 939,
+      "label_2": 409
+    },
+    "emotion": {
+      "neutral": 532,
+      "disgust": 84,
+      "fear": 734,
+      "surprise": 98,
+      "anger": 196,
+      "sadness": 402,
+      "joy": 168
+    },
+    "hashtags": [
+      "#poetry",
+      "#DubNation",
+      "#news",
+      "#nowplaying",
+      "#recovery",
+      "#art",
+      "#grief",
+      "#AI",
+      "#NowPlaying",
+      "#1"
+    ],
+    "emojis": [
+      "💔",
+      "🚨",
+      "😂",
+      "👉",
+      "🔗",
+      "💙",
+      "😭",
+      "🙏",
+      "👇",
+      "🖖"
+    ]
+  },
+  "topic_6": {
+    "label": [
+      "worry",
+      "don",
+      "ll",
+      "know",
+      "just"
+    ],
+    "count": 1683,
+    "daily": {
+      "2025-05-28": 63,
+      "2025-05-29": 103,
+      "2025-05-30": 306,
+      "2025-05-31": 83,
+      "2025-06-01": 446,
+      "2025-06-02": 478,
+      "2025-06-03": 204
+    },
+    "sentiment": {
+      "label_2": 424,
+      "label_0": 735,
+      "label_1": 524
+    },
+    "emotion": {
+      "surprise": 73,
+      "neutral": 310,
+      "sadness": 227,
+      "anger": 109,
+      "fear": 777,
+      "disgust": 72,
+      "joy": 115
+    },
+    "hashtags": [
+      "#therapy",
+      "#art",
+      "#findom",
+      "#strategy",
+      "#competitiveintelligence",
+      "#marketing",
+      "#healthcare",
+      "#pharma",
+      "#competitivemarketing",
+      "#pharmaceutical"
+    ],
+    "emojis": [
+      "😭",
+      "💙",
+      "💔",
+      "🏻",
+      "😅",
+      "🚨",
+      "🏳",
+      "😉",
+      "💉",
+      "🌈"
+    ]
+  },
+  "topic_1": {
+    "label": [
+      "loss",
+      "weight",
+      "trump",
+      "time",
+      "new"
+    ],
+    "count": 3054,
+    "daily": {
+      "2025-05-28": 124,
+      "2025-05-29": 146,
+      "2025-05-30": 351,
+      "2025-05-31": 84,
+      "2025-06-01": 311,
+      "2025-06-02": 1877,
+      "2025-06-03": 161
+    },
+    "sentiment": {
+      "label_0": 1625,
+      "label_2": 669,
+      "label_1": 760
+    },
+    "emotion": {
+      "sadness": 749,
+      "fear": 888,
+      "neutral": 504,
+      "surprise": 213,
+      "anger": 304,
+      "joy": 253,
+      "disgust": 143
+    },
+    "hashtags": [
+      "#art",
+      "#ADHD",
+      "#adhd",
+      "#oc",
+      "#poetry",
+      "#MentalHealth",
+      "#digitalart",
+      "#双極性障害",
+      "#ASD",
+      "#anxiety"
+    ],
+    "emojis": [
+      "😭",
+      "💔",
+      "😂",
+      "🙏",
+      "💙",
+      "💜",
+      "♀",
+      "💞",
+      "🏻",
+      "🕊"
+    ]
+  },
+  "topic_2": {
+    "label": [
+      "health",
+      "mental",
+      "care",
+      "2025",
+      "month"
+    ],
+    "count": 2343,
+    "daily": {
+      "2025-05-28": 71,
+      "2025-05-29": 109,
+      "2025-05-30": 984,
+      "2025-05-31": 199,
+      "2025-06-01": 363,
+      "2025-06-02": 415,
+      "2025-06-03": 202
+    },
+    "sentiment": {
+      "label_0": 883,
+      "label_1": 990,
+      "label_2": 470
+    },
+    "emotion": {
+      "anger": 191,
+      "sadness": 534,
+      "joy": 178,
+      "surprise": 97,
+      "disgust": 90,
+      "neutral": 562,
+      "fear": 691
+    },
+    "hashtags": [
+      "#news",
+      "#DubNation",
+      "#ADHD",
+      "#MentalHealthMatters",
+      "#mentalhealth",
+      "#News",
+      "#musicsky",
+      "#dailyhaikuprompt",
+      "#haiku",
+      "#MentalHealth"
+    ],
+    "emojis": [
+      "💔",
+      "🙏",
+      "💞",
+      "🕊",
+      "😭",
+      "🚨",
+      "🖼",
+      "🔗",
+      "😂",
+      "👇"
+    ]
+  }
+}

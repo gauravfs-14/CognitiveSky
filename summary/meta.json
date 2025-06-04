@@ -1,0 +1,33 @@
+{
+  "date": "2025-06-04",
+  "complete": {
+    "total_posts": 21239,
+    "total_sentiments": 3,
+    "total_emotions": 7,
+    "total_languages": 61,
+    "total_topics": 8,
+    "total_hashtags": 8279,
+    "total_emojis": 548
+  },
+  "last_week": {
+    "total_posts": 21237,
+    "total_sentiments": 3,
+    "total_emotions": 7,
+    "total_languages": 61,
+    "total_topics": 8,
+    "total_hashtags": 8279,
+    "total_emojis": 548
+  },
+  "averages": {
+    "avg_posts_per_day": 3033.86,
+    "avg_hashtags_per_day": 1964.43,
+    "avg_emojis_per_day": 875.43
+  },
+  "top": {
+    "sentiment": "negative",
+    "emotion": "fear",
+    "language": "en",
+    "hashtag": "#art",
+    "emoji": "😭"
+  }
+}
