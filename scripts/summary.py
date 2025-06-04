@@ -487,49 +487,12 @@ def compute_and_store_snapshot(rows, topic_words=None):
 
 # === Export-only mode ===
 def export_snapshots_to_json():
-    import collections
-    from datetime import date, timedelta
+    import os
+    import json
+    from collections import Counter
 
     os.makedirs("summary", exist_ok=True)
-    files = {
-        "meta": ["meta"],
-        "activity": ["activity"],
-        "hashtags": ["hashtags"],
-        "emojis": ["emojis"],
-        "topics": ["topics"],
-        "emoji_sentiment": ["emoji_sentiment"],
-        "hashtag_graph": ["hashtag_graph"],
-        "sentiment_by_topic": ["sentiment_by_topic"],
-        "emotion_by_topic": ["emotion_by_topic"]
-    }
-    data_map = {f: {} for f in files}
 
-    # Fetch all snapshot rows in that range
-    if IS_TEST:
-        rows = conn.execute(
-            "SELECT date, type, scope, data FROM summary_snapshots WHERE date BETWEEN ? AND ?", 
-            (start_date, end_date)
-        ).fetchall()
-    else:
-        rows = conn.execute(
-            "SELECT date, type, scope, data FROM summary_snapshots WHERE date BETWEEN ? AND ?", 
-            (start_date, end_date)
-        ).fetchall()
-
-    # Group raw data by file type, date, and scope
-    for date, type_, scope, data_json in rows:
-        parsed = json.loads(data_json)
-
-        # Special unwrapping for flat types
-        if type_ in ["activity", "hashtags", "emojis", "emoji_sentiment", "emotion_by_topic", "sentiment_by_topic"]:
-            # If snapshot is like { "2025-05-28": {...} }, extract inner dict
-            if isinstance(parsed, dict) and date in parsed:
-                parsed = parsed[date]
-            data_map[type_][date] = parsed
-        else:
-            data_map[type_].setdefault(date, {})[scope] = parsed
-
-    # Helper: remap sentiment labels from model keys to human readable
     sentiment_map = {
         "label_0": "negative",
         "label_1": "neutral",
@@ -543,236 +506,51 @@ def export_snapshots_to_json():
             remapped[new_k] += v
         return dict(remapped)
 
-    # --- META JSON ---
-    if "meta" in data_map:
-        complete = {}
-        last_week_post_volumes = []
-        last_week_hashtags_counts = []
-        last_week_emojis_counts = []
+    # Get latest snapshot date
+    latest_date_row = conn.execute("SELECT MAX(date) FROM summary_snapshots").fetchone()
+    if not latest_date_row or not latest_date_row[0]:
+        print("No data found in summary_snapshots")
+        return
+    latest_date = latest_date_row[0]
 
-        # For computing tops across last week, collect counters
-        top_sentiments = collections.Counter()
-        top_emotions = collections.Counter()
-        top_languages = collections.Counter()
-        top_hashtags = collections.Counter()
-        top_emojis = collections.Counter()
+    # Fetch all rows for the latest date
+    rows = conn.execute(
+        "SELECT type, scope, data FROM summary_snapshots WHERE date = ?", (latest_date,)
+    ).fetchall()
 
-        last_week_accum = {
-            "total_posts": 0,
-            "total_sentiments": set(),
-            "total_emotions": set(),
-            "total_languages": set(),
-            "total_topics": set(),
-            "total_hashtags": set(),
-            "total_emojis": set(),
-        }
+    data_map = {}
 
-        # Accumulate last_week counts from all dates and gather tops
-        for date, scopes in data_map["meta"].items():
-            meta_data = scopes.get("meta", scopes)
+    for type_, scope, data_json in rows:
+        parsed = json.loads(data_json)
 
-            # Update complete from latest date
-            if not complete or date > complete.get("date", ""):
-                complete = meta_data.get("complete", {})
-
-            # last_week counts: sum or union sets
-            lw = meta_data.get("last_week", {})
-            last_week_accum["total_posts"] += lw.get("total_posts", 0)
-
-            last_week_accum["total_sentiments"].update([str(x) for x in lw.get("total_sentiments", [])] if isinstance(lw.get("total_sentiments"), (list, set)) else {lw.get("total_sentiments")})
-            last_week_accum["total_emotions"].update([str(x) for x in lw.get("total_emotions", [])] if isinstance(lw.get("total_emotions"), (list, set)) else {lw.get("total_emotions")})
-            last_week_accum["total_languages"].update([str(x) for x in lw.get("total_languages", [])] if isinstance(lw.get("total_languages"), (list, set)) else {lw.get("total_languages")})
-            last_week_accum["total_topics"].update([str(x) for x in lw.get("total_topics", [])] if isinstance(lw.get("total_topics"), (list, set)) else {lw.get("total_topics")})
-            last_week_accum["total_hashtags"].update([str(x) for x in lw.get("total_hashtags", [])] if isinstance(lw.get("total_hashtags"), (list, set)) else {lw.get("total_hashtags")})
-            last_week_accum["total_emojis"].update([str(x) for x in lw.get("total_emojis", [])] if isinstance(lw.get("total_emojis"), (list, set)) else {lw.get("total_emojis")})
-
-            # Averages accum
-            last_week_post_volumes.append(lw.get("total_posts", 0))
-            last_week_hashtags_counts.append(lw.get("total_hashtags", 0))
-            last_week_emojis_counts.append(lw.get("total_emojis", 0))
-
-            # Tops accum (top items might be stored under 'top' key in meta)
-            top = meta_data.get("top", {})
-            if top:
-                top_sentiments.update([top.get("sentiment")])
-                top_emotions.update([top.get("emotion")])
-                top_languages.update([top.get("language")])
-                top_hashtags.update([top.get("hashtag")])
-                top_emojis.update([top.get("emoji")])
-
-        meta_final = {
-            "date": end_date,
-            "complete": complete,
-            "last_week": {
-                "total_posts": last_week_accum["total_posts"],
-                "total_sentiments": len(last_week_accum["total_sentiments"]),
-                "total_emotions": len(last_week_accum["total_emotions"]),
-                "total_languages": len(last_week_accum["total_languages"]),
-                "total_topics": len(last_week_accum["total_topics"]),
-                "total_hashtags": len(last_week_accum["total_hashtags"]),
-                "total_emojis": len(last_week_accum["total_emojis"]),
-            },
-            "averages": {
-                "avg_posts_per_day": round(sum(last_week_post_volumes) / 7, 2) if last_week_post_volumes else 0,
-                "avg_hashtags_per_day": round(sum(last_week_hashtags_counts) / 7, 2) if last_week_hashtags_counts else 0,
-                "avg_emojis_per_day": round(sum(last_week_emojis_counts) / 7, 2) if last_week_emojis_counts else 0,
-            },
-            "top": {
-                "sentiment": top_sentiments.most_common(1)[0][0] if top_sentiments else None,
-                "emotion": top_emotions.most_common(1)[0][0] if top_emotions else None,
-                "language": top_languages.most_common(1)[0][0] if top_languages else None,
-                "hashtag": top_hashtags.most_common(1)[0][0] if top_hashtags else None,
-                "emoji": top_emojis.most_common(1)[0][0] if top_emojis else None,
+        # Only remap sentiment labels without changing structure
+        if type_ == "meta":
+            top_data = parsed.get("top", {})
+            if "sentiment" in top_data:
+                top_data["sentiment"] = sentiment_map.get(top_data["sentiment"], top_data["sentiment"])
+        elif type_ == "activity":
+            if isinstance(parsed, dict):
+                for k, day_data in parsed.items():
+                    if "sentiment" in day_data:
+                        day_data["sentiment"] = remap_sentiments(day_data["sentiment"])
+        elif type_ == "emoji_sentiment":
+            parsed = {
+                sentiment_map.get(label, label): emojis
+                for label, emojis in parsed.items()
             }
-        }
+        elif type_ in ["sentiment_by_topic", "emotion_by_topic"]:
+            for topic, counts in parsed.items():
+                parsed[topic] = remap_sentiments(counts)
 
-        data_map["meta"] = meta_final
+        data_map[type_] = parsed
 
+    # Dump to JSON files
+    for fkey, content in data_map.items():
+        with open(f"summary/{fkey}.json", "w", encoding="utf-8") as f:
+            json.dump(content, f, indent=2, ensure_ascii=False)
 
-    # --- ACTIVITY, HASHTAGS, EMOJIS JSON ---
-    for key in ["activity", "hashtags", "emojis"]:
-        if key in data_map:
-            merged = {}
-            for date in sorted(data_map[key].keys()):
-                daily_data = data_map[key][date]
+    print(f"✅ Exported snapshot for {latest_date} into `summary/` folder.")
 
-                # UNWRAP logic: If daily_data is a dict with one key = outer date, unwrap one level
-                # Unwrap double nesting: sometimes nested under date then under key ("activity"/"hashtags"/"emojis")
-                if isinstance(daily_data, dict) and len(daily_data) == 1:
-                    only_key = next(iter(daily_data.keys()))
-                    if only_key == date:
-                        daily_data = daily_data[only_key]
-                        # Check one more level if wrapped under key name (e.g., "activity")
-                        if isinstance(daily_data, dict) and len(daily_data) == 1 and key in daily_data:
-                            daily_data = daily_data[key]
-                    elif only_key == key:
-                        # Sometimes just nested once under key, unwrap that too
-                        daily_data = daily_data[key]
-
-
-                # Merge the counters for that date
-                if date not in merged:
-                    merged[date] = collections.Counter()
-                merged[date].update(daily_data)
-                if key == "activity":
-                    merged[date]["sentiment"] = remap_sentiments(merged[date].get("sentiment", {}))
-
-
-            # Convert counters back to dict for JSON serialization
-            data_map[key] = {d: dict(c) for d, c in merged.items()}
-
-            # DEBUG: print sample for verification
-            # print(f"DEBUG [{key}]: Sample keys - {list(data_map[key].keys())[:3]}")
-            # for d, counts in list(data_map[key].items())[:1]:
-            #     print(f"DEBUG [{key}] Date: {d} Sample data: {dict(list(counts.items())[:5])}")
-
-    # --- TOPIC, EMOJI_SENTIMENT, HASHTAG_GRAPH, SENTIMENT_BY_TOPIC, EMOTION_BY_TOPIC ---
-
-    # Topics: merge counts and lists over days
-    if "topics" in data_map:
-        merged_topics = {}
-        for date in data_map["topics"]:
-            if isinstance(data_map["topics"][date], dict) and "topics" in data_map["topics"][date]:
-                data_map["topics"][date] = data_map["topics"][date]["topics"]
-        for date in sorted(data_map["topics"].keys()):
-            for topic, info in data_map["topics"][date].items():
-                if topic not in merged_topics:
-                    merged_topics[topic] = {
-                        "label": info.get("label", []),
-                        "count": 0,
-                        "daily": {},
-                        "sentiment": collections.Counter(),
-                        "emotion": collections.Counter(),
-                        "hashtags": collections.Counter(),
-                        "emojis": collections.Counter(),
-                    }
-                merged_topics[topic]["count"] += info.get("count", 0)
-                for day, val in info.get("daily", {}).items():
-                    merged_topics[topic]["daily"][day] = merged_topics[topic]["daily"].get(day, 0) + val
-                merged_topics[topic]["sentiment"].update(info.get("sentiment", {}))
-                merged_topics[topic]["emotion"].update(info.get("emotion", {}))
-                merged_topics[topic]["hashtags"].update(info.get("hashtags", []))
-                merged_topics[topic]["emojis"].update(info.get("emojis", []))
-
-        # Finalize structure
-        for topic, info in merged_topics.items():
-            info["sentiment"] = dict(info["sentiment"])
-            info["emotion"] = dict(info["emotion"])
-            info["hashtags"] = [h for h, _ in info["hashtags"].most_common(10)]
-            info["emojis"] = [e for e, _ in info["emojis"].most_common(10)]
-
-        data_map["topics"] = merged_topics
-
-        # DEBUG: print keys and sample
-        # print(f"DEBUG [topics]: Total topics - {len(data_map['topics'])}")
-        # sample_topic = next(iter(data_map["topics"].keys()))
-        # print(f"DEBUG [topics] Sample topic: {sample_topic} Data: {data_map['topics'][sample_topic]}")
-
-
-    # Emoji sentiment: merge counters for each sentiment label across days
-    if "emoji_sentiment" in data_map:
-        merged_emoji_sentiment = collections.defaultdict(collections.Counter)
-        for date in data_map["emoji_sentiment"]:
-            for sent_label, em_counts in data_map["emoji_sentiment"][date].items():
-                remapped_label = sentiment_map.get(sent_label, sent_label)
-                merged_emoji_sentiment[remapped_label].update(em_counts)
-        # Convert counters to dicts
-        for k in merged_emoji_sentiment:
-            merged_emoji_sentiment[k] = dict(merged_emoji_sentiment[k])
-        data_map["emoji_sentiment"] = dict(merged_emoji_sentiment)
-
-    # Hashtag graph: aggregate edge weights
-    if "hashtag_graph" in data_map:
-        edge_weights = collections.Counter()
-        for date in data_map["hashtag_graph"]:
-            edges = data_map["hashtag_graph"][date]
-            if isinstance(edges, str):
-                edges = json.loads(edges)
-            for edge in edges:
-                if isinstance(edge, str):
-                    continue
-                if isinstance(edge, dict) and "source" in edge and "target" in edge:
-                    key = (edge["source"], edge["target"])
-                    edge_weights[key] += edge.get("weight", 1)
-        # Convert back to list of dicts
-        merged_edges = [{"source": src, "target": tgt, "weight": w} for (src, tgt), w in edge_weights.items()]
-        data_map["hashtag_graph"] = merged_edges
-
-    # sentiment_by_topic & emotion_by_topic: merge topic counts
-    for key in ["sentiment_by_topic", "emotion_by_topic"]:
-        if key in data_map:
-            merged = {}
-            for date in data_map[key]:
-                for topic, counts in data_map[key][date].items():
-                    if topic not in merged:
-                        merged[topic] = collections.Counter()
-                    merged[topic].update(counts)
-            # Convert counters to dict
-            for topic in merged:
-                merged[topic] = remap_sentiments(merged[topic])
-            data_map[key] = merged
-    # Unwrap double date nesting for activity, hashtags, emojis
-    for key in ["activity", "hashtags", "emojis"]:
-        if key in data_map:
-            for date in list(data_map[key].keys()):
-                val = data_map[key][date]
-                if isinstance(val, dict) and len(val) == 1 and date in val:
-                    data_map[key][date] = val[date]
-
-    # Finally write JSON files
-    for f, data in data_map.items():
-        # For topics, DO NOT wrap in a {"topics": ...} dict - dump direct dict
-        if f == "topics":
-            json_to_dump = data
-        else:
-            json_to_dump = data
-
-        # Debug print before write
-        # print(f"DEBUG Writing file: {f}.json, top-level keys count: {len(json_to_dump) if isinstance(json_to_dump, dict) else 'NA'}")
-
-        with open(f"summary/{f}.json", "w") as out:
-            json.dump(json_to_dump, out, indent=2)
-        print(f"✅ Wrote summary/{f}.json")
 
 def generate_snapshots_from_turso():
     print("📊 Generating all snapshot files (directly from Turso DB)...")
