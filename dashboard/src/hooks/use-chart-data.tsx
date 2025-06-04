@@ -119,8 +119,7 @@ export function useChartData(): {
     for (const [sentiment, emojiMap] of Object.entries(emoji_sentiment)) {
       emojiSentimentBars[sentiment] = Object.entries(emojiMap)
         .map(([emoji, value]) => ({ name: emoji, value }))
-        .sort((a, b) => b.value - a.value)
-        .slice(0, 10);
+        .sort((a, b) => b.value - a.value);
     }
 
     const topicsOverview: TopicBreakdown[] = Object.entries(topics).map(

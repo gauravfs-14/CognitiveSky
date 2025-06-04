@@ -74,8 +74,8 @@ export default function NarrativeDistributionBar({
     language: jsonData.languageOverall,
     sentiment: jsonData.sentimentOverall,
     emotions: jsonData.emotionOverall,
-    emoji: jsonData.emojiOverall,
-    hashtags: jsonData.hashtagOverall,
+    emoji: jsonData.emojiOverall.splice(0, maxItems), // Limit emoji to maxItems
+    hashtags: jsonData.hashtagOverall.splice(0, maxItems), // Limit hashtags to maxItems
   };
 
   const colors = {
