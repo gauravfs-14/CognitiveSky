@@ -237,5 +237,47 @@
       "fi": 1,
       "pt-BR": 1
     }
+  },
+  "2025-06-03": {
+    "volume": 2086,
+    "sentiment": {
+      "negative": 1013,
+      "neutral": 672,
+      "positive": 401
+    },
+    "emotion": {
+      "sadness": 412,
+      "neutral": 453,
+      "surprise": 109,
+      "fear": 653,
+      "joy": 163,
+      "anger": 188,
+      "disgust": 108
+    },
+    "language": {
+      "en": 1830,
+      "ht": 2,
+      "fr": 11,
+      "ar": 1,
+      "pt": 11,
+      "es": 6,
+      "de": 8,
+      "it": 2,
+      "en-GB": 3,
+      "ak": 2,
+      "sq": 1,
+      "ja": 7,
+      "jp": 1,
+      "en-US": 11,
+      "nl": 2,
+      "pl": 1,
+      "am": 1,
+      "ko": 2,
+      "uk": 1,
+      "ru": 1,
+      "nb": 1,
+      "en-AU": 1,
+      "fr-FR": 1
+    }
   }
 }

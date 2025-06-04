@@ -3,29 +3,30 @@
     "label": [
       "general"
     ],
-    "count": 17345,
+    "count": 23673,
     "daily": {
-      "2025-05-28": 2115,
+      "2025-05-28": 2538,
       "2025-05-27": 5,
-      "2025-05-29": 2408,
-      "2025-05-30": 8144,
-      "2025-05-31": 888,
-      "2025-06-01": 3342,
-      "2025-06-02": 443
+      "2025-05-29": 3010,
+      "2025-05-30": 10180,
+      "2025-05-31": 1184,
+      "2025-06-01": 5013,
+      "2025-06-02": 912,
+      "2025-06-03": 831
     },
     "sentiment": {
-      "label_1": 4635,
-      "label_0": 9393,
-      "label_2": 3317
+      "label_1": 6278,
+      "label_0": 12902,
+      "label_2": 4493
     },
     "emotion": {
-      "fear": 5227,
-      "sadness": 3964,
-      "joy": 1244,
-      "neutral": 3228,
-      "anger": 1437,
-      "surprise": 1130,
-      "disgust": 1115
+      "fear": 7072,
+      "sadness": 5529,
+      "joy": 1688,
+      "neutral": 4395,
+      "anger": 1948,
+      "surprise": 1524,
+      "disgust": 1517
     },
     "hashtags": [
       "#depression",
@@ -56,40 +57,41 @@
     "label": [
       "general"
     ],
-    "count": 4871,
+    "count": 6553,
     "daily": {
-      "2025-05-28": 1050,
-      "2025-05-29": 1324,
-      "2025-05-30": 1156,
-      "2025-05-31": 591,
-      "2025-06-01": 446,
-      "2025-06-02": 304
+      "2025-05-28": 1260,
+      "2025-05-29": 1655,
+      "2025-05-30": 1445,
+      "2025-05-31": 788,
+      "2025-06-01": 670,
+      "2025-06-02": 612,
+      "2025-06-03": 123
     },
     "sentiment": {
-      "label_0": 1951,
-      "label_2": 990,
-      "label_1": 1930
+      "label_0": 2583,
+      "label_2": 1364,
+      "label_1": 2606
     },
     "emotion": {
-      "sadness": 970,
-      "fear": 1393,
-      "neutral": 1320,
-      "disgust": 167,
-      "joy": 350,
-      "anger": 450,
-      "surprise": 221
+      "sadness": 1272,
+      "fear": 1854,
+      "neutral": 1794,
+      "disgust": 226,
+      "joy": 508,
+      "anger": 611,
+      "surprise": 288
     },
     "hashtags": [
       "#bipolar",
+      "#stress",
       "#grief",
       "#transistor",
       "#Semiconductors",
       "#diode",
-      "#stress",
       "#mosfet",
       "#thyristor",
       "#jfet",
-      "#poetry"
+      "#mentalhealth"
     ],
     "emojis": [
       "\ud83d\ude2d",
@@ -100,36 +102,37 @@
       "\ud83d\udd25",
       "\ud83d\udcc9",
       "\ud83c\udf44",
-      "\ud83c\udfb6",
-      "\ud83d\udcda"
+      "\u2640",
+      "\ud83c\udf3f"
     ]
   },
   "topic_3": {
     "label": [
       "general"
     ],
-    "count": 5217,
+    "count": 7247,
     "daily": {
-      "2025-05-28": 1195,
-      "2025-05-29": 484,
-      "2025-05-30": 1792,
-      "2025-05-31": 297,
-      "2025-06-01": 960,
-      "2025-06-02": 489
+      "2025-05-28": 1434,
+      "2025-05-29": 605,
+      "2025-05-30": 2240,
+      "2025-05-31": 396,
+      "2025-06-01": 1440,
+      "2025-06-02": 980,
+      "2025-06-03": 152
     },
     "sentiment": {
-      "label_1": 1846,
-      "label_0": 2095,
-      "label_2": 1276
+      "label_1": 2506,
+      "label_0": 2944,
+      "label_2": 1797
     },
     "emotion": {
-      "neutral": 1428,
-      "sadness": 972,
-      "surprise": 197,
-      "fear": 1273,
-      "anger": 511,
-      "disgust": 223,
-      "joy": 613
+      "neutral": 1990,
+      "sadness": 1344,
+      "surprise": 271,
+      "fear": 1734,
+      "anger": 701,
+      "disgust": 320,
+      "joy": 887
     },
     "hashtags": [
       "#CitizenPortal",
@@ -139,49 +142,50 @@
       "#mentalhealth",
       "#TrumpRegime",
       "#anxiety",
+      "#depression",
       "#DouglasCounty",
-      "#KS",
-      "#MentalHealthSupport"
+      "#KS"
     ],
     "emojis": [
       "\ud83d\udc49",
       "\ud83d\ude2d",
       "\ud83d\udc99",
+      "\ud83d\udd17",
       "\ud83d\udea8",
       "\u2640",
-      "\ud83d\udd17",
-      "\ud83d\udc1f",
-      "\ud83d\udce2",
-      "\ud83d\udc80",
-      "\ud83d\udc9a"
+      "\ud83d\udc9a",
+      "\ud83c\udff3",
+      "\ud83c\udf08",
+      "\u26a7"
     ]
   },
   "topic_4": {
     "label": [
       "general"
     ],
-    "count": 5262,
+    "count": 7165,
     "daily": {
-      "2025-05-28": 744,
-      "2025-05-29": 708,
-      "2025-05-30": 2164,
-      "2025-05-31": 125,
-      "2025-06-01": 1265,
-      "2025-06-02": 256
+      "2025-05-28": 893,
+      "2025-05-29": 885,
+      "2025-05-30": 2705,
+      "2025-05-31": 167,
+      "2025-06-01": 1898,
+      "2025-06-02": 519,
+      "2025-06-03": 98
     },
     "sentiment": {
-      "label_0": 2111,
-      "label_2": 1176,
-      "label_1": 1975
+      "label_0": 2909,
+      "label_2": 1578,
+      "label_1": 2678
     },
     "emotion": {
-      "anger": 380,
-      "joy": 352,
-      "fear": 2212,
-      "sadness": 720,
-      "neutral": 1184,
-      "surprise": 225,
-      "disgust": 189
+      "anger": 540,
+      "joy": 497,
+      "fear": 2898,
+      "sadness": 1057,
+      "neutral": 1588,
+      "surprise": 317,
+      "disgust": 268
     },
     "hashtags": [
       "#mentalhealth",
@@ -190,103 +194,105 @@
       "#MHAM2025",
       "#MentalHealthAwarenessMonth",
       "#Days",
-      "#howto",
-      "#art",
       "#news",
-      "#bipolar"
+      "#bipolar",
+      "#transistor",
+      "#Semiconductors"
     ],
     "emojis": [
       "\ud83d\ude2d",
       "\ud83d\udc47",
-      "\u2642",
       "\ud83d\udd25",
       "\ud83d\ude02",
+      "\u2642",
+      "\ud83d\udc40",
       "\ud83c\udde6",
       "\ud83c\udf99",
       "\ud83d\udc4f",
-      "\ud83d\ude05",
-      "\ud83d\udc40"
+      "\ud83d\ude05"
     ]
   },
   "topic_5": {
     "label": [
       "general"
     ],
-    "count": 4744,
+    "count": 6958,
     "daily": {
-      "2025-05-28": 670,
-      "2025-05-29": 552,
-      "2025-05-30": 1796,
+      "2025-05-28": 804,
+      "2025-05-29": 690,
+      "2025-05-30": 2245,
       "2025-05-26": 3,
-      "2025-05-31": 399,
-      "2025-06-01": 583,
-      "2025-06-02": 741
+      "2025-05-31": 532,
+      "2025-06-01": 876,
+      "2025-06-02": 1493,
+      "2025-06-03": 315
     },
     "sentiment": {
-      "label_1": 1601,
-      "label_0": 2223,
-      "label_2": 920
+      "label_1": 2467,
+      "label_0": 3162,
+      "label_2": 1329
     },
     "emotion": {
-      "neutral": 1109,
-      "disgust": 217,
-      "fear": 1533,
-      "surprise": 204,
-      "anger": 454,
-      "sadness": 861,
-      "joy": 366
+      "neutral": 1641,
+      "disgust": 301,
+      "fear": 2267,
+      "surprise": 302,
+      "anger": 650,
+      "sadness": 1263,
+      "joy": 534
     },
     "hashtags": [
       "#art",
       "#DubNation",
       "#poetry",
       "#loss",
+      "#NowPlaying",
+      "#nowplaying",
       "#maternaljustice",
       "#maternalmentalhealth",
       "#HandsOffPublicSchools",
-      "#dpdi",
-      "#Warriors",
-      "#NowPlaying"
+      "#dpdi"
     ],
     "emojis": [
       "\ud83d\ude2d",
       "\ud83d\ude02",
       "\ud83d\udc94",
       "\ud83d\ude4f",
-      "\ud83c\udfa4",
       "\ud83d\udc49",
-      "\u26a1",
-      "\ud83d\ude80",
-      "\ud83d\ude44",
-      "\ud83d\udd4a"
+      "\ud83c\udfa4",
+      "\ud83d\udc99",
+      "\ud83d\udea8",
+      "\ud83d\udd96",
+      "\u26a1"
     ]
   },
   "topic_6": {
     "label": [
       "general"
     ],
-    "count": 3560,
+    "count": 5243,
     "daily": {
-      "2025-05-28": 315,
-      "2025-05-29": 412,
-      "2025-05-30": 1224,
-      "2025-05-31": 249,
-      "2025-06-01": 892,
-      "2025-06-02": 468
+      "2025-05-28": 378,
+      "2025-05-29": 515,
+      "2025-05-30": 1530,
+      "2025-05-31": 332,
+      "2025-06-01": 1338,
+      "2025-06-02": 946,
+      "2025-06-03": 204
     },
     "sentiment": {
-      "label_2": 863,
-      "label_0": 1465,
-      "label_1": 1232
+      "label_2": 1287,
+      "label_0": 2200,
+      "label_1": 1756
     },
     "emotion": {
-      "surprise": 164,
-      "neutral": 736,
-      "sadness": 582,
-      "anger": 261,
-      "fear": 1318,
-      "disgust": 178,
-      "joy": 321
+      "surprise": 237,
+      "neutral": 1046,
+      "sadness": 809,
+      "anger": 370,
+      "fear": 2095,
+      "disgust": 250,
+      "joy": 436
     },
     "hashtags": [
       "#therapy",
@@ -298,59 +304,60 @@
       "#competitivemarketing",
       "#pharmaceutical",
       "#biotech",
-      "#HandsOffPublicSchools"
+      "#art"
     ],
     "emojis": [
       "\ud83d\udc94",
       "\ud83c\udffb",
       "\ud83d\udc89",
-      "\ud83c\udf5e",
       "\ud83d\ude2d",
+      "\ud83c\udf5e",
       "\ud83c\udff3",
       "\ud83d\udc96",
       "\ud83c\udf31",
-      "\ud83d\udc30",
-      "\ud83d\udca7"
+      "\ud83d\udc99",
+      "\ud83d\udc30"
     ]
   },
   "topic_1": {
     "label": [
       "general"
     ],
-    "count": 5355,
+    "count": 8409,
     "daily": {
-      "2025-05-28": 620,
-      "2025-05-29": 584,
-      "2025-05-30": 1404,
-      "2025-05-31": 252,
-      "2025-06-01": 621,
-      "2025-06-02": 1874
+      "2025-05-28": 744,
+      "2025-05-29": 730,
+      "2025-05-30": 1755,
+      "2025-05-31": 336,
+      "2025-06-01": 932,
+      "2025-06-02": 3751,
+      "2025-06-03": 161
     },
     "sentiment": {
-      "label_0": 2768,
-      "label_2": 1267,
-      "label_1": 1320
+      "label_0": 4393,
+      "label_2": 1936,
+      "label_1": 2080
     },
     "emotion": {
-      "sadness": 1452,
-      "fear": 1415,
-      "neutral": 828,
-      "surprise": 345,
-      "anger": 580,
-      "joy": 501,
-      "disgust": 234
+      "sadness": 2201,
+      "fear": 2303,
+      "neutral": 1332,
+      "surprise": 558,
+      "anger": 884,
+      "joy": 754,
+      "disgust": 377
     },
     "hashtags": [
-      "#depression",
       "#digitalart",
-      "#mentalhealth",
+      "#depression",
       "#MentalHealth",
+      "#mentalhealth",
+      "#poetry",
       "#MentalHealthAwarenessMonth",
       "#health",
       "#psychology",
-      "#poetry",
-      "#sociology",
-      "#CitizenPortal"
+      "#art",
+      "#sociology"
     ],
     "emojis": [
       "\ud83d\udc94",
@@ -360,37 +367,38 @@
       "\ud83d\ude2d",
       "\ud83d\ude02",
       "\ud83d\udc9c",
+      "\u2640",
       "\ud83d\udcaa",
-      "\ud83c\udfa4",
-      "\ud83d\udc4b"
+      "\ud83c\udfa4"
     ]
   },
   "topic_2": {
     "label": [
       "general"
     ],
-    "count": 6445,
+    "count": 8788,
     "daily": {
-      "2025-05-28": 354,
-      "2025-05-29": 434,
-      "2025-05-30": 3928,
-      "2025-05-31": 597,
-      "2025-06-01": 721,
-      "2025-06-02": 411
+      "2025-05-28": 425,
+      "2025-05-29": 543,
+      "2025-05-30": 4912,
+      "2025-05-31": 796,
+      "2025-06-01": 1084,
+      "2025-06-02": 826,
+      "2025-06-03": 202
     },
     "sentiment": {
-      "label_0": 2260,
-      "label_1": 2863,
-      "label_2": 1322
+      "label_0": 3143,
+      "label_1": 3853,
+      "label_2": 1792
     },
     "emotion": {
-      "anger": 581,
-      "sadness": 1364,
-      "joy": 491,
-      "surprise": 270,
-      "disgust": 229,
-      "neutral": 1542,
-      "fear": 1968
+      "anger": 772,
+      "sadness": 1898,
+      "joy": 669,
+      "surprise": 367,
+      "disgust": 319,
+      "neutral": 2104,
+      "fear": 2659
     },
     "hashtags": [
       "#news",
@@ -399,10 +407,10 @@
       "#ADHD",
       "#mentalhealth",
       "#nowplaying",
-      "#recovery",
       "#musicsky",
-      "#musicfeed",
-      "#jazzsky"
+      "#recovery",
+      "#MentalHealth",
+      "#musicfeed"
     ],
     "emojis": [
       "\ud83d\ude2d",
