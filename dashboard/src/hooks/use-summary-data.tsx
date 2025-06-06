@@ -49,16 +49,8 @@ export type SummaryData = {
 };
 
 type UseSummaryDataResult =
-  | {
-      loading: true;
-      error: null;
-      data: null;
-    }
-  | {
-      loading: false;
-      error: string | null;
-      data: SummaryData | null;
-    };
+  | { loading: true; error: null; data: null }
+  | { loading: false; error: string | null; data: SummaryData | null };
 
 export function useSummaryData(): UseSummaryDataResult {
   const [state, setState] = useState<UseSummaryDataResult>({
@@ -68,67 +60,69 @@ export function useSummaryData(): UseSummaryDataResult {
   });
 
   useEffect(() => {
-    const fetchAndValidate = async () => {
-      const urlsInOrder = [
-        RAW_LINKS.meta,
-        RAW_LINKS.activity,
-        RAW_LINKS.emojis,
-        RAW_LINKS.hashtags,
-        RAW_LINKS.emoji_sentiment,
-        RAW_LINKS.sentiment_by_topic,
-        RAW_LINKS.emotion_by_topic,
-        RAW_LINKS.hashtag_graph,
-        RAW_LINKS.topics,
-      ];
+    const controller = new AbortController();
+
+    const fetchJson = async (url: string) => {
+      const res = await fetch(url, { signal: controller.signal });
+      if (!res.ok) {
+        throw new Error(`Failed to fetch ${url}: ${res.status}`);
+      }
+      return res.json();
+    };
+
+    const fetchAndParseData = async () => {
       try {
         const [
-          metaRes,
-          activityRes,
-          emojisRes,
-          hashtagsRes,
-          emojiSentimentRes,
-          sentimentByTopicRes,
-          emotionByTopicRes,
-          hashtagGraphRes,
-          topicsRes,
-        ] = await Promise.all(
-          urlsInOrder.map((url) =>
-            fetch(url).then((res) => {
-              if (!res.ok)
-                throw new Error(`HTTP error: ${res.status} for ${url}`);
-              return res.json();
-            })
-          )
-        );
-
-        // console.log("metaRes", metaRes);
+          meta,
+          activity,
+          emojis,
+          hashtags,
+          emojiSentiment,
+          sentimentByTopic,
+          emotionByTopic,
+          hashtagGraph,
+          topics,
+        ] = await Promise.all([
+          fetchJson(RAW_LINKS.meta),
+          fetchJson(RAW_LINKS.activity),
+          fetchJson(RAW_LINKS.emojis),
+          fetchJson(RAW_LINKS.hashtags),
+          fetchJson(RAW_LINKS.emoji_sentiment),
+          fetchJson(RAW_LINKS.sentiment_by_topic),
+          fetchJson(RAW_LINKS.emotion_by_topic),
+          fetchJson(RAW_LINKS.hashtag_graph),
+          fetchJson(RAW_LINKS.topics),
+        ]);
 
         const data: SummaryData = {
-          meta: metaSchema.parse(metaRes),
-          activity: activitySummarySchema.parse(activityRes),
-          emojis: timeSeriesTagsSchema.parse(emojisRes),
-          hashtags: timeSeriesTagsSchema.parse(hashtagsRes),
-          emoji_sentiment: emojiSentimentSchema.parse(emojiSentimentRes),
+          meta: metaSchema.parse(meta),
+          activity: activitySummarySchema.parse(activity),
+          emojis: timeSeriesTagsSchema.parse(emojis),
+          hashtags: timeSeriesTagsSchema.parse(hashtags),
+          emoji_sentiment: emojiSentimentSchema.parse(emojiSentiment),
           sentiment_by_topic:
-            topicSentimentEmotionSchema.parse(sentimentByTopicRes),
-          emotion_by_topic:
-            topicSentimentEmotionSchema.parse(emotionByTopicRes),
-          hashtag_graph: hashtagGraphSchema.parse(hashtagGraphRes),
-          topics: topicsSummarySchema.parse(topicsRes),
+            topicSentimentEmotionSchema.parse(sentimentByTopic),
+          emotion_by_topic: topicSentimentEmotionSchema.parse(emotionByTopic),
+          hashtag_graph: hashtagGraphSchema.parse(hashtagGraph),
+          topics: topicsSummarySchema.parse(topics),
         };
 
         setState({ loading: false, error: null, data });
-      } catch (err: unknown) {
-        console.error("❌ Data fetch/validation failed", err);
+      } catch (error: any) {
+        if (controller.signal.aborted) return;
+
+        console.error("❌ Fetch or parse error:", error);
         setState({
           loading: false,
-          error: err instanceof Error ? err.message : "Unknown error",
+          error: error?.message || "Unknown error",
           data: null,
         });
       }
     };
 
-    fetchAndValidate();
+    fetchAndParseData();
+
+    return () => controller.abort();
   }, []);
 
   return state;
