@@ -11,7 +11,6 @@ from dotenv import load_dotenv
 from supabase import create_client
 import libsql_experimental as libsql
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.decomposition import NMF
 from dateutil.parser import isoparse
 
 # === Constants ===
@@ -205,7 +204,7 @@ def hardened_label_and_migrate(sent_tok, sent_model, sentiment_labels, emot_tok,
 
     unlabeled_posts = []
     BATCH_SIZE = 1000
-    MAX_FETCH = 5000
+    MAX_FETCH = 10000
 
     for offset in range(0, MAX_FETCH, BATCH_SIZE):
         if IS_TEST:
@@ -234,7 +233,15 @@ def hardened_label_and_migrate(sent_tok, sent_model, sentiment_labels, emot_tok,
         print("⚠️ No new unlabeled posts found in Supabase.")
         return
     print(f"🔍 Found {len(unlabeled_posts)} unlabeled posts for labeling.")
-    texts = [post.get("text", "")[:512] for post in unlabeled_posts]
+    def preprocess_text(text):
+        # Remove emojis, hashtags, URLs, and mentions
+        text = re.sub(r"#\w+", "", text)
+        text = re.sub(r"http\S+", "", text)
+        text = re.sub(r"@\w+", "", text)
+        text = re.sub(r"[^\w\s]", "", text)
+        return text.lower()
+    
+    texts = [preprocess_text(post.get("text", ""))[:300] for post in unlabeled_posts if len(post.get("text", "")) > 30]
     print(f"🔒 Valid posts with URI: {len(unlabeled_posts)}")
 
     # --- NLP Labeling ---
@@ -254,9 +261,10 @@ def hardened_label_and_migrate(sent_tok, sent_model, sentiment_labels, emot_tok,
     # --- Topic Modeling ---
     print("🧠 Performing topic modeling...")
     try:
-        vectorizer = TfidfVectorizer(max_features=300, stop_words='english')
+        vectorizer = TfidfVectorizer(max_features=200, stop_words='english')
         X = vectorizer.fit_transform(texts)
-        nmf = NMF(n_components=8, random_state=42)
+        from sklearn.decomposition import MiniBatchNMF
+        nmf = MiniBatchNMF(n_components=8, random_state=42, batch_size=128)
         W = nmf.fit_transform(X)
         topic_words = [
             [vectorizer.get_feature_names_out()[i] for i in topic.argsort()[:-6:-1]]
