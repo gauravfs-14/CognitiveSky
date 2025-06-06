@@ -108,13 +108,13 @@ export function useSummaryData(): UseSummaryDataResult {
         };
 
         setState({ loading: false, error: null, data });
-      } catch (error: any) {
+      } catch (error: unknown) {
         if (controller.signal.aborted) return;
 
         console.error("❌ Fetch or parse error:", error);
         setState({
           loading: false,
-          error: error?.message || "Unknown error",
+          error: error instanceof Error ? error.message : "Unknown error",
           data: null,
         });
       }
