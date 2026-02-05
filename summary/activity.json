@@ -1,55 +1,4 @@
 {
-  "2026-01-28": {
-    "volume": 3194,
-    "sentiment": {
-      "negative": 1428,
-      "neutral": 1247,
-      "positive": 519
-    },
-    "emotion": {
-      "fear": 1054,
-      "sadness": 888,
-      "joy": 390,
-      "neutral": 325,
-      "anger": 292,
-      "surprise": 211,
-      "disgust": 34
-    },
-    "language": {
-      "fr": 18,
-      "en": 2480,
-      "en-US": 215,
-      "es": 12,
-      "ja": 20,
-      "de": 33,
-      "pt": 19,
-      "wuu": 1,
-      "sv": 4,
-      "cy": 1,
-      "nb-NO": 1,
-      "nb": 3,
-      "ht": 1,
-      "ko": 4,
-      "ar": 1,
-      "sq": 1,
-      "pt-BR": 1,
-      "uk": 1,
-      "nl": 2,
-      "en-GB": 2,
-      "zh": 1,
-      "ga": 1,
-      "fi": 5,
-      "it": 3,
-      "fr-FR": 1,
-      "th": 1,
-      "id": 1,
-      "no": 1,
-      "en-us": 1,
-      "pl": 1,
-      "pt-PT": 2,
-      "en-AU": 1
-    }
-  },
   "2026-01-29": {
     "volume": 3473,
     "sentiment": {
@@ -284,23 +233,23 @@
     }
   },
   "2026-02-03": {
-    "volume": 3225,
+    "volume": 3234,
     "sentiment": {
-      "neutral": 1148,
-      "negative": 1517,
-      "positive": 560
+      "neutral": 1151,
+      "negative": 1520,
+      "positive": 563
     },
     "emotion": {
-      "fear": 1017,
-      "sadness": 912,
-      "joy": 434,
+      "fear": 1020,
+      "sadness": 914,
+      "joy": 435,
       "anger": 310,
       "neutral": 287,
-      "surprise": 226,
+      "surprise": 229,
       "disgust": 39
     },
     "language": {
-      "en": 2573,
+      "en": 2575,
       "en-US": 85,
       "pt": 23,
       "ja": 23,
@@ -326,6 +275,50 @@
       "pl": 1,
       "th": 1,
       "da": 1
+    }
+  },
+  "2026-02-04": {
+    "volume": 2269,
+    "sentiment": {
+      "negative": 1054,
+      "neutral": 812,
+      "positive": 403
+    },
+    "emotion": {
+      "sadness": 620,
+      "neutral": 208,
+      "fear": 772,
+      "joy": 283,
+      "surprise": 163,
+      "disgust": 22,
+      "anger": 201
+    },
+    "language": {
+      "en": 1758,
+      "zh": 3,
+      "en-US": 60,
+      "tr": 2,
+      "pt": 14,
+      "es": 12,
+      "ja": 18,
+      "en-GB": 2,
+      "fr": 14,
+      "fi": 1,
+      "sv": 2,
+      "de": 15,
+      "zh-CN": 1,
+      "ko": 2,
+      "th": 1,
+      "nl": 3,
+      "da": 1,
+      "en-AU": 1,
+      "ru": 2,
+      "jp": 1,
+      "it": 2,
+      "pt-PT": 1,
+      "pl": 1,
+      "ce": 1,
+      "cs": 1
     }
   }
 }
