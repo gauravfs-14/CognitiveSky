@@ -1,38 +1,4 @@
 {
-  "2026-02-01": {
-    "volume": 1421,
-    "sentiment": {
-      "negative": 655,
-      "positive": 280,
-      "neutral": 486
-    },
-    "emotion": {
-      "fear": 442,
-      "surprise": 110,
-      "sadness": 404,
-      "joy": 188,
-      "anger": 152,
-      "neutral": 113,
-      "disgust": 12
-    },
-    "language": {
-      "en": 1112,
-      "en-US": 53,
-      "ja": 21,
-      "de": 9,
-      "nl": 3,
-      "fr": 11,
-      "es": 5,
-      "he": 1,
-      "ru": 1,
-      "pt": 9,
-      "zh": 2,
-      "it": 2,
-      "en-GB": 1,
-      "it-IT": 1,
-      "uk": 1
-    }
-  },
   "2026-02-02": {
     "volume": 2240,
     "sentiment": {
@@ -267,26 +233,74 @@
     }
   },
   "2026-02-07": {
-    "volume": 210,
+    "volume": 212,
     "sentiment": {
       "neutral": 75,
-      "positive": 29,
-      "negative": 106
+      "positive": 30,
+      "negative": 107
     },
     "emotion": {
       "fear": 67,
       "joy": 28,
       "neutral": 17,
       "sadness": 52,
-      "anger": 24,
-      "surprise": 22
+      "anger": 25,
+      "surprise": 23
     },
     "language": {
-      "en": 162,
+      "en": 163,
       "en-US": 7,
       "pt": 2,
       "ja": 3,
       "es": 2
+    }
+  },
+  "2026-02-08": {
+    "volume": 2549,
+    "sentiment": {
+      "neutral": 915,
+      "negative": 1193,
+      "positive": 441
+    },
+    "emotion": {
+      "joy": 317,
+      "anger": 244,
+      "neutral": 240,
+      "sadness": 755,
+      "fear": 788,
+      "disgust": 30,
+      "surprise": 175
+    },
+    "language": {
+      "en": 1993,
+      "ja": 25,
+      "pt": 14,
+      "am": 2,
+      "fr-FR": 2,
+      "nl": 7,
+      "en-US": 79,
+      "ko": 7,
+      "es": 6,
+      "id": 1,
+      "de": 20,
+      "gl": 1,
+      "uk": 1,
+      "en-AU": 1,
+      "fr": 14,
+      "ru": 4,
+      "is": 1,
+      "ar": 7,
+      "pl": 2,
+      "en-GB": 1,
+      "sl": 1,
+      "ro": 1,
+      "da": 2,
+      "sq": 1,
+      "th": 2,
+      "lv": 1,
+      "it": 2,
+      "an": 1,
+      "mt": 1
     }
   }
 }
