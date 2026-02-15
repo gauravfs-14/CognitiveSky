@@ -1,40 +1,17 @@
 {
-  "2026-02-07": {
-    "volume": 223,
-    "sentiment": {
-      "neutral": 80,
-      "positive": 34,
-      "negative": 109
-    },
-    "emotion": {
-      "fear": 70,
-      "joy": 31,
-      "neutral": 17,
-      "sadness": 57,
-      "anger": 25,
-      "surprise": 23
-    },
-    "language": {
-      "en": 163,
-      "en-US": 7,
-      "pt": 2,
-      "ja": 3,
-      "es": 2
-    }
-  },
   "2026-02-08": {
-    "volume": 2558,
+    "volume": 2562,
     "sentiment": {
-      "neutral": 918,
-      "negative": 1196,
-      "positive": 444
+      "neutral": 919,
+      "negative": 1198,
+      "positive": 445
     },
     "emotion": {
-      "joy": 319,
+      "joy": 320,
       "anger": 244,
-      "neutral": 240,
+      "neutral": 241,
       "sadness": 760,
-      "fear": 790,
+      "fear": 792,
       "disgust": 30,
       "surprise": 175
     },
@@ -125,18 +102,18 @@
     }
   },
   "2026-02-10": {
-    "volume": 2616,
+    "volume": 2621,
     "sentiment": {
       "negative": 1253,
-      "positive": 457,
-      "neutral": 906
+      "positive": 458,
+      "neutral": 910
     },
     "emotion": {
-      "fear": 870,
-      "surprise": 179,
-      "joy": 295,
-      "sadness": 732,
-      "neutral": 268,
+      "fear": 871,
+      "surprise": 180,
+      "joy": 296,
+      "sadness": 733,
+      "neutral": 269,
       "anger": 250,
       "disgust": 22
     },
@@ -273,6 +250,53 @@
       "en": 26,
       "en-US": 3,
       "ja": 1
+    }
+  },
+  "2026-02-14": {
+    "volume": 1929,
+    "sentiment": {
+      "neutral": 715,
+      "negative": 854,
+      "positive": 360
+    },
+    "emotion": {
+      "fear": 641,
+      "anger": 167,
+      "sadness": 526,
+      "neutral": 162,
+      "surprise": 144,
+      "disgust": 18,
+      "joy": 271
+    },
+    "language": {
+      "en": 1502,
+      "en-US": 72,
+      "ja": 16,
+      "pt": 8,
+      "ru": 1,
+      "tl": 1,
+      "es": 9,
+      "it": 2,
+      "en-GB": 3,
+      "fr": 14,
+      "nl": 4,
+      "tr": 1,
+      "de": 12,
+      "ar": 1,
+      "el": 1,
+      "th": 1,
+      "ko": 2,
+      "id": 1,
+      "en-AU": 1,
+      "is": 1,
+      "nb": 1,
+      "pl": 1,
+      "fi": 2,
+      "hy": 1,
+      "sl": 1,
+      "ca": 1,
+      "ae": 1,
+      "sv": 2
     }
   }
 }
