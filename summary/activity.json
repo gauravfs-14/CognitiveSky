@@ -1,70 +1,16 @@
 {
-  "2026-02-09": {
-    "volume": 3304,
-    "sentiment": {
-      "negative": 1444,
-      "positive": 603,
-      "neutral": 1257
-    },
-    "emotion": {
-      "disgust": 28,
-      "fear": 1028,
-      "anger": 288,
-      "sadness": 914,
-      "surprise": 224,
-      "neutral": 378,
-      "joy": 444
-    },
-    "language": {
-      "en": 2525,
-      "en-US": 81,
-      "fr": 28,
-      "es": 24,
-      "pt": 14,
-      "ar": 1,
-      "fi": 5,
-      "sw": 1,
-      "vi": 3,
-      "it": 9,
-      "ja": 25,
-      "sv": 2,
-      "ru": 1,
-      "nl-NL": 2,
-      "nl": 6,
-      "de": 20,
-      "hy": 1,
-      "sq": 2,
-      "ga": 1,
-      "pl": 2,
-      "en-GB": 3,
-      "ht": 1,
-      "yi": 1,
-      "he": 1,
-      "th": 1,
-      "fr-FR": 1,
-      "ak": 1,
-      "ca": 1,
-      "hu": 1,
-      "ko": 3,
-      "zh": 1,
-      "nb": 1,
-      "ur": 1,
-      "tr": 1,
-      "tl": 1
-    }
-  },
   "2026-02-10": {
-    "volume": 2632,
+    "volume": 2634,
     "sentiment": {
-      "negative": 1258,
-      "positive": 458,
+      "negative": 1259,
+      "positive": 459,
       "neutral": 916
     },
     "emotion": {
-      "fear": 876,
+      "fear": 877,
       "surprise": 180,
       "joy": 296,
-      "sadness": 735,
+      "sadness": 736,
       "neutral": 271,
       "anger": 252,
       "disgust": 22
@@ -252,19 +198,19 @@
     }
   },
   "2026-02-15": {
-    "volume": 2385,
+    "volume": 2390,
     "sentiment": {
-      "neutral": 898,
-      "negative": 1106,
-      "positive": 381
+      "neutral": 899,
+      "negative": 1109,
+      "positive": 382
     },
     "emotion": {
       "neutral": 224,
-      "anger": 227,
-      "fear": 773,
+      "anger": 229,
+      "fear": 774,
       "joy": 291,
       "surprise": 201,
-      "sadness": 651,
+      "sadness": 653,
       "disgust": 18
     },
     "language": {
@@ -293,6 +239,46 @@
       "sk": 1,
       "sr": 1,
       "ar": 1
+    }
+  },
+  "2026-02-16": {
+    "volume": 1936,
+    "sentiment": {
+      "negative": 906,
+      "positive": 339,
+      "neutral": 691
+    },
+    "emotion": {
+      "sadness": 580,
+      "fear": 641,
+      "neutral": 168,
+      "joy": 241,
+      "anger": 179,
+      "surprise": 119,
+      "disgust": 8
+    },
+    "language": {
+      "en": 1571,
+      "en-US": 43,
+      "ja": 10,
+      "fr": 6,
+      "pt": 11,
+      "en-AU": 2,
+      "de": 14,
+      "es": 13,
+      "en-GB": 1,
+      "av": 1,
+      "fi": 1,
+      "it": 1,
+      "ru": 1,
+      "pl": 2,
+      "nl": 1,
+      "nb": 1,
+      "ta-IN": 1,
+      "ar": 3,
+      "zh": 1,
+      "jp": 1,
+      "hy": 1
     }
   }
 }
