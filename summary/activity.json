@@ -1,39 +1,4 @@
 {
-  "2026-02-12": {
-    "volume": 1160,
-    "sentiment": {
-      "neutral": 410,
-      "negative": 565,
-      "positive": 185
-    },
-    "emotion": {
-      "sadness": 332,
-      "fear": 375,
-      "joy": 143,
-      "anger": 110,
-      "neutral": 110,
-      "surprise": 79,
-      "disgust": 11
-    },
-    "language": {
-      "en": 939,
-      "en-AU": 1,
-      "en-US": 38,
-      "fr": 9,
-      "pt": 5,
-      "de": 5,
-      "ja": 8,
-      "zh": 1,
-      "ar": 1,
-      "uk": 1,
-      "en-GB": 3,
-      "fi": 1,
-      "sv": 2,
-      "es": 3,
-      "ko": 1,
-      "ht": 1
-    }
-  },
   "2026-02-13": {
     "volume": 31,
     "sentiment": {
@@ -238,17 +203,17 @@
     }
   },
   "2026-02-18": {
-    "volume": 3282,
+    "volume": 3289,
     "sentiment": {
-      "neutral": 1233,
-      "positive": 500,
-      "negative": 1549
+      "neutral": 1235,
+      "positive": 503,
+      "negative": 1551
     },
     "emotion": {
-      "sadness": 932,
-      "fear": 1064,
-      "surprise": 221,
-      "joy": 395,
+      "sadness": 933,
+      "fear": 1065,
+      "surprise": 223,
+      "joy": 398,
       "neutral": 349,
       "anger": 303,
       "disgust": 18
@@ -279,6 +244,54 @@
       "it": 2,
       "en-GB": 2,
       "id": 3
+    }
+  },
+  "2026-02-19": {
+    "volume": 3269,
+    "sentiment": {
+      "negative": 1505,
+      "positive": 533,
+      "neutral": 1231
+    },
+    "emotion": {
+      "sadness": 876,
+      "joy": 373,
+      "fear": 1130,
+      "neutral": 333,
+      "anger": 303,
+      "disgust": 26,
+      "surprise": 228
+    },
+    "language": {
+      "en": 2622,
+      "en-US": 69,
+      "es": 15,
+      "pt": 16,
+      "de": 25,
+      "fr-FR": 1,
+      "fr": 22,
+      "ja": 20,
+      "nl": 7,
+      "fi": 5,
+      "da": 2,
+      "sv": 2,
+      "uk": 4,
+      "id": 3,
+      "ko": 3,
+      "ru": 1,
+      "en-GB": 1,
+      "nb": 1,
+      "ab": 1,
+      "Angika": 1,
+      "hy": 1,
+      "zh": 1,
+      "en-AU": 1,
+      "ar": 1,
+      "he": 1,
+      "en-us": 1,
+      "ga": 1,
+      "ca": 1,
+      "tr": 1
     }
   }
 }
