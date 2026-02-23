@@ -1,48 +1,4 @@
 {
-  "2026-02-15": {
-    "volume": 2391,
-    "sentiment": {
-      "neutral": 899,
-      "negative": 1110,
-      "positive": 382
-    },
-    "emotion": {
-      "neutral": 224,
-      "anger": 229,
-      "fear": 774,
-      "joy": 291,
-      "surprise": 201,
-      "sadness": 654,
-      "disgust": 18
-    },
-    "language": {
-      "ja": 33,
-      "de": 25,
-      "en": 1852,
-      "pt": 16,
-      "en-US": 90,
-      "en-AU": 2,
-      "am": 1,
-      "ru": 1,
-      "it": 3,
-      "ko": 4,
-      "es": 11,
-      "tr": 1,
-      "en-GB": 2,
-      "th": 4,
-      "fi": 2,
-      "fr": 7,
-      "id": 1,
-      "eo": 1,
-      "nb": 2,
-      "nl": 2,
-      "da": 1,
-      "fa": 1,
-      "sk": 1,
-      "sr": 1,
-      "ar": 1
-    }
-  },
   "2026-02-16": {
     "volume": 1938,
     "sentiment": {
@@ -274,16 +230,16 @@
     }
   },
   "2026-02-21": {
-    "volume": 3170,
+    "volume": 3174,
     "sentiment": {
       "positive": 556,
-      "negative": 1447,
-      "neutral": 1167
+      "negative": 1449,
+      "neutral": 1169
     },
     "emotion": {
       "anger": 301,
-      "neutral": 377,
-      "sadness": 845,
+      "neutral": 378,
+      "sadness": 848,
       "surprise": 225,
       "joy": 385,
       "fear": 1018,
@@ -321,6 +277,52 @@
       "ro": 1,
       "uk": 1,
       "pt-PT": 1
+    }
+  },
+  "2026-02-22": {
+    "volume": 3122,
+    "sentiment": {
+      "neutral": 1141,
+      "positive": 511,
+      "negative": 1470
+    },
+    "emotion": {
+      "fear": 960,
+      "neutral": 386,
+      "surprise": 230,
+      "sadness": 871,
+      "anger": 276,
+      "joy": 377,
+      "disgust": 22
+    },
+    "language": {
+      "en": 2542,
+      "en-US": 76,
+      "nl": 8,
+      "ja": 34,
+      "es": 12,
+      "de": 19,
+      "en-GB": 4,
+      "it": 3,
+      "fr": 25,
+      "sk": 1,
+      "sv": 6,
+      "pt": 11,
+      "ru": 7,
+      "fr-FR": 1,
+      "ko": 5,
+      "he": 1,
+      "el": 1,
+      "ar": 5,
+      "zh": 1,
+      "aa": 1,
+      "tr": 1,
+      "tl": 1,
+      "pl": 1,
+      "en-us": 1,
+      "ab": 1,
+      "av": 1,
+      "th": 1
     }
   }
 }
