@@ -1,44 +1,4 @@
 {
-  "2026-02-16": {
-    "volume": 1938,
-    "sentiment": {
-      "negative": 907,
-      "positive": 339,
-      "neutral": 692
-    },
-    "emotion": {
-      "sadness": 581,
-      "fear": 641,
-      "neutral": 168,
-      "joy": 241,
-      "anger": 179,
-      "surprise": 120,
-      "disgust": 8
-    },
-    "language": {
-      "en": 1572,
-      "en-US": 43,
-      "ja": 10,
-      "fr": 6,
-      "pt": 11,
-      "en-AU": 2,
-      "de": 14,
-      "es": 13,
-      "en-GB": 1,
-      "av": 1,
-      "fi": 1,
-      "it": 1,
-      "ru": 1,
-      "pl": 2,
-      "nl": 1,
-      "nb": 1,
-      "ta-IN": 1,
-      "ar": 3,
-      "zh": 1,
-      "jp": 1,
-      "hy": 1
-    }
-  },
   "2026-02-17": {
     "volume": 3217,
     "sentiment": {
@@ -280,23 +240,23 @@
     }
   },
   "2026-02-22": {
-    "volume": 3122,
+    "volume": 3125,
     "sentiment": {
-      "neutral": 1141,
+      "neutral": 1143,
       "positive": 511,
-      "negative": 1470
+      "negative": 1471
     },
     "emotion": {
       "fear": 960,
-      "neutral": 386,
+      "neutral": 387,
       "surprise": 230,
-      "sadness": 871,
+      "sadness": 873,
       "anger": 276,
       "joy": 377,
       "disgust": 22
     },
     "language": {
-      "en": 2542,
+      "en": 2543,
       "en-US": 76,
       "nl": 8,
       "ja": 34,
@@ -323,6 +283,43 @@
       "ab": 1,
       "av": 1,
       "th": 1
+    }
+  },
+  "2026-02-23": {
+    "volume": 1141,
+    "sentiment": {
+      "positive": 198,
+      "negative": 530,
+      "neutral": 413
+    },
+    "emotion": {
+      "joy": 133,
+      "sadness": 307,
+      "neutral": 143,
+      "fear": 359,
+      "anger": 112,
+      "surprise": 80,
+      "disgust": 7
+    },
+    "language": {
+      "en": 964,
+      "en-US": 40,
+      "pt": 10,
+      "ja": 11,
+      "ko": 4,
+      "ae": 1,
+      "en-GB": 3,
+      "fr": 6,
+      "da": 2,
+      "es": 9,
+      "ar": 1,
+      "vi": 1,
+      "de": 7,
+      "nl": 1,
+      "cs": 1,
+      "ht": 1,
+      "sv": 2,
+      "hi": 1
     }
   }
 }
