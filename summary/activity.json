@@ -1,51 +1,4 @@
 {
-  "2026-02-20": {
-    "volume": 3244,
-    "sentiment": {
-      "positive": 501,
-      "negative": 1481,
-      "neutral": 1262
-    },
-    "emotion": {
-      "sadness": 887,
-      "joy": 400,
-      "anger": 345,
-      "fear": 1020,
-      "neutral": 318,
-      "surprise": 245,
-      "disgust": 29
-    },
-    "language": {
-      "en": 2488,
-      "pt": 15,
-      "nl": 6,
-      "en-US": 101,
-      "ja": 26,
-      "ko": 6,
-      "fr": 22,
-      "de": 29,
-      "ar": 6,
-      "en-AU": 1,
-      "es": 17,
-      "fa": 1,
-      "zh": 2,
-      "sk": 1,
-      "sv": 2,
-      "pl": 1,
-      "av": 1,
-      "sq": 1,
-      "fi": 2,
-      "en-GB": 1,
-      "de-DE": 1,
-      "fr-FR": 1,
-      "uk": 1,
-      "en-us": 1,
-      "tr": 1,
-      "it": 2,
-      "ga": 1,
-      "hu": 1
-    }
-  },
   "2026-02-21": {
     "volume": 3174,
     "sentiment": {
@@ -229,37 +182,39 @@
     }
   },
   "2026-02-24": {
-    "volume": 7,
+    "volume": 12,
     "sentiment": {
-      "negative": 4,
-      "positive": 3
+      "negative": 5,
+      "positive": 6,
+      "neutral": 1
     },
     "emotion": {
       "surprise": 1,
-      "fear": 2,
-      "joy": 3,
-      "anger": 1
+      "fear": 4,
+      "joy": 4,
+      "anger": 2,
+      "sadness": 1
     },
     "language": {}
   },
   "2026-02-26": {
-    "volume": 3490,
+    "volume": 3493,
     "sentiment": {
       "neutral": 1291,
-      "negative": 1610,
+      "negative": 1613,
       "positive": 589
     },
     "emotion": {
-      "fear": 1133,
+      "fear": 1134,
       "joy": 457,
-      "surprise": 243,
-      "sadness": 959,
+      "surprise": 244,
+      "sadness": 960,
       "neutral": 365,
       "anger": 308,
       "disgust": 25
     },
     "language": {
-      "en": 2734,
+      "en": 2736,
       "de": 31,
       "ko": 8,
       "ru": 6,
@@ -294,6 +249,52 @@
       "aa": 1,
       "fr-FR": 1,
       "ml": 1
+    }
+  },
+  "2026-02-27": {
+    "volume": 2220,
+    "sentiment": {
+      "neutral": 792,
+      "negative": 1043,
+      "positive": 385
+    },
+    "emotion": {
+      "fear": 696,
+      "anger": 188,
+      "joy": 293,
+      "sadness": 644,
+      "surprise": 159,
+      "neutral": 222,
+      "disgust": 18
+    },
+    "language": {
+      "de": 13,
+      "en": 1773,
+      "en-US": 66,
+      "pt": 12,
+      "ja": 21,
+      "en-GB": 4,
+      "id": 1,
+      "da": 1,
+      "vi": 2,
+      "ko": 3,
+      "zh": 3,
+      "ab": 1,
+      "Angika": 1,
+      "es": 10,
+      "sv": 2,
+      "fr": 6,
+      "en-us": 1,
+      "fi": 2,
+      "tr": 1,
+      "nl": 2,
+      "it": 2,
+      "ar": 4,
+      "yi": 1,
+      "cs": 1,
+      "ho": 1,
+      "no": 1,
+      "uk": 1
     }
   }
 }
