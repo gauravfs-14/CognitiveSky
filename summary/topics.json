@@ -3,151 +3,151 @@
     "label": [
       "loss",
       "weight",
-      "iran",
-      "study",
-      "year"
+      "big",
+      "game",
+      "little"
     ],
-    "count": 4025,
+    "count": 4325,
     "daily": {
       "2026-02-25": 264,
-      "2026-02-24": 4,
       "2026-02-26": 1087,
       "2026-02-27": 164,
       "2026-02-28": 1090,
       "2026-03-01": 1162,
-      "2026-03-02": 254
+      "2026-03-02": 256,
+      "2026-03-03": 302
     },
     "sentiment": {
-      "neutral": 1176,
-      "negative": 2165,
-      "positive": 684
+      "neutral": 1306,
+      "negative": 2307,
+      "positive": 712
     },
     "emotion": {
-      "sadness": 1247,
-      "surprise": 320,
-      "fear": 1311,
-      "neutral": 258,
-      "anger": 383,
-      "joy": 485,
-      "disgust": 21
+      "sadness": 1358,
+      "surprise": 343,
+      "fear": 1386,
+      "neutral": 292,
+      "anger": 405,
+      "joy": 518,
+      "disgust": 23
     },
     "hashtags": [
-      "#news",
       "#hiring",
+      "#news",
+      "#art",
       "#mentalhealth",
+      "#MentalHealth",
       "#Iran",
       "#jobalert",
       "#jobsearch",
-      "#art",
-      "#MentalHealth",
       "#JobSeekers",
       "#drawing"
     ],
     "emojis": [
       "😭",
       "🔗",
-      "👇",
       "🔥",
-      "👉",
       "📢",
+      "👇",
+      "👉",
       "💕",
       "😔",
-      "🏻",
-      "😂"
+      "🌎",
+      "🏻"
     ]
   },
   "topic_0": {
     "label": [
-      "im",
+      "dont",
       "just",
-      "loss",
-      "like",
-      "dont"
+      "im",
+      "worry",
+      "like"
     ],
-    "count": 6125,
+    "count": 7802,
     "daily": {
       "2026-02-25": 1679,
-      "2026-02-24": 7,
       "2026-02-26": 466,
-      "2026-02-27": 1231,
-      "2026-02-28": 538,
+      "2026-02-27": 1233,
+      "2026-02-28": 539,
       "2026-03-01": 500,
-      "2026-03-02": 1704
+      "2026-03-02": 1704,
+      "2026-03-03": 1681
     },
     "sentiment": {
-      "neutral": 2202,
-      "negative": 3053,
-      "positive": 870
+      "neutral": 2734,
+      "negative": 3951,
+      "positive": 1117
     },
     "emotion": {
-      "fear": 1743,
-      "neutral": 675,
-      "sadness": 1886,
-      "joy": 695,
-      "surprise": 467,
-      "anger": 607,
-      "disgust": 52
+      "fear": 2329,
+      "neutral": 800,
+      "sadness": 2371,
+      "joy": 847,
+      "surprise": 594,
+      "anger": 796,
+      "disgust": 65
     },
     "hashtags": [
       "#art",
       "#news",
-      "#DubNation",
       "#mentalhealth",
-      "#ADHD",
+      "#DubNation",
       "#nsfw",
+      "#hiring",
+      "#ADHD",
+      "#drawing",
       "#poetry",
-      "#MentalHealth",
-      "#adhd",
-      "#NowPlaying"
+      "#jobalert"
     ],
     "emojis": [
       "😭",
       "😂",
-      "👇",
       "🔗",
       "🔥",
-      "♀",
+      "👇",
+      "💙",
       "💕",
-      "🏽",
-      "⚖",
-      "🚨"
+      "♀",
+      "🚨",
+      "🏽"
     ]
   },
   "topic_5": {
     "label": [
-      "therapy",
-      "dont",
-      "worry",
-      "people",
-      "new"
+      "crying",
+      "movie",
+      "just",
+      "kids",
+      "im"
     ],
-    "count": 1495,
+    "count": 1684,
     "daily": {
       "2026-02-25": 139,
       "2026-02-26": 775,
       "2026-02-27": 104,
-      "2026-02-24": 2,
       "2026-02-28": 123,
       "2026-03-01": 182,
-      "2026-03-02": 170
+      "2026-03-02": 170,
+      "2026-03-03": 191
     },
     "sentiment": {
-      "neutral": 676,
-      "negative": 562,
-      "positive": 257
+      "neutral": 707,
+      "negative": 691,
+      "positive": 286
     },
     "emotion": {
-      "joy": 208,
-      "anger": 135,
-      "surprise": 94,
-      "neutral": 182,
-      "fear": 524,
-      "sadness": 334,
-      "disgust": 18
+      "joy": 225,
+      "anger": 153,
+      "surprise": 135,
+      "neutral": 192,
+      "fear": 554,
+      "sadness": 406,
+      "disgust": 19
     },
     "hashtags": [
-      "#CitizenPortal",
       "#news",
+      "#CitizenPortal",
       "#Iran",
       "#Survivor50",
       "#AI",
@@ -165,290 +165,290 @@
       "📰",
       "😂",
       "👉",
-      "🙏",
+      "🔥",
       "💙",
-      "💜"
+      "🙏"
     ]
   },
   "topic_4": {
     "label": [
-      "worry",
-      "dont",
+      "recovery",
+      "new",
       "stress",
-      "health",
-      "mental"
+      "help",
+      "body"
     ],
-    "count": 1149,
+    "count": 1324,
     "daily": {
       "2026-02-25": 125,
       "2026-02-26": 243,
-      "2026-02-24": 1,
       "2026-02-27": 255,
       "2026-02-28": 161,
       "2026-03-01": 148,
-      "2026-03-02": 216
+      "2026-03-02": 216,
+      "2026-03-03": 176
     },
     "sentiment": {
-      "negative": 407,
-      "positive": 230,
-      "neutral": 512
+      "negative": 437,
+      "positive": 271,
+      "neutral": 616
     },
     "emotion": {
-      "anger": 102,
-      "joy": 200,
-      "sadness": 203,
-      "neutral": 145,
-      "fear": 424,
-      "surprise": 68,
+      "anger": 113,
+      "joy": 242,
+      "sadness": 237,
+      "neutral": 165,
+      "fear": 489,
+      "surprise": 71,
       "disgust": 7
     },
     "hashtags": [
-      "#ADHD",
-      "#Iran",
       "#news",
+      "#ADHD",
+      "#booksky",
+      "#Iran",
       "#NowPlaying",
       "#CitizenPortal",
       "#nowplaying",
+      "#DubNation",
       "#anxiety",
-      "#booksky",
-      "#MentalHealth",
-      "#DubNation"
+      "#MentalHealth"
     ],
     "emojis": [
       "😭",
+      "🐺",
       "🔓",
       "🔗",
+      "😂",
+      "💜",
       "🌟",
       "💕",
-      "💙",
-      "📚",
-      "♂",
-      "😂",
-      "💜"
+      "🙏",
+      "💙"
     ]
   },
   "topic_6": {
     "label": [
-      "recovery",
-      "new",
-      "tension",
-      "support",
-      "day"
+      "stress",
+      "anxiety",
+      "bad",
+      "like",
+      "feeling"
     ],
-    "count": 1073,
+    "count": 1235,
     "daily": {
       "2026-02-25": 205,
       "2026-02-26": 176,
       "2026-02-27": 106,
-      "2026-02-24": 1,
       "2026-02-28": 164,
       "2026-03-01": 208,
-      "2026-03-02": 213
+      "2026-03-02": 213,
+      "2026-03-03": 163
     },
     "sentiment": {
-      "neutral": 451,
-      "positive": 208,
-      "negative": 414
+      "neutral": 505,
+      "positive": 245,
+      "negative": 485
     },
     "emotion": {
-      "fear": 403,
-      "neutral": 114,
-      "disgust": 4,
-      "sadness": 253,
-      "surprise": 64,
-      "anger": 80,
-      "joy": 155
+      "fear": 444,
+      "neutral": 135,
+      "disgust": 7,
+      "sadness": 292,
+      "surprise": 72,
+      "anger": 100,
+      "joy": 185
     },
     "hashtags": [
       "#art",
       "#news",
-      "#musicsky",
       "#AI",
       "#MentalHealth",
-      "#oc",
-      "#dpdi",
       "#audhd",
-      "#CitizenPortal",
-      "#mentalhealth"
+      "#musicsky",
+      "#mentalhealth",
+      "#News",
+      "#oc",
+      "#dpdi"
     ],
     "emojis": [
       "😭",
       "🙏",
-      "☹",
       "😔",
-      "🌟",
+      "😂",
       "👉",
       "🖤",
-      "👀",
+      "☹",
       "😅",
-      "💔"
+      "👇",
+      "🌟"
     ]
   },
   "topic_7": {
     "label": [
+      "therapy",
+      "im",
       "anxiety",
-      "depression",
-      "feel",
-      "meds",
-      "having"
+      "today",
+      "nervous"
     ],
-    "count": 1520,
+    "count": 1986,
     "daily": {
       "2026-02-25": 169,
       "2026-02-26": 177,
-      "2026-02-24": 7,
       "2026-02-27": 99,
       "2026-02-28": 476,
       "2026-03-01": 390,
-      "2026-03-02": 202
+      "2026-03-02": 202,
+      "2026-03-03": 473
     },
     "sentiment": {
-      "negative": 689,
-      "neutral": 620,
-      "positive": 211
+      "negative": 892,
+      "neutral": 815,
+      "positive": 279
     },
     "emotion": {
-      "sadness": 381,
-      "fear": 526,
-      "joy": 198,
-      "neutral": 153,
-      "anger": 192,
-      "surprise": 61,
-      "disgust": 9
+      "sadness": 491,
+      "fear": 713,
+      "joy": 254,
+      "neutral": 202,
+      "anger": 227,
+      "surprise": 88,
+      "disgust": 11
     },
     "hashtags": [
-      "#Iran",
       "#art",
+      "#Iran",
+      "#adhd",
+      "#mentalhealth",
+      "#depression",
+      "#DubNation",
       "#メンズエステ",
       "#hiring",
       "#jobalert",
-      "#jobsearch",
-      "#JobSeekers",
-      "#WritingCommunity",
-      "#DubNation",
-      "#mentalhealth"
+      "#jobsearch"
     ],
     "emojis": [
       "😭",
+      "🔥",
       "📦",
       "🙄",
-      "🔥",
       "😂",
-      "♱",
       "🔗",
-      "📢",
-      "💕",
-      "💖"
+      "🙏",
+      "♱",
+      "💎",
+      "📢"
     ]
   },
   "topic_2": {
     "label": [
-      "health",
       "mental",
+      "health",
       "illness",
-      "care",
+      "home",
       "support"
     ],
-    "count": 1341,
+    "count": 1574,
     "daily": {
       "2026-02-25": 194,
       "2026-02-26": 276,
-      "2026-02-24": 5,
       "2026-02-27": 144,
       "2026-02-28": 290,
       "2026-03-01": 201,
-      "2026-03-02": 231
+      "2026-03-02": 231,
+      "2026-03-03": 238
     },
     "sentiment": {
-      "neutral": 461,
-      "positive": 224,
-      "negative": 656
+      "neutral": 569,
+      "positive": 253,
+      "negative": 752
     },
     "emotion": {
-      "fear": 481,
-      "sadness": 315,
-      "neutral": 145,
-      "joy": 188,
-      "anger": 110,
-      "surprise": 95,
+      "fear": 554,
+      "sadness": 371,
+      "neutral": 176,
+      "joy": 240,
+      "anger": 127,
+      "surprise": 99,
       "disgust": 7
     },
     "hashtags": [
       "#MentalHealth",
       "#news",
-      "#art",
-      "#poetry",
+      "#hiring",
+      "#jobalert",
+      "#jobsearch",
+      "#JobSeekers",
       "#sketch",
-      "#A",
-      "#F",
+      "#art",
       "#DubNation",
-      "#Recovery",
       "#NBA"
     ],
     "emojis": [
       "😭",
-      "💙",
       "🔥",
       "📢",
-      "🐾",
       "🔗",
-      "💕",
-      "📚",
-      "🏀",
-      "😂"
+      "💙",
+      "🌎",
+      "🚨",
+      "🐾",
+      "🙏",
+      "📚"
     ]
   },
   "topic_3": {
     "label": [
-      "stress",
-      "new",
-      "recovery",
-      "playing",
-      "anxiety"
+      "cutting",
+      "trump",
+      "iran",
+      "hes",
+      "use"
     ],
-    "count": 1181,
+    "count": 1320,
     "daily": {
       "2026-02-25": 192,
       "2026-02-26": 293,
       "2026-02-27": 127,
       "2026-02-28": 180,
-      "2026-02-24": 1,
       "2026-03-01": 211,
-      "2026-03-02": 177
+      "2026-03-02": 177,
+      "2026-03-03": 140
     },
     "sentiment": {
-      "negative": 504,
-      "neutral": 451,
-      "positive": 226
+      "negative": 560,
+      "neutral": 516,
+      "positive": 244
     },
     "emotion": {
-      "sadness": 274,
-      "fear": 441,
-      "anger": 111,
-      "neutral": 100,
-      "joy": 183,
-      "surprise": 66,
-      "disgust": 6
+      "sadness": 293,
+      "fear": 470,
+      "anger": 138,
+      "neutral": 126,
+      "joy": 207,
+      "surprise": 79,
+      "disgust": 7
     },
     "hashtags": [
       "#mentalhealth",
+      "#fantasy",
+      "#nsfw",
       "#depression",
       "#art",
-      "#fantasy",
       "#MentalHealth",
-      "#adhd",
-      "#nsfw",
       "#Iran",
-      "#fanart",
-      "#NBA"
+      "#NBA",
+      "#adhd",
+      "#erotica"
     ],
     "emojis": [
       "😭",
       "🔗",
       "📚",
-      "💕",
-      "💙",
       "🔥",
+      "💙",
+      "💕",
       "👇",
       "😁",
       "😔",
