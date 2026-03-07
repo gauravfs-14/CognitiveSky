@@ -1,50 +1,4 @@
 {
-  "2026-02-27": {
-    "volume": 2233,
-    "sentiment": {
-      "neutral": 798,
-      "negative": 1049,
-      "positive": 386
-    },
-    "emotion": {
-      "fear": 701,
-      "anger": 189,
-      "joy": 295,
-      "sadness": 648,
-      "surprise": 159,
-      "neutral": 223,
-      "disgust": 18
-    },
-    "language": {
-      "de": 13,
-      "en": 1773,
-      "en-US": 66,
-      "pt": 12,
-      "ja": 21,
-      "en-GB": 4,
-      "id": 1,
-      "da": 1,
-      "vi": 2,
-      "ko": 3,
-      "zh": 3,
-      "ab": 1,
-      "Angika": 1,
-      "es": 10,
-      "sv": 2,
-      "fr": 6,
-      "en-us": 1,
-      "fi": 2,
-      "tr": 1,
-      "nl": 2,
-      "it": 2,
-      "ar": 4,
-      "yi": 1,
-      "cs": 1,
-      "ho": 1,
-      "no": 1,
-      "uk": 1
-    }
-  },
   "2026-02-28": {
     "volume": 3023,
     "sentiment": {
@@ -196,14 +150,14 @@
     }
   },
   "2026-03-03": {
-    "volume": 3368,
+    "volume": 3369,
     "sentiment": {
       "positive": 505,
       "negative": 1635,
-      "neutral": 1228
+      "neutral": 1229
     },
     "emotion": {
-      "fear": 1094,
+      "fear": 1095,
       "sadness": 934,
       "disgust": 21,
       "anger": 343,
@@ -273,23 +227,23 @@
     }
   },
   "2026-03-05": {
-    "volume": 3202,
+    "volume": 3204,
     "sentiment": {
       "positive": 551,
-      "neutral": 1190,
-      "negative": 1461
+      "neutral": 1191,
+      "negative": 1462
     },
     "emotion": {
       "fear": 1054,
-      "sadness": 854,
+      "sadness": 855,
       "anger": 314,
       "joy": 431,
-      "surprise": 234,
+      "surprise": 235,
       "neutral": 301,
       "disgust": 14
     },
     "language": {
-      "en": 2555,
+      "en": 2556,
       "fr": 14,
       "en-US": 104,
       "nl": 7,
@@ -315,7 +269,7 @@
       "am": 1,
       "sq": 2,
       "uk": 2,
-      "jp": 1,
+      "jp": 2,
       "ga": 1,
       "pt-PT": 1,
       "en-us": 1,
@@ -324,6 +278,54 @@
       "eu": 1,
       "sv-SE": 1,
       "pl": 1
+    }
+  },
+  "2026-03-06": {
+    "volume": 3373,
+    "sentiment": {
+      "positive": 514,
+      "negative": 1611,
+      "neutral": 1248
+    },
+    "emotion": {
+      "fear": 1168,
+      "sadness": 900,
+      "surprise": 258,
+      "neutral": 347,
+      "anger": 298,
+      "joy": 372,
+      "disgust": 30
+    },
+    "language": {
+      "en": 2520,
+      "ja": 27,
+      "en-US": 96,
+      "de": 30,
+      "zh": 6,
+      "pt": 25,
+      "hu": 2,
+      "es": 12,
+      "it": 3,
+      "fr": 13,
+      "en-GB": 2,
+      "ko": 2,
+      "sv": 4,
+      "fr-FR": 2,
+      "en-AU": 1,
+      "cs": 1,
+      "ru": 5,
+      "pl": 2,
+      "aa": 1,
+      "ca": 2,
+      "nl": 5,
+      "pt-BR": 1,
+      "th": 1,
+      "fi": 1,
+      "nb": 1,
+      "uk": 1,
+      "en-us": 1,
+      "jp": 1,
+      "ar": 5
     }
   }
 }
