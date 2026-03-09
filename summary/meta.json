@@ -1,27 +1,27 @@
 {
-  "date": "2026-03-08",
+  "date": "2026-03-09",
   "complete": {
-    "total_posts": 969473,
+    "total_posts": 972678,
     "total_sentiments": 3,
     "total_emotions": 7,
     "total_languages": 162,
     "total_topics": 8,
-    "total_hashtags": 155185,
+    "total_hashtags": 155549,
     "total_emojis": 958
   },
   "last_week": {
-    "total_posts": 20278,
+    "total_posts": 20481,
     "total_sentiments": 3,
     "total_emotions": 7,
-    "total_languages": 59,
+    "total_languages": 56,
     "total_topics": 8,
-    "total_hashtags": 7236,
-    "total_emojis": 521
+    "total_hashtags": 7383,
+    "total_emojis": 523
   },
   "averages": {
-    "avg_posts_per_day": 2896.86,
-    "avg_hashtags_per_day": 1655.71,
-    "avg_emojis_per_day": 764.86
+    "avg_posts_per_day": 2925.86,
+    "avg_hashtags_per_day": 1687.29,
+    "avg_emojis_per_day": 777.29
   },
   "top": {
     "sentiment": "negative",
