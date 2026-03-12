@@ -1,37 +1,4 @@
 {
-  "2026-03-04": {
-    "volume": 908,
-    "sentiment": {
-      "negative": 421,
-      "neutral": 359,
-      "positive": 128
-    },
-    "emotion": {
-      "fear": 288,
-      "sadness": 254,
-      "anger": 74,
-      "surprise": 69,
-      "joy": 120,
-      "neutral": 89,
-      "disgust": 14
-    },
-    "language": {
-      "en-US": 62,
-      "en": 717,
-      "pt": 6,
-      "fi": 2,
-      "en-AU": 1,
-      "ja": 6,
-      "fr": 3,
-      "de": 3,
-      "es": 2,
-      "nl": 1,
-      "tr": 1,
-      "sv": 2,
-      "ar": 1,
-      "jp": 1
-    }
-  },
   "2026-03-05": {
     "volume": 3206,
     "sentiment": {
@@ -287,16 +254,16 @@
     }
   },
   "2026-03-10": {
-    "volume": 3514,
+    "volume": 3515,
     "sentiment": {
       "negative": 1464,
       "neutral": 1393,
-      "positive": 657
+      "positive": 658
     },
     "emotion": {
       "sadness": 903,
       "anger": 321,
-      "joy": 468,
+      "joy": 469,
       "fear": 1228,
       "surprise": 223,
       "neutral": 347,
@@ -335,6 +302,62 @@
       "af": 1,
       "en-GB": 1,
       "tl": 1
+    }
+  },
+  "2026-03-11": {
+    "volume": 3466,
+    "sentiment": {
+      "negative": 1519,
+      "neutral": 1351,
+      "positive": 596
+    },
+    "emotion": {
+      "sadness": 912,
+      "fear": 1154,
+      "neutral": 358,
+      "joy": 439,
+      "surprise": 260,
+      "anger": 311,
+      "disgust": 32
+    },
+    "language": {
+      "en": 2671,
+      "it": 2,
+      "de": 31,
+      "ja": 27,
+      "en-US": 180,
+      "pt": 15,
+      "fr": 33,
+      "fa": 1,
+      "tr": 1,
+      "nl": 6,
+      "zh": 3,
+      "zh-CN": 1,
+      "fi": 6,
+      "pt-PT": 1,
+      "gd": 1,
+      "av": 1,
+      "hy": 1,
+      "uk": 2,
+      "es": 12,
+      "ru": 3,
+      "en-AU": 2,
+      "tl": 1,
+      "sq": 1,
+      "ko": 6,
+      "es-ES": 1,
+      "so": 1,
+      "id": 1,
+      "cs": 1,
+      "sv": 2,
+      "ar": 2,
+      "en-GB": 2,
+      "gl": 1,
+      "el": 1,
+      "pl": 1,
+      "fr-FR": 1,
+      "nb": 1,
+      "hr": 1
     }
   }
 }
