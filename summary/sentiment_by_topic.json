@@ -1,42 +1,42 @@
 {
-  "topic_4": {
-    "positive": 456,
-    "negative": 500,
-    "neutral": 864
-  },
   "topic_1": {
-    "negative": 3046,
-    "neutral": 1722,
-    "positive": 920
+    "neutral": 1897,
+    "negative": 3371,
+    "positive": 1027
   },
   "topic_7": {
-    "neutral": 839,
-    "negative": 1014,
-    "positive": 323
-  },
-  "topic_0": {
-    "negative": 3808,
-    "neutral": 2871,
-    "positive": 1232
-  },
-  "topic_2": {
-    "neutral": 631,
-    "negative": 613,
-    "positive": 397
-  },
-  "topic_5": {
-    "neutral": 627,
-    "negative": 740,
-    "positive": 319
-  },
-  "topic_3": {
-    "neutral": 642,
-    "negative": 551,
-    "positive": 303
+    "negative": 755,
+    "neutral": 723,
+    "positive": 293
   },
   "topic_6": {
-    "negative": 464,
-    "neutral": 516,
-    "positive": 191
+    "negative": 479,
+    "neutral": 556,
+    "positive": 204
+  },
+  "topic_4": {
+    "negative": 447,
+    "positive": 503,
+    "neutral": 941
+  },
+  "topic_3": {
+    "positive": 303,
+    "negative": 600,
+    "neutral": 605
+  },
+  "topic_2": {
+    "positive": 401,
+    "negative": 619,
+    "neutral": 686
+  },
+  "topic_5": {
+    "neutral": 498,
+    "positive": 294,
+    "negative": 645
+  },
+  "topic_0": {
+    "neutral": 2816,
+    "negative": 3773,
+    "positive": 1216
   }
 }
