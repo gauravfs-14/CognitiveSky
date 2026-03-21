@@ -1,53 +1,4 @@
 {
-  "2026-03-13": {
-    "volume": 3437,
-    "sentiment": {
-      "positive": 614,
-      "negative": 1564,
-      "neutral": 1259
-    },
-    "emotion": {
-      "fear": 1160,
-      "sadness": 931,
-      "joy": 428,
-      "neutral": 330,
-      "surprise": 240,
-      "anger": 322,
-      "disgust": 26
-    },
-    "language": {
-      "en": 2672,
-      "de": 27,
-      "en-US": 123,
-      "es": 15,
-      "ja": 31,
-      "pt": 14,
-      "nl": 8,
-      "ko": 4,
-      "fr": 18,
-      "nb": 1,
-      "fi": 1,
-      "sv": 5,
-      "fr-FR": 1,
-      "sl": 1,
-      "el": 1,
-      "en-GB": 3,
-      "it": 3,
-      "da": 1,
-      "cy": 1,
-      "et-EE": 1,
-      "et": 1,
-      "gl": 1,
-      "zh": 3,
-      "pt-PT": 1,
-      "da-DK": 1,
-      "uk": 3,
-      "ar": 2,
-      "th": 1,
-      "cs": 1,
-      "en-AU": 1
-    }
-  },
   "2026-03-14": {
     "volume": 3135,
     "sentiment": {
@@ -295,14 +246,14 @@
     }
   },
   "2026-03-19": {
-    "volume": 3330,
+    "volume": 3332,
     "sentiment": {
-      "negative": 1489,
+      "negative": 1491,
       "neutral": 1286,
       "positive": 555
     },
     "emotion": {
-      "sadness": 935,
+      "sadness": 937,
       "fear": 1053,
       "anger": 299,
       "joy": 407,
@@ -342,6 +293,52 @@
       "ro": 1,
       "el": 1,
       "bg": 1
+    }
+  },
+  "2026-03-20": {
+    "volume": 3352,
+    "sentiment": {
+      "neutral": 1279,
+      "negative": 1506,
+      "positive": 567
+    },
+    "emotion": {
+      "joy": 407,
+      "sadness": 929,
+      "surprise": 256,
+      "fear": 1101,
+      "anger": 276,
+      "neutral": 360,
+      "disgust": 23
+    },
+    "language": {
+      "en": 2657,
+      "en-US": 85,
+      "de": 30,
+      "it": 5,
+      "ja": 28,
+      "ru": 5,
+      "ko": 5,
+      "pt": 24,
+      "zh": 2,
+      "en-GB": 1,
+      "fr": 16,
+      "sv": 3,
+      "es": 19,
+      "de-DE": 1,
+      "nl": 8,
+      "aa": 2,
+      "vi": 3,
+      "fi": 1,
+      "th": 1,
+      "es-ES": 1,
+      "mt": 1,
+      "uk": 1,
+      "ar": 1,
+      "da": 2,
+      "el": 1,
+      "sk": 2,
+      "sk-SK": 1
     }
   }
 }
