@@ -1,48 +1,4 @@
 {
-  "2026-03-17": {
-    "volume": 2985,
-    "sentiment": {
-      "neutral": 1159,
-      "negative": 1369,
-      "positive": 457
-    },
-    "emotion": {
-      "surprise": 234,
-      "fear": 997,
-      "sadness": 788,
-      "joy": 369,
-      "neutral": 272,
-      "anger": 294,
-      "disgust": 31
-    },
-    "language": {
-      "en": 2238,
-      "en-US": 161,
-      "ja": 18,
-      "pt": 17,
-      "sv": 2,
-      "it": 6,
-      "en-GB": 2,
-      "de": 26,
-      "ar": 1,
-      "es": 14,
-      "fr": 13,
-      "ko": 5,
-      "en-AU": 2,
-      "nl": 6,
-      "ht": 1,
-      "nb": 1,
-      "no": 1,
-      "pl": 3,
-      "fi": 2,
-      "emoji": 1,
-      "fr-FR": 1,
-      "tl": 1,
-      "en-us": 2,
-      "ca": 1,
-      "eo": 1
-    }
-  },
   "2026-03-18": {
     "volume": 3396,
     "sentiment": {
@@ -288,19 +244,19 @@
     }
   },
   "2026-03-23": {
-    "volume": 5058,
+    "volume": 5061,
     "sentiment": {
       "positive": 2066,
-      "neutral": 1409,
-      "negative": 1583
+      "neutral": 1410,
+      "negative": 1585
     },
     "emotion": {
-      "sadness": 1744,
-      "fear": 1941,
+      "sadness": 1745,
+      "fear": 1942,
       "anger": 328,
       "joy": 430,
       "neutral": 358,
-      "surprise": 235,
+      "surprise": 236,
       "disgust": 22
     },
     "language": {
@@ -337,6 +293,49 @@
       "hu": 1,
       "zh": 1,
       "pt-BR": 1
+    }
+  },
+  "2026-03-24": {
+    "volume": 2988,
+    "sentiment": {
+      "neutral": 1057,
+      "negative": 1244,
+      "positive": 687
+    },
+    "emotion": {
+      "fear": 1007,
+      "sadness": 852,
+      "surprise": 176,
+      "anger": 266,
+      "joy": 358,
+      "neutral": 309,
+      "disgust": 20
+    },
+    "language": {
+      "en": 2120,
+      "pt": 11,
+      "es": 21,
+      "en-US": 77,
+      "sv": 3,
+      "zh": 2,
+      "de": 16,
+      "ja": 15,
+      "mt": 1,
+      "ar": 2,
+      "fr": 11,
+      "en-us": 1,
+      "ko": 6,
+      "fi": 2,
+      "en-AU": 2,
+      "it": 3,
+      "da": 3,
+      "nl": 5,
+      "en-GB": 4,
+      "pl": 2,
+      "aa": 1,
+      "th": 1,
+      "cs": 1,
+      "nl-NL": 1
     }
   }
 }
