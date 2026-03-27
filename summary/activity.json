@@ -1,54 +1,4 @@
 {
-  "2026-03-19": {
-    "volume": 3333,
-    "sentiment": {
-      "negative": 1492,
-      "neutral": 1286,
-      "positive": 555
-    },
-    "emotion": {
-      "sadness": 938,
-      "fear": 1053,
-      "anger": 299,
-      "joy": 407,
-      "neutral": 367,
-      "surprise": 246,
-      "disgust": 23
-    },
-    "language": {
-      "en": 2570,
-      "en-US": 113,
-      "de": 22,
-      "es": 13,
-      "ja": 28,
-      "ga": 1,
-      "pt": 18,
-      "fr": 15,
-      "th": 2,
-      "tl": 1,
-      "zh": 6,
-      "sv-FI": 1,
-      "sv-SE": 2,
-      "ar": 1,
-      "es-ES": 1,
-      "id": 1,
-      "fi": 2,
-      "nl": 2,
-      "ko": 4,
-      "vi": 1,
-      "sv": 3,
-      "en-us": 2,
-      "uk": 2,
-      "yi": 1,
-      "he": 2,
-      "it": 1,
-      "pl": 1,
-      "en-AU": 1,
-      "ro": 1,
-      "el": 1,
-      "bg": 1
-    }
-  },
   "2026-03-20": {
     "volume": 3354,
     "sentiment": {
@@ -290,15 +240,15 @@
     }
   },
   "2026-03-25": {
-    "volume": 3580,
+    "volume": 3584,
     "sentiment": {
-      "negative": 1656,
+      "negative": 1659,
       "positive": 599,
-      "neutral": 1325
+      "neutral": 1326
     },
     "emotion": {
-      "sadness": 953,
-      "fear": 1162,
+      "sadness": 955,
+      "fear": 1164,
       "neutral": 376,
       "surprise": 256,
       "joy": 446,
@@ -337,6 +287,52 @@
       "zh": 1,
       "aa": 1,
       "el": 1
+    }
+  },
+  "2026-03-26": {
+    "volume": 2973,
+    "sentiment": {
+      "positive": 545,
+      "negative": 1360,
+      "neutral": 1068
+    },
+    "emotion": {
+      "sadness": 871,
+      "joy": 387,
+      "fear": 923,
+      "surprise": 218,
+      "anger": 271,
+      "neutral": 294,
+      "disgust": 9
+    },
+    "language": {
+      "en": 2334,
+      "zh": 5,
+      "id": 7,
+      "en-US": 78,
+      "de": 23,
+      "cs": 1,
+      "ja": 20,
+      "en-GB": 3,
+      "bo": 1,
+      "ru": 4,
+      "es": 10,
+      "yi": 2,
+      "he": 2,
+      "pt": 10,
+      "ca": 3,
+      "fr": 19,
+      "nl": 3,
+      "it": 3,
+      "ko": 2,
+      "ar": 3,
+      "tr": 1,
+      "en-AU": 1,
+      "fr-FR": 1,
+      "lv": 1,
+      "ro": 1,
+      "sv": 1,
+      "av": 1
     }
   }
 }
