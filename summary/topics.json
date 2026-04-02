@@ -1,319 +1,376 @@
 {
-  "topic_7": {
-    "label": [
-      "recovery",
-      "new",
-      "2026",
-      "today",
-      "help"
-    ],
-    "count": 1591,
-    "daily": {
-      "2026-03-25": 226,
-      "2026-03-26": 170,
-      "2026-03-27": 168,
-      "2026-03-28": 187,
-      "2026-03-29": 398,
-      "2026-03-30": 198,
-      "2026-03-31": 244
-    },
-    "sentiment": {
-      "negative": 561,
-      "positive": 286,
-      "neutral": 744
-    },
-    "emotion": {
-      "sadness": 377,
-      "fear": 525,
-      "neutral": 197,
-      "surprise": 103,
-      "joy": 205,
-      "anger": 178,
-      "disgust": 6
-    },
-    "hashtags": [
-      "#MusicChallenge",
-      "#ADHD",
-      "#news",
-      "#MentalHealth",
-      "#EcksteinsMonthOfMusic",
-      "#sociology",
-      "#art",
-      "#News",
-      "#mentalhealth",
-      "#depression"
-    ],
-    "emojis": [
-      "😂",
-      "😭",
-      "🚨",
-      "🔺",
-      "💖",
-      "🎶",
-      "👉",
-      "🙃",
-      "📚",
-      "💥"
-    ]
-  },
   "topic_0": {
     "label": [
-      "therapy",
-      "conversion",
-      "court",
-      "supreme",
-      "ban"
+      "im",
+      "just",
+      "crying",
+      "like",
+      "people"
     ],
-    "count": 7425,
+    "count": 7133,
     "daily": {
-      "2026-03-25": 2008,
       "2026-03-26": 1507,
       "2026-03-27": 1673,
       "2026-03-28": 411,
-      "2026-03-29": 484,
-      "2026-03-30": 340,
-      "2026-03-31": 1002
+      "2026-03-29": 486,
+      "2026-03-30": 341,
+      "2026-03-31": 1002,
+      "2026-04-01": 1713
     },
     "sentiment": {
-      "neutral": 2812,
-      "negative": 3590,
-      "positive": 1023
+      "positive": 1018,
+      "neutral": 2591,
+      "negative": 3524
     },
     "emotion": {
-      "neutral": 770,
-      "surprise": 646,
-      "joy": 829,
-      "fear": 2166,
-      "anger": 794,
-      "sadness": 2141,
-      "disgust": 79
+      "sadness": 2135,
+      "joy": 800,
+      "fear": 1991,
+      "surprise": 654,
+      "neutral": 736,
+      "anger": 739,
+      "disgust": 78
     },
     "hashtags": [
+      "#news",
       "#art",
       "#MentalHealth",
-      "#news",
-      "#sociology",
-      "#nsfw",
       "#ADHD",
-      "#AI",
-      "#DubNation",
-      "#MusicChallenge",
-      "#EcksteinsMonthOfMusic"
+      "#nsfw",
+      "#sociology",
+      "#mentalhealth",
+      "#fantasy",
+      "#depression",
+      "#NBA"
     ],
     "emojis": [
       "😭",
       "😂",
-      "👇",
       "👉",
-      "🔥",
       "💙",
-      "💜",
+      "🔥",
+      "👇",
       "🔗",
       "🚨",
-      "😅"
+      "💖",
+      "🏻"
+    ]
+  },
+  "topic_3": {
+    "label": [
+      "mental",
+      "health",
+      "care",
+      "state",
+      "new"
+    ],
+    "count": 1433,
+    "daily": {
+      "2026-03-26": 145,
+      "2026-03-27": 255,
+      "2026-03-28": 188,
+      "2026-03-29": 190,
+      "2026-03-30": 179,
+      "2026-03-31": 256,
+      "2026-04-01": 220
+    },
+    "sentiment": {
+      "negative": 631,
+      "neutral": 547,
+      "positive": 255
+    },
+    "emotion": {
+      "sadness": 336,
+      "anger": 132,
+      "fear": 498,
+      "joy": 241,
+      "neutral": 150,
+      "surprise": 67,
+      "disgust": 9
+    },
+    "hashtags": [
+      "#art",
+      "#abstract",
+      "#depression",
+      "#adhd",
+      "#painting",
+      "#drawing",
+      "#sketch",
+      "#MastoArt",
+      "#kleinekunstklasse",
+      "#news"
+    ],
+    "emojis": [
+      "😭",
+      "🚨",
+      "😟",
+      "🔥",
+      "🇺",
+      "💙",
+      "🙏",
+      "😂",
+      "📚",
+      "🔗"
     ]
   },
   "topic_1": {
     "label": [
       "loss",
       "weight",
-      "new",
-      "2026",
+      "big",
+      "trump",
       "night"
     ],
-    "count": 5171,
+    "count": 5178,
     "daily": {
-      "2026-03-25": 304,
       "2026-03-26": 258,
       "2026-03-27": 271,
       "2026-03-28": 1448,
       "2026-03-29": 1375,
       "2026-03-30": 1186,
-      "2026-03-31": 329
+      "2026-03-31": 330,
+      "2026-04-01": 310
     },
     "sentiment": {
-      "negative": 2637,
-      "neutral": 1744,
-      "positive": 790
+      "negative": 2640,
+      "neutral": 1755,
+      "positive": 783
     },
     "emotion": {
-      "fear": 1590,
-      "anger": 510,
-      "sadness": 1606,
-      "joy": 590,
-      "surprise": 410,
-      "disgust": 37,
-      "neutral": 428
+      "anger": 511,
+      "joy": 596,
+      "fear": 1581,
+      "sadness": 1626,
+      "neutral": 413,
+      "surprise": 415,
+      "disgust": 36
     },
     "hashtags": [
       "#art",
       "#ADHD",
-      "#MentalHealth",
-      "#メンズエステ",
-      "#nsfw",
-      "#MusicChallenge",
-      "#depression",
       "#sociology",
+      "#メンズエステ",
+      "#MentalHealth",
+      "#nsfw",
       "#DubNation",
-      "#sketch"
+      "#sketch",
+      "#AI",
+      "#mentalhealth"
     ],
     "emojis": [
       "😭",
-      "👉",
       "😂",
-      "🔥",
+      "👉",
       "🚨",
+      "🔥",
+      "🙏",
+      "💖",
       "👇",
       "🔗",
-      "💖",
+      "🎶"
+    ]
+  },
+  "topic_7": {
+    "label": [
+      "stress",
+      "trauma",
+      "anxiety",
+      "just",
+      "like"
+    ],
+    "count": 1752,
+    "daily": {
+      "2026-03-26": 170,
+      "2026-03-27": 168,
+      "2026-03-28": 187,
+      "2026-03-29": 399,
+      "2026-03-30": 199,
+      "2026-03-31": 245,
+      "2026-04-01": 384
+    },
+    "sentiment": {
+      "positive": 306,
+      "neutral": 823,
+      "negative": 623
+    },
+    "emotion": {
+      "joy": 245,
+      "neutral": 225,
+      "fear": 536,
+      "sadness": 428,
+      "anger": 200,
+      "surprise": 108,
+      "disgust": 10
+    },
+    "hashtags": [
+      "#MentalHealth",
+      "#News",
+      "#ADHD",
+      "#news",
+      "#MusicChallenge",
+      "#mentalhealth",
+      "#art",
+      "#EcksteinsMonthOfMusic",
+      "#booksky",
+      "#US"
+    ],
+    "emojis": [
+      "😂",
+      "😭",
+      "🚨",
+      "🔺",
+      "🙃",
       "🎶",
-      "🙏"
+      "🔗",
+      "👉",
+      "💜",
+      "🙄"
     ]
   },
   "topic_2": {
     "label": [
-      "im",
-      "crying",
-      "just",
-      "like",
-      "dont"
+      "therapy",
+      "conversion",
+      "supreme",
+      "court",
+      "ban"
     ],
-    "count": 2656,
+    "count": 2630,
     "daily": {
-      "2026-03-25": 320,
       "2026-03-26": 240,
       "2026-03-27": 218,
       "2026-03-28": 211,
       "2026-03-29": 254,
       "2026-03-30": 206,
-      "2026-03-31": 1207
+      "2026-03-31": 1208,
+      "2026-04-01": 293
     },
     "sentiment": {
-      "negative": 1338,
-      "neutral": 857,
-      "positive": 461
+      "negative": 1292,
+      "neutral": 889,
+      "positive": 449
     },
     "emotion": {
-      "neutral": 218,
-      "anger": 258,
-      "sadness": 801,
-      "joy": 352,
-      "fear": 855,
-      "surprise": 161,
-      "disgust": 11
+      "sadness": 749,
+      "fear": 859,
+      "joy": 350,
+      "neutral": 220,
+      "anger": 266,
+      "surprise": 169,
+      "disgust": 17
     },
     "hashtags": [
-      "#nsfw",
       "#ADHD",
       "#news",
+      "#nsfw",
       "#art",
+      "#depression",
       "#booksky",
+      "#sketch",
       "#MentalHealth",
       "#sociology",
-      "#AI",
-      "#depression",
-      "#NowPlaying"
-    ],
-    "emojis": [
-      "😭",
-      "🔥",
-      "😂",
-      "👇",
-      "🙃",
-      "💀",
-      "💙",
-      "🔗",
-      "👉",
-      "💕"
-    ]
-  },
-  "topic_3": {
-    "label": [
-      "health",
-      "mental",
-      "care",
-      "new",
-      "support"
-    ],
-    "count": 1404,
-    "daily": {
-      "2026-03-25": 192,
-      "2026-03-26": 145,
-      "2026-03-27": 255,
-      "2026-03-28": 188,
-      "2026-03-29": 189,
-      "2026-03-30": 179,
-      "2026-03-31": 256
-    },
-    "sentiment": {
-      "negative": 639,
-      "positive": 237,
-      "neutral": 528
-    },
-    "emotion": {
-      "sadness": 379,
-      "fear": 465,
-      "surprise": 84,
-      "anger": 121,
-      "neutral": 140,
-      "joy": 208,
-      "disgust": 7
-    },
-    "hashtags": [
-      "#art",
-      "#abstract",
-      "#depression",
-      "#painting",
-      "#drawing",
-      "#sketch",
-      "#MastoArt",
-      "#kleinekunstklasse",
-      "#adhd",
       "#AI"
     ],
     "emojis": [
       "😭",
-      "🚨",
       "🔥",
       "😂",
-      "😟",
+      "♥",
+      "👇",
+      "🚨",
+      "👉",
+      "🙃",
+      "🌈",
+      "🎶"
+    ]
+  },
+  "topic_5": {
+    "label": [
+      "recovery",
+      "new",
+      "time",
+      "cutting",
+      "took"
+    ],
+    "count": 1264,
+    "daily": {
+      "2026-03-26": 172,
+      "2026-03-27": 187,
+      "2026-03-28": 173,
+      "2026-03-29": 135,
+      "2026-03-30": 226,
+      "2026-03-31": 210,
+      "2026-04-01": 161
+    },
+    "sentiment": {
+      "neutral": 602,
+      "positive": 222,
+      "negative": 440
+    },
+    "emotion": {
+      "neutral": 197,
+      "sadness": 233,
+      "joy": 184,
+      "fear": 441,
+      "anger": 123,
+      "surprise": 75,
+      "disgust": 11
+    },
+    "hashtags": [
+      "#MentalHealth",
+      "#news",
+      "#art",
+      "#AI",
+      "#nowplaying",
+      "#sketch",
+      "#depression",
+      "#ADHD",
+      "#nsfw",
+      "#erotica"
+    ],
+    "emojis": [
+      "😭",
+      "😳",
+      "🚨",
+      "👉",
       "💙",
+      "👇",
+      "💔",
       "📚",
-      "🔗",
-      "🇺",
-      "👀"
+      "🔥",
+      "🏻"
     ]
   },
   "topic_6": {
     "label": [
-      "worry",
-      "dont",
       "cutting",
-      "need",
-      "youre"
+      "trump",
+      "right",
+      "president",
+      "like"
     ],
-    "count": 1449,
+    "count": 1441,
     "daily": {
-      "2026-03-25": 185,
       "2026-03-26": 307,
       "2026-03-27": 202,
       "2026-03-28": 167,
       "2026-03-29": 115,
-      "2026-03-30": 204,
-      "2026-03-31": 269
+      "2026-03-30": 205,
+      "2026-03-31": 269,
+      "2026-04-01": 176
     },
     "sentiment": {
-      "positive": 293,
-      "neutral": 562,
-      "negative": 594
+      "negative": 647,
+      "neutral": 528,
+      "positive": 266
     },
     "emotion": {
-      "fear": 514,
-      "neutral": 157,
-      "sadness": 339,
-      "joy": 190,
-      "surprise": 99,
-      "anger": 146,
+      "sadness": 343,
+      "neutral": 143,
+      "fear": 501,
+      "anger": 169,
+      "joy": 176,
+      "surprise": 105,
       "disgust": 4
     },
     "hashtags": [
@@ -321,138 +378,81 @@
       "#sketch",
       "#news",
       "#painting",
-      "#digitalart",
       "#drawing",
       "#MastoArt",
       "#kleinekunstklasse",
       "#abstract",
-      "#depression"
+      "#depression",
+      "#ADHD"
     ],
     "emojis": [
       "😭",
       "😂",
       "🚨",
-      "🔥",
-      "😬",
-      "👉",
-      "🙂",
       "💔",
+      "😬",
+      "🔥",
+      "🙂",
       "👇",
-      "🗨"
+      "🗨",
+      "👉"
     ]
   },
   "topic_4": {
     "label": [
-      "stress",
-      "time",
-      "today",
-      "new",
-      "great"
+      "worry",
+      "dont",
+      "trump",
+      "people",
+      "need"
     ],
-    "count": 1257,
+    "count": 1340,
     "daily": {
-      "2026-03-25": 197,
       "2026-03-26": 178,
       "2026-03-27": 216,
       "2026-03-28": 201,
       "2026-03-29": 129,
-      "2026-03-30": 149,
-      "2026-03-31": 187
+      "2026-03-30": 150,
+      "2026-03-31": 187,
+      "2026-04-01": 279
     },
     "sentiment": {
-      "positive": 274,
-      "neutral": 526,
-      "negative": 457
+      "negative": 499,
+      "neutral": 548,
+      "positive": 293
     },
     "emotion": {
-      "sadness": 283,
-      "fear": 433,
-      "joy": 217,
-      "surprise": 101,
-      "anger": 104,
-      "neutral": 116,
-      "disgust": 3
+      "sadness": 276,
+      "neutral": 97,
+      "joy": 212,
+      "fear": 543,
+      "anger": 99,
+      "surprise": 108,
+      "disgust": 5
     },
     "hashtags": [
       "#ADHD",
-      "#MentalHealth",
       "#art",
-      "#nowplaying",
-      "#StressRelief",
-      "#Trauma",
-      "#PTSD",
-      "#InnerPeace",
-      "#healing",
-      "#depression"
+      "#nsfw",
+      "#fantasy",
+      "#sociology",
+      "#depression",
+      "#Healing",
+      "#music",
+      "#grief",
+      "#drawing"
     ],
     "emojis": [
       "😭",
       "😂",
       "👉",
-      "🔥",
-      "⚡",
-      "♡",
-      "💙",
-      "🌟",
-      "🌿",
-      "🙏"
-    ]
-  },
-  "topic_5": {
-    "label": [
-      "cutting",
-      "war",
-      "new",
-      "iran",
-      "just"
-    ],
-    "count": 1255,
-    "daily": {
-      "2026-03-25": 152,
-      "2026-03-26": 172,
-      "2026-03-27": 187,
-      "2026-03-28": 173,
-      "2026-03-29": 135,
-      "2026-03-30": 226,
-      "2026-03-31": 210
-    },
-    "sentiment": {
-      "negative": 460,
-      "positive": 216,
-      "neutral": 579
-    },
-    "emotion": {
-      "sadness": 233,
-      "neutral": 186,
-      "joy": 185,
-      "anger": 138,
-      "fear": 427,
-      "surprise": 72,
-      "disgust": 14
-    },
-    "hashtags": [
-      "#MentalHealth",
-      "#art",
-      "#news",
-      "#nsfw",
-      "#erotica",
-      "#3dArt",
-      "#fantasy",
-      "#bigboobs",
-      "#sketch",
-      "#depression"
-    ],
-    "emojis": [
-      "😭",
-      "🚨",
-      "😳",
+      "🙏",
       "💙",
       "🔥",
-      "👉",
-      "👇",
-      "🏻",
-      "📚",
-      "💔"
+      "💖",
+      "😅",
+      "🎧",
+      "⚡"
     ]
   }
 }
