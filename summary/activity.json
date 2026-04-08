@@ -1,52 +1,4 @@
 {
-  "2026-03-31": {
-    "volume": 3709,
-    "sentiment": {
-      "negative": 1760,
-      "neutral": 1407,
-      "positive": 542
-    },
-    "emotion": {
-      "sadness": 961,
-      "fear": 1126,
-      "anger": 489,
-      "neutral": 385,
-      "joy": 438,
-      "surprise": 266,
-      "disgust": 44
-    },
-    "language": {
-      "en-US": 132,
-      "en": 2982,
-      "sq": 1,
-      "es": 15,
-      "ja": 23,
-      "ht": 1,
-      "nl": 7,
-      "ar": 1,
-      "id": 2,
-      "as": 1,
-      "hy": 1,
-      "fr": 18,
-      "de": 40,
-      "pt": 15,
-      "sv": 3,
-      "it": 2,
-      "en-GB": 3,
-      "zh": 2,
-      "ru": 1,
-      "ko": 1,
-      "da": 2,
-      "uk": 2,
-      "af": 2,
-      "en-AU": 2,
-      "tr": 1,
-      "th": 1,
-      "en-us": 1,
-      "pl": 1,
-      "nb": 1
-    }
-  },
   "2026-04-01": {
     "volume": 3537,
     "sentiment": {
@@ -277,17 +229,17 @@
     }
   },
   "2026-04-06": {
-    "volume": 3843,
+    "volume": 3844,
     "sentiment": {
       "negative": 1592,
       "neutral": 1410,
-      "positive": 841
+      "positive": 842
     },
     "emotion": {
       "sadness": 1047,
       "fear": 1266,
       "neutral": 403,
-      "joy": 463,
+      "joy": 464,
       "anger": 306,
       "surprise": 332,
       "disgust": 26
@@ -323,6 +275,56 @@
       "is": 1,
       "fi": 1,
       "en-AU": 1
+    }
+  },
+  "2026-04-07": {
+    "volume": 3953,
+    "sentiment": {
+      "negative": 1694,
+      "neutral": 1334,
+      "positive": 925
+    },
+    "emotion": {
+      "neutral": 338,
+      "fear": 1436,
+      "anger": 341,
+      "surprise": 347,
+      "sadness": 1043,
+      "joy": 429,
+      "disgust": 19
+    },
+    "language": {
+      "en": 3059,
+      "fr": 22,
+      "ja": 14,
+      "pt": 22,
+      "es": 19,
+      "ur": 1,
+      "en-US": 113,
+      "fr-FR": 1,
+      "en-GB": 4,
+      "es-ES": 1,
+      "nl": 5,
+      "sv": 3,
+      "de": 27,
+      "ko": 4,
+      "fi": 1,
+      "ar": 2,
+      "tr": 1,
+      "pl": 2,
+      "zh": 1,
+      "ru": 5,
+      "rn": 1,
+      "cs": 1,
+      "ca": 2,
+      "en-us": 1,
+      "da-DK": 1,
+      "it": 2,
+      "zh-Hans": 1,
+      "th": 1,
+      "id": 1,
+      "el": 1,
+      "is": 1
     }
   }
 }
