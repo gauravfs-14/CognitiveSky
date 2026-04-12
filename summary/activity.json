@@ -1,33 +1,4 @@
 {
-  "2026-04-04": {
-    "volume": 568,
-    "sentiment": {
-      "negative": 297,
-      "positive": 74,
-      "neutral": 197
-    },
-    "emotion": {
-      "sadness": 164,
-      "surprise": 55,
-      "fear": 170,
-      "neutral": 62,
-      "anger": 65,
-      "joy": 47,
-      "disgust": 5
-    },
-    "language": {
-      "en": 478,
-      "ja": 3,
-      "en-US": 17,
-      "pt": 4,
-      "es": 3,
-      "ko": 3,
-      "fi-FI": 1,
-      "nb": 1,
-      "en-GB": 1,
-      "it": 1
-    }
-  },
   "2026-04-05": {
     "volume": 1890,
     "sentiment": {
@@ -271,23 +242,23 @@
     }
   },
   "2026-04-10": {
-    "volume": 3204,
+    "volume": 3208,
     "sentiment": {
       "positive": 572,
       "negative": 1413,
-      "neutral": 1219
+      "neutral": 1223
     },
     "emotion": {
-      "neutral": 321,
+      "neutral": 322,
       "joy": 419,
-      "fear": 1085,
+      "fear": 1086,
       "anger": 254,
       "surprise": 239,
-      "sadness": 855,
+      "sadness": 857,
       "disgust": 31
     },
     "language": {
-      "en": 2529,
+      "en": 2530,
       "en-US": 88,
       "es": 22,
       "ar": 3,
@@ -320,6 +291,58 @@
       "Angika": 1,
       "de-DE": 1,
       "el": 1
+    }
+  },
+  "2026-04-11": {
+    "volume": 2970,
+    "sentiment": {
+      "negative": 1349,
+      "neutral": 1091,
+      "positive": 530
+    },
+    "emotion": {
+      "anger": 270,
+      "sadness": 803,
+      "neutral": 291,
+      "fear": 905,
+      "surprise": 251,
+      "joy": 421,
+      "disgust": 29
+    },
+    "language": {
+      "en-US": 77,
+      "en": 2362,
+      "fr": 18,
+      "pt": 16,
+      "th": 1,
+      "zh-Hans": 3,
+      "ko": 6,
+      "de": 22,
+      "ja": 32,
+      "mi": 1,
+      "ca": 2,
+      "sv": 3,
+      "hi": 1,
+      "es": 16,
+      "ja-JP": 1,
+      "id": 3,
+      "hu": 1,
+      "nl": 3,
+      "fi": 5,
+      "nb": 2,
+      "uk": 1,
+      "en-GB": 3,
+      "en-us": 2,
+      "pl": 2,
+      "ae": 1,
+      "av": 1,
+      "tr": 1,
+      "ar": 8,
+      "da-DK": 1,
+      "fr-FR": 1,
+      "cs": 1,
+      "tl": 1,
+      "hy": 1
     }
   }
 }
