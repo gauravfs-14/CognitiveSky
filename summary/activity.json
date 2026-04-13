@@ -1,52 +1,4 @@
 {
-  "2026-04-05": {
-    "volume": 1890,
-    "sentiment": {
-      "negative": 796,
-      "neutral": 700,
-      "positive": 394
-    },
-    "emotion": {
-      "fear": 596,
-      "neutral": 196,
-      "anger": 161,
-      "sadness": 568,
-      "surprise": 128,
-      "joy": 227,
-      "disgust": 14
-    },
-    "language": {
-      "en": 1380,
-      "fr": 18,
-      "en-US": 63,
-      "nl": 3,
-      "de": 19,
-      "pt": 14,
-      "ja": 16,
-      "es": 15,
-      "en-AU": 1,
-      "ru": 2,
-      "ko": 1,
-      "th": 3,
-      "fr-FR": 2,
-      "ja-JP": 1,
-      "id": 1,
-      "nb-NO": 1,
-      "nb": 6,
-      "zh": 1,
-      "da": 1,
-      "cs": 1,
-      "tr": 1,
-      "en-GB": 1,
-      "fi": 2,
-      "aa": 1,
-      "sv": 1,
-      "he": 1,
-      "ca": 1,
-      "da-DK": 1,
-      "am": 1
-    }
-  },
   "2026-04-06": {
     "volume": 3844,
     "sentiment": {
@@ -294,24 +246,24 @@
     }
   },
   "2026-04-11": {
-    "volume": 2970,
+    "volume": 2974,
     "sentiment": {
-      "negative": 1349,
-      "neutral": 1091,
+      "negative": 1351,
+      "neutral": 1093,
       "positive": 530
     },
     "emotion": {
       "anger": 270,
-      "sadness": 803,
+      "sadness": 804,
       "neutral": 291,
-      "fear": 905,
-      "surprise": 251,
+      "fear": 906,
+      "surprise": 253,
       "joy": 421,
       "disgust": 29
     },
     "language": {
       "en-US": 77,
-      "en": 2362,
+      "en": 2364,
       "fr": 18,
       "pt": 16,
       "th": 1,
@@ -343,6 +295,55 @@
       "cs": 1,
       "tl": 1,
       "hy": 1
+    }
+  },
+  "2026-04-12": {
+    "volume": 3041,
+    "sentiment": {
+      "neutral": 1096,
+      "positive": 508,
+      "negative": 1437
+    },
+    "emotion": {
+      "neutral": 291,
+      "fear": 964,
+      "sadness": 882,
+      "surprise": 243,
+      "anger": 282,
+      "joy": 367,
+      "disgust": 12
+    },
+    "language": {
+      "en": 2411,
+      "zh-Hans": 3,
+      "de": 35,
+      "fr": 19,
+      "en-US": 96,
+      "ko": 8,
+      "ja": 24,
+      "pt": 10,
+      "it": 2,
+      "zh": 1,
+      "nl": 10,
+      "es": 12,
+      "emoji": 1,
+      "el": 2,
+      "ru": 5,
+      "en-AU": 2,
+      "da": 3,
+      "sv": 1,
+      "id": 1,
+      "fi": 1,
+      "eo": 1,
+      "th": 1,
+      "hu": 2,
+      "ar": 12,
+      "pt-BR": 1,
+      "wuu": 1,
+      "sl": 1,
+      "fr-FR": 1,
+      "ca": 1,
+      "pl": 1
     }
   }
 }
