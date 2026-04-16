@@ -1,100 +1,4 @@
 {
-  "2026-04-07": {
-    "volume": 3956,
-    "sentiment": {
-      "negative": 1695,
-      "neutral": 1336,
-      "positive": 925
-    },
-    "emotion": {
-      "neutral": 339,
-      "fear": 1437,
-      "anger": 341,
-      "surprise": 347,
-      "sadness": 1043,
-      "joy": 430,
-      "disgust": 19
-    },
-    "language": {
-      "en": 3061,
-      "fr": 22,
-      "ja": 14,
-      "pt": 22,
-      "es": 19,
-      "ur": 1,
-      "en-US": 113,
-      "fr-FR": 1,
-      "en-GB": 4,
-      "es-ES": 1,
-      "nl": 5,
-      "sv": 3,
-      "de": 27,
-      "ko": 4,
-      "fi": 1,
-      "ar": 2,
-      "tr": 1,
-      "pl": 2,
-      "zh": 1,
-      "ru": 5,
-      "rn": 1,
-      "cs": 1,
-      "ca": 2,
-      "en-us": 1,
-      "da-DK": 1,
-      "it": 2,
-      "zh-Hans": 1,
-      "th": 1,
-      "id": 1,
-      "el": 1,
-      "is": 1
-    }
-  },
-  "2026-04-08": {
-    "volume": 3590,
-    "sentiment": {
-      "negative": 1596,
-      "neutral": 1345,
-      "positive": 649
-    },
-    "emotion": {
-      "anger": 319,
-      "sadness": 885,
-      "fear": 1280,
-      "neutral": 326,
-      "surprise": 338,
-      "joy": 425,
-      "disgust": 17
-    },
-    "language": {
-      "en": 2866,
-      "es": 18,
-      "ko": 6,
-      "en-US": 104,
-      "uk": 3,
-      "ja": 18,
-      "fr": 16,
-      "pt": 14,
-      "de": 24,
-      "ru": 1,
-      "nl": 7,
-      "sv": 3,
-      "zh": 2,
-      "zh-Hans": 2,
-      "pl": 3,
-      "da-DK": 1,
-      "tr": 1,
-      "nb": 2,
-      "en-GB": 3,
-      "vi": 1,
-      "th": 1,
-      "et": 1,
-      "ca": 1,
-      "wuu": 1,
-      "fr-FR": 1,
-      "fi": 2,
-      "eo": 1
-    }
-  },
   "2026-04-09": {
     "volume": 2856,
     "sentiment": {
@@ -298,17 +202,17 @@
     }
   },
   "2026-04-13": {
-    "volume": 3526,
+    "volume": 3528,
     "sentiment": {
-      "neutral": 1355,
+      "neutral": 1356,
       "negative": 1626,
-      "positive": 545
+      "positive": 546
     },
     "emotion": {
-      "surprise": 268,
+      "surprise": 269,
       "sadness": 966,
       "anger": 337,
-      "fear": 1144,
+      "fear": 1145,
       "joy": 413,
       "neutral": 364,
       "disgust": 34
@@ -348,6 +252,111 @@
       "ca": 1,
       "cs": 2,
       "fi": 1
+    }
+  },
+  "2026-04-14": {
+    "volume": 3385,
+    "sentiment": {
+      "negative": 1498,
+      "positive": 537,
+      "neutral": 1350
+    },
+    "emotion": {
+      "sadness": 849,
+      "joy": 470,
+      "fear": 1122,
+      "neutral": 368,
+      "anger": 310,
+      "surprise": 241,
+      "disgust": 25
+    },
+    "language": {
+      "en": 2668,
+      "ja": 31,
+      "ko": 5,
+      "en-US": 98,
+      "de": 28,
+      "aa": 1,
+      "es": 14,
+      "zh": 2,
+      "ja-JP": 1,
+      "pt": 16,
+      "en-AU": 3,
+      "sv": 6,
+      "en-GB": 2,
+      "pl": 2,
+      "fr": 31,
+      "fy": 1,
+      "fr-FR": 1,
+      "ar": 2,
+      "ksh": 1,
+      "zh-Hans": 1,
+      "nl": 5,
+      "ru": 2,
+      "da": 5,
+      "it": 2,
+      "uk": 1,
+      "ii": 1,
+      "iu": 1,
+      "ca": 1,
+      "yi": 1,
+      "hu": 1,
+      "cs": 2,
+      "la": 1,
+      "id": 1,
+      "et": 1,
+      "bg": 1,
+      "nb": 1,
+      "vi": 1,
+      "sg": 1,
+      "sa": 1
+    }
+  },
+  "2026-04-15": {
+    "volume": 2639,
+    "sentiment": {
+      "positive": 417,
+      "neutral": 1035,
+      "negative": 1187
+    },
+    "emotion": {
+      "sadness": 718,
+      "joy": 321,
+      "fear": 853,
+      "anger": 260,
+      "surprise": 184,
+      "neutral": 288,
+      "disgust": 15
+    },
+    "language": {
+      "en": 2023,
+      "ja": 30,
+      "en-US": 106,
+      "de": 20,
+      "it": 3,
+      "zh": 3,
+      "pt": 16,
+      "nb": 5,
+      "fi": 1,
+      "hu": 2,
+      "nl": 3,
+      "es": 16,
+      "aa": 1,
+      "ko": 6,
+      "sv": 4,
+      "fr": 22,
+      "ga": 1,
+      "th": 2,
+      "cs-CZ": 1,
+      "ru": 3,
+      "cs": 2,
+      "pl": 2,
+      "fr-FR": 1,
+      "la": 1,
+      "en-GB": 2,
+      "ca": 1,
+      "tl": 2,
+      "ar": 2
     }
   }
 }
