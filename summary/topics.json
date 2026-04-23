@@ -1,173 +1,59 @@
 {
-  "topic_6": {
+  "topic_5": {
     "label": [
-      "crying",
       "recovery",
-      "worry",
-      "dont",
-      "actually"
+      "therapy",
+      "new",
+      "people",
+      "cutting"
     ],
-    "count": 991,
+    "count": 1761,
     "daily": {
-      "2026-04-14": 204,
-      "2026-04-15": 178,
-      "2026-04-16": 15,
-      "2026-04-17": 29,
-      "2026-04-18": 152,
-      "2026-04-19": 210,
-      "2026-04-20": 203
+      "2026-04-16": 41,
+      "2026-04-17": 38,
+      "2026-04-18": 153,
+      "2026-04-19": 222,
+      "2026-04-20": 744,
+      "2026-04-21": 320,
+      "2026-04-22": 243
     },
     "sentiment": {
-      "negative": 346,
-      "neutral": 477,
-      "positive": 168
+      "neutral": 736,
+      "negative": 672,
+      "positive": 353
     },
     "emotion": {
-      "sadness": 223,
-      "fear": 300,
-      "anger": 114,
-      "neutral": 139,
-      "joy": 135,
-      "surprise": 69,
+      "anger": 145,
+      "fear": 603,
+      "joy": 294,
+      "sadness": 420,
+      "surprise": 98,
+      "neutral": 190,
       "disgust": 11
     },
     "hashtags": [
-      "#art",
-      "#AI",
-      "#MentalHealth",
       "#news",
-      "#HealthcareNotTrumpsWar",
-      "#painting",
-      "#drawing",
-      "#sketch",
-      "#MastoArt",
-      "#kleinekunstklasse"
-    ],
-    "emojis": [
-      "😭",
-      "🚨",
-      "🏻",
-      "💙",
-      "🔗",
-      "💎",
-      "👉",
-      "📢",
-      "🇪",
-      "🇸"
-    ]
-  },
-  "topic_0": {
-    "label": [
-      "loss",
-      "just",
-      "im",
-      "like",
-      "dont"
-    ],
-    "count": 5850,
-    "daily": {
-      "2026-04-14": 1796,
-      "2026-04-15": 1382,
-      "2026-04-16": 43,
-      "2026-04-17": 50,
-      "2026-04-18": 1542,
-      "2026-04-19": 410,
-      "2026-04-20": 627
-    },
-    "sentiment": {
-      "positive": 891,
-      "negative": 2821,
-      "neutral": 2138
-    },
-    "emotion": {
-      "joy": 659,
-      "fear": 1841,
-      "sadness": 1729,
-      "anger": 537,
-      "neutral": 563,
-      "surprise": 476,
-      "disgust": 45
-    },
-    "hashtags": [
       "#art",
-      "#news",
-      "#nsfw",
       "#depression",
-      "#ADHD",
-      "#DubNation",
-      "#メンズエステ",
-      "#NowPlaying",
-      "#fantasy",
-      "#mentalhealth"
+      "#MusicSky",
+      "#anxiety",
+      "#AI",
+      "#trauma",
+      "#NBA",
+      "#comic",
+      "#AmputationClaims"
     ],
     "emojis": [
+      "👉",
       "😭",
+      "🔥",
       "🚨",
-      "😂",
-      "🇺",
-      "😅",
-      "👇",
       "🔗",
       "💙",
-      "🔥",
-      "💀"
-    ]
-  },
-  "topic_2": {
-    "label": [
-      "health",
-      "mental",
-      "illness",
-      "leading",
-      "children"
-    ],
-    "count": 1346,
-    "daily": {
-      "2026-04-14": 261,
-      "2026-04-15": 205,
-      "2026-04-16": 21,
-      "2026-04-17": 117,
-      "2026-04-18": 262,
-      "2026-04-19": 228,
-      "2026-04-20": 252
-    },
-    "sentiment": {
-      "negative": 676,
-      "neutral": 478,
-      "positive": 192
-    },
-    "emotion": {
-      "fear": 428,
-      "sadness": 368,
-      "neutral": 169,
-      "anger": 120,
-      "disgust": 17,
-      "joy": 172,
-      "surprise": 72
-    },
-    "hashtags": [
-      "#nsfw",
-      "#Trump",
-      "#Iran",
-      "#MentalHealth",
-      "#NowPlaying",
-      "#adhd",
-      "#erotica",
-      "#3dArt",
-      "#fantasy",
-      "#bigboobs"
-    ],
-    "emojis": [
-      "😭",
-      "🔥",
-      "🚨",
-      "🌶",
-      "😵",
-      "💫",
-      "★",
-      "😅",
-      "📚",
-      "😂"
+      "⛓",
+      "🙏",
+      "🎶",
+      "🏻"
     ]
   },
   "topic_4": {
@@ -175,284 +61,398 @@
       "stress",
       "worry",
       "dont",
-      "need",
-      "people"
+      "en",
+      "new"
     ],
-    "count": 999,
+    "count": 1106,
     "daily": {
-      "2026-04-14": 161,
-      "2026-04-15": 138,
       "2026-04-16": 14,
       "2026-04-17": 49,
       "2026-04-18": 249,
       "2026-04-19": 151,
-      "2026-04-20": 237
+      "2026-04-20": 237,
+      "2026-04-21": 299,
+      "2026-04-22": 107
     },
     "sentiment": {
-      "neutral": 478,
-      "positive": 191,
-      "negative": 330
+      "neutral": 472,
+      "positive": 203,
+      "negative": 431
     },
     "emotion": {
-      "neutral": 141,
-      "joy": 161,
+      "fear": 477,
+      "surprise": 73,
+      "joy": 140,
       "sadness": 223,
-      "fear": 334,
-      "surprise": 61,
-      "anger": 72,
-      "disgust": 7
+      "anger": 79,
+      "neutral": 104,
+      "disgust": 10
     },
     "hashtags": [
-      "#MentalHealth",
       "#news",
-      "#ad",
-      "#nsfw",
-      "#MusicChallenge",
-      "#HelpFolksLive2026",
-      "#USA",
-      "#PTSD",
       "#art",
-      "#Canada"
-    ],
-    "emojis": [
-      "😭",
-      "🚨",
-      "💦",
-      "😔",
-      "📢",
-      "💙",
-      "👇",
-      "👉",
-      "📚",
-      "🎶"
-    ]
-  },
-  "topic_5": {
-    "label": [
-      "anxiety",
-      "recovery",
-      "cutting",
-      "just",
-      "trauma"
-    ],
-    "count": 1632,
-    "daily": {
-      "2026-04-14": 234,
-      "2026-04-15": 200,
-      "2026-04-16": 41,
-      "2026-04-17": 38,
-      "2026-04-18": 153,
-      "2026-04-19": 222,
-      "2026-04-20": 744
-    },
-    "sentiment": {
-      "neutral": 594,
-      "negative": 697,
-      "positive": 341
-    },
-    "emotion": {
-      "fear": 681,
-      "sadness": 364,
-      "surprise": 101,
-      "joy": 233,
-      "disgust": 7,
-      "neutral": 121,
-      "anger": 125
-    },
-    "hashtags": [
-      "#anxiety",
-      "#depression",
-      "#findom",
-      "#MusicSky",
-      "#trauma",
-      "#mentalhealth",
+      "#MentalHealth",
       "#nsfw",
-      "#hormuzuandi",
-      "#nba",
-      "#nbasky"
-    ],
-    "emojis": [
-      "😭",
-      "👉",
-      "🚨",
-      "⛓",
-      "💙",
-      "👇",
-      "🔥",
-      "🔗",
-      "🎶",
-      "📰"
-    ]
-  },
-  "topic_7": {
-    "label": [
-      "therapy",
-      "im",
-      "bskysocial",
-      "today",
-      "tension"
-    ],
-    "count": 840,
-    "daily": {
-      "2026-04-14": 174,
-      "2026-04-15": 135,
-      "2026-04-16": 22,
-      "2026-04-17": 36,
-      "2026-04-18": 156,
-      "2026-04-19": 138,
-      "2026-04-20": 179
-    },
-    "sentiment": {
-      "neutral": 373,
-      "negative": 299,
-      "positive": 168
-    },
-    "emotion": {
-      "neutral": 115,
-      "sadness": 214,
-      "fear": 193,
-      "anger": 94,
-      "joy": 163,
-      "surprise": 58,
-      "disgust": 3
-    },
-    "hashtags": [
+      "#painting",
       "#ADHD",
-      "#hormuzuandi",
-      "#HormuzRealVictims",
-      "#AI",
-      "#mentalhealth",
-      "#poetry",
-      "#Trump",
-      "#1",
-      "#gamedev",
-      "#indiedev"
+      "#fantasy",
+      "#drawing",
+      "#sketch",
+      "#MastoArt"
     ],
     "emojis": [
-      "😂",
-      "🔥",
       "😭",
-      "☕",
-      "💙",
-      "💔",
-      "🏻",
+      "🚨",
+      "😔",
+      "💦",
+      "👇",
+      "🙂",
       "🔗",
-      "😵",
-      "💫"
+      "♀",
+      "📢",
+      "💪"
     ]
   },
   "topic_1": {
     "label": [
       "im",
+      "just",
       "dont",
-      "like",
-      "worry",
-      "just"
+      "crying",
+      "like"
     ],
-    "count": 2956,
+    "count": 3379,
     "daily": {
-      "2026-04-14": 316,
-      "2026-04-15": 244,
       "2026-04-16": 26,
       "2026-04-17": 33,
       "2026-04-18": 264,
       "2026-04-19": 1339,
-      "2026-04-20": 734
+      "2026-04-20": 734,
+      "2026-04-21": 296,
+      "2026-04-22": 687
     },
     "sentiment": {
-      "neutral": 1061,
-      "negative": 1483,
-      "positive": 412
+      "negative": 1773,
+      "positive": 516,
+      "neutral": 1090
     },
     "emotion": {
-      "joy": 347,
-      "fear": 889,
-      "neutral": 280,
-      "anger": 310,
-      "sadness": 882,
-      "surprise": 229,
-      "disgust": 19
+      "sadness": 1033,
+      "neutral": 266,
+      "joy": 410,
+      "fear": 1038,
+      "anger": 345,
+      "surprise": 265,
+      "disgust": 22
     },
     "hashtags": [
-      "#depression",
-      "#DubNation",
-      "#sociology",
       "#art",
-      "#MentalHealth",
-      "#Politics",
-      "#anxiety",
-      "#mentalhealth",
-      "#News",
-      "#Japan"
+      "#sociology",
+      "#日吉",
+      "#depression",
+      "#メンズエステ",
+      "#DubNation",
+      "#武蔵小杉",
+      "#自由が丘",
+      "#NBA",
+      "#grief"
     ],
     "emojis": [
       "😭",
       "😂",
       "👇",
-      "🏻",
       "👉",
-      "🙏",
       "💙",
-      "👏",
-      "♀",
-      "🔗"
+      "🏻",
+      "🔗",
+      "🌼",
+      "😅",
+      "💖"
     ]
   },
   "topic_3": {
     "label": [
-      "stress",
-      "im",
-      "crying",
-      "like",
-      "time"
+      "worry",
+      "dont",
+      "mental",
+      "health",
+      "need"
     ],
-    "count": 1006,
+    "count": 947,
     "daily": {
-      "2026-04-14": 239,
-      "2026-04-15": 157,
       "2026-04-16": 29,
       "2026-04-17": 28,
       "2026-04-18": 247,
       "2026-04-19": 212,
-      "2026-04-20": 94
+      "2026-04-20": 94,
+      "2026-04-21": 217,
+      "2026-04-22": 120
     },
     "sentiment": {
-      "negative": 386,
-      "neutral": 416,
-      "positive": 204
+      "negative": 368,
+      "neutral": 373,
+      "positive": 206
     },
     "emotion": {
-      "joy": 135,
-      "fear": 422,
-      "sadness": 210,
-      "anger": 93,
-      "neutral": 82,
-      "surprise": 55,
-      "disgust": 9
+      "fear": 469,
+      "joy": 111,
+      "neutral": 73,
+      "sadness": 163,
+      "anger": 74,
+      "surprise": 49,
+      "disgust": 8
     },
     "hashtags": [
-      "#MentalHealth",
       "#news",
-      "#painting",
-      "#drawing",
-      "#sketch",
+      "#MentalHealth",
       "#art",
-      "#MastoArt",
-      "#kleinekunstklasse",
-      "#abstract",
-      "#comic"
+      "#DubNation",
+      "#メンズエステ",
+      "#drawing",
+      "#depression",
+      "#NBA",
+      "#Iran",
+      "#NHL"
     ],
     "emojis": [
       "😭",
+      "😂",
       "🏻",
       "👏",
-      "🔓",
-      "😂",
-      "🔊",
-      "♂",
+      "💯",
+      "📚",
+      "🔥",
+      "💟",
+      "🔴",
+      "📢"
+    ]
+  },
+  "topic_0": {
+    "label": [
+      "loss",
+      "game",
+      "just",
+      "im",
+      "night"
+    ],
+    "count": 4712,
+    "daily": {
+      "2026-04-16": 43,
+      "2026-04-17": 50,
+      "2026-04-18": 1542,
+      "2026-04-19": 411,
+      "2026-04-20": 627,
+      "2026-04-21": 1710,
+      "2026-04-22": 329
+    },
+    "sentiment": {
+      "positive": 703,
+      "negative": 2206,
+      "neutral": 1803
+    },
+    "emotion": {
+      "neutral": 505,
+      "disgust": 40,
+      "sadness": 1424,
+      "fear": 1439,
+      "surprise": 405,
+      "joy": 479,
+      "anger": 420
+    },
+    "hashtags": [
+      "#news",
+      "#art",
+      "#nsfw",
+      "#メンズエステ",
+      "#DubNation",
+      "#fantasy",
+      "#ADHD",
+      "#sociology",
+      "#mentalhealth",
+      "#trauma"
+    ],
+    "emojis": [
+      "😭",
       "💙",
-      "🌟",
-      "👉"
+      "🔥",
+      "💫",
+      "👉",
+      "💖",
+      "💜",
+      "🚨",
+      "🔗",
+      "😂"
+    ]
+  },
+  "topic_6": {
+    "label": [
+      "cutting",
+      "like",
+      "tension",
+      "people",
+      "anxiety"
+    ],
+    "count": 885,
+    "daily": {
+      "2026-04-16": 15,
+      "2026-04-17": 29,
+      "2026-04-18": 152,
+      "2026-04-19": 210,
+      "2026-04-20": 203,
+      "2026-04-21": 176,
+      "2026-04-22": 100
+    },
+    "sentiment": {
+      "neutral": 436,
+      "negative": 297,
+      "positive": 152
+    },
+    "emotion": {
+      "neutral": 143,
+      "fear": 198,
+      "joy": 120,
+      "anger": 111,
+      "sadness": 214,
+      "surprise": 80,
+      "disgust": 19
+    },
+    "hashtags": [
+      "#news",
+      "#art",
+      "#Madonna",
+      "#nsfw",
+      "#erotica",
+      "#3dArt",
+      "#fantasy",
+      "#bigboobs",
+      "#booksky",
+      "#traumarecovery"
+    ],
+    "emojis": [
+      "😭",
+      "💙",
+      "💎",
+      "🔥",
+      "👇",
+      "📚",
+      "🇸",
+      "🔗",
+      "👉",
+      "🕊"
+    ]
+  },
+  "topic_7": {
+    "label": [
+      "anxiety",
+      "suicide",
+      "like",
+      "tension",
+      "just"
+    ],
+    "count": 918,
+    "daily": {
+      "2026-04-16": 22,
+      "2026-04-17": 36,
+      "2026-04-18": 156,
+      "2026-04-19": 138,
+      "2026-04-20": 179,
+      "2026-04-21": 157,
+      "2026-04-22": 230
+    },
+    "sentiment": {
+      "negative": 401,
+      "neutral": 348,
+      "positive": 169
+    },
+    "emotion": {
+      "fear": 226,
+      "surprise": 51,
+      "sadness": 284,
+      "joy": 143,
+      "anger": 112,
+      "neutral": 98,
+      "disgust": 4
+    },
+    "hashtags": [
+      "#ADHD",
+      "#AI",
+      "#日吉",
+      "#1",
+      "#mentalhealth",
+      "#自由が丘",
+      "#武蔵小杉",
+      "#メンズエステ",
+      "#news",
+      "#adhd"
+    ],
+    "emojis": [
+      "🔥",
+      "😭",
+      "😂",
+      "☕",
+      "🚨",
+      "🔗",
+      "😆",
+      "🇺",
+      "🙄",
+      "🗼"
+    ]
+  },
+  "topic_2": {
+    "label": [
+      "health",
+      "mental",
+      "illness",
+      "new",
+      "stress"
+    ],
+    "count": 1261,
+    "daily": {
+      "2026-04-16": 21,
+      "2026-04-17": 117,
+      "2026-04-18": 262,
+      "2026-04-19": 228,
+      "2026-04-20": 252,
+      "2026-04-21": 247,
+      "2026-04-22": 134
+    },
+    "sentiment": {
+      "neutral": 450,
+      "negative": 606,
+      "positive": 205
+    },
+    "emotion": {
+      "fear": 402,
+      "sadness": 338,
+      "disgust": 13,
+      "neutral": 147,
+      "joy": 184,
+      "anger": 110,
+      "surprise": 67
+    },
+    "hashtags": [
+      "#nsfw",
+      "#Iran",
+      "#NowPlaying",
+      "#fantasy",
+      "#DubNation",
+      "#art",
+      "#erotica",
+      "#3dArt",
+      "#bigboobs",
+      "#bimbo"
+    ],
+    "emojis": [
+      "😭",
+      "😂",
+      "🔥",
+      "★",
+      "😅",
+      "🌶",
+      "💥",
+      "😵",
+      "💫",
+      "💣"
     ]
   }
 }
